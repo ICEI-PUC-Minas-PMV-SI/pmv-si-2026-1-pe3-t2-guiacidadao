@@ -4,8 +4,9 @@ Contextualizar a área de pesquisa do trabalho, apresentando conceitos e dados r
 
 ## 1.1. Problema
 
-Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. 
-Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
+A proteção social brasileira revela uma tensão estrutural entre a garantia normativa de direitos e as condições concretas de acesso a esses direitos. Embora a Constituição de 1988 tenha ampliado significativamente o reconhecimento dos direitos sociais, sua efetivação permanece condicionada a processos administrativos complexos e a barreiras informacionais persistentes. Nesse contexto, destaca-se a **vulnerabilidade informacional**, produzida pela combinação entre linguagem técnico-jurídica e pela crescente digitalização dos serviços públicos. Tal configuração tende a transferir ao cidadão a responsabilidade de compreender normas, procedimentos e requisitos institucionais, exigindo níveis de letramento funcional e autonomia tecnológica que não estão igualmente distribuídos na sociedade.
+
+Como consequência, a garantia formal de direitos convive com obstáculos que dificultam sua materialização no cotidiano dos usuários das políticas públicas. A complexidade informacional e procedimental pode resultar na desistência de solicitações ou na necessidade de intermediação para a realização de procedimentos administrativos, o que tensiona os princípios de universalidade e acessibilidade que orientam a seguridade social. Nesse cenário, torna-se evidente a necessidade de estratégias que priorizem a **simplificação da informação, a clareza comunicacional e a redução das barreiras cognitivas**, de modo a promover formas mais acessíveis de interação entre os cidadãos e os sistemas de acesso às políticas públicas.
 
 ## 1.2. Objetivos do trabalho
 
