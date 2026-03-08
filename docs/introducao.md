@@ -9,7 +9,21 @@ Descreva também o contexto em que essa aplicação será usada, se houver: empr
 
 ## 1.2. Objetivos do trabalho
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. O objetivo geral deve resumir e apresentar a ideia central de um trabalho, descrevendo também a sua finalidade. Os objetivos específicos darão uma maior delimitação ao tema, além de detalhar os processos necessários para a realização do trabalho.
+### Objetivo Geral
+
+O objetivo geral deste trabalho é desenvolver o GuiaCidadão, uma aplicação web voltada para a organização e orientação estruturada sobre direitos e benefícios sociais. A finalidade do software é mitigar a vulnerabilidade informacional e reduzir a carga cognitiva enfrentada por cidadãos hipossuficientes e idosos, transformando normas administrativas complexas em um fluxo de informações simplificado que facilite a compreensão de requisitos e a correta instrução de processos de seguridade social.
+
+### Objetivos Específicos
+
+* Mapear os principais benefícios sociais e traduzir suas instruções normativas e requisitos legais para uma linguagem simples e acessível ao cidadão comum;
+
+* Projetar uma interface baseada em princípios de Design Centrado no Usuário, priorizando a usabilidade e a acessibilidade para pessoas com baixo letramento digital ou limitações cognitivas;
+
+* Implementar uma ferramenta de diagnóstico que permita ao usuário identificar benefícios potenciais com base em seu perfil socioeconômico;
+
+* Desenvolver um simulador de renda familiar per capita que automatize o cálculo nos moldes exigidos pela legislação vigente;
+
+* Criar um sistema de checklists inteligentes para a organização documental e um painel de acompanhamento manual de etapas, promovendo a autonomia do indivíduo perante as exigências burocráticas do Estado.
 
 ## 1.3. Justificativa
 
