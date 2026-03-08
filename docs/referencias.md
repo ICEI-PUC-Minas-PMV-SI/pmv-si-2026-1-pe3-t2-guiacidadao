@@ -13,3 +13,13 @@ GMACH, Adriano Deomar; SIQUEIRA, Tiago Adami. **Vulnerabilidade social e exclus�
 OLIVEIRA, Ellen Beatriz Parreira de et al. A fragilidade das políticas sociais na era digital: o aplicativo “Meu INSS” e o não acesso da população segurada. In: CONGRESSO BRASILEIRO DE ASSISTENTES SOCIAIS, 18., 2025, Salvador. **Anais** [...]. Salvador: CBAS, 2025.
 
 SOUZA, Eduardo Martins Costa de; GONDIM, Elivelton Pereira. Desafios e barreiras enfrentadas pelos idosos no acesso ao Benefício de Prestação Continuada (BPC) em Vitória da Conquista: uma análise das dificuldades burocráticas e sociais. **Revista FT**, [S. l.], v. 29, ed. 146, 17 maio 2025.
+
+Leveraging Digital Platforms for Public Benefit, TechForGoodInstitute, 2024. Disponível em: https://techforgoodinstitute.org/research/tfgi-reports/leveraging-digital-platforms-for-public-benefit/
+
+BRASIL. Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome. Cadastro Único para Programas Sociais do Governo Federal. Brasília, DF: MDS, 2025. Disponível em: www.gov.br. 
+
+IPEA - INSTITUTO DE PESQUISA ECONÔMICA APLICADA. Modernização e Transformação Digital do Cadastro Único: análise de impacto e eficiência. Brasília, DF: Ipea, 2024. Disponível em: https://www.ipea.gov.br. 2026.
+
+CETIC.BR - CENTRO REGIONAL DE ESTUDOS PARA O DESENVOLVIMENTO DA SOCIEDADE DA INFORMAÇÃO. Pesquisa sobre o Uso das Tecnologias de Informação e Comunicação no Setor Público Brasileiro (TIC Governo Eletrônico). São Paulo: Comitê Gestor da Internet no Brasil, 2025. Disponível em: https://cetic.br. 
+
+IBGE - INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Pesquisa Nacional por Amostra de Domicílios Contínua (PNAD Contínua): Trabalho através de plataformas digitais. Rio de Janeiro: IBGE, 2024.
