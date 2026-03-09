@@ -1,6 +1,12 @@
 # 1. INTRODUÇÃO
 
-Contextualizar a área de pesquisa do trabalho, apresentando conceitos e dados relacionados antes de apresentar a problemática a ser investigada.
+A consolidação do sistema de seguridade social brasileiro, estruturado a partir da Constituição Federal de 1988, representou um marco na institucionalização de políticas públicas voltadas à proteção social e à promoção da dignidade humana. Fundamentado nos eixos da saúde, previdência e assistência social, esse sistema foi concebido para assegurar direitos básicos, reduzir desigualdades e garantir condições mínimas de existência para a população, especialmente para os grupos em situação de vulnerabilidade socioeconômica. Nesse contexto, benefícios e programas sociais desempenham um papel central como instrumentos de redistribuição de renda e inclusão social.
+
+Entretanto, apesar da robustez normativa que sustenta esse arcabouço, a efetivação desses direitos na prática ainda enfrenta obstáculos significativos. O acesso a benefícios sociais costuma ser mediado por um conjunto complexo de normas jurídicas, procedimentos administrativos e plataformas digitais governamentais que exigem do cidadão habilidades específicas de interpretação, navegação e cumprimento de requisitos burocráticos. Em muitos casos, essas exigências acabam funcionando como barreiras indiretas ao acesso, dificultando a compreensão das informações e a correta identificação dos direitos disponíveis.
+
+Nesse cenário, observa-se que a vulnerabilidade social frequentemente se associa a uma vulnerabilidade informacional. Muitos cidadãos encontram dificuldades para compreender a linguagem técnica presente em documentos oficiais, interpretar critérios de elegibilidade ou localizar orientações claras sobre como solicitar determinados benefícios. A crescente digitalização dos serviços públicos, embora amplie o potencial de acesso, também pode acentuar desigualdades quando não é acompanhada de soluções que priorizem usabilidade, clareza informacional e inclusão digital.
+
+Diante desse contexto, surge a necessidade de desenvolver ferramentas tecnológicas que atuem como mediadoras entre o cidadão e o sistema de proteção social. Assim, o desenvolvimento de um aplicativo web voltado à organização e simplificação de informações sobre direitos e benefícios sociais apresenta-se como uma proposta relevante. Ao reunir, estruturar e traduzir informações complexas em linguagem acessível, uma plataforma desse tipo pode contribuir para reduzir barreiras informacionais, facilitar o entendimento dos direitos sociais e ampliar o acesso da população aos mecanismos de proteção garantidos pelo Estado.
 
 ## 1.1. Problema
 
