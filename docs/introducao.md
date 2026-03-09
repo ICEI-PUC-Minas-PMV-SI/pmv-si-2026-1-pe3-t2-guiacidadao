@@ -11,20 +11,14 @@ Como consequência, a garantia formal de direitos convive com obstáculos que di
 ## 1.2. Objetivos do trabalho
 
 ### Objetivo Geral
-
-O objetivo geral é desenvolver uma aplicação web voltada para a organização e orientação estruturada sobre direitos e benefícios sociais. A finalidade do software é mitigar a vulnerabilidade informacional e reduzir a carga cognitiva enfrentada por cidadãos hipossuficientes e idosos, transformando normas administrativas complexas em um fluxo de informações simplificado que facilite a compreensão de requisitos e a correta instrução de processos de seguridade social.
+Desenvolver uma aplicação web voltada para a organização e orientação estruturada sobre direitos e benefícios sociais, com o intuito de solucionar o problema do acesso à informação e da complexidade burocrática. A finalidade do software é mitigar a vulnerabilidade informacional e reduzir a carga cognitiva enfrentada por cidadãos hipossuficientes e idosos, transformando normas administrativas complexas em um fluxo de informações simplificado que facilite a compreensão de requisitos e a correta instrução de processos de seguridade social.
 
 ### Objetivos Específicos
-
-* Mapear os principais benefícios sociais e traduzir suas instruções normativas e requisitos legais para uma linguagem simples e acessível ao cidadão comum;
-
-* Projetar uma interface baseada em princípios de Design Centrado no Usuário, priorizando a usabilidade e a acessibilidade para pessoas com baixo letramento digital ou limitações cognitivas;
-
-* Implementar uma ferramenta de diagnóstico que permita ao usuário identificar benefícios potenciais com base em seu perfil socioeconômico;
-
-* Desenvolver um simulador de renda familiar per capita que automatize o cálculo nos moldes exigidos pela legislação vigente;
-
-* Criar um sistema de checklists inteligentes para a organização documental e um painel de acompanhamento manual de etapas, promovendo a autonomia do indivíduo perante as exigências burocráticas do Estado.
+* **Mapear e traduzir requisitos legais:** Identificar os principais benefícios sociais e converter as suas respectivas instruções normativas (frequentemente em "juridiquês") para uma linguagem simples e acessível ao cidadão comum;
+* **Projetar interfaces acessíveis:** Aplicar os princípios de Design Centrado no Usuário na construção da interface, priorizando a usabilidade para pessoas com baixo letramento digital e limitações cognitivas, com foco no público idoso;
+* **Implementar ferramenta de diagnóstico:** Desenvolver uma funcionalidade que cruze as informações fornecidas para identificar potenciais benefícios compatíveis com o perfil socioeconômico do usuário;
+* **Desenvolver simulador financeiro:** Criar uma calculadora de renda familiar *per capita* que realize a triagem automática dos critérios financeiros nos moldes exigidos pela legislação vigente;
+* **Estruturar o acompanhamento de processos:** Construir um sistema de *checklists* inteligentes para a triagem documental e um painel de acompanhamento de etapas, promovendo a autonomia do cidadão frente às exigências do Estado.
 
 ## 1.3. Justificativa
 
