@@ -31,9 +31,9 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| RF1 | Gerenciar Curso de Aperfeiçoamento |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Cursos de Aperfeiçoamento |
-| RF2 |	Gerenciar Professor	| Processamento de Inclusão, Alteração, Exclusão e Consulta de professores |
-| RF3	| Gerenciar Matrícula |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Matrículas de alunos em Cursos de Aperfeiçoamento |
+| RF1 | Cadastrar Usuário |	Permitir o cadastro de novos usuários no sistema, armazenando dados pessoais básicos para acesso à plataforma. |
+| RF2 |	Realizar Login	| Permitir que o usuário acesse o sistema por meio de autenticação com credenciais previamente cadastradas. |
+| RF3	| Responder Questionário |	Permitir que o usuário preencha um questionário com informações pessoais e socioeconômicas para análise de elegibilidade. |
 | ... |	...	| ... |
 
 ### 3.3.2 Requisitos Não Funcionais
