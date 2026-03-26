@@ -29,9 +29,9 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 ### 3.3.1 Requisitos Funcionais
 
-| Código | Requisito Funcional (Funcionalidade) | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| RF1 | Cadastrar Usuário |	Permitir o cadastro de novos usuários no sistema, armazenando dados pessoais básicos para acesso à plataforma. |
+| Código | Requisito Funcional (Funcionalidade) | Descrição | Prioridade |
+|--------------------|------------------------------------|----------------------------------------|----------------------|
+| RF1 | Interface |	O sistema deve conduzir o usuário por meio de interface informativa interativa e intuitiva. | MAXIMA |
 | RF2 |	Realizar Login	| Permitir que o usuário acesse o sistema por meio de autenticação com credenciais previamente cadastradas. |
 | RF3	| Responder Questionário |	Permitir que o usuário preencha um questionário com informações pessoais e socioeconômicas para análise de elegibilidade. |
 | RF4 |	Disponibilizar ferramenta de busca	| O sistema deve disponibilizar uma ferramenta de busca que permite ao usuário verificar quais benefícios sociais estão disponíveis com base nos dados fornecidos. |
