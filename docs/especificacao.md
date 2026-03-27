@@ -44,11 +44,11 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 ### 3.3.2 Requisitos Não Funcionais
 
-| Código | Requisito Não Funcional (Restrição) |
-|--------------------|------------------------------------|
-| RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
-| RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
+| Código | Requisito Não Funcional (Restrição) | Prioridade |
+|--------------------|------------------------------------|-------------|
+| RNF1 | O sistema deverá salvar as informações fornecidas pelo usuário mesmo após p fechamento da guia. | Alta |
+| RNF2 | O sistema deverá calcular a renda familiar de forma automática em até 2 segundos. | Alta |
+| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |  | 
 
 
 ### 3.3.3 Usuários 
