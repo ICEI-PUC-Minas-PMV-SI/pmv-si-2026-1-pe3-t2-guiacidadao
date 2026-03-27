@@ -31,11 +31,12 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição | Prioridade |
 |--------------------|------------------------------------|----------------------------------------|----------------------|
-| RF1 | Interface |	O sistema deve conduzir o usuário por meio de interface informativa interativa e intuitiva. | MAXIMA |
-| RF2 |	Realizar Login	| Permitir que o usuário acesse o sistema por meio de autenticação com credenciais previamente cadastradas. |
-| RF3	| Responder Questionário |	Permitir que o usuário preencha um questionário com informações pessoais e socioeconômicas para análise de elegibilidade. |
-| RF4 |	Disponibilizar ferramenta de busca	| O sistema deve disponibilizar uma ferramenta de busca que permite ao usuário verificar quais benefícios sociais estão disponíveis com base nos dados fornecidos. |
-| RF5 |	Recuperar senha	| O sistema deve possibilitar a recuperação de senha via link enviado ao e-mail cadastrado. |
+| RF1 | Simulação de Cenários |	O sistema deve permitir a simulação de cenários, como alteração de renda, para análise do impacto na elegibilidade aos benefícios. | Alta |
+| RF2 | Interface Intuitiva |	O sistema deve conduzir o usuário por meio de interface informativa interativa e intuitiva. | Alta |
+| RF3 |	Elegibilidade Dinâmica | O sistema deve adaptar a exibição de benefícios e informações conforme o perfil informado pelo usuário. | Alta | 
+| RF4 |	Calculo de Renda | O sistema deve permitir o cálculo automático da renda familiar total e per capita a partir dos dados inseridos pelo usuário. | Alta |
+| RF5	| CheckList Interativo | O sistema deve disponibilizar checklist interativo de documentos necessários para cada benefício. | Média | 
+| RF6 | Interface Resumida |O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
 
 
 ### 3.3.2 Requisitos Não Funcionais
