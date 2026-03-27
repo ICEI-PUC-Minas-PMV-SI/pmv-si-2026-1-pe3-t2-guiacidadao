@@ -35,8 +35,11 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | RF2 | Interface Intuitiva |	O sistema deve conduzir o usuário por meio de interface informativa interativa e intuitiva. | Alta |
 | RF3 |	Elegibilidade Dinâmica | O sistema deve adaptar a exibição de benefícios e informações conforme o perfil informado pelo usuário. | Alta | 
 | RF4 |	Calculo de Renda | O sistema deve permitir o cálculo automático da renda familiar total e per capita a partir dos dados inseridos pelo usuário. | Alta |
+| RF5 | Cadastro do Usuário | O sistema deve permitir o cadastro dos usurários e o complemento de seu perfil. | Alta | 
+| RF6 | Edição de Perfil | O sistema deve permitir a edição de dados, alteração de senha e exclusão de conta. | Alta |
 | RF5	| CheckList Interativo | O sistema deve disponibilizar checklist interativo de documentos necessários para cada benefício. | Média | 
-| RF6 | Interface Resumida |O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
+| RF6 | Interface Resumida | O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
+| RF7 | Progresso do Usuário | O sistema deve exibir o progresso do usuário de forma visual, indicando percentual ou etapas finalizadas. | Baixa |
 
 
 ### 3.3.2 Requisitos Não Funcionais
@@ -46,7 +49,7 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
 | RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
 | RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
-| ... |	... |	... |
+
 
 ### 3.3.3 Usuários 
 
