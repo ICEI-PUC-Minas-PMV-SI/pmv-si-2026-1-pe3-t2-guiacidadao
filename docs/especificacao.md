@@ -46,18 +46,22 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | Código | Requisito Não Funcional (Restrição) | Prioridade |
 |--------------------|------------------------------------|-------------|
-| RNF1 | O sistema deverá salvar as informações fornecidas pelo usuário mesmo após p fechamento da guia. | Alta |
+| RNF1 | O sistema deverá armazenar as informações fornecidas pelo usuário mesmo após o fechamento da guia. | Alta |
 | RNF2 | O sistema deverá calcular a renda familiar de forma automática em até 2 segundos. | Alta |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |  | 
+| RNF3 |	O sistema deverá assegurar as informações de cada usuário. | Alta | 
+| RNF4 | O sistema deverá ser responsivo em diferentes telas. | Alta |
+| RNF5 | O sistema deverá possuir conformidade com a LGPD. | Média | 
+| RNF6 | O sistema deverá ser construído de uma forma que facilite a manutenção e a integração de novos recursos em seu algoritmo. | Média | 
+
 
 
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
 |--------------------|------------------------------------|
-| Coordenador |	Usuário gerente do sistema responsável pelo cadastro e manutenção de cursos de aperfeiçoamento. Possui acesso geral ao sistema. |
-| Secretaria |	Usuário responsável por registros de alunos, professores, turmas e gerência de matrículas. |
-| ... |	... |	... |
+| Colaborador |	Usuário responsável pelo controle dos benefícios atendidos pela plataforma, se restringindo a parte burocrática e teórica do sistema. |
+
+
 
 ## 3.4 Modelagem do Sistema
 
