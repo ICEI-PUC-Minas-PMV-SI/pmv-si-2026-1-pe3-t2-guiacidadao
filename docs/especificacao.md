@@ -45,13 +45,14 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 ### 3.3.2 Requisitos Não Funcionais
 
 | Código | Requisito Não Funcional (Restrição) | Prioridade |
-|--------------------|------------------------------------|-------------|
-| RNF1 | O sistema deverá armazenar as informações fornecidas pelo usuário mesmo após o fechamento da guia. | Alta |
-| RNF2 | O sistema deverá calcular a renda familiar de forma automática em até 2 segundos. | Alta |
-| RNF3 |	O sistema deverá assegurar as informações de cada usuário. | Alta | 
-| RNF4 | O sistema deverá ser responsivo em diferentes telas. | Alta |
-| RNF5 | O sistema deverá possuir conformidade com a LGPD. | Média | 
-| RNF6 | O sistema deverá ser construído de uma forma que facilite a manutenção e a integração de novos recursos em seu algoritmo. | Média | 
+|--------|-------------------------|------------|
+| RNF01 | O sistema deve ser responsivo e funcionar em dispositivos móveis com telas a partir de 4 polegadas. | Alta |
+| RNF02 | O cálculo de renda per capita deve ser processado e exibido em até 2 segundos após a submissão dos dados. | Alta |
+| RNF03 | O sistema deve persistir os dados do usuário entre sessões após o fechamento do navegador. | Alta |
+| RNF04 | O sistema deve estar em conformidade com a LGPD, incluindo consentimento explícito na coleta de dados e mecanismo de exclusão a pedido do titular. | Alta |
+| RNF05 | A interface deve utilizar linguagem simples em todos os textos, sem termos técnicos ou jurídicos sem explicação. | Alta |
+| RNF06 | O sistema deve validar o CPF no cadastro quanto ao formato e aos dígitos verificadores. | Alta |
+| RNF07 | O sistema deve funcionar nos navegadores Chrome, Firefox e Safari nas versões lançadas nos últimos dois anos. | Média |
 
 
 
