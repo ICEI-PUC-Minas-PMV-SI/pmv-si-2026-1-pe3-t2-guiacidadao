@@ -31,15 +31,19 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição | Prioridade |
 |--------------------|------------------------------------|----------------------------------------|----------------------|
-| RF1 | Simulação de Cenários |	O sistema deve permitir a simulação de cenários, como alteração de renda, para análise do impacto na elegibilidade aos benefícios. | Alta |
-| RF2 | Interface Intuitiva |	O sistema deve conduzir o usuário por meio de interface informativa interativa e intuitiva. | Alta |
-| RF3 |	Elegibilidade Dinâmica | O sistema deve adaptar a exibição de benefícios e informações conforme o perfil informado pelo usuário. | Alta | 
-| RF4 |	Calculo de Renda | O sistema deve permitir o cálculo automático da renda familiar total e per capita a partir dos dados inseridos pelo usuário. | Alta |
-| RF5 | Cadastro do Usuário | O sistema deve permitir o cadastro dos usurários e o complemento de seu perfil. | Alta | 
-| RF6 | Edição de Perfil | O sistema deve permitir a edição de dados, alteração de senha e exclusão de conta. | Alta |
-| RF5	| CheckList Interativo | O sistema deve disponibilizar checklist interativo de documentos necessários para cada benefício. | Média | 
-| RF6 | Interface Resumida | O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
-| RF7 | Progresso do Usuário | O sistema deve exibir o progresso do usuário de forma visual, indicando percentual ou etapas finalizadas. | Baixa |
+| RF01 | Cadastro do usuário | O sistema deve permitir o cadastro dos usuários com CPF, senha e canal de contato obrigatório (e-mail ou telefone celular), além do complemento do perfil. | Alta |
+| RF02 | Autenticação | O sistema deve permitir a autenticação do usuário por CPF e senha, com recuperação de acesso via código enviado ao canal de contato cadastrado. | Alta |
+| RF03 | Edição de perfil | O sistema deve permitir a edição de dados, alteração de senha e exclusão de conta. | Alta |
+| RF04 | Calculo de Renda | O sistema deve permitir o cálculo automático da renda familiar total e per capita a partir dos dados inseridos pelo usuário. | Alta |
+| RF05 | Elegibilidade Dinâmica | O sistema deve adaptar a exibição de benefícios e informações conforme o perfil informado pelo usuário. | Alta | 
+| RF06 | Simulação de Cenários | O sistema deve permitir a simulação de cenários, como alteração de renda, para análise do impacto na elegibilidade aos benefícios. | Alta |
+| RF07 | CheckList Interativo | O sistema deve disponibilizar checklist interativo de documentos necessários para cada benefício. | Média |
+| RF08 | Interface Resumida | O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
+| RF09 | Progresso do usuário | O sistema deve exibir o progresso do usuário de forma visual, indicando percentual ou etapas finalizadas. | Baixa |
+| RF10 | Geração de documento | O sistema deve gerar um PDF com o resumo da situação do usuário e permitir o compartilhamento via WhatsApp e impressão. | Baixa |
+| RF11 | Localização de unidade de atendimento | O sistema deve exibir a unidade de atendimento mais próxima com base no CEP do perfil ou informado manualmente, com nome, endereço e horário. | Baixa |
+| RF12 | Gerenciamento do catálogo | O sistema deve permitir que o Colaborador inclua, edite, desative e consulte benefícios e seus critérios de elegibilidade. | Alta |
+
 
 
 ### 3.3.2 Requisitos Não Funcionais
@@ -50,7 +54,7 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | RNF02 | O cálculo de renda per capita deve ser processado e exibido em até 2 segundos após a submissão dos dados. | Alta |
 | RNF03 | O sistema deve persistir os dados do usuário entre sessões após o fechamento do navegador. | Alta |
 | RNF04 | O sistema deve estar em conformidade com a LGPD, incluindo consentimento explícito na coleta de dados e mecanismo de exclusão a pedido do titular. | Alta |
-| RNF05 | A interface deve utilizar linguagem simples em todos os textos, sem termos técnicos ou jurídicos sem explicação. | Alta |
+| RNF05 | A interface deve utilizar linguagem simples em todos os textos e conduzir o usuário de forma interativa e intuitiva, sem termos técnicos ou jurídicos sem explicação. | Alta |
 | RNF06 | O sistema deve validar o CPF no cadastro quanto ao formato e aos dígitos verificadores. | Alta |
 | RNF07 | O sistema deve funcionar nos navegadores Chrome, Firefox e Safari nas versões lançadas nos últimos dois anos. | Média |
 
