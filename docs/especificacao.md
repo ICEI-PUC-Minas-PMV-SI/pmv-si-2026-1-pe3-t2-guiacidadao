@@ -59,7 +59,9 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | Ator | Descrição |
 |--------------------|------------------------------------|
-| Colaborador |	Usuário responsável pelo controle dos benefícios atendidos pela plataforma, se restringindo a parte burocrática e teórica do sistema. |
+| Cidadão |	Usuário primário do sistema. Pessoa em situação de vulnerabilidade socioeconômica (desempregada, trabalhadora informal, MEI ou idosa) que busca compreender seus direitos e identificar benefícios sociais compatíveis com seu perfil. Caracteriza-se por acesso básico à tecnologia, geralmente via smartphone, e pode apresentar baixo letramento digital. |
+| Agente mediador | Familiar, líder comunitário, assistente social ou técnico de centro socioassistencial (como o CRAS) que utiliza o sistema para apoiar cidadãos com exclusão digital severa. Acessa e preenche o perfil do usuário assistido mediante autorização registrada, com o objetivo de agilizar o atendimento e reduzir o retrabalho de orientação presencial. |
+| Colaborador | Usuário interno responsável pela manutenção do conteúdo da plataforma: atualização das informações sobre benefícios, critérios de elegibilidade e listas de documentos. Não realiza atendimento direto ao cidadão, atuando na camada administrativa e de curadoria do sistema. |
 
 
 
