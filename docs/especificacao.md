@@ -69,11 +69,11 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, a secretária poderá gerenciar as matrículas e professores no sistema, enquanto o coordenador, além dessas funções, poderá gerenciar os cursos de aperfeiçoamento.
+Como observado no diagrama de casos de uso da Figura 1, o Cidadão pode realizar a triagem rápida e o cadastro sem autenticação, enquanto na área autenticada tem acesso ao diagnóstico de elegibilidade, checklist de documentos, simulação de cenários e geração de documento. O Colaborador, por sua vez, é responsável pela autenticação administrativa e pelo gerenciamento do catálogo de benefícios.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![dcu](https://github.com/user-attachments/assets/41f6b731-b44e-43aa-911f-423ad6198f47)
+![Diagrama de Casos de Uso do GuiaCidadão](diagrama_casos_uso.svg)
  
 ### 3.4.2 Descrições de Casos de Uso
 

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="680" height="980" viewBox="0 0 680 980" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" xmlns:bx="https://boxy-svg.com">
+  <style>
+    text { font-family: Arial, sans-serif; fill: #1a1a1a; }
+    .label-sm { font-size: 12px; }
+    .label-md { font-size: 13px; }
+    .label-hint { font-size: 11px; fill: #999; }
+    .actor-line { stroke: #1a1a1a; stroke-width: 1.2; fill: none; }
+    .actor-circle { fill: none; stroke: #1a1a1a; stroke-width: 1.2; }
+    .boundary { fill: none; stroke: #555; stroke-width: 1.2; }
+    .uc { fill: none; stroke: #1a1a1a; stroke-width: 1; }
+    .assoc { stroke: #1a1a1a; stroke-width: 0.8; fill: none; }
+    .relation { stroke: #666; stroke-width: 0.8; fill: none; stroke-dasharray: 5 3; }
+    .separator { stroke: #ccc; stroke-width: 0.8; stroke-dasharray: 4 3; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <bx:export>
+      <bx:file format="png" path="Sem título.png"/>
+    </bx:export>
+  </defs>
+  <rect x="170" y="40" width="360" height="910" rx="12" class="boundary"/>
+  <line x1="185" y1="198" x2="515" y2="198" class="separator"/>
+  <text x="270" y="193" text-anchor="middle" class="label-hint" style="white-space: pre;">área pública</text>
+  <text x="270" y="215" text-anchor="middle" class="label-hint" style="white-space: pre;">área autenticada</text>
+  <circle cx="72" cy="80" r="14" class="actor-circle"/>
+  <line x1="72" y1="94" x2="72" y2="129" class="actor-line"/>
+  <line x1="72" y1="104" x2="54" y2="119" class="actor-line"/>
+  <line x1="72" y1="104" x2="90" y2="119" class="actor-line"/>
+  <line x1="72" y1="129" x2="57" y2="149" class="actor-line"/>
+  <line x1="72" y1="129" x2="87" y2="149" class="actor-line"/>
+  <text x="72" y="164" text-anchor="middle" class="label-sm" style="white-space: pre;">Visitante</text>
+  <text x="72" y="178" text-anchor="middle" class="label-sm" style="white-space: pre;">(sem conta)</text>
+  <circle cx="72" cy="390" r="14" class="actor-circle"/>
+  <line x1="72" y1="404" x2="72" y2="439" class="actor-line"/>
+  <line x1="72" y1="414" x2="54" y2="429" class="actor-line"/>
+  <line x1="72" y1="414" x2="90" y2="429" class="actor-line"/>
+  <line x1="72" y1="439" x2="57" y2="459" class="actor-line"/>
+  <line x1="72" y1="439" x2="87" y2="459" class="actor-line"/>
+  <text x="72" y="474" text-anchor="middle" class="label-sm" style="white-space: pre;">Cidadão</text>
+  <circle cx="608" cy="810" r="14" class="actor-circle"/>
+  <line x1="608" y1="824" x2="608" y2="859" class="actor-line"/>
+  <line x1="608" y1="834" x2="590" y2="849" class="actor-line"/>
+  <line x1="608" y1="834" x2="626" y2="849" class="actor-line"/>
+  <line x1="608" y1="859" x2="593" y2="879" class="actor-line"/>
+  <line x1="608" y1="859" x2="623" y2="879" class="actor-line"/>
+  <text x="608" y="894" text-anchor="middle" class="label-sm" style="white-space: pre;">Colaborador</text>
+  <text x="608" y="908" text-anchor="middle" class="label-hint" style="white-space: pre;">(conta criada pelo</text>
+  <text x="608" y="922" text-anchor="middle" class="label-hint" style="white-space: pre;">administrador)</text>
+  <ellipse cx="350" cy="80" rx="148" ry="22" class="uc"/>
+  <text x="350" y="84" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Realizar triagem rápida</text>
+  <ellipse cx="350" cy="145" rx="148" ry="22" class="uc"/>
+  <text x="350" y="149" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Cadastrar-se</text>
+  <ellipse cx="350" cy="245" rx="148" ry="22" class="uc"/>
+  <text x="350" y="249" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Autenticar-se</text>
+  <ellipse cx="350" cy="305" rx="148" ry="22" class="uc"/>
+  <text x="350" y="309" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Editar perfil e conta</text>
+  <ellipse cx="350" cy="365" rx="148" ry="22" class="uc"/>
+  <text x="350" y="369" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Cadastrar perfil familiar</text>
+  <ellipse cx="350" cy="425" rx="148" ry="22" class="uc"/>
+  <text x="350" y="429" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Calcular renda per capita</text>
+  <ellipse cx="350" cy="485" rx="148" ry="22" class="uc"/>
+  <text x="350" y="489" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Verificar elegibilidade</text>
+  <ellipse cx="350" cy="545" rx="148" ry="22" class="uc"/>
+  <text x="350" y="549" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Simular cenários</text>
+  <ellipse cx="350" cy="605" rx="148" ry="22" class="uc"/>
+  <text x="350" y="609" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Consultar benefícios</text>
+  <ellipse cx="350" cy="665" rx="148" ry="22" class="uc"/>
+  <text x="350" y="669" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Gerenciar checklist</text>
+  <ellipse cx="350" cy="725" rx="148" ry="22" class="uc"/>
+  <text x="350" y="729" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Gerar e compartilhar documento</text>
+  <ellipse cx="350" cy="785" rx="148" ry="22" class="uc"/>
+  <text x="350" y="789" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Localizar unidade de atendimento</text>
+  <ellipse cx="350" cy="845" rx="148" ry="22" class="uc"/>
+  <text x="350" y="849" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Registrar resultado do atendimento</text>
+  <ellipse cx="350" cy="915" rx="148" ry="22" class="uc"/>
+  <text x="350" y="919" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Gerenciar catálogo de benefícios</text>
+  <line x1="86" y1="92" x2="200" y2="83" class="assoc"/>
+  <line x1="86" y1="102" x2="200" y2="148" class="assoc"/>
+  <line x1="86" y1="398" x2="200" y2="248" class="assoc"/>
+  <line x1="86" y1="403" x2="200" y2="308" class="assoc"/>
+  <line x1="86" y1="408" x2="200" y2="368" class="assoc"/>
+  <line x1="86" y1="413" x2="200" y2="428" class="assoc"/>
+  <line x1="86" y1="418" x2="200" y2="488" class="assoc"/>
+  <line x1="86" y1="423" x2="200" y2="548" class="assoc"/>
+  <line x1="86" y1="428" x2="200" y2="608" class="assoc"/>
+  <line x1="86" y1="433" x2="200" y2="668" class="assoc"/>
+  <line x1="86" y1="438" x2="200" y2="728" class="assoc"/>
+  <line x1="86" y1="443" x2="200" y2="788" class="assoc"/>
+  <line x1="86" y1="448" x2="200" y2="848" class="assoc"/>
+  <line x1="615.537" y1="795.342" x2="500" y2="248" class="assoc" style=""/>
+  <line x1="594" y1="825" x2="500" y2="918" class="assoc"/>
+  <line x1="350" y1="387" x2="350" y2="403" class="relation" marker-end="url(#arr)"/>
+  <text x="372" y="399" class="label-hint" style="white-space: pre;">«include»</text>
+  <line x1="350" y1="447" x2="350" y2="463" class="relation" marker-end="url(#arr)"/>
+  <text x="372" y="459" class="label-hint" style="white-space: pre;">«include»</text>
+  <line x1="350" y1="507" x2="350" y2="583" class="relation" marker-end="url(#arr)"/>
+  <text x="370.207" y="578.277" class="label-hint" style="white-space: pre; font-size: 11px;">«include»</text>
+  <path d="M498 545 L536 545 L536 485 L500 485" class="relation" marker-end="url(#arr)"/>
+  <text x="540" y="519" class="label-hint" style="white-space: pre;">«extend»</text>
+  <path d="M498 725 L536 725 L536 665 L500 665" class="relation" marker-end="url(#arr)"/>
+  <text x="540" y="699" class="label-hint" style="white-space: pre;">«extend»</text>
+  <path d="M498 785 L560 785 L560 725 L500 725" class="relation" marker-end="url(#arr)"/>
+  <text x="564" y="759" class="label-hint" style="white-space: pre;">«extend»</text>
+</svg>
