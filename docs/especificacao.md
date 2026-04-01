@@ -20,10 +20,12 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | # | Benefício | Valor para o Cliente |
 |--------------------|------------------------------------|----------------------------------------|
-|1	| Facilidade no cadastro de dados |	Essencial |
-|2 | Facilidade na recuperação de informações | Essencial | 
-|3 | Segurança no cadastro de matrículas | Essencial | 
-|4	| Melhoria na comunicação com os alunos	| Recomendável | 
+|1	| Concentração e simplificação de informações a respeito de auxílios sociais |	Essencial |
+|2 | Visualização limpa e objetiva dos benefícios elegíveis | Essencial | 
+|3 | Auxílio direto no processo de cálculo de renda familiar | Essencial |
+|4	| Checklist para controle dos documentos necessários para cada benefício	| Recomendável | 
+|5	| Criação de um documento resumido sobre a situação do beneficiário	| Desejável | 
+|6	| Localização da Unidade de Atendimento mais próxima	| Desejável | 
 
 ## 3.3 Descrição geral do produto
 
@@ -80,8 +82,6 @@ Como observado no diagrama de casos de uso da Figura 1, o Cidadão pode realizar
 ![Diagrama de Casos de Uso do GuiaCidadão](diagrama_casos_uso.svg)
  
 ### 3.4.2 Descrições de Casos de Uso
-
-Cada caso de uso deve ter a sua descrição representada nesta seção. Exemplo:
 
 #### Gerenciar Conta (CSU01)
 
@@ -149,8 +149,6 @@ Sumário: O Cidadão registra os dados socioeconômicos do seu núcleo familiar,
 
 Ator Primário: Cidadão.
 
-Ator Secundário: Nenhum.
-
 Pré-condições: O Cidadão deve estar autenticado no Sistema.
 
 Fluxo Principal:
@@ -177,47 +175,13 @@ Pós-condições: O perfil familiar do Cidadão foi salvo no Sistema com renda t
 
 ---
 
-#### Calcular Renda Per Capita (CSU03)
-
-Sumário: O Sistema calcula automaticamente a renda familiar bruta total e a renda per capita a partir dos dados do perfil familiar, aplicando as regras vigentes dos programas sociais.
-
-Ator Primário: Cidadão.
-
-Ator Secundário: Nenhum.
-
-Pré-condições: O perfil familiar deve ter sido preenchido (CSU02). O Cidadão deve estar autenticado no Sistema.
-
-Fluxo Principal:
-
-1) O Sistema recebe os dados de renda de cada membro do núcleo familiar.
-2) O Sistema soma as rendas mensais brutas de todos os membros para obter a renda familiar total.
-3) O Sistema divide a renda familiar total pelo número de membros do núcleo para obter a renda per capita.
-4) O Sistema exibe os valores calculados: renda total, número de membros e renda per capita.
-5) O Sistema registra os valores no perfil do Cidadão para uso nas etapas seguintes.
-
-Fluxo Alternativo (1): Membro sem renda
-
-a) O Cidadão informa que um ou mais membros não possuem renda. <br>
-b) O Sistema considera o valor zero para esses membros no cálculo, sem bloquear a operação. <br>
-
-Fluxo Alternativo (3): Renda per capita abaixo do limiar
-
-a) O Sistema identifica que a renda per capita calculada é igual ou inferior a R$ 218,00 (limiar do CadÚnico vigente). <br>
-b) O Sistema sinaliza automaticamente que o perfil atende ao critério financeiro básico dos principais programas de assistência social. <br>
-
-Pós-condições: A renda familiar total e a renda per capita foram calculadas e armazenadas no perfil do Cidadão.
-
----
-
-#### Verificar Elegibilidade (CSU04)
+#### Verificar Elegibilidade (CSU03)
 
 Sumário: O Sistema analisa o perfil socioeconômico do Cidadão e identifica os benefícios sociais para os quais ele potencialmente atende os critérios de elegibilidade.
 
 Ator Primário: Cidadão.
 
-Ator Secundário: Nenhum.
-
-Pré-condições: O perfil familiar deve estar preenchido e a renda per capita calculada (CSU03). O Cidadão deve estar autenticado no Sistema.
+Pré-condições: O perfil socioeconômico familiar deve estar preenchido. O Cidadão deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
@@ -241,13 +205,11 @@ Pós-condições: Os benefícios compatíveis com o perfil do Cidadão foram ide
 
 ---
 
-#### Simular Cenários (CSU05)
+#### Simular Cenários (CSU04)
 
 Sumário: O Cidadão simula alterações no seu perfil socioeconômico para analisar o impacto na elegibilidade a benefícios, sem alterar os dados reais cadastrados.
 
 Ator Primário: Cidadão.
-
-Ator Secundário: Nenhum.
 
 Pré-condições: O perfil familiar deve estar preenchido. O Cidadão deve estar autenticado no Sistema.
 
@@ -274,15 +236,13 @@ Pós-condições: O resultado da simulação foi exibido. Os dados reais do Cida
 
 ---
 
-#### Consultar Benefícios (CSU06)
+#### Consultar Benefícios (CSU05)
 
 Sumário: O Cidadão consulta as informações detalhadas sobre os benefícios sociais identificados como elegíveis em seu perfil, apresentadas em linguagem simples.
 
 Ator Primário: Cidadão.
 
-Ator Secundário: Nenhum.
-
-Pré-condições: Ao menos um benefício elegível deve ter sido identificado (CSU04). O Cidadão deve estar autenticado no Sistema.
+Pré-condições: Ao menos um benefício elegível deve ter sido identificado (CSU03). O Cidadão deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
@@ -290,7 +250,7 @@ Fluxo Principal:
 2) O Sistema exibe os benefícios com nome, descrição resumida em linguagem simples e classificação de elegibilidade.
 3) O Cidadão seleciona um benefício para ver os detalhes.
 4) O Sistema exibe: descrição completa do benefício, critérios de elegibilidade traduzidos para linguagem simples, lista de documentos exigidos e link para a fonte oficial do governo.
-5) O Cidadão pode acessar o checklist de documentos do benefício selecionado (CSU07).
+5) O Cidadão pode acessar o checklist de documentos do benefício selecionado (CSU06).
 
 Fluxo Alternativo (3): Benefício não elegível selecionado
 
@@ -301,15 +261,13 @@ Pós-condições: O Cidadão visualizou as informações detalhadas do benefíci
 
 ---
 
-#### Gerenciar Checklist de Documentos (CSU07)
+#### Gerenciar Checklist de Documentos (CSU06)
 
 Sumário: O Sistema gera automaticamente a lista de documentos necessários para cada benefício elegível e o Cidadão gerencia o status de cada item conforme avança na instrução do processo.
 
 Ator Primário: Cidadão.
 
-Ator Secundário: Nenhum.
-
-Pré-condições: Ao menos um benefício elegível deve ter sido identificado (CSU04). O Cidadão deve estar autenticado no Sistema.
+Pré-condições: Ao menos um benefício elegível deve ter sido identificado (CSU03). O Cidadão deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
@@ -333,13 +291,11 @@ Pós-condições: O checklist foi gerado, atualizado com os status informados pe
 
 ---
 
-#### Realizar Triagem Rápida (CSU08)
+#### Realizar Triagem Rápida (CSU07)
 
 Sumário: O Visitante responde a um conjunto reduzido de perguntas objetivas e recebe uma lista preliminar de benefícios potencialmente compatíveis com seu perfil, sem necessidade de cadastro. Caso opte por criar uma conta, o resultado da triagem é aproveitado no perfil sem necessidade de repreenchimento.
 
 Ator Primário: Visitante.
-
-Ator Secundário: Nenhum.
 
 Pré-condições: Nenhuma. A funcionalidade é acessível sem autenticação.
 
@@ -377,15 +333,13 @@ Pós-condições: O Visitante visualizou uma lista preliminar de benefícios com
 
 ---
 
-#### Gerar e Compartilhar Documento (CSU09)
+#### Gerar e Compartilhar Documento (CSU08)
 
 Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação no sistema — contendo os benefícios identificados, os documentos necessários, o status de cada item e a unidade de atendimento mais próxima — em formato PDF, via WhatsApp ou impressão direta.
 
 Ator Primário: Cidadão.
 
-Ator Secundário: Nenhum.
-
-Pré-condições: O Cidadão deve estar autenticado no Sistema, exceto na exportação do resultado da triagem rápida, acessível sem autenticação. O diagnóstico de elegibilidade deve ter sido executado ao menos uma vez (CSU04).
+Pré-condições: O Cidadão deve estar autenticado no Sistema, exceto na exportação do resultado da triagem rápida, acessível sem autenticação. O diagnóstico de elegibilidade deve ter sido executado ao menos uma vez (CSU03).
 
 Fluxo Principal:
 
@@ -428,15 +382,13 @@ Pós-condições: O documento foi entregue ao Cidadão no formato escolhido, con
 
 ---
 
-#### Localizar Unidade de Atendimento (CSU10)
+#### Localizar Unidade de Atendimento (CSU09)
 
 Sumário: O Cidadão consulta as unidades de atendimento presencial relevantes para os benefícios identificados em seu perfil, com informações de endereço, horário e distância.
 
 Ator Primário: Cidadão.
 
-Ator Secundário: Nenhum.
-
-Pré-condições: Ao menos um benefício elegível deve ter sido identificado (CSU04). O Cidadão deve estar autenticado no Sistema.
+Pré-condições: Ao menos um benefício elegível deve ter sido identificado (CSU03). O Cidadão deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
@@ -472,13 +424,11 @@ Pós-condições: O Cidadão visualizou as informações da unidade de atendimen
 
 ---
 
-#### Registrar Resultado do Atendimento Presencial (CSU11)
+#### Registrar Resultado do Atendimento Presencial (CSU10)
 
 Sumário: O Cidadão registra o resultado do atendimento presencial realizado em órgão competente, permitindo que o painel de acompanhamento reflita a situação real do processo após a saída do ambiente digital.
 
 Ator Primário: Cidadão.
-
-Ator Secundário: Nenhum.
 
 Pré-condições: O Cidadão deve ter ao menos um benefício com checklist em andamento. O Cidadão deve estar autenticado no Sistema.
 
@@ -513,13 +463,11 @@ Pós-condições: O resultado do atendimento presencial foi registrado no painel
 
 ---
 
-#### Gerenciar Catálogo de Benefícios (CSU12)
+#### Gerenciar Catálogo de Benefícios (CSU11)
 
 Sumário: O Colaborador realiza a gestão do catálogo de benefícios sociais disponíveis na plataforma, incluindo inclusão, edição, desativação e consulta de benefícios e seus critérios. Alterações nos critérios de elegibilidade ou na lista de documentos exigidos disparam a reavaliação automática dos perfis afetados e a sincronização dos checklists em andamento.
 
 Ator Primário: Colaborador.
-
-Ator Secundário: Nenhum.
 
 Pré-condições: O Colaborador deve estar autenticado com perfil administrativo no Sistema.
 
