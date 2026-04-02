@@ -12,9 +12,11 @@ O produto será denominado GuiaCidadão, que consiste em um sistema web para cid
 
 ### 3.2.2 Missão do produto
 
-Centralizar os benefícios sociais distribuídos pelo governo em uma plataforma única, criando um ambiente centralizado, interativo e intuitivo aos usuários. Além da centralização, a plataforma também auxilia na identificação de benefícios que competem ao usuário, através de informações socioeconômicas, cálculo de renda familiar e demais informações do usuário. Apesar de todas as funções, a plataforma também se torna um acesso rápido aos visitantes que apenas buscam informações sobre os benefícios sociais, sem necessidade de cadastro. 
+Centralizar os benefícios sociais distribuídos pelo governo em uma plataforma única, criando um ambiente dinâmico, interativo e intuitivo aos usuários. Além da centralização, a plataforma também auxilia na identificação de benefícios que competem ao usuário, através de informações socioeconômicas, cálculo de renda familiar e demais informações do usuário. Apesar de todas as funções, a plataforma também se torna um acesso rápido aos visitantes que apenas buscam informações sobre os benefícios sociais, sem necessidade de cadastro. 
 
 ### 3.2.3 Limites do produto
+
+O sistema web ficará condicionado ao cadastro e atualização manual dos benefícios sociais pelo coordenador, além d utilizar o banco de dados simulado em armazenamento local para fins de testagem de suas funcionalidades.
 
 ### 3.2.4 Benefícios do produto
 
