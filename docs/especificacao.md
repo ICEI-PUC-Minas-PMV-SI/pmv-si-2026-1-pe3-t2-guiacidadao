@@ -2,6 +2,8 @@
 
 ## 3.1 Objetivos deste documento
 
+O principal objetivo deste documento é detalhar as necessidades e funcionalidades do sistema web GuiaCidadão, destacando o público-alvo e demonstrando as metas a serem cumpridas. Além do objetivo principal, serve também como referência para desenvolvedores, usuários e demais interessados, garantindo clareza quanto a missão principal do sistema e o atingimento dos requisitos citados.
+
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
