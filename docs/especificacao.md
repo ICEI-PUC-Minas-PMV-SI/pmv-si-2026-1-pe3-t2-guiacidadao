@@ -16,7 +16,7 @@ Centralizar os benefícios sociais distribuídos pelo governo em uma plataforma 
 
 ### 3.2.3 Limites do produto
 
-O sistema web ficará condicionado ao cadastro e atualização manual dos benefícios sociais pelo coordenador, além d utilizar o banco de dados simulado em armazenamento local para fins de testagem de suas funcionalidades.
+O sistema web ficará condicionado ao cadastro e atualização manual dos benefícios sociais pelo coordenador, além de utilizar o banco de dados simulado em armazenamento local para fins de testagem de suas funcionalidades.
 
 ### 3.2.4 Benefícios do produto
 
