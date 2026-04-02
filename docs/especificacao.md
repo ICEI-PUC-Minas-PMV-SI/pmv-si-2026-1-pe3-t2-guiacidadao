@@ -39,12 +39,13 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | RF04 | Calculo de Renda | O sistema deve permitir o cálculo automático da renda familiar total e per capita a partir dos dados inseridos pelo usuário. | Alta |
 | RF05 | Elegibilidade Dinâmica | O sistema deve adaptar a exibição de benefícios e informações conforme o perfil informado pelo usuário. | Alta | 
 | RF06 | Simulação de Cenários | O sistema deve permitir a simulação de cenários, como alteração de renda, para análise do impacto na elegibilidade aos benefícios. | Alta |
-| RF07 | CheckList Interativo | O sistema deve disponibilizar checklist interativo de documentos necessários para cada benefício. | Média |
-| RF08 | Interface Resumida | O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
-| RF09 | Progresso do usuário | O sistema deve exibir o progresso do usuário de forma visual, indicando percentual ou etapas finalizadas. | Baixa |
-| RF10 | Geração de documento | O sistema deve gerar um PDF com o resumo da situação do usuário e permitir o compartilhamento via WhatsApp e impressão. | Baixa |
-| RF11 | Localização de unidade de atendimento | O sistema deve exibir a unidade de atendimento mais próxima com base no CEP do perfil ou informado manualmente, com nome, endereço e horário. | Baixa |
-| RF12 | Gerenciamento do catálogo | O sistema deve permitir que o Colaborador inclua, edite, desative e consulte benefícios e seus critérios de elegibilidade. | Alta |
+| RF07 | Gerenciamento do catálogo | O sistema deve permitir que o Colaborador inclua, edite, desative e consulte benefícios e seus critérios de elegibilidade. | Alta |
+| RF08 | CheckList Interativo | O sistema deve disponibilizar checklist interativo de documentos necessários para cada benefício. | Média |
+| RF09 | Interface Resumida | O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
+| RF10 | Progresso do usuário | O sistema deve exibir o progresso do usuário de forma visual, indicando percentual ou etapas finalizadas. | Baixa |
+| RF11 | Geração de documento | O sistema deve gerar um PDF com o resumo da situação do usuário e permitir o compartilhamento via WhatsApp e impressão. | Baixa |
+| RF12 | Localização de unidade de atendimento | O sistema deve exibir a unidade de atendimento mais próxima com base no CEP do perfil ou informado manualmente, com nome, endereço e horário. | Baixa |
+
 
 
 
@@ -61,7 +62,6 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | RNF07 | O sistema deve funcionar nos navegadores Chrome, Firefox e Safari nas versões lançadas nos últimos dois anos. | Média |
 
 
-
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
@@ -69,7 +69,6 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | Cidadão |	Usuário primário do sistema. Pessoa em situação de vulnerabilidade socioeconômica (desempregada, trabalhadora informal, MEI ou idosa) que busca compreender seus direitos e identificar benefícios sociais compatíveis com seu perfil. Caracteriza-se por acesso básico à tecnologia, geralmente via smartphone, e pode apresentar baixo letramento digital. |
 | Colaborador | Usuário interno responsável pela manutenção do conteúdo da plataforma: atualização das informações sobre benefícios, critérios de elegibilidade e listas de documentos. Não realiza atendimento direto ao cidadão, atuando na camada administrativa e de curadoria do sistema. Sua conta é criada pelo administrador do sistema, que fornece as credenciais de acesso provisórias. No primeiro acesso, o Colaborador é obrigado a definir uma senha definitiva. |
 | Visitante | Pessoa que acessa o sistema sem conta cadastrada. Pode realizar a triagem rápida de elegibilidade e visualizar o resultado preliminar. Não tem acesso às funcionalidades que exigem autenticação. |
-
 
 
 ## 3.4 Modelagem do Sistema
