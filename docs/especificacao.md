@@ -8,6 +8,8 @@ O principal objetivo deste documento é detalhar as necessidades e funcionalidad
 
 ### 3.2.1 Nome do produto e seus componentes principais
 
+O produto será denominado GuiaCidadão, que consiste em um sistema web para cidadãos em vulnerabilidade socioeconômica e visitantes que buscam informações centralizadas sobre os benefícios sociais disponibilizados pelo governo. Seus componentes principais são o sistema de cadastro socioeconômico familiar, sistema de elegibilidade para benefícios e o sistema de cálculo de renda familiar.
+
 ### 3.2.2 Missão do produto
 
 ### 3.2.3 Limites do produto
