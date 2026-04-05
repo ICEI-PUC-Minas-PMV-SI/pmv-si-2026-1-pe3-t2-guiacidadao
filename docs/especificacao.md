@@ -522,9 +522,9 @@ A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a i
 
 | # | Nome | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| 1	|	Aluno |	Cadastro de informações relativas aos alunos. |
-| 2	| Curso |	Cadastro geral de cursos de aperfeiçoamento. |
-| 3 |	Matrícula |	Cadastro de Matrículas de alunos nos cursos. |
-| 4 |	Turma |	Cadastro de turmas.
-| 5	|	Professor |	Cadastro geral de professores que ministram as disciplinas. |
-| ... |	... |	... |
+| 1 | Cidadao | Cadastro e gerenciamento das informações dos usuários principais que buscam os benefícios sociais. |
+| 2 | Colaborador | Registro dos usuários administrativos responsáveis pela manutenção e gestão do catálogo no sistema. |
+| 3 | PerfilFamiliar | Armazenamento dos dados socioeconômicos, de composição e de renda familiar vinculados ao cidadão. |
+| 4 | Beneficio | Cadastro das informações, regras e critérios de elegibilidade dos auxílios sociais governamentais. |
+| 5 | Documento | Registro e controle de status da documentação exigida para compor o checklist de solicitação de um benefício. |
+| 6 | UnidadeAtendimento | Cadastro das informações dos locais físicos para atendimento presencial, como endereço e horário. |
