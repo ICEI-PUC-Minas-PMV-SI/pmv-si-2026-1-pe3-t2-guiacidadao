@@ -29,9 +29,33 @@ O sistema web ficará condicionado ao cadastro e atualização manual dos benef�
 |5	| Criação de um documento resumido sobre a situação do beneficiário	| Desejável | 
 |6	| Localização da Unidade de Atendimento mais próxima	| Desejável | 
 
-## 3.3 Descrição geral do produto
+## 3.3 Metodologia e Gerenciamento de Requisitos
 
-### 3.3.1 Requisitos Funcionais
+Para garantir que a solução proposta atenda de forma efetiva às dores do público-alvo, o levantamento e o gerenciamento dos requisitos basearam-se em práticas de Engenharia de Requisitos aplicadas a contextos ágeis e ao Design Centrado no Usuário.
+
+### 3.3.1 Técnicas de Elicitação
+
+Para compreender os pontos de conflito e as necessidades dos usuários, frequentemente impactados pela "vulnerabilidade informacional", utilizamos as seguintes técnicas de elicitação:
+* **Análise de Documentos e Sistemas (Benchmarking):** Avaliação de plataformas governamentais existentes (como o portal Meu INSS e CadÚnico) para identificar gargalos de usabilidade, excesso de jargões técnicos e falhas na arquitetura de informação.
+* **Pesquisa de Estado da Arte:** Revisão da literatura para mapear as barreiras informacionais, técnicas e burocráticas enfrentadas por pessoas com baixo letramento digital.
+* **Criação de Personas e Jornada do Usuário:** Desenvolvimento de perfis representativos do nosso público-alvo, simulando cenários e caminhos que esses usuários percorrem ao tentar descobrir e acessar benefícios sociais.
+
+### 3.3.2 Ideação e Validação de Hipóteses
+
+A partir das necessidades levantadas, o processo de ideação permitiu estruturar soluções baseadas em hipóteses validadas pela pesquisa formal:
+* **Hipótese 1:** Interfaces densas e linguagem jurídica afastam os usuários (evidenciado pelos estudos de Freitas e Bernardo). **Solução:** Implementação do requisito não funcional de "Linguagem Simples" (RNF05), garantindo que termos técnicos sejam traduzidos de forma acessível.
+* **Hipótese 2:** A exigência de um cadastro longo antes de qualquer entrega de valor gera alta taxa de abandono. **Solução:** Criação da funcionalidade de "Triagem Rápida" (CSU07), que permite ao visitante obter um diagnóstico preliminar respondendo apenas a perguntas objetivas sem necessidade de autenticação.
+
+### 3.3.3 Gerenciamento de Mudanças de Requisitos
+
+Em conformidade com os princípios de desenvolvimento ágil, os requisitos documentados são passíveis de evolução. O gerenciamento das mudanças será realizado através das seguintes práticas:
+* **Backlog do Produto:** Manutenção de um repositório centralizado através de quadros Kanban (utilizando as ferramentas de *Projects/Issues* do GitHub) para registro de novas necessidades, alterações ou correções.
+* **Revisões de Sprint:** Reavaliação constante e repriorização dos requisitos a cada ciclo de iteração, garantindo que o foco permaneça na entrega de valor.
+* **Rastreabilidade:** Toda alteração significativa deverá ser refletida neste artefato de especificação e vinculada às respectivas *issues*, garantindo controle do impacto de escopo e histórico de decisões do projeto.
+
+## 3.4 Descrição geral do produto
+
+### 3.4.1 Requisitos Funcionais
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição | Prioridade |
 |--------------------|------------------------------------|----------------------------------------|----------------------|
@@ -48,10 +72,7 @@ O sistema web ficará condicionado ao cadastro e atualização manual dos benef�
 | RF11 | Geração de documento | O sistema deve gerar um PDF com o resumo da situação do usuário e permitir o compartilhamento via WhatsApp e impressão. | Baixa |
 | RF12 | Localização de unidade de atendimento | O sistema deve exibir a unidade de atendimento mais próxima com base no CEP do perfil ou informado manualmente, com nome, endereço e horário. | Baixa |
 
-
-
-
-### 3.3.2 Requisitos Não Funcionais
+### 3.4.2 Requisitos Não Funcionais
 
 | Código | Requisito Não Funcional (Restrição) | Prioridade |
 |--------|-------------------------|------------|
@@ -64,7 +85,7 @@ O sistema web ficará condicionado ao cadastro e atualização manual dos benef�
 | RNF07 | O sistema deve funcionar nos navegadores Chrome, Firefox e Safari nas versões lançadas nos últimos dois anos. | Média |
 
 
-### 3.3.3 Usuários 
+### 3.4.3 Usuários 
 
 | Ator | Descrição |
 |--------------------|------------------------------------|
@@ -73,16 +94,16 @@ O sistema web ficará condicionado ao cadastro e atualização manual dos benef�
 | Visitante | Pessoa que acessa o sistema sem conta cadastrada. Pode realizar a triagem rápida de elegibilidade e visualizar o resultado preliminar. Não tem acesso às funcionalidades que exigem autenticação. |
 
 
-## 3.4 Modelagem do Sistema
+## 3.5 Modelagem do Sistema
 
-### 3.4.1 Diagrama de Casos de Uso
+### 3.5.1 Diagrama de Casos de Uso
 Como observado no diagrama de casos de uso da Figura 1, o Cidadão pode realizar a triagem rápida e o cadastro sem autenticação, enquanto na área autenticada tem acesso ao diagnóstico de elegibilidade, checklist de documentos, simulação de cenários e geração de documento. O Colaborador, por sua vez, é responsável pela autenticação administrativa e pelo gerenciamento do catálogo de benefícios.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
 ![Diagrama de Casos de Uso do GuiaCidadão](diagrama_casos_uso.svg)
  
-### 3.4.2 Descrições de Casos de Uso
+### 3.5.2 Descrições de Casos de Uso
 
 #### Gerenciar Conta (CSU01)
 
@@ -509,16 +530,16 @@ d) O Sistema apresenta os detalhes completos do benefício selecionado. <br>
 
 Pós-condições: O catálogo de benefícios foi atualizado. Alterações em critérios de elegibilidade disparam reavaliação automática dos perfis afetados. Alterações na lista de documentos sincronizam os checklists em andamento. Os usuários afetados são notificados em ambos os casos.
 
-### 3.4.3 Diagrama de Classes 
+### 3.5.3 Diagrama de Classes 
 
-A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
+A Figura 2 mostra o diagrama de classes do sistema. Ele ilustra as entidades principais da aplicação como Cidadão, Benefício, Checklist e Documento, bem como as relações entre o perfil socioeconômico e a simulação de elegibilidade do segurado.
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
 ![Diagrama de Classes](Diagrama_de_Classes.png)
 
 
-## 3.4.4 Descrições das Classes
+## 3.5.4 Descrições das Classes
 
 | # | Nome           | Descrição                                                                                                                                               |
 | - | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
