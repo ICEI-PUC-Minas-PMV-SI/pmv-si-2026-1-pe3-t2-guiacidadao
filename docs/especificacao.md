@@ -518,13 +518,14 @@ A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a i
 ![Diagrama de Classes](Diagrama_de_Classes.png)
 
 
-### 3.4.4 Descrições das Classes 
+## 3.4.4 Descrições das Classes
 
-| # | Nome | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| 1 | Cidadao | Cadastro e gerenciamento das informações dos usuários principais que buscam os benefícios sociais. |
-| 2 | Colaborador | Registro dos usuários administrativos responsáveis pela manutenção e gestão do catálogo no sistema. |
-| 3 | PerfilFamiliar | Armazenamento dos dados socioeconômicos, de composição e de renda familiar vinculados ao cidadão. |
-| 4 | Beneficio | Cadastro das informações, regras e critérios de elegibilidade dos auxílios sociais governamentais. |
-| 5 | Documento | Registro e controle de status da documentação exigida para compor o checklist de solicitação de um benefício. |
-| 6 | UnidadeAtendimento | Cadastro das informações dos locais físicos para atendimento presencial, como endereço e horário. |
+| # | Nome           | Descrição                                                                                                                                               |
+| - | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 | Cidadao        | Representa o usuário principal do sistema, contendo informações pessoais, renda e dados necessários para análise de elegibilidade a benefícios sociais. |
+| 2 | PerfilFamiliar | Armazena a composição familiar do cidadão, incluindo membros e renda total, sendo utilizado no cálculo de renda per capita.                             |
+| 3 | MembroFamiliar | Representa cada integrante da família, contendo dados como nome, idade, salário e grau de parentesco.                                                   |
+| 4 | Beneficio      | Contém as informações dos benefícios sociais disponíveis, incluindo critérios de elegibilidade, descrição e valor.                                      |
+| 5 | Simulacao      | Responsável por realizar a análise de elegibilidade do cidadão em relação a um ou mais benefícios, com base nos critérios definidos.                    |
+| 6 | Documento      | Representa os documentos necessários para solicitação de benefícios, incluindo tipo e status de entrega.                                                |
+| 7 | Checklist      | Controla a lista de documentos exigidos para cada benefício, auxiliando o usuário no acompanhamento do processo.                                        |
