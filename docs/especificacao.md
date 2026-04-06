@@ -29,7 +29,7 @@ O sistema web ficará condicionado ao cadastro e atualização manual dos benef�
 |5	| Criação de um documento resumido sobre a situação do beneficiário	| Desejável | 
 |6	| Localização da Unidade de Atendimento mais próxima	| Desejável | 
 
-## 3.3 Metodologia e Gerenciamento de Requisitos
+## 3.3 Descrição geral do produto
 
 Para garantir que a solução proposta atenda de forma efetiva às dores do público-alvo, o levantamento e o gerenciamento dos requisitos basearam-se em práticas de Engenharia de Requisitos aplicadas a contextos ágeis e ao Design Centrado no Usuário.
 
