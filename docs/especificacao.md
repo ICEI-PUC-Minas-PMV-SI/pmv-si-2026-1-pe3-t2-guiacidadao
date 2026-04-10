@@ -101,7 +101,7 @@ Como observado no diagrama de casos de uso da Figura 1, o Cidadão pode realizar
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![Diagrama de Casos de Uso do GuiaCidadão](imagens/diagrama_casos_uso.svg)
+![Diagrama de Casos de Uso do GuiaCidadão](imagens/diagramas/diagrama_casos_uso.svg)
  
 ### 3.5.2 Descrições de Casos de Uso
 
@@ -536,7 +536,7 @@ A Figura 2 mostra o diagrama de classes do sistema. Ele ilustra as entidades pri
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![Diagrama de Classes](imagens/Diagrama_de_Classes.png)
+![Diagrama de Classes](imagens/diagramas/diagrama_de_classes.png)
 
 
 ## 3.5.4 Descrições das Classes
