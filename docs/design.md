@@ -25,7 +25,42 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 ![Mapa de Empatia Ana](imagens/mapasDeEmpatia/mapaDaEmpatia_ana.png)
 
 ## 4.3 Protótipos das Interfaces
-Apresente nesta seção os protótipos de alta fidelidade do sistema proposto. A fidelidade do protótipo refere-se ao nível de detalhes e funcionalidades incorporadas a ele. Assim, um protótipo de alta fidelidade é uma representação interativa do produto, baseada no computador ou em dispositivos móveis. Esse protótipo já apresenta maior semelhança com o design final em termos de detalhes e funcionalidades. No desenvolvimento dos protótipos, devem ser considerados os princípios gestálticos, as recomendações ergonômicas e as regras de design (como as 8 regras de ouro). É importante descrever no texto do relatório como os princípios gestálticos e as regras de ouro foram seguidas no projeto das interfaces. Nesta etapa deve-se dar uma ênfase na implementação do software de modo que possam ser realizados os testes com usuários na etapa seguinte.
+
+![Painel Principal](imagens/telas/painelprincipal.png)
+
+## Objetivo da Tela
+É o ponto de entrada ao sistema, apresenta informações básicas e de fácil acesso para o usuário leitor que apenas busca se informar sem se cadastrar com o sistema. Também inclui portas para um menu lateral que trará mais opções para os usuários que desejam se cadastrar e utilizar das funcionalidades do sistema.
+
+### Princípios Gestálticos
+Proximidade: As opções de Menu e Pesquisa encontram-se agrupados na parte superior esquerda da tela, além dos benefícios e notícias agrupadas ao centro da tela.
+
+Semelhança: Os benefícios e suas informações encontram-se em cards semelhantes, facilitando o reconhecimento dos elementos interativos.
+
+Continuidade: A organização simples e agrupada dos elementos o torna auto-didático e de fácil compreensão.
+
+Figura-fundo: O fundo em tom mais escuro contrasta com os cards em tons claros, os mantendo destacados para os usuários.
+
+Fechamento: O contorno dos cards gera a fácil compreensão do seu fim, e consequentemente, do início de outro card, separando as informações e facilitando o uso.
+
+### Regras de Ouro
+Consistência: Os campos mantém uma padronização de texto, imagem e formato, facilitando a compreensão de cada elemento.
+
+Feedback: O botão "Saiba Mais" expressa uma ação clara, encaminhando o usuário direto ao benefício selecionado.
+
+Reconhecimento em vez de memorização: O uso de títulos claro ( "Auxílio Gás", "Bolsa Família", "BPC", "TSEE" ) instrui o usuário o conteúdo do card, sem a necessidade de memorização.
+
+Controle do usuário: O usuário pode navegar livremente entre os cards sem bloqueios ou direcionamentos forçados.
+
+### Recomendações Ergonômicas
+Clareza visual: O contraste entre os cards facilita a visualização mesmo em ambientes com muita iluminação.
+
+Hierarquia da informação: O título ao topo dos cards é definido como prioridade ao leitor, facilitando o entendimento do card.
+
+Redução da carga cognitiva: O painel demonstra apenas os elementos úteis para o usuário, mantendo uma interface simples e direta.
+
+Acessibilidade: O tamanho dos títulos e dos botões facilita a visualização dos elementos.
+
+Compatibilidade com o usuário: Textos claros ( "Saiba Mais", "Ver Mais Notícias" ) se conectam melhor com o usuário, facilitando seu entendimento.
 
 ## 4.4 Testes com Protótipos
 Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
