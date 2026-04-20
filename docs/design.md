@@ -19,7 +19,7 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 ![Mapa de Empatia João](imagens/mapasDeEmpatia/mapaDaEmpatia_joao.png)
 
 ### 4.2.2 Matheus
-![Mapa de Empatia Matheus](imagens/mapasDeEmpatia/empatia_matheus.png)
+![Mapa de Empatia Matheus](imagens/mapasDeEmpatia/mapaDaEmpatia_matheus.png)
 
 ### 4.2.3 Ana
 ![Mapa de Empatia Ana](imagens/mapasDeEmpatia/mapaDaEmpatia_ana.png)
