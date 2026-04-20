@@ -70,6 +70,9 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 
 ---
 
+![Menu Lateral](imagens/telas/menulateral.png)
+
+
 
 ## 4.4 Testes com Protótipos
 Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
