@@ -366,7 +366,7 @@ Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação
 
 Ator Primário: Cidadão.
 
-Pré-condições: O Cidadão deve estar autenticado no Sistema, exceto na exportação do resultado da triagem rápida, acessível sem autenticação. O diagnóstico de elegibilidade deve ter sido executado ao menos uma vez (CSU03).
+Pré-condições: O Cidadão deve estar autenticado no Sistema. O diagnóstico de elegibilidade deve ter sido executado ao menos uma vez (CSU03).
 
 Fluxo Principal:
 
@@ -398,12 +398,6 @@ Fluxo Alternativo (4): Impressão
 
 a) O Cidadão seleciona a opção de impressão. <br>
 b) O Sistema abre a janela de impressão do navegador com o documento formatado em layout otimizado para papel, com margens adequadas e sem elementos de interface. <br>
-
-Fluxo Alternativo (1): Exportação durante triagem rápida sem autenticação
-
-a) O Visitante solicita exportar o resultado da triagem rápida antes de criar conta. <br>
-b) O Sistema gera um PDF simplificado contendo apenas a lista preliminar de benefícios identificados, os critérios que determinaram cada classificação e um convite para criação de conta para acesso ao checklist completo. <br>
-c) O arquivo é disponibilizado para download sem armazenar dados no sistema. <br>
 
 Pós-condições: O documento foi entregue ao Cidadão no formato escolhido, contendo tudo que ele precisa saber para dar o próximo passo. O conteúdo do sistema permanece inalterado.
 
