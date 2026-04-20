@@ -58,19 +58,22 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 ### 3.4.1 Requisitos Funcionais
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição | Prioridade |
-|--------------------|------------------------------------|----------------------------------------|----------------------|
-| RF01 | Cadastro do usuário | O sistema deve permitir o cadastro dos usuários com CPF, senha e canal de contato obrigatório (e-mail ou telefone celular), além do complemento do perfil. | Alta |
-| RF02 | Autenticação | O sistema deve permitir a autenticação do usuário por CPF e senha, com recuperação de acesso via código enviado ao canal de contato cadastrado. | Alta |
-| RF03 | Edição de perfil | O sistema deve permitir a edição de dados, alteração de senha e exclusão de conta. | Alta |
-| RF04 | Calculo de Renda | O sistema deve permitir o cálculo automático da renda familiar total e per capita a partir dos dados inseridos pelo usuário. | Alta |
-| RF05 | Elegibilidade Dinâmica | O sistema deve adaptar a exibição de benefícios e informações conforme o perfil informado pelo usuário. | Alta | 
-| RF06 | Simulação de Cenários | O sistema deve permitir a simulação de cenários, como alteração de renda, para análise do impacto na elegibilidade aos benefícios. | Alta |
-| RF07 | Gerenciamento do catálogo | O sistema deve permitir que o Colaborador inclua, edite, desative e consulte benefícios e seus critérios de elegibilidade. | Alta |
-| RF08 | CheckList Interativo | O sistema deve disponibilizar checklist interativo de documentos necessários para cada benefício. | Média |
-| RF09 | Interface Resumida | O sistema deve apresentar um painel consolidado com resumo da situação do usuário (benefícios possíveis, progresso e pendências). | Média |
-| RF10 | Progresso do usuário | O sistema deve exibir o progresso do usuário de forma visual, indicando percentual ou etapas finalizadas. | Baixa |
-| RF11 | Geração de documento | O sistema deve gerar um PDF com o resumo da situação do usuário e permitir o compartilhamento via WhatsApp e impressão. | Baixa |
-| RF12 | Localização de unidade de atendimento | O sistema deve exibir a unidade de atendimento mais próxima com base no CEP do perfil ou informado manualmente, com nome, endereço e horário. | Baixa |
+|--------|--------------------------------------|-----------|------------|
+| RF01 | Cadastro de cidadão | O cidadão cria uma conta no sistema, informando nome completo, CPF, data de nascimento, senha e ao menos um canal de contato (e-mail ou telefone). | Alta |
+| RF02 | Autenticação | O cidadão, o colaborador e o administrador autenticam-se no sistema e recuperam seu acesso por meio de código enviado ao canal de contato cadastrado. | Alta |
+| RF03 | Gestão de perfil | O cidadão, o colaborador e o administrador editam seus dados cadastrais, alteram sua senha e excluem sua conta. | Alta |
+| RF04 | Gestão do perfil familiar | O cidadão gerencia os dados socioeconômicos do seu núcleo familiar (membros, rendas, vínculo empregatício, condição de moradia e CEP), com cálculo automático da renda total e per capita. | Alta |
+| RF05 | Verificação de elegibilidade | O cidadão consulta os benefícios compatíveis com seu perfil, classificados como elegíveis, potencialmente elegíveis ou não elegíveis. | Alta |
+| RF06 | Simulação de cenários | O cidadão simula alterações no seu perfil para analisar o impacto na sua elegibilidade, sem afetar seus dados reais. | Média |
+| RF07 | Consulta detalhada de benefício | O cidadão consulta a descrição, os critérios, os documentos exigidos e o link oficial de cada benefício, em linguagem simples. | Alta |
+| RF08 | Preenchimento de checklist | O cidadão preenche o checklist de documentos exigidos para cada benefício elegível, marcando cada item como pendente, obtido ou não aplicável. | Média |
+| RF09 | Triagem rápida | O visitante realiza uma triagem rápida e obtém uma lista preliminar de benefícios compatíveis, sem necessidade de cadastro. | Alta |
+| RF10 | Geração e compartilhamento de documento | O cidadão gera um PDF com o resumo da sua situação e o compartilha via WhatsApp ou impressão. | Baixa |
+| RF11 | Localização de unidade de atendimento | O cidadão consulta a unidade de atendimento mais próxima a partir do CEP ou da geolocalização, com nome, endereço, distância e horário de funcionamento. | Baixa |
+| RF12 | Registro de resultado de atendimento presencial | O cidadão registra o resultado do atendimento presencial (protocolado, documentação complementar, concedido ou indeferido), atualizando o status do benefício. | Média |
+| RF13 | Gestão do catálogo de benefícios | O colaborador gerencia o catálogo de benefícios e seus critérios de elegibilidade (inclusão, edição, desativação e consulta). | Alta |
+| RF14 | Gestão de unidades de atendimento | O colaborador gerencia as unidades de atendimento (inclusão, edição, desativação e consulta). | Alta |
+| RF15 | Gestão de contas de colaborador | O administrador gerencia as contas de colaborador (inclusão, edição, desativação e consulta). | Alta |
 
 ### 3.4.2 Requisitos Não Funcionais
 
