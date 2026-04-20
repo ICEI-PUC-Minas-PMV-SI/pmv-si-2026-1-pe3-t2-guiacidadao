@@ -78,14 +78,15 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 ### 3.4.2 Requisitos Não Funcionais
 
 | Código | Requisito Não Funcional (Restrição) | Prioridade |
-|--------|-------------------------|------------|
-| RNF01 | O sistema deve ser responsivo e funcionar em dispositivos móveis com telas a partir de 4 polegadas. | Alta |
-| RNF02 | O cálculo de renda per capita deve ser processado e exibido em até 2 segundos após a submissão dos dados. | Alta |
-| RNF03 | O sistema deve persistir os dados do usuário entre sessões após o fechamento do navegador. | Alta |
-| RNF04 | O sistema deve estar em conformidade com a LGPD, incluindo consentimento explícito na coleta de dados e mecanismo de exclusão a pedido do titular. | Alta |
-| RNF05 | A interface deve utilizar linguagem simples em todos os textos e conduzir o usuário de forma interativa e intuitiva, sem termos técnicos ou jurídicos sem explicação. | Alta |
-| RNF06 | O sistema deve validar o CPF no cadastro quanto ao formato e aos dígitos verificadores. | Alta |
-| RNF07 | O sistema deve funcionar nos navegadores Chrome, Firefox e Safari nas versões lançadas nos últimos dois anos. | Média |
+|--------|-------------------------------------|------------|
+| RNF01 | O cálculo da renda per capita deve ser exibido em até 2 segundos após a submissão do formulário. | Alta |
+| RNF02 | O sistema deve funcionar nos navegadores Chrome, Firefox e Safari em suas versões atualizadas. | Média |
+| RNF03 | A interface deve atender às diretrizes WCAG 2.1 nível AA. | Alta |
+| RNF04 | O sistema deve realizar backup diário automatizado dos dados, com retenção mínima de 30 dias. | Alta |
+| RNF05 | O sistema deve obter consentimento LGPD explícito do cidadão no momento do cadastro. | Alta |
+| RNF06 | O sistema deve processar solicitações de exclusão de dados pessoais em até 15 dias úteis, em conformidade com a LGPD. | Alta |
+| RNF07 | O sistema deve validar formato e dígitos verificadores do CPF no momento da submissão do cadastro. | Alta |
+| RNF08 | O sistema deve controlar o acesso a funcionalidades e rotas por perfil de usuário, bloqueando requisições incompatíveis. | Alta |
 
 
 ### 3.4.3 Usuários 
