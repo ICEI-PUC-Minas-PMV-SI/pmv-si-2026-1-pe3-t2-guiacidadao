@@ -1,107 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="680" height="980" viewBox="0 0 680 980" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" xmlns:bx="https://boxy-svg.com">
+<svg width="1000" height="920" viewBox="0 0 1000 920" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
   <style>
     text { font-family: Arial, sans-serif; fill: #1a1a1a; }
     .label-sm { font-size: 12px; }
-    .label-md { font-size: 13px; }
-    .label-hint { font-size: 11px; fill: #999; }
+    .label-code { font-size: 10px; fill: #666; font-weight: 600; }
+    .label-hint { font-size: 11px; fill: #888; }
     .actor-line { stroke: #1a1a1a; stroke-width: 1.2; fill: none; }
     .actor-circle { fill: none; stroke: #1a1a1a; stroke-width: 1.2; }
     .boundary { fill: none; stroke: #555; stroke-width: 1.2; }
-    .uc { fill: none; stroke: #1a1a1a; stroke-width: 1; }
+    .uc { fill: #fff; stroke: #1a1a1a; stroke-width: 1; }
     .assoc { stroke: #1a1a1a; stroke-width: 0.8; fill: none; }
-    .relation { stroke: #666; stroke-width: 0.8; fill: none; stroke-dasharray: 5 3; }
-    .separator { stroke: #ccc; stroke-width: 0.8; stroke-dasharray: 4 3; }
+    .relation { stroke: #888; stroke-width: 0.8; fill: none; stroke-dasharray: 5 3; }
   </style>
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M2 1L8 5L2 9" fill="none" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
-    <bx:export>
-      <bx:file format="png" path="Sem título.png"/>
-    </bx:export>
   </defs>
-  <rect x="170" y="40" width="360" height="910" rx="12" class="boundary"/>
-  <line x1="185" y1="198" x2="515" y2="198" class="separator"/>
-  <text x="270" y="193" text-anchor="middle" class="label-hint" style="white-space: pre;">área pública</text>
-  <text x="270" y="215" text-anchor="middle" class="label-hint" style="white-space: pre;">área autenticada</text>
-  <circle cx="72" cy="80" r="14" class="actor-circle"/>
-  <line x1="72" y1="94" x2="72" y2="129" class="actor-line"/>
-  <line x1="72" y1="104" x2="54" y2="119" class="actor-line"/>
-  <line x1="72" y1="104" x2="90" y2="119" class="actor-line"/>
-  <line x1="72" y1="129" x2="57" y2="149" class="actor-line"/>
-  <line x1="72" y1="129" x2="87" y2="149" class="actor-line"/>
-  <text x="72" y="164" text-anchor="middle" class="label-sm" style="white-space: pre;">Visitante</text>
-  <text x="72" y="178" text-anchor="middle" class="label-sm" style="white-space: pre;">(sem conta)</text>
-  <circle cx="72" cy="390" r="14" class="actor-circle"/>
-  <line x1="72" y1="404" x2="72" y2="439" class="actor-line"/>
-  <line x1="72" y1="414" x2="54" y2="429" class="actor-line"/>
-  <line x1="72" y1="414" x2="90" y2="429" class="actor-line"/>
-  <line x1="72" y1="439" x2="57" y2="459" class="actor-line"/>
-  <line x1="72" y1="439" x2="87" y2="459" class="actor-line"/>
-  <text x="72" y="474" text-anchor="middle" class="label-sm" style="white-space: pre;">Cidadão</text>
-  <circle cx="608" cy="810" r="14" class="actor-circle"/>
-  <line x1="608" y1="824" x2="608" y2="859" class="actor-line"/>
-  <line x1="608" y1="834" x2="590" y2="849" class="actor-line"/>
-  <line x1="608" y1="834" x2="626" y2="849" class="actor-line"/>
-  <line x1="608" y1="859" x2="593" y2="879" class="actor-line"/>
-  <line x1="608" y1="859" x2="623" y2="879" class="actor-line"/>
-  <text x="608" y="894" text-anchor="middle" class="label-sm" style="white-space: pre;">Colaborador</text>
-  <text x="608" y="908" text-anchor="middle" class="label-hint" style="white-space: pre;">(conta criada pelo</text>
-  <text x="608" y="922" text-anchor="middle" class="label-hint" style="white-space: pre;">administrador)</text>
-  <ellipse cx="350" cy="80" rx="148" ry="22" class="uc"/>
-  <text x="350" y="84" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Realizar triagem rápida</text>
-  <ellipse cx="350" cy="145" rx="148" ry="22" class="uc"/>
-  <text x="350" y="149" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Cadastrar-se</text>
-  <ellipse cx="350" cy="245" rx="148" ry="22" class="uc"/>
-  <text x="350" y="249" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Autenticar-se</text>
-  <ellipse cx="350" cy="305" rx="148" ry="22" class="uc"/>
-  <text x="350" y="309" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Editar perfil e conta</text>
-  <ellipse cx="350" cy="365" rx="148" ry="22" class="uc"/>
-  <text x="350" y="369" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Cadastrar perfil familiar</text>
-  <ellipse cx="350" cy="425" rx="148" ry="22" class="uc"/>
-  <text x="350" y="429" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Calcular renda per capita</text>
-  <ellipse cx="350" cy="485" rx="148" ry="22" class="uc"/>
-  <text x="350" y="489" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Verificar elegibilidade</text>
-  <ellipse cx="350" cy="545" rx="148" ry="22" class="uc"/>
-  <text x="350" y="549" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Simular cenários</text>
-  <ellipse cx="350" cy="605" rx="148" ry="22" class="uc"/>
-  <text x="350" y="609" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Consultar benefícios</text>
-  <ellipse cx="350" cy="665" rx="148" ry="22" class="uc"/>
-  <text x="350" y="669" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Gerenciar checklist</text>
-  <ellipse cx="350" cy="725" rx="148" ry="22" class="uc"/>
-  <text x="350" y="729" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Gerar e compartilhar documento</text>
-  <ellipse cx="350" cy="785" rx="148" ry="22" class="uc"/>
-  <text x="350" y="789" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Localizar unidade de atendimento</text>
-  <ellipse cx="350" cy="845" rx="148" ry="22" class="uc"/>
-  <text x="350" y="849" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Registrar resultado do atendimento</text>
-  <ellipse cx="350" cy="915" rx="148" ry="22" class="uc"/>
-  <text x="350" y="919" text-anchor="middle" dominant-baseline="central" class="label-sm" style="white-space: pre;">Gerenciar catálogo de benefícios</text>
-  <line x1="86" y1="92" x2="200" y2="83" class="assoc"/>
-  <line x1="86" y1="102" x2="200" y2="148" class="assoc"/>
-  <line x1="86" y1="398" x2="200" y2="248" class="assoc"/>
-  <line x1="86" y1="403" x2="200" y2="308" class="assoc"/>
-  <line x1="86" y1="408" x2="200" y2="368" class="assoc"/>
-  <line x1="86" y1="413" x2="200" y2="428" class="assoc"/>
-  <line x1="86" y1="418" x2="200" y2="488" class="assoc"/>
-  <line x1="86" y1="423" x2="200" y2="548" class="assoc"/>
-  <line x1="86" y1="428" x2="200" y2="608" class="assoc"/>
-  <line x1="86" y1="433" x2="200" y2="668" class="assoc"/>
-  <line x1="86" y1="438" x2="200" y2="728" class="assoc"/>
-  <line x1="86" y1="443" x2="200" y2="788" class="assoc"/>
-  <line x1="86" y1="448" x2="200" y2="848" class="assoc"/>
-  <line x1="615.537" y1="795.342" x2="500" y2="248" class="assoc" style=""/>
-  <line x1="594" y1="825" x2="500" y2="918" class="assoc"/>
-  <line x1="350" y1="387" x2="350" y2="403" class="relation" marker-end="url(#arr)"/>
-  <text x="372" y="399" class="label-hint" style="white-space: pre;">«include»</text>
-  <line x1="350" y1="447" x2="350" y2="463" class="relation" marker-end="url(#arr)"/>
-  <text x="372" y="459" class="label-hint" style="white-space: pre;">«include»</text>
-  <line x1="350" y1="507" x2="350" y2="583" class="relation" marker-end="url(#arr)"/>
-  <text x="370.207" y="578.277" class="label-hint" style="white-space: pre; font-size: 11px;">«include»</text>
-  <path d="M498 545 L536 545 L536 485 L500 485" class="relation" marker-end="url(#arr)"/>
-  <text x="540" y="519" class="label-hint" style="white-space: pre;">«extend»</text>
-  <path d="M498 725 L536 725 L536 665 L500 665" class="relation" marker-end="url(#arr)"/>
-  <text x="540" y="699" class="label-hint" style="white-space: pre;">«extend»</text>
-  <path d="M498 785 L560 785 L560 725 L500 725" class="relation" marker-end="url(#arr)"/>
-  <text x="564" y="759" class="label-hint" style="white-space: pre;">«extend»</text>
+
+  <!-- Boundary do sistema -->
+  <rect x="200" y="40" width="600" height="790" rx="12" class="boundary"/>
+  <text x="500" y="30" text-anchor="middle" class="label-hint">Sistema GuiaCidadão</text>
+
+  <!-- ===== ATORES ===== -->
+  <!-- Visitante (topo esquerdo) -->
+  <circle cx="90" cy="110" r="14" class="actor-circle"/>
+  <line x1="90" y1="124" x2="90" y2="159" class="actor-line"/>
+  <line x1="90" y1="134" x2="72" y2="149" class="actor-line"/>
+  <line x1="90" y1="134" x2="108" y2="149" class="actor-line"/>
+  <line x1="90" y1="159" x2="75" y2="179" class="actor-line"/>
+  <line x1="90" y1="159" x2="105" y2="179" class="actor-line"/>
+  <text x="90" y="194" text-anchor="middle" class="label-sm">Visitante</text>
+  <text x="90" y="208" text-anchor="middle" class="label-hint">(sem conta)</text>
+
+  <!-- Cidadão (meio esquerdo) -->
+  <circle cx="90" cy="450" r="14" class="actor-circle"/>
+  <line x1="90" y1="464" x2="90" y2="499" class="actor-line"/>
+  <line x1="90" y1="474" x2="72" y2="489" class="actor-line"/>
+  <line x1="90" y1="474" x2="108" y2="489" class="actor-line"/>
+  <line x1="90" y1="499" x2="75" y2="519" class="actor-line"/>
+  <line x1="90" y1="499" x2="105" y2="519" class="actor-line"/>
+  <text x="90" y="534" text-anchor="middle" class="label-sm">Cidadão</text>
+
+  <!-- Colaborador (topo direito) -->
+  <circle cx="910" cy="720" r="14" class="actor-circle"/>
+  <line x1="910" y1="734" x2="910" y2="769" class="actor-line"/>
+  <line x1="910" y1="744" x2="892" y2="759" class="actor-line"/>
+  <line x1="910" y1="744" x2="928" y2="759" class="actor-line"/>
+  <line x1="910" y1="769" x2="895" y2="789" class="actor-line"/>
+  <line x1="910" y1="769" x2="925" y2="789" class="actor-line"/>
+  <text x="910" y="804" text-anchor="middle" class="label-sm">Colaborador</text>
+
+  <!-- Administrador (baixo direito) -->
+  <circle cx="910" cy="830" r="14" class="actor-circle"/>
+  <line x1="910" y1="844" x2="910" y2="879" class="actor-line"/>
+  <line x1="910" y1="854" x2="892" y2="869" class="actor-line"/>
+  <line x1="910" y1="854" x2="928" y2="869" class="actor-line"/>
+  <line x1="910" y1="879" x2="895" y2="899" class="actor-line"/>
+  <line x1="910" y1="879" x2="925" y2="899" class="actor-line"/>
+  <text x="910" y="914" text-anchor="middle" class="label-sm">Administrador</text>
+
+  <!-- ===== CASOS DE USO (todos com código único) ===== -->
+  <!-- CSU01 — topo, compartilhado por todos -->
+  <ellipse cx="500" cy="80" rx="145" ry="22" class="uc"/>
+  <text x="500" y="75" text-anchor="middle" class="label-code">CSU01</text>
+  <text x="500" y="92" text-anchor="middle" class="label-sm">Gerenciar conta</text>
+
+  <!-- CSU07 — público, visitante -->
+  <ellipse cx="500" cy="140" rx="145" ry="22" class="uc"/>
+  <text x="500" y="135" text-anchor="middle" class="label-code">CSU07</text>
+  <text x="500" y="152" text-anchor="middle" class="label-sm">Realizar triagem rápida</text>
+
+  <!-- CSU02 -->
+  <ellipse cx="500" cy="210" rx="145" ry="22" class="uc"/>
+  <text x="500" y="205" text-anchor="middle" class="label-code">CSU02</text>
+  <text x="500" y="222" text-anchor="middle" class="label-sm">Cadastrar perfil familiar</text>
+
+  <!-- CSU03 -->
+  <ellipse cx="500" cy="270" rx="145" ry="22" class="uc"/>
+  <text x="500" y="265" text-anchor="middle" class="label-code">CSU03</text>
+  <text x="500" y="282" text-anchor="middle" class="label-sm">Verificar elegibilidade</text>
+
+  <!-- CSU04 -->
+  <ellipse cx="500" cy="330" rx="145" ry="22" class="uc"/>
+  <text x="500" y="325" text-anchor="middle" class="label-code">CSU04</text>
+  <text x="500" y="342" text-anchor="middle" class="label-sm">Simular cenários</text>
+
+  <!-- CSU05 -->
+  <ellipse cx="500" cy="390" rx="145" ry="22" class="uc"/>
+  <text x="500" y="385" text-anchor="middle" class="label-code">CSU05</text>
+  <text x="500" y="402" text-anchor="middle" class="label-sm">Consultar benefícios</text>
+
+  <!-- CSU06 -->
+  <ellipse cx="500" cy="450" rx="145" ry="22" class="uc"/>
+  <text x="500" y="445" text-anchor="middle" class="label-code">CSU06</text>
+  <text x="500" y="462" text-anchor="middle" class="label-sm">Gerenciar checklist</text>
+
+  <!-- CSU08 -->
+  <ellipse cx="500" cy="510" rx="145" ry="22" class="uc"/>
+  <text x="500" y="505" text-anchor="middle" class="label-code">CSU08</text>
+  <text x="500" y="522" text-anchor="middle" class="label-sm">Gerar e compartilhar documento</text>
+
+  <!-- CSU09 -->
+  <ellipse cx="500" cy="570" rx="145" ry="22" class="uc"/>
+  <text x="500" y="565" text-anchor="middle" class="label-code">CSU09</text>
+  <text x="500" y="582" text-anchor="middle" class="label-sm">Localizar unidade de atendimento</text>
+
+  <!-- CSU10 -->
+  <ellipse cx="500" cy="630" rx="145" ry="22" class="uc"/>
+  <text x="500" y="625" text-anchor="middle" class="label-code">CSU10</text>
+  <text x="500" y="642" text-anchor="middle" class="label-sm">Registrar resultado presencial</text>
+
+  <!-- CSU11 -->
+  <ellipse cx="500" cy="700" rx="145" ry="22" class="uc"/>
+  <text x="500" y="695" text-anchor="middle" class="label-code">CSU11</text>
+  <text x="500" y="712" text-anchor="middle" class="label-sm">Gerenciar catálogo de benefícios</text>
+
+  <!-- CSU12 -->
+  <ellipse cx="500" cy="760" rx="145" ry="22" class="uc"/>
+  <text x="500" y="755" text-anchor="middle" class="label-code">CSU12</text>
+  <text x="500" y="772" text-anchor="middle" class="label-sm">Gerenciar unidades de atendimento</text>
+
+  <!-- CSU13 -->
+  <ellipse cx="500" cy="810" rx="145" ry="22" class="uc"/>
+  <text x="500" y="805" text-anchor="middle" class="label-code">CSU13</text>
+  <text x="500" y="822" text-anchor="middle" class="label-sm">Gerenciar contas de colaborador</text>
+
+  <!-- ===== ASSOCIAÇÕES ===== -->
+  <!-- Visitante → CSU01, CSU07 -->
+  <line x1="104" y1="108" x2="355" y2="80" class="assoc"/>
+  <line x1="104" y1="115" x2="355" y2="140" class="assoc"/>
+
+  <!-- Cidadão → CSU01 e CSU02..CSU10 -->
+  <line x1="104" y1="440" x2="355" y2="80" class="assoc"/>
+  <line x1="104" y1="443" x2="355" y2="210" class="assoc"/>
+  <line x1="104" y1="446" x2="355" y2="270" class="assoc"/>
+  <line x1="104" y1="449" x2="355" y2="330" class="assoc"/>
+  <line x1="104" y1="452" x2="355" y2="390" class="assoc"/>
+  <line x1="104" y1="455" x2="355" y2="450" class="assoc"/>
+  <line x1="104" y1="458" x2="355" y2="510" class="assoc"/>
+  <line x1="104" y1="461" x2="355" y2="570" class="assoc"/>
+  <line x1="104" y1="464" x2="355" y2="630" class="assoc"/>
+
+  <!-- Colaborador → CSU01, CSU11, CSU12 -->
+  <line x1="896" y1="715" x2="645" y2="80" class="assoc"/>
+  <line x1="896" y1="720" x2="645" y2="700" class="assoc"/>
+  <line x1="896" y1="725" x2="645" y2="760" class="assoc"/>
+
+  <!-- Administrador → CSU01, CSU13 -->
+  <line x1="896" y1="825" x2="645" y2="80" class="assoc"/>
+  <line x1="896" y1="828" x2="645" y2="810" class="assoc"/>
+
+  <!-- ===== RELAÇÕES «include» / «extend» ===== -->
+  <!-- CSU04 «extend» CSU03 (Simular estende Verificar) -->
+  <path d="M648 330 L680 330 L680 270 L648 270" class="relation" marker-end="url(#arr)"/>
+  <text x="685" y="303" class="label-hint">«extend»</text>
+
+  <!-- CSU09 «extend» CSU08 (Localizar unidade é condicional dentro de Gerar documento) -->
+  <path d="M648 570 L680 570 L680 510 L648 510" class="relation" marker-end="url(#arr)"/>
+  <text x="685" y="543" class="label-hint">«extend»</text>
 </svg>
