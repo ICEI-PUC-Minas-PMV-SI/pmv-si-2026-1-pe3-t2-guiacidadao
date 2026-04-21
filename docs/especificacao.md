@@ -53,7 +53,7 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 * **Revisões de Sprint:** Reavaliação constante e repriorização dos requisitos a cada ciclo de iteração, garantindo que o foco permaneça na entrega de valor.
 * **Rastreabilidade:** Toda alteração significativa deverá ser refletida neste artefato de especificação e vinculada às respectivas *issues*, garantindo controle do impacto de escopo e histórico de decisões do projeto.
 
-## 3.4 Descrição geral do produto
+## 3.4 Especificação de Requisitos
 
 ### 3.4.1 Requisitos Funcionais
 
@@ -538,7 +538,7 @@ A Figura 2 mostra o diagrama de classes do sistema. Ele ilustra as entidades pri
 ![Diagrama de Classes](imagens/diagramas/diagrama_de_classes.png)
 
 
-## 3.5.4 Descrições das Classes
+### 3.5.4 Descrições das Classes
 
 | # | Nome           | Descrição                                                                                                                                               |
 | - | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
