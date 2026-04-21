@@ -16,7 +16,7 @@ Centralizar os benefícios sociais distribuídos pelo governo em uma plataforma 
 
 ### 3.2.3 Limites do produto
 
-O sistema web ficará condicionado ao cadastro e atualização manual dos benefícios sociais pelo coordenador, além de utilizar o banco de dados simulado em armazenamento local para fins de testagem de suas funcionalidades.
+O sistema web ficará condicionado ao cadastro e à atualização manual dos benefícios sociais e das unidades de atendimento pelo Colaborador, além de utilizar banco de dados simulado em armazenamento local para fins de testagem de suas funcionalidades.
 
 ### 3.2.4 Benefícios do produto
 
@@ -101,13 +101,17 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | Cidadão |	Usuário primário do sistema. Pessoa em situação de vulnerabilidade socioeconômica (desempregada, trabalhadora informal, MEI ou idosa) que busca compreender seus direitos e identificar benefícios sociais compatíveis com seu perfil. Caracteriza-se por acesso básico à tecnologia, geralmente via smartphone, e pode apresentar baixo letramento digital. |
 | Colaborador | Usuário interno responsável pela manutenção do conteúdo da plataforma: atualização das informações sobre benefícios, critérios de elegibilidade e listas de documentos. Não realiza atendimento direto ao cidadão, atuando na camada administrativa e de curadoria do sistema. Sua conta é criada pelo administrador do sistema, que fornece as credenciais de acesso provisórias. No primeiro acesso, o Colaborador é obrigado a definir uma senha definitiva. |
 | Visitante | Pessoa que acessa o sistema sem conta cadastrada. Pode realizar a triagem rápida de elegibilidade e visualizar o resultado preliminar. Não tem acesso às funcionalidades que exigem autenticação. |
-| Administrador | Usuário interno com perfil de maior privilégio, responsável pela criação e gestão das contas de colaborador. Não interage com o catálogo de benefícios, as unidades de atendimento nem diretamente com os cidadãos. |
+| Administrador | Usuário interno com perfil de maior privilégio, responsável pela criação, edição, desativação e auditoria das contas de Colaborador (CSU13). Não edita o catálogo de benefícios nem o cadastro de unidades de atendimento, atribuições que pertencem ao Colaborador, e não interage diretamente com os cidadãos. |
 
 
 ## 3.5 Modelagem do Sistema
 
 ### 3.5.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, o Cidadão pode realizar a triagem rápida e o cadastro sem autenticação, enquanto na área autenticada tem acesso ao diagnóstico de elegibilidade, checklist de documentos, simulação de cenários e geração de documento. O Colaborador, por sua vez, é responsável pela autenticação administrativa e pelo gerenciamento do catálogo de benefícios.
+O diagrama de casos de uso da Figura 1 apresenta os quatro usuários do sistema e os casos em que cada um participa.
+
+Na área pública, o Visitante pode realizar a triagem rápida ou iniciar o próprio cadastro. Após o cadastro e a autenticação, o Cidadão acessa a área autenticada, na qual encontra o diagnóstico de elegibilidade, o checklist de documentos, a simulação de cenários, a geração de documento e o registro do resultado do atendimento presencial.
+
+O Colaborador e o Administrador acessam o painel administrativo. O Colaborador é responsável pela manutenção do catálogo de benefícios (CSU11) e do cadastro das unidades de atendimento (CSU12). O Administrador atua apenas na gestão das contas de Colaborador (CSU13).
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
@@ -532,7 +536,96 @@ b) O Sistema apresenta a lista de benefícios correspondente aos termos pesquisa
 c) O Colaborador seleciona um benefício. <br>
 d) O Sistema apresenta os detalhes completos do benefício selecionado. <br>
 
-Pós-condições: O catálogo de benefícios foi atualizado. Alterações em critérios de elegibilidade disparam reavaliação automática dos perfis afetados. Alterações na lista de documentos sincronizam os checklists em andamento. Os usuários afetados são notificados em ambos os casos.
+Pós-condições: O catálogo de benefícios foi atualizado. Alterações em critérios de elegibilidade disparam reavaliação automática dos perfis afetados (RF17). Alterações na lista de documentos sincronizam os checklists em andamento. Os usuários afetados são notificados em ambos os casos (RF16).
+
+---
+
+#### Gerenciar Unidades de Atendimento (CSU12)
+
+Sumário: O Colaborador realiza a gestão das unidades de atendimento presencial disponíveis na plataforma, incluindo inclusão, edição, desativação e consulta. O cadastro das unidades alimenta o CSU09 (Localizar Unidade de Atendimento) e o CSU08 (Gerar e Compartilhar Documento).
+
+Ator Primário: Colaborador.
+
+Pré-condições: O Colaborador deve estar autenticado como Colaborador no Sistema.
+
+Fluxo Principal:
+
+1) O Colaborador acessa o painel de gestão de unidades de atendimento.
+2) O Sistema apresenta a lista de unidades cadastradas com status (ativa/inativa) e data da última atualização.
+3) O Colaborador seleciona a operação desejada: inclusão, edição, desativação ou consulta, e o Sistema executa o fluxo alternativo correspondente.
+4) Se o Colaborador desejar continuar, o caso de uso retorna ao passo 2; caso contrário, encerra.
+
+Fluxo Alternativo (3): Inclusão
+
+a) O Colaborador requisita a inclusão de nova unidade. <br>
+b) O Sistema apresenta formulário com os campos: nome da unidade, tipo (CRAS, INSS, Defensoria Pública, outros), órgão responsável, endereço completo, CEP, horário de funcionamento, telefone de contato e tipos de benefícios atendidos. <br>
+c) O Colaborador preenche os dados e confirma. <br>
+d) O Sistema valida o CEP e o formato do endereço, geocodifica a localização e publica a unidade, tornando-a disponível para as consultas de CSU09. <br>
+
+Fluxo Alternativo (3): Edição
+
+a) O Colaborador seleciona uma unidade e atualiza um ou mais campos. <br>
+b) O Sistema valida os dados e, em caso de alteração do endereço ou do CEP, refaz a geocodificação. <br>
+c) O Sistema salva as alterações, registrando data e autor da modificação. <br>
+
+Fluxo Alternativo (3): Desativação
+
+a) O Colaborador seleciona uma unidade e requisita sua desativação. <br>
+b) O Sistema solicita confirmação e informa que a unidade deixará de aparecer nas consultas de CSU09. <br>
+c) O Colaborador confirma. O Sistema remove a unidade das consultas ativas, mas preserva o histórico, e sinaliza nas orientações de CSU10 caso a unidade esteja associada a processos em andamento. <br>
+
+Fluxo Alternativo (3): Consulta
+
+a) O Colaborador opta por pesquisar pelo nome, tipo, órgão responsável ou município da unidade. <br>
+b) O Sistema apresenta a lista correspondente aos termos pesquisados. <br>
+c) O Colaborador seleciona uma unidade e o Sistema apresenta os detalhes completos. <br>
+
+Pós-condições: O cadastro de unidades de atendimento foi atualizado. As alterações refletem-se imediatamente nas consultas realizadas via CSU09.
+
+---
+
+#### Gerenciar Contas de Colaborador (CSU13)
+
+Sumário: O Administrador realiza a gestão das contas dos Colaboradores na plataforma, incluindo inclusão, edição, desativação e consulta. A autenticação do Administrador segue o fluxo comum definido em CSU01 (3.b).
+
+Ator Primário: Administrador.
+
+Pré-condições: O Administrador deve estar autenticado no Sistema.
+
+Fluxo Principal:
+
+1) O Administrador acessa o painel de gestão de contas de Colaborador.
+2) O Sistema apresenta a lista de Colaboradores cadastrados com status (ativo/inativo) e data do último acesso.
+3) O Administrador seleciona a operação desejada: inclusão, edição, desativação ou consulta, e o Sistema executa o fluxo alternativo correspondente.
+4) Se o Administrador desejar continuar, o caso de uso retorna ao passo 2; caso contrário, encerra.
+
+Fluxo Alternativo (3): Inclusão de Colaborador
+
+a) O Administrador requisita a criação de uma nova conta de Colaborador. <br>
+b) O Sistema apresenta formulário solicitando: nome completo, CPF, e-mail institucional e áreas de atuação (catálogo de benefícios, unidades de atendimento ou ambos). <br>
+c) O Administrador preenche os dados e confirma. <br>
+d) O Sistema valida o formato e os dígitos verificadores do CPF (RNF07), verifica a unicidade do e-mail institucional, gera uma senha provisória e envia as credenciais ao e-mail informado, exigindo a troca no primeiro acesso (conforme CSU01 fluxo 3.b.d). <br>
+
+Fluxo Alternativo (3): Edição
+
+a) O Administrador seleciona uma conta de Colaborador e atualiza um ou mais campos, exceto o CPF (imutável). <br>
+b) O Sistema valida os dados, salva as alterações e registra data e autor da modificação. <br>
+
+Fluxo Alternativo (3): Desativação
+
+a) O Administrador seleciona uma conta de Colaborador e requisita sua desativação. <br>
+b) O Sistema solicita confirmação e informa que o Colaborador perderá o acesso ao painel administrativo, mas que o histórico de suas alterações no catálogo de benefícios e nas unidades de atendimento será preservado. <br>
+c) O Administrador confirma. O Sistema desativa a conta e encerra qualquer sessão ativa do Colaborador. <br>
+
+Fluxo Alternativo (3): Consulta
+
+a) O Administrador opta por pesquisar pelo nome, CPF, e-mail ou status da conta. <br>
+b) O Sistema apresenta a lista correspondente. <br>
+c) O Administrador seleciona um Colaborador e o Sistema apresenta os detalhes completos, incluindo histórico resumido de alterações realizadas por ele. <br>
+
+Pós-condições: O cadastro de contas de Colaborador foi atualizado. O Colaborador recém-incluído recebe credenciais provisórias no e-mail institucional informado e é obrigado a definir senha definitiva no primeiro acesso.
+
+---
 
 ### 3.5.3 Diagrama de Classes 
 
