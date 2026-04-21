@@ -183,7 +183,7 @@ Fluxo Principal:
 1) O Cidadão acessa a seção de perfil familiar.
 2) O Sistema apresenta formulário solicitando: número de membros do núcleo familiar, renda mensal de cada membro, vínculo empregatício de cada membro, condição de moradia e CEP de residência (campo opcional).
 3) O Cidadão preenche os dados e confirma.
-4) O Sistema valida as informações e executa o cálculo da renda familiar total e per capita (CSU03).
+4) O Sistema valida as informações e calcula a renda familiar total e a renda per capita, aplicando as regras definidas em RF04. Os valores calculados ficam disponíveis para CSU03 (Verificar Elegibilidade) e CSU04 (Simular Cenários).
 5) O Sistema salva o perfil e exibe um resumo com os valores calculados.
 6) O Cidadão confirma os dados ou opta por corrigir.
 
@@ -221,7 +221,7 @@ Fluxo Principal:
 Fluxo Alternativo (3): Nenhum benefício elegível identificado
 
 a) O Sistema não encontra benefícios que atendam ao perfil informado. <br>
-b) O Sistema informa o fato ao Cidadão em linguagem simples, explica quais critérios não foram atendidos e sugere a simulação de cenários (CSU05) para explorar possibilidades. <br>
+b) O Sistema informa o fato ao Cidadão em linguagem simples, explica quais critérios não foram atendidos e sugere a simulação de cenários (CSU04) para explorar possibilidades. <br>
 
 Fluxo Alternativo (3): Dados insuficientes para avaliação
 
@@ -312,7 +312,7 @@ b) O Sistema permite marcar o item como não aplicável, mediante confirmação,
 Fluxo Alternativo (5): Gerar e compartilhar documento
 
 a) O Cidadão solicita a exportação ou compartilhamento do checklist. <br>
-b) O Sistema aciona o CSU09 — Gerar e Compartilhar Documento. <br>
+b) O Sistema aciona o CSU08 — Gerar e Compartilhar Documento. <br>
 
 Pós-condições: O checklist foi gerado, atualizado com os status informados pelo Cidadão e o progresso foi registrado no painel.
 
