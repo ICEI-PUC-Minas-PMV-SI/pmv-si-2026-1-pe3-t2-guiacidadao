@@ -121,61 +121,77 @@ O Colaborador e o Administrador acessam o painel administrativo. O Colaborador �
 
 #### Gerenciar Conta (CSU01)
 
-Sumário: O Cidadão ou Colaborador realiza a gestão da sua conta no sistema, incluindo cadastro, autenticação, edição de dados e exclusão de conta. Contas de Colaborador são criadas pelo administrador do sistema e não estão disponíveis para autoatendimento.
+Sumário: O Cidadão realiza o autoatendimento completo da sua conta no sistema (cadastro, autenticação, edição, alteração e recuperação de senha, exclusão). O Colaborador e o Administrador também autenticam-se, editam dados, alteram senha e excluem a própria conta, mas suas contas são criadas pelo perfil imediatamente superior (Colaborador pelo Administrador; Administrador pelo provisionamento inicial do sistema) e não estão disponíveis para autocadastro.
 
-Ator Primário: Cidadão.
+Atores Primários: Cidadão, Colaborador, Administrador.
 
-Ator Secundário: Colaborador.
+Pré-condições:
 
-Pré-condições: Nenhuma para cadastro e autenticação de Cidadão. Para edição e exclusão, o usuário deve estar autenticado no Sistema. Para autenticação de Colaborador, a conta deve ter sido previamente criada pelo administrador do sistema.
+* Cadastro: nenhuma; disponível apenas para o Cidadão.
+* Autenticação: para o Colaborador, a conta deve ter sido previamente criada pelo Administrador; para o Administrador, a conta deve ter sido provisionada no setup inicial.
+* Edição de dados, alteração de senha e exclusão de conta: o usuário deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
 1) O usuário acessa o sistema.
-2) O Sistema apresenta as opções disponíveis: cadastrar nova conta, autenticar-se, editar dados, alterar senha ou excluir conta.
+2) O Sistema identifica se o usuário está autenticado e apresenta as opções correspondentes:
+   * **Não autenticado:** cadastrar-se (apenas Cidadão), autenticar-se ou recuperar senha.
+   * **Autenticado:** editar dados, alterar senha ou excluir conta.
 3) O usuário seleciona a operação desejada ou opta por encerrar.
 4) Se o usuário desejar continuar, o caso de uso retorna ao passo 2; caso contrário, encerra.
 
-Fluxo Alternativo (3): Cadastro de Cidadão
+Fluxo Alternativo (3.a): Cadastro de Cidadão
 
 a) O Cidadão requisita a criação de uma nova conta. <br>
-b) O Sistema apresenta formulário solicitando nome completo, CPF, data de nascimento, senha e ao menos um canal de contato obrigatório: e-mail ou telefone celular. <br>
-c) O Cidadão preenche os dados e confirma. <br>
-d) O Sistema valida o formato e os dígitos verificadores do CPF informado. Se o CPF for inválido, reporta o erro e solicita correção antes de prosseguir. <br>
-e) O Sistema verifica se já existe conta vinculada ao CPF informado. Se sim, reporta o fato e retorna ao passo 2; caso contrário, cria a conta e redireciona o Cidadão para o preenchimento do perfil familiar. <br>
+b) O Sistema apresenta formulário solicitando nome completo, CPF, data de nascimento, senha, ao menos um canal de contato obrigatório (e-mail ou telefone celular) e o aceite explícito dos termos de uso e da política de privacidade em conformidade com a LGPD (RNF05). <br>
+c) O Cidadão preenche os dados, marca o aceite LGPD e confirma. <br>
+d) O Sistema valida o formato e os dígitos verificadores do CPF (RNF07). Se inválido, reporta o erro e solicita correção. <br>
+e) O Sistema verifica se a data de nascimento corresponde a pessoa com 18 anos ou mais. Em caso negativo, reporta o erro e impede a criação da conta. <br>
+f) O Sistema valida o formato do canal de contato informado (e-mail válido ou telefone celular com DDD). <br>
+g) O Sistema verifica se já existe conta vinculada ao CPF. Se sim, reporta o fato e retorna ao passo 2. <br>
+h) O Sistema envia um código de verificação ao canal de contato e solicita ao Cidadão que o digite, confirmando a titularidade do canal. <br>
+i) Confirmado o canal, o Sistema cria a conta, registra o aceite LGPD (data, versão do termo, identificador de sessão) e redireciona o Cidadão para o preenchimento do perfil familiar (CSU02). <br>
 
-Fluxo Alternativo (3): Autenticação de Cidadão
+Fluxo Alternativo (3.b): Autenticação
 
-a) O Cidadão informa CPF e senha. <br>
-b) O Sistema valida as credenciais. Se válidas, concede acesso; caso contrário, reporta o erro e permite nova tentativa. <br>
-c) Após três tentativas consecutivas com falha, o Sistema bloqueia temporariamente o acesso e orienta o Cidadão a utilizar a recuperação de senha. <br>
+a) O usuário informa seu identificador (CPF para o Cidadão; e-mail institucional para o Colaborador ou Administrador) e a senha. <br>
+b) O Sistema valida as credenciais, identifica o perfil do usuário e, se válidas, concede o acesso ao painel correspondente; caso contrário, reporta o erro e permite nova tentativa. <br>
+c) Após três tentativas consecutivas com falha, o Sistema bloqueia temporariamente o acesso ao identificador informado por 15 minutos (RNF10) e orienta o usuário a utilizar a recuperação de senha (Cidadão) ou a contatar o Administrador (Colaborador / Administrador). <br>
+d) No primeiro acesso do Colaborador ou do Administrador com senha provisória, o Sistema exige a troca por uma senha definitiva antes de prosseguir. <br>
 
-Fluxo Alternativo (3): Autenticação de Colaborador
+Fluxo Alternativo (3.c): Recuperação de senha (não autenticado)
 
-a) O Colaborador acessa a área administrativa do sistema e informa e-mail institucional e senha provisória fornecida pelo administrador. <br>
-b) O Sistema valida as credenciais e identifica o perfil como Colaborador. Se válidas, concede acesso ao painel administrativo; caso contrário, reporta o erro e permite nova tentativa. <br>
-c) Após três tentativas consecutivas com falha, o Sistema bloqueia temporariamente o acesso e notifica o administrador responsável. <br>
-d) No primeiro acesso, o Sistema exige a troca da senha provisória por uma senha definitiva antes de prosseguir. <br>
+a) O usuário informa o CPF (Cidadão) ou o e-mail institucional (Colaborador / Administrador) e solicita a recuperação de senha. <br>
+b) Quando houver mais de um canal de contato cadastrado, o Sistema exibe parcialmente o e-mail e o telefone para que o usuário escolha por qual canal deseja receber o código de verificação. <br>
+c) O Sistema envia um código temporário (validade de 15 minutos) ao canal escolhido. <br>
+d) O usuário informa o código recebido. O Sistema valida o código e, se correto, permite a definição de uma nova senha; caso contrário, reporta o erro e permite nova tentativa (limitada a três). <br>
 
-Fluxo Alternativo (3): Recuperação de senha
+Fluxo Alternativo (3.d): Edição de dados (autenticado)
 
-a) O usuário informa o CPF ou e-mail cadastrado e solicita a recuperação de senha. <br>
-b) O Sistema localiza a conta e exibe parcialmente o e-mail e o telefone cadastrados para que o usuário escolha por qual canal deseja receber o código de verificação. <br>
-c) O Sistema envia um código de verificação temporário ao canal escolhido. <br>
-d) O usuário informa o código recebido. O Sistema valida o código e, se correto, permite a definição de uma nova senha; caso contrário, reporta o erro e permite nova tentativa. <br>
+a) O usuário altera um ou mais campos do cadastro e confirma a atualização. O CPF e a data de nascimento são imutáveis após a criação da conta. <br>
+b) Se um canal de contato (e-mail ou telefone) foi alterado, o Sistema envia novo código de verificação ao canal informado e exige a confirmação antes de persistir a alteração. <br>
+c) O Sistema valida os demais dados. Se válidos, salva as alterações; caso contrário, reporta o erro e solicita correção. <br>
 
-Fluxo Alternativo (3): Edição de dados
+Fluxo Alternativo (3.e): Alteração de senha (autenticado)
 
-a) O usuário altera um ou mais campos do cadastro, incluindo e-mail ou telefone, e confirma a atualização. <br>
-b) O Sistema valida os dados informados. Se válidos, salva as alterações; caso contrário, reporta o erro e solicita correção. <br>
+a) O usuário solicita a troca da senha. <br>
+b) O Sistema solicita a senha atual e a nova senha (digitada duas vezes para confirmação). <br>
+c) O Sistema valida a senha atual e verifica se a nova senha atende à política mínima definida no RNF10. Se inválida, reporta o erro e permite nova tentativa. <br>
+d) Validada, o Sistema persiste a nova senha, encerra a sessão em todos os dispositivos e exige nova autenticação. <br>
 
-Fluxo Alternativo (3): Exclusão de conta
+Fluxo Alternativo (3.f): Exclusão de conta (autenticado)
 
-a) O Cidadão solicita a exclusão da conta. <br>
-b) O Sistema solicita confirmação e informa que todos os dados serão removidos permanentemente. <br>
-c) O Cidadão confirma. O Sistema exclui os dados do usuário em conformidade com a LGPD e encerra a sessão. <br>
+a) O usuário solicita a exclusão da própria conta. <br>
+b) O Sistema solicita confirmação e informa que os dados pessoais entrarão em processo de remoção permanente em até 15 dias úteis, conforme RNF06. <br>
+c) Confirmada a solicitação, o Sistema inicia o procedimento de anonimização e exclusão, registra o evento e encerra a sessão. <br>
+d) Se o solicitante for o único Administrador ativo do sistema, o Sistema impede a exclusão e orienta o provisionamento de outro Administrador antes da operação. <br>
 
-Pós-condições: Uma conta de Cidadão foi criada, o usuário foi autenticado, sua senha foi redefinida, seus dados foram atualizados ou a conta foi excluída.
+Pós-condições:
+
+* Após cadastro: uma conta de Cidadão foi criada e está apta a preencher o perfil familiar (CSU02).
+* Após autenticação: o usuário (Cidadão, Colaborador ou Administrador) acessou o painel correspondente ao seu perfil.
+* Após edição, alteração ou recuperação de senha: os dados foram atualizados ou a senha foi redefinida.
+* Após exclusão: os dados pessoais entraram em processo de remoção em conformidade com a LGPD e a sessão foi encerrada.
 
 ---
 
