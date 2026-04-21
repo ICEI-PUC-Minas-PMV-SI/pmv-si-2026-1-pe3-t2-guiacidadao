@@ -36,10 +36,12 @@ Segundo dados do IBGE, cerca de 15,3% da população brasileira com 10 anos ou m
 
 ## 1.4. Público-alvo
 
-O GuiaCidadão atende três perfis de usuário, cada um com necessidades e ganhos distintos.
+O GuiaCidadão atende quatro perfis de usuário, cada um com necessidades e ganhos distintos.
 
 O Cidadão é o usuário central da aplicação: qualquer pessoa que precise identificar benefícios sociais compatíveis com seu perfil ou entender o que precisa fazer para solicitá-los. O foco de design é o cidadão que enfrenta vulnerabilidade informacional, dificuldade em compreender a linguagem técnica dos benefícios, navegar pelas plataformas governamentais ou organizar a documentação exigida. Para esse perfil, a aplicação entrega orientação personalizada: o cidadão descobre a quais benefícios tem direito, compreende os requisitos de cada um e acompanha seu progresso com autonomia. A interface adota linguagem simples e segue as diretrizes de acessibilidade WCAG para atender também quem acessa via dispositivo móvel ou apresenta baixo letramento digital.
 
 O Visitante é o cidadão em primeiro contato com a aplicação, antes de criar uma conta. Para ele, a aplicação entrega uma resposta imediata: com apenas três perguntas, obtém uma lista preliminar de benefícios compatíveis com seu perfil, sem precisar se cadastrar. Se optar por criar uma conta, os dados informados são aproveitados automaticamente, eliminando o repreenchimento.
 
-O Colaborador é o usuário responsável por manter o catálogo de benefícios atualizado. Para ele, a aplicação entrega uma interface administrativa que permite cadastrar, editar e desativar benefícios com seus critérios de elegibilidade e listas de documentos, garantindo que as informações apresentadas ao cidadão sejam sempre precisas e atualizadas.
+O Colaborador é o usuário responsável por manter o catálogo de benefícios e o cadastro das unidades de atendimento atualizados. Para ele, a aplicação entrega uma interface administrativa que permite cadastrar, editar e desativar benefícios com seus critérios de elegibilidade e listas de documentos, além de gerenciar os pontos de atendimento presencial, garantindo que as informações apresentadas ao cidadão sejam sempre precisas e atualizadas.
+
+O Administrador é o usuário interno de maior privilégio, responsável pela criação, edição, desativação e auditoria das contas de Colaborador. Não edita o catálogo de benefícios nem interage diretamente com cidadãos — sua atuação concentra-se na governança dos acessos administrativos e no provisionamento de novos Colaboradores quando necessário.
