@@ -206,7 +206,7 @@ Pré-condições: O Cidadão deve estar autenticado no Sistema.
 Fluxo Principal:
 
 1) O Cidadão acessa a seção de perfil familiar.
-2) O Sistema apresenta formulário solicitando: número de membros do núcleo familiar, renda mensal de cada membro, vínculo empregatício de cada membro, condição de moradia e CEP de residência (campo opcional).
+2) O Sistema apresenta formulário solicitando, para cada membro do núcleo familiar: nome, idade, grau de parentesco com o responsável (titular, cônjuge, filho(a), pai/mãe, avô/avó, irmão/irmã, outro), vínculo empregatício (CLT, servidor público, MEI, autônomo/informal, desempregado, aposentado, pensionista, estudante, menor sem renda) e renda mensal em reais (valor maior ou igual a zero, com até duas casas decimais). Além dos dados por membro, o formulário solicita: condição de moradia (própria quitada, própria financiada, alugada, cedida, ocupação ou situação de rua) e CEP de residência (opcional). O número total de membros é contado automaticamente pelo Sistema a partir dos registros informados.
 3) O Cidadão preenche os dados e confirma.
 4) O Sistema valida as informações e calcula a renda familiar total e a renda per capita, aplicando as regras definidas em RF04. Os valores calculados ficam disponíveis para CSU03 (Verificar Elegibilidade) e CSU04 (Simular Cenários).
 5) O Sistema salva o perfil e exibe um resumo com os valores calculados.
@@ -237,21 +237,22 @@ Pré-condições: O perfil socioeconômico familiar deve estar preenchido. O Cid
 
 Fluxo Principal:
 
-1) O Sistema recupera o perfil socioeconômico do Cidadão.
-2) O Sistema percorre o catálogo de benefícios cadastrados e aplica os critérios de elegibilidade de cada um ao perfil do Cidadão.
-3) O Sistema classifica cada benefício em: elegível, potencialmente elegível ou não elegível.
-4) O Sistema exibe a lista de benefícios elegíveis e potencialmente elegíveis, com indicação do critério que determinou cada classificação.
-5) O Sistema redireciona o Cidadão para a consulta detalhada dos benefícios identificados (CSU05).
+1) O Cidadão acessa a funcionalidade "Verificar meus benefícios" no painel, ou a elegibilidade é reavaliada automaticamente após uma atualização no perfil familiar (CSU02) ou no catálogo de benefícios (RF17).
+2) O Sistema recupera o perfil socioeconômico do Cidadão.
+3) O Sistema percorre o catálogo de benefícios cadastrados e aplica os critérios de elegibilidade de cada um ao perfil do Cidadão.
+4) O Sistema classifica cada benefício em: elegível, potencialmente elegível ou não elegível.
+5) O Sistema exibe a lista de benefícios classificados, com indicação do critério que determinou cada classificação.
+6) O Cidadão seleciona um benefício para obter a consulta detalhada (CSU05).
 
-Fluxo Alternativo (3): Nenhum benefício elegível identificado
+Fluxo Alternativo (4): Nenhum benefício elegível identificado
 
 a) O Sistema não encontra benefícios que atendam ao perfil informado. <br>
 b) O Sistema informa o fato ao Cidadão em linguagem simples, explica quais critérios não foram atendidos e sugere a simulação de cenários (CSU04) para explorar possibilidades. <br>
 
-Fluxo Alternativo (3): Dados insuficientes para avaliação
+Fluxo Alternativo (4): Dados insuficientes para avaliação
 
 a) O Sistema identifica que campos do perfil relevantes para determinado benefício não foram preenchidos. <br>
-b) O Sistema sinaliza quais informações estão faltando e orienta o Cidadão a completar o perfil antes de prosseguir. <br>
+b) O Sistema sinaliza quais informações estão faltando e orienta o Cidadão a completar o perfil (CSU02) antes de prosseguir. <br>
 
 Pós-condições: Os benefícios compatíveis com o perfil do Cidadão foram identificados e listados no painel do usuário.
 
@@ -290,7 +291,7 @@ Pós-condições: O resultado da simulação foi exibido. Os dados reais do Cida
 
 #### Consultar Benefícios (CSU05)
 
-Sumário: O Cidadão consulta as informações detalhadas sobre os benefícios sociais identificados como elegíveis em seu perfil, apresentadas em linguagem simples.
+Sumário: O Cidadão consulta as informações detalhadas sobre os benefícios sociais identificados em seu perfil (elegíveis, potencialmente elegíveis ou não elegíveis), apresentadas em linguagem simples. Para os não elegíveis, a consulta explica os critérios não atendidos e o que precisaria mudar no perfil.
 
 Ator Primário: Cidadão.
 
@@ -315,7 +316,7 @@ Pós-condições: O Cidadão visualizou as informações detalhadas do benefíci
 
 #### Gerenciar Checklist de Documentos (CSU06)
 
-Sumário: O Sistema gera automaticamente a lista de documentos necessários para cada benefício elegível e o Cidadão gerencia o status de cada item conforme avança na instrução do processo.
+Sumário: O Cidadão acompanha, para cada benefício elegível, a lista de documentos necessários à solicitação, marcando o status de cada item (pendente, obtido ou não aplicável) e acompanhando o progresso do processo.
 
 Ator Primário: Cidadão.
 
@@ -323,8 +324,8 @@ Pré-condições: Ao menos um benefício elegível deve ter sido identificado (C
 
 Fluxo Principal:
 
-1) O Sistema gera automaticamente, para cada benefício elegível, a lista de documentos exigidos para solicitação.
-2) O Sistema exibe o checklist com todos os itens marcados como pendentes.
+1) O Cidadão acessa o checklist de um benefício elegível a partir da consulta detalhada (CSU05) ou do painel de acompanhamento.
+2) Se ainda não existir, o Sistema gera a lista de documentos exigidos para aquele benefício com todos os itens marcados como pendentes; caso já exista, o Sistema recupera o checklist com o status atual.
 3) O Cidadão marca os documentos que já possui como obtidos.
 4) O Sistema atualiza o progresso e recalcula o percentual de conclusão do checklist.
 5) O Cidadão pode consultar, para cada documento, uma orientação sobre onde e como obtê-lo.
@@ -353,15 +354,15 @@ Pré-condições: Nenhuma. A funcionalidade é acessível sem autenticação.
 
 Fluxo Principal:
 
-1) O Visitante acessa o sistema pela primeira vez.
-2) O Sistema apresenta a triagem rápida como ponto de entrada, com explicação em linguagem simples sobre o que será perguntado.
+1) O Visitante acessa o sistema sem autenticação.
+2) O Sistema oferece a triagem rápida como uma das opções de entrada, com explicação em linguagem simples sobre o que será perguntado. O Visitante pode reiniciar a triagem quantas vezes quiser, e as respostas são mantidas apenas na sessão atual.
 3) O Sistema apresenta a primeira pergunta: composição do núcleo familiar (número de pessoas).
 4) O Visitante seleciona uma das opções apresentadas.
 5) O Sistema apresenta a segunda pergunta: faixa de renda per capita mensal do núcleo.
 6) O Visitante seleciona uma das opções apresentadas.
 7) O Sistema apresenta a terceira pergunta: situação de vínculo empregatício do responsável familiar.
 8) O Visitante seleciona uma das opções apresentadas.
-9) O Sistema processa as respostas e exibe a lista de benefícios potencialmente compatíveis, com indicação do grau de compatibilidade de cada um.
+9) O Sistema processa as respostas e exibe a lista de benefícios, classificados como elegíveis, potencialmente elegíveis ou não elegíveis, seguindo a mesma terminologia de RF05 e CSU03.
 10) O Sistema apresenta convite para criação de conta, explicando que o cadastro permite salvar o resultado, detalhar o perfil e gerar o checklist de documentos.
 
 Fluxo Alternativo (9): Nenhum benefício compatível identificado
@@ -387,7 +388,7 @@ Pós-condições: O Visitante visualizou uma lista preliminar de benefícios com
 
 #### Gerar e Compartilhar Documento (CSU08)
 
-Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação no sistema — contendo os benefícios identificados, os documentos necessários, o status de cada item e a unidade de atendimento mais próxima — em formato PDF, via WhatsApp ou impressão direta.
+Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação no sistema (benefícios identificados, documentos necessários, status de cada item) em formato PDF, via WhatsApp ou impressão direta. Quando o CEP estiver informado no perfil ou a geolocalização for autorizada, o documento também inclui a unidade de atendimento mais próxima.
 
 Ator Primário: Cidadão.
 
@@ -474,9 +475,11 @@ Pós-condições: O Cidadão visualizou as informações da unidade de atendimen
 
 Sumário: O Cidadão registra o resultado do atendimento presencial realizado em órgão competente, permitindo que o painel de acompanhamento reflita a situação real do processo após a saída do ambiente digital.
 
+Cada benefício acompanhado pelo Cidadão assume um dos seguintes estados ao longo do ciclo: **não iniciado** (checklist gerado mas ainda sem itens obtidos), **em andamento** (checklist com ao menos um item obtido e sem resultado presencial registrado), **aguardando resposta** (solicitação protocolada ou documentação complementar pendente), **ativo** (benefício concedido) ou **indeferido** (solicitação negada).
+
 Ator Primário: Cidadão.
 
-Pré-condições: O Cidadão deve ter ao menos um benefício com checklist em andamento. O Cidadão deve estar autenticado no Sistema.
+Pré-condições: O Cidadão deve ter ao menos um benefício em andamento ou aguardando resposta. O Cidadão deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
@@ -490,7 +493,7 @@ Fluxo Principal:
 Fluxo Alternativo (5): Documentação complementar solicitada
 
 a) O Cidadão informa que o órgão solicitou documentos adicionais não previstos no checklist original. <br>
-b) O Sistema permite que o Cidadão adicione manualmente os novos itens ao checklist do benefício. <br>
+b) O Sistema permite que o Cidadão adicione manualmente os novos itens ao checklist do benefício, sinalizando-os como "adicionados pelo Cidadão". Esses itens são preservados mesmo quando o Colaborador sincroniza o checklist em CSU11 (que só altera os itens definidos no catálogo). <br>
 c) O Sistema atualiza o progresso e orienta o Cidadão sobre os próximos passos. <br>
 
 Fluxo Alternativo (5): Benefício concedido
@@ -515,7 +518,7 @@ Sumário: O Colaborador realiza a gestão do catálogo de benefícios sociais di
 
 Ator Primário: Colaborador.
 
-Pré-condições: O Colaborador deve estar autenticado com perfil administrativo no Sistema.
+Pré-condições: O Colaborador deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
@@ -536,7 +539,7 @@ Fluxo Alternativo (3): Edição
 a) O Colaborador seleciona um benefício e atualiza um ou mais campos. <br>
 b) O Sistema identifica se a alteração afeta critérios de elegibilidade ou a lista de documentos exigidos. <br>
 c) Se critérios de elegibilidade foram alterados, o Sistema agenda a reavaliação automática de todos os perfis que possuem aquele benefício classificado, notificando os usuários afetados pelo canal de contato cadastrado sobre eventual mudança na sua situação. <br>
-d) Se a lista de documentos exigidos foi alterada, o Sistema sincroniza automaticamente todos os checklists em andamento daquele benefício, adicionando novos itens como pendentes ou removendo itens que deixaram de ser exigidos, e notifica os usuários afetados. <br>
+d) Se a lista de documentos exigidos foi alterada, o Sistema sincroniza automaticamente todos os checklists em andamento daquele benefício, adicionando novos itens como pendentes ou removendo itens do catálogo que deixaram de ser exigidos, e notifica os usuários afetados (RF16). Itens adicionados manualmente pelo Cidadão em CSU10 são preservados e não são afetados pela sincronização. <br>
 e) O Sistema salva as alterações, registrando data e autor da modificação. <br>
 
 Fluxo Alternativo (3): Desativação
@@ -562,7 +565,7 @@ Sumário: O Colaborador realiza a gestão das unidades de atendimento presencial
 
 Ator Primário: Colaborador.
 
-Pré-condições: O Colaborador deve estar autenticado como Colaborador no Sistema.
+Pré-condições: O Colaborador deve estar autenticado no Sistema.
 
 Fluxo Principal:
 
@@ -660,6 +663,6 @@ A Figura 2 mostra o diagrama de classes do sistema. Ele ilustra as entidades pri
 | 2 | PerfilFamiliar | Armazena a composição familiar do cidadão, incluindo membros e renda total, sendo utilizado no cálculo de renda per capita.                             |
 | 3 | MembroFamiliar | Representa cada integrante da família, contendo dados como nome, idade, salário e grau de parentesco.                                                   |
 | 4 | Beneficio      | Contém as informações dos benefícios sociais disponíveis, incluindo critérios de elegibilidade, descrição e valor.                                      |
-| 5 | Simulacao      | Responsável por realizar a análise de elegibilidade do cidadão em relação a um ou mais benefícios, com base nos critérios definidos.                    |
-| 6 | Documento      | Representa os documentos necessários para solicitação de benefícios, incluindo tipo e status de entrega.                                                |
+| 5 | Simulacao      | Representa um cenário hipotético criado pelo Cidadão, no qual valores do perfil familiar (renda, vínculo empregatício, composição) são alterados temporariamente para avaliar o impacto na elegibilidade, sem modificar os dados reais. |
+| 6 | Documento      | Representa os documentos necessários para solicitação de benefícios, incluindo tipo e status atual (pendente, obtido ou não aplicável).                 |
 | 7 | Checklist      | Controla a lista de documentos exigidos para cada benefício, auxiliando o usuário no acompanhamento do processo.                                        |
