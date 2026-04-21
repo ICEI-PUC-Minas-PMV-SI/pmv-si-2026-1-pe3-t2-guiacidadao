@@ -43,7 +43,7 @@ Para compreender os pontos de conflito e as necessidades dos usuários, frequent
 ### 3.3.2 Ideação e Validação de Hipóteses
 
 A partir das necessidades levantadas, o processo de ideação permitiu estruturar soluções baseadas em hipóteses validadas pela pesquisa formal:
-* **Hipótese 1:** Interfaces densas e linguagem jurídica afastam os usuários (evidenciado pelos estudos de Freitas e Bernardo). **Solução:** Implementação do requisito não funcional de "Linguagem Simples" (RNF05), garantindo que termos técnicos sejam traduzidos de forma acessível.
+* **Hipótese 1:** Interfaces densas e linguagem jurídica afastam os usuários (evidenciado pelos estudos de Freitas e Bernardo). **Solução:** Implementação do requisito não funcional de "Linguagem Simples" (RNF09), garantindo que termos técnicos sejam traduzidos de forma acessível.
 * **Hipótese 2:** A exigência de um cadastro longo antes de qualquer entrega de valor gera alta taxa de abandono. **Solução:** Criação da funcionalidade de "Triagem Rápida" (CSU07), que permite ao visitante obter um diagnóstico preliminar respondendo apenas a perguntas objetivas sem necessidade de autenticação.
 
 ### 3.3.3 Gerenciamento de Mudanças de Requisitos
@@ -64,7 +64,7 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RF03 | Gestão de perfil | O cidadão, o colaborador e o administrador editam seus dados cadastrais, alteram sua senha e excluem sua conta. | Alta |
 | RF04 | Gestão do perfil familiar | O cidadão gerencia os dados socioeconômicos do seu núcleo familiar (membros, rendas, vínculo empregatício, condição de moradia e CEP), com cálculo automático da renda total e per capita. | Alta |
 | RF05 | Verificação de elegibilidade | O cidadão consulta os benefícios compatíveis com seu perfil, classificados como elegíveis, potencialmente elegíveis ou não elegíveis. | Alta |
-| RF06 | Simulação de cenários | O cidadão simula alterações no seu perfil para analisar o impacto na sua elegibilidade, sem afetar seus dados reais. | Média |
+| RF06 | Simulação de cenários | O cidadão simula alterações no seu perfil para analisar o impacto na sua elegibilidade, sem afetar seus dados reais, podendo armazenar até cinco simulações salvas por conta. | Média |
 | RF07 | Consulta detalhada de benefício | O cidadão consulta a descrição, os critérios, os documentos exigidos e o link oficial de cada benefício, em linguagem simples. | Alta |
 | RF08 | Preenchimento de checklist | O cidadão preenche o checklist de documentos exigidos para cada benefício elegível, marcando cada item como pendente, obtido ou não aplicável. | Média |
 | RF09 | Triagem rápida | O visitante realiza uma triagem rápida e obtém uma lista preliminar de benefícios compatíveis, sem necessidade de cadastro. | Alta |
@@ -74,6 +74,8 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RF13 | Gestão do catálogo de benefícios | O colaborador gerencia o catálogo de benefícios e seus critérios de elegibilidade (inclusão, edição, desativação e consulta). | Alta |
 | RF14 | Gestão de unidades de atendimento | O colaborador gerencia as unidades de atendimento (inclusão, edição, desativação e consulta). | Alta |
 | RF15 | Gestão de contas de colaborador | O administrador gerencia as contas de colaborador (inclusão, edição, desativação e consulta). | Alta |
+| RF16 | Notificação a usuários afetados | O sistema notifica cidadãos afetados por alterações no catálogo de benefícios (mudança em critérios, lista de documentos ou desativação) pelo canal de contato preferencial cadastrado. | Média |
+| RF17 | Reavaliação automática de elegibilidade | Sempre que um critério de elegibilidade for alterado pelo Colaborador, o sistema reexecuta a verificação de elegibilidade (CSU03) para todos os perfis que possuíam classificação anterior para aquele benefício. | Média |
 
 ### 3.4.2 Requisitos Não Funcionais
 
@@ -87,6 +89,9 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RNF06 | O sistema deve processar solicitações de exclusão de dados pessoais em até 15 dias úteis, em conformidade com a LGPD. | Alta |
 | RNF07 | O sistema deve validar formato e dígitos verificadores do CPF no momento da submissão do cadastro. | Alta |
 | RNF08 | O sistema deve controlar o acesso a funcionalidades e rotas por perfil de usuário, bloqueando requisições incompatíveis. | Alta |
+| RNF09 | O sistema deve apresentar todos os conteúdos voltados ao cidadão em linguagem simples, traduzindo termos jurídicos e administrativos para expressões acessíveis a pessoas com baixo letramento digital. | Alta |
+| RNF10 | O sistema deve exigir senhas com no mínimo 8 caracteres e bloquear temporariamente o identificador após três tentativas consecutivas de autenticação falhas, por um período de 15 minutos. | Alta |
+| RNF11 | O sistema deve localizar unidades de atendimento em raio inicial de 5 km e ampliar progressivamente em incrementos de 5 km até 25 km quando nenhuma unidade for encontrada. | Média |
 
 
 ### 3.4.3 Usuários 
