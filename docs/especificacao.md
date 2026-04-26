@@ -92,7 +92,7 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RNF09 | O sistema deve apresentar todos os conteúdos voltados ao cidadão em linguagem simples, traduzindo termos jurídicos e administrativos para expressões acessíveis a pessoas com baixo letramento digital. | Alta |
 | RNF10 | O sistema deve exigir senhas com no mínimo 8 caracteres e bloquear temporariamente o identificador após três tentativas consecutivas de autenticação falhas, por um período de 15 minutos. | Alta |
 | RNF11 | O sistema deve localizar unidades de atendimento em raio inicial de 5 km e ampliar progressivamente em incrementos de 5 km até 25 km quando nenhuma unidade for encontrada. | Média |
-
+| RNF12 | O sistema deve ser responsivo em telas de celulares (4,5"–6,5"), tablets (7"–12,6"), notebooks (13,3"–17,3") e PCs (20"–32"). | Média |
 
 ### 3.4.3 Usuários 
 
