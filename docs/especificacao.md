@@ -657,12 +657,16 @@ A Figura 2 mostra o diagrama de classes do sistema. Ele ilustra as entidades pri
 
 ### 3.5.4 Descrições das Classes
 
-| # | Nome           | Descrição                                                                                                                                               |
-| - | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1 | Cidadao        | Representa o usuário principal do sistema, contendo informações pessoais, renda e dados necessários para análise de elegibilidade a benefícios sociais. |
-| 2 | PerfilFamiliar | Armazena a composição familiar do cidadão, incluindo membros e renda total, sendo utilizado no cálculo de renda per capita.                             |
-| 3 | MembroFamiliar | Representa cada integrante da família, contendo dados como nome, idade, salário e grau de parentesco.                                                   |
-| 4 | Beneficio      | Contém as informações dos benefícios sociais disponíveis, incluindo critérios de elegibilidade, descrição e valor.                                      |
-| 5 | Simulacao      | Representa um cenário hipotético criado pelo Cidadão, no qual valores do perfil familiar (renda, vínculo empregatício, composição) são alterados temporariamente para avaliar o impacto na elegibilidade, sem modificar os dados reais. |
-| 6 | Documento      | Representa os documentos necessários para solicitação de benefícios, incluindo tipo e status atual (pendente, obtido ou não aplicável).                 |
-| 7 | Checklist      | Controla a lista de documentos exigidos para cada benefício, auxiliando o usuário no acompanhamento do processo.                                        |
+| # | Nome           | Descrição                                                                                                                                                                               |
+| - | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 | Usuario        | Classe base que centraliza os dados comuns de identificação e acesso (ID, CPF, nome, e-mail e senha) compartilhados por todos os perfis, servindo de modelo para Cidadãos e Colaboradores. |
+| 2 | Cidadao        | Especialização da classe Usuario que representa o beneficiário final. Além dos dados herdados, acrescenta informações de renda e endereço para análise de elegibilidade social.           |
+| 3 | Colaborador    | Representa o funcionário do sistema que gerencia as unidades de atendimento e os benefícios oferecidos aos cidadãos.                                                                    |
+| 4 | PerfilFamiliar | Armazena a composição familiar do cidadão, incluindo membros e renda total, sendo utilizado no cálculo de renda per capita.                                                             |
+| 5 | MembroFamiliar | Representa cada integrante da família, contendo dados como nome, idade e renda.                                                                                                         |
+| 6 | Beneficio      | Contém as informações dos benefícios sociais disponíveis, incluindo critérios de elegibilidade, descrição e valor.                                                                      |
+| 7 | Simulacao      | Representa um cenário hipotético criado pelo Cidadão, no qual valores do perfil familiar (renda, vínculo empregatício, composição) são alterados temporariamente para avaliar o impacto na elegibilidade, sem modificar os dados reais. |
+| 8 | Agendamento    | Registra a reserva de um atendimento, contendo informações sobre o cidadão, a unidade, a data e o status da solicitação.                                                                |
+| 9 | UnidadeAtendimento | Representa o local físico de atendimento, contendo nome, endereço e telefone para localização.                                                                                      |
+| 10| Documento      | Representa os documentos necessários para solicitação de benefícios, incluindo nome, tipo e se a sua apresentação é obrigatória.                                                        |
+| 11| Checklist      | Controla a lista de documentos exigidos para cada benefício, permitindo verificar pendências para auxiliar o usuário no acompanhamento do processo.                                     |
