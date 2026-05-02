@@ -6,7 +6,7 @@ Entretanto, apesar da robustez normativa que sustenta esse arcabouço, a efetiva
 
 Nesse cenário, observa-se que a vulnerabilidade social frequentemente se associa a uma vulnerabilidade informacional (Castells, 1999). Muitos cidadãos encontram dificuldades para compreender a linguagem técnica presente em documentos oficiais, interpretar critérios de elegibilidade ou localizar orientações claras sobre como solicitar determinados benefícios. A crescente digitalização dos serviços públicos, embora amplie o potencial de acesso, também pode acentuar desigualdades quando não é acompanhada de soluções que priorizem usabilidade, clareza informacional e inclusão digital (CGI.br, 2023).
 
-Diante desse contexto, surge a necessidade de desenvolver ferramentas tecnológicas que atuem como mediadoras entre o cidadão e o sistema de proteção social. Assim, o desenvolvimento de uma aplicação web voltada à orientação sobre benefícios sociais apresenta-se como uma proposta relevante. Ao reunir, estruturar e traduzir informações complexas em linguagem acessível, uma plataforma desse tipo pode contribuir para reduzir barreiras informacionais, facilitar a identificação dos benefícios disponíveis e ampliar o acesso da população aos mecanismos de proteção garantidos pelo Estado.
+Diante desse contexto, surge a necessidade de desenvolver ferramentas tecnológicas que atuem como mediadoras entre o cidadão e o sistema de proteção social. Assim, o desenvolvimento de um aplicativo móvel voltado à orientação sobre benefícios sociais apresenta-se como uma proposta relevante, considerando que o smartphone é o principal (e muitas vezes único) dispositivo de acesso à internet do público em vulnerabilidade socioeconômica. Ao reunir, estruturar e traduzir informações complexas em linguagem acessível, um aplicativo desse tipo pode contribuir para reduzir barreiras informacionais, facilitar a identificação dos benefícios disponíveis e ampliar o acesso da população aos mecanismos de proteção garantidos pelo Estado.
 
 ## 1.1. Problema
 
@@ -17,7 +17,8 @@ Como consequência, a garantia formal de direitos convive com obstáculos que di
 ## 1.2. Objetivos do trabalho
 
 ### Objetivo Geral
-Desenvolver uma aplicação web que oriente cidadãos na identificação e no acesso a benefícios sociais.
+
+Desenvolver um aplicativo móvel híbrido (iOS e Android) que oriente cidadãos na identificação e no acesso a benefícios sociais.
 
 ### Objetivos Específicos
 * Desenvolver o módulo de gerenciamento do catálogo de benefícios, permitindo ao Colaborador cadastrar, editar e desativar benefícios com seus critérios de elegibilidade e requisitos documentais;
@@ -28,7 +29,7 @@ Desenvolver uma aplicação web que oriente cidadãos na identificação e no ac
 
 ## 1.3. Justificativa
 
-A centralização da informação em uma única plataforma permite que o cidadão compreenda sua situação de forma sistêmica, reduzindo erros na montagem do processo administrativo. Ao organizar requisitos e documentos em um só local, o GuiaCidadão aumenta a qualidade da instrução processual, o que diminui a incidência de pedidos negados por falhas documentais e evita que o usuário precise recorrer a múltiplas fontes oficiais confusas.
+A centralização da informação em um único aplicativo permite que o cidadão compreenda sua situação de forma sistêmica, reduzindo erros na montagem do processo administrativo. Ao organizar requisitos e documentos em um só local, o GuiaCidadão aumenta a qualidade da instrução processual, o que diminui a incidência de pedidos negados por falhas documentais e evita que o usuário precise recorrer a múltiplas fontes oficiais confusas.
 
 Além disso, essa organização estruturada promove a eficiência no atendimento social, uma vez que o cidadão chega aos órgãos competentes com a documentação correta e os requisitos validados, fortalecendo a transparência e a autonomia do indivíduo no exercício de seus direitos.
 
@@ -38,7 +39,7 @@ Segundo dados do IBGE, cerca de 15,3% da população brasileira com 10 anos ou m
 
 O GuiaCidadão atende quatro perfis de usuário, cada um com necessidades e ganhos distintos.
 
-O Cidadão é o usuário central da aplicação: qualquer pessoa que precise identificar benefícios sociais compatíveis com seu perfil ou entender o que precisa fazer para solicitá-los. O foco de design é o cidadão que enfrenta vulnerabilidade informacional, dificuldade em compreender a linguagem técnica dos benefícios, navegar pelas plataformas governamentais ou organizar a documentação exigida. Para esse perfil, a aplicação entrega orientação personalizada: o cidadão descobre a quais benefícios tem direito, compreende os requisitos de cada um e acompanha seu progresso com autonomia. A interface adota linguagem simples e segue as diretrizes de acessibilidade WCAG para atender também quem acessa via dispositivo móvel ou apresenta baixo letramento digital.
+O Cidadão é o usuário central do aplicativo: qualquer pessoa que precise identificar benefícios sociais compatíveis com seu perfil ou entender o que precisa fazer para solicitá-los. O foco de design é o cidadão que enfrenta vulnerabilidade informacional, dificuldade em compreender a linguagem técnica dos benefícios, navegar pelas plataformas governamentais ou organizar a documentação exigida. Para esse perfil, o aplicativo entrega orientação personalizada: o cidadão descobre a quais benefícios tem direito, compreende os requisitos de cada um e acompanha seu progresso com autonomia. A interface adota linguagem simples e segue as diretrizes de acessibilidade WCAG, considerando smartphones de entrada como o principal (e muitas vezes único) dispositivo de acesso à internet do público com baixo letramento digital.
 
 O Visitante é o cidadão em primeiro contato com a aplicação, antes de criar uma conta. Para ele, a aplicação entrega uma resposta imediata: com apenas três perguntas, obtém uma lista preliminar de benefícios compatíveis com seu perfil, sem precisar se cadastrar. Se optar por criar uma conta, os dados informados são aproveitados automaticamente, eliminando o repreenchimento.
 
