@@ -303,7 +303,7 @@ Fluxo Principal:
 1) O Cidadão acessa a lista de benefícios identificados no seu painel.
 2) O Sistema exibe os benefícios com nome, descrição resumida em linguagem simples e classificação de elegibilidade.
 3) O Cidadão seleciona um benefício para ver os detalhes.
-4) O Sistema exibe: descrição completa do benefício, requisitos de elegibilidade traduzidos para linguagem simples, lista de documentos exigidos e link para a fonte oficial do governo.
+4) O Sistema exibe: descrição completa do benefício, requisitos de elegibilidade traduzidos para linguagem simples, lista de documentos exigidos, link para a fonte oficial do governo e a unidade de atendimento mais próxima onde o benefício pode ser solicitado (CSU09).
 5) O Cidadão pode acessar o checklist de documentos do benefício selecionado (CSU06).
 
 Fluxo Alternativo (3): Benefício não elegível selecionado
