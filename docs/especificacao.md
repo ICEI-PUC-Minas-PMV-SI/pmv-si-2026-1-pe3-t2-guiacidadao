@@ -2,21 +2,21 @@
 
 ## 3.1 Objetivos deste documento
 
-O principal objetivo deste documento é detalhar as necessidades e funcionalidades do sistema web GuiaCidadão, destacando o público-alvo e demonstrando as metas a serem cumpridas. Além do objetivo principal, serve também como referência para desenvolvedores, usuários e demais interessados, garantindo clareza quanto a missão principal do sistema e o atingimento dos requisitos citados.
+O principal objetivo deste documento é detalhar as necessidades e funcionalidades do aplicativo móvel GuiaCidadão, destacando o público-alvo e demonstrando as metas a serem cumpridas. Além do objetivo principal, serve também como referência para desenvolvedores, usuários e demais interessados, garantindo clareza quanto a missão principal do sistema e o atingimento dos requisitos citados.
 
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
 
-O produto será denominado GuiaCidadão, que consiste em um sistema web para cidadãos em vulnerabilidade socioeconômica e visitantes que buscam informações centralizadas sobre os benefícios sociais disponibilizados pelo governo. Seus componentes principais são o sistema de cadastro socioeconômico familiar, sistema de elegibilidade para benefícios e o sistema de cálculo de renda familiar.
+O produto será denominado GuiaCidadão, que consiste em um aplicativo móvel híbrido (iOS e Android) para cidadãos em vulnerabilidade socioeconômica e visitantes que buscam informações centralizadas sobre os benefícios sociais disponibilizados pelo governo. Todos os perfis de usuário (Cidadão, Visitante, Colaborador e Administrador) acessam o sistema exclusivamente pelo aplicativo móvel, sem contraparte web ou desktop. Seus componentes principais são o sistema de cadastro socioeconômico familiar, sistema de elegibilidade para benefícios e o sistema de cálculo de renda familiar.
 
 ### 3.2.2 Missão do produto
 
-Centralizar os benefícios sociais distribuídos pelo governo em uma plataforma única, criando um ambiente dinâmico, interativo e intuitivo aos usuários. Além da centralização, a plataforma também auxilia na identificação de benefícios que competem ao usuário, através de informações socioeconômicas, cálculo de renda familiar e demais informações do usuário. Apesar de todas as funções, a plataforma também se torna um acesso rápido aos visitantes que apenas buscam informações sobre os benefícios sociais, sem necessidade de cadastro. 
+Centralizar os benefícios sociais distribuídos pelo governo em um aplicativo único, criando um ambiente dinâmico, interativo e intuitivo aos usuários. Além da centralização, o aplicativo também auxilia na identificação de benefícios que competem ao usuário, através de informações socioeconômicas, cálculo de renda familiar e demais informações do usuário. Apesar de todas as funções, o aplicativo também se torna um acesso rápido aos visitantes que apenas buscam informações sobre os benefícios sociais, sem necessidade de cadastro. 
 
 ### 3.2.3 Limites do produto
 
-O sistema web ficará condicionado ao cadastro e à atualização manual dos benefícios sociais e das unidades de atendimento pelo Colaborador, além de utilizar banco de dados simulado em armazenamento local para fins de testagem de suas funcionalidades.
+O aplicativo ficará condicionado ao cadastro e à atualização manual dos benefícios sociais e das unidades de atendimento pelo Colaborador, além de utilizar banco de dados simulado em armazenamento local para fins de testagem de suas funcionalidades.
 
 ### 3.2.4 Benefícios do produto
 
@@ -82,7 +82,7 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | Código | Requisito Não Funcional (Restrição) | Prioridade |
 |--------|-------------------------------------|------------|
 | RNF01 | O cálculo da renda per capita deve ser exibido em até 2 segundos após a submissão do formulário. | Alta |
-| RNF02 | O sistema deve funcionar nos navegadores Chrome, Firefox e Safari em suas versões atualizadas. | Média |
+| RNF02 | O aplicativo deve ser compatível com Android 8.0 Oreo (API 26) ou superior e iOS 13 ou superior, abrangendo dispositivos de entrada como Moto G5/G6, Samsung Galaxy J5/J7/A10 e iPhone 6s/7/SE 1ª geração, comuns no público-alvo em situação de vulnerabilidade socioeconômica. | Média |
 | RNF03 | A interface deve atender às diretrizes WCAG 2.1 nível AA. | Alta |
 | RNF04 | O sistema deve realizar backup diário automatizado dos dados, com retenção mínima de 30 dias. | Alta |
 | RNF05 | O sistema deve obter consentimento LGPD explícito do cidadão no momento do cadastro. | Alta |
@@ -92,7 +92,7 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RNF09 | O sistema deve apresentar todos os conteúdos voltados ao cidadão em linguagem simples, traduzindo termos jurídicos e administrativos para expressões acessíveis a pessoas com baixo letramento digital. | Alta |
 | RNF10 | O sistema deve exigir senhas com no mínimo 8 caracteres e bloquear temporariamente o identificador após três tentativas consecutivas de autenticação falhas, por um período de 15 minutos. | Alta |
 | RNF11 | O sistema deve localizar unidades de atendimento em raio inicial de 5 km e ampliar progressivamente em incrementos de 5 km até 25 km quando nenhuma unidade for encontrada. | Média |
-| RNF12 | O sistema deve ser responsivo em telas de celulares (4,5"–6,5"), tablets (7"–12,6"), notebooks (13,3"–17,3") e PCs (20"–32"). | Média |
+| RNF12 | O aplicativo deve adaptar seu layout às resoluções de tela de smartphones de 360×640 px (mínimo), 375×667 px (referência iPhone padrão) e 414×896 px (referência large), preservando legibilidade e usabilidade em todas as faixas. | Média |
 
 ### 3.4.3 Usuários 
 
@@ -388,7 +388,7 @@ Pós-condições: O Visitante visualizou uma lista preliminar de benefícios com
 
 #### Gerar e Compartilhar Documento (CSU08)
 
-Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação no sistema (benefícios identificados, documentos necessários, status de cada item) em formato PDF, via WhatsApp ou impressão direta. Quando o CEP estiver informado no perfil ou a geolocalização for autorizada, o documento também inclui a unidade de atendimento mais próxima.
+Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação no sistema (benefícios identificados, documentos necessários, status de cada item) em formato PDF, via WhatsApp ou pelo menu de compartilhamento nativo do dispositivo. Quando o CEP estiver informado no perfil ou a geolocalização for autorizada, o documento também inclui a unidade de atendimento mais próxima.
 
 Ator Primário: Cidadão.
 
@@ -398,7 +398,7 @@ Fluxo Principal:
 
 1) O Cidadão acessa a opção de exportar ou compartilhar disponível em qualquer tela do sistema.
 2) O Sistema compõe automaticamente um documento resumo personalizado com as seguintes seções: identificação do cidadão (nome e data de geração), lista de benefícios elegíveis com grau de compatibilidade de cada um, checklist de documentos por benefício com status atualizado de cada item (obtido, pendente ou não aplicável), orientações em linguagem simples sobre onde e como obter cada documento pendente, e endereço, horário de funcionamento e distância da unidade de atendimento mais próxima.
-3) O Sistema apresenta as opções de entrega disponíveis: gerar PDF para download, compartilhar via WhatsApp e imprimir.
+3) O Sistema apresenta as opções de entrega disponíveis: gerar PDF para salvar no dispositivo, compartilhar via WhatsApp e abrir o menu de compartilhamento nativo do sistema operacional (que dá acesso a e-mail, mensagens, drive em nuvem, AirDrop, Nearby Share, impressão e demais aplicativos instalados).
 4) O Cidadão seleciona a opção desejada.
 5) O Sistema executa a entrega conforme a opção escolhida.
 
@@ -412,18 +412,18 @@ Fluxo Alternativo (4): Gerar PDF
 
 a) O Cidadão seleciona a opção de PDF. <br>
 b) O Sistema gera o arquivo com layout limpo, fonte legível e linguagem simples, organizado em seções claramente separadas conforme o conteúdo descrito no passo 2. <br>
-c) O Sistema disponibiliza o download do arquivo. <br>
+c) O Sistema salva o arquivo na pasta padrão de downloads do dispositivo e oferece a opção de abri-lo imediatamente. <br>
 
 Fluxo Alternativo (4): Compartilhar via WhatsApp
 
 a) O Cidadão seleciona a opção de compartilhamento por WhatsApp. <br>
 b) O Sistema gera uma versão resumida em texto simples com os benefícios identificados, os documentos ainda pendentes e o endereço da unidade de atendimento. <br>
-c) O Sistema abre o WhatsApp com o conteúdo pré-preenchido, permitindo que o Cidadão escolha o destinatário. <br>
+c) O Sistema aciona o WhatsApp instalado no dispositivo via deep link com o conteúdo pré-preenchido, permitindo que o Cidadão escolha o destinatário. Caso o WhatsApp não esteja instalado, o Sistema reporta o fato e oferece o compartilhamento pelo menu nativo (fluxo alt seguinte). <br>
 
-Fluxo Alternativo (4): Impressão
+Fluxo Alternativo (4): Compartilhamento pelo menu nativo do dispositivo
 
-a) O Cidadão seleciona a opção de impressão. <br>
-b) O Sistema abre a janela de impressão do navegador com o documento formatado em layout otimizado para papel, com margens adequadas e sem elementos de interface. <br>
+a) O Cidadão seleciona a opção de compartilhamento nativo. <br>
+b) O Sistema aciona o seletor de compartilhamento do sistema operacional (iOS Share Sheet ou Android Share Intent) com o PDF anexado, permitindo que o Cidadão escolha o destino: e-mail, mensagens, aplicativos de nuvem (iCloud Drive, Google Drive), AirDrop, Nearby Share, impressão via AirPrint ou Google Cloud Print, e quaisquer outros aplicativos instalados que aceitem PDF. <br>
 
 Pós-condições: O documento foi entregue ao Cidadão no formato escolhido, contendo tudo que ele precisa saber para dar o próximo passo. O conteúdo do sistema permanece inalterado.
 
@@ -441,7 +441,7 @@ Fluxo Principal:
 
 1) O Cidadão acessa a tela de próximo passo de um benefício.
 2) O Sistema identifica o tipo de unidade de atendimento competente para aquele benefício.
-3) O Sistema verifica se o CEP foi informado no perfil familiar (CSU02). Se sim, utiliza o CEP como referência de localização; caso contrário, solicita autorização para utilizar a localização do dispositivo.
+3) O Sistema verifica se o CEP foi informado no perfil familiar (CSU02). Se sim, utiliza o CEP como referência de localização; caso contrário, solicita autorização para utilizar o GPS nativo do dispositivo.
 4) O Sistema exibe a unidade mais próxima com nome, endereço completo, distância aproximada e horário de funcionamento.
 5) O Cidadão pode solicitar a exibição de outras unidades próximas ou visualizar a localização em mapa externo.
 
@@ -465,7 +465,7 @@ c) Se ainda assim nenhuma unidade for encontrada, o Sistema orienta o Cidadão a
 Fluxo Alternativo (5): Visualizar no mapa
 
 a) O Cidadão solicita a visualização da unidade em mapa. <br>
-b) O Sistema abre o aplicativo de mapas do dispositivo ou o Google Maps no navegador com o endereço da unidade pré-carregado. <br>
+b) O Sistema abre o aplicativo de mapas nativo do dispositivo (Apple Maps no iOS ou Google Maps no Android) via deep link com o endereço da unidade pré-carregado. <br>
 
 Pós-condições: O Cidadão visualizou as informações da unidade de atendimento mais próxima e pode se dirigir ao local com as informações necessárias.
 
