@@ -389,7 +389,7 @@ Pós-condições: O Visitante visualizou uma lista preliminar de benefícios com
 
 #### Gerar e Compartilhar Documento (CSU08)
 
-Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação no sistema (benefícios identificados, documentos necessários, status de cada item) em formato PDF, via WhatsApp ou pelo menu de compartilhamento nativo do dispositivo. Quando o CEP estiver informado no perfil ou a geolocalização for autorizada, o documento também inclui a unidade de atendimento mais próxima.
+Sumário: O Cidadão exporta ou compartilha um resumo completo da sua situação no sistema (benefícios identificados, documentos necessários, status de cada item) em formato PDF, via WhatsApp ou pelo menu de compartilhamento nativo do dispositivo. O documento sempre inclui a seção de unidade de atendimento mais próxima (via CSU09); quando nenhuma localização estiver disponível, a seção informa que a unidade não pôde ser identificada.
 
 Ator Primário: Cidadão.
 
@@ -398,16 +398,10 @@ Pré-condições: O Cidadão deve estar autenticado no Sistema. O diagnóstico d
 Fluxo Principal:
 
 1) O Cidadão acessa a opção de exportar ou compartilhar disponível em qualquer tela do sistema.
-2) O Sistema compõe automaticamente um documento resumo personalizado com as seguintes seções: identificação do cidadão (nome e data de geração), lista de benefícios elegíveis com grau de compatibilidade de cada um, checklist de documentos por benefício com status atualizado de cada item (obtido, pendente ou não aplicável), orientações em linguagem simples sobre onde e como obter cada documento pendente, e endereço, horário de funcionamento e distância da unidade de atendimento mais próxima.
+2) O Sistema compõe automaticamente um documento resumo personalizado com as seguintes seções: identificação do cidadão (nome e data de geração), lista de benefícios elegíveis com grau de compatibilidade de cada um, checklist de documentos por benefício com status atualizado de cada item (obtido, pendente ou não aplicável), orientações em linguagem simples sobre onde e como obter cada documento pendente, e a unidade de atendimento mais próxima identificada via CSU09 (com nome, endereço, horário de funcionamento e distância). A invocação de CSU09 nesta etapa é não interativa: utiliza apenas dados de localização já disponíveis (CEP do perfil ou geolocalização previamente autorizada). Na ausência de localização, a seção da unidade indica que não pôde ser identificada e orienta o Cidadão a consultar a localização interativamente em CSU09.
 3) O Sistema apresenta as opções de entrega disponíveis: gerar PDF para salvar no dispositivo, compartilhar via WhatsApp e abrir o menu de compartilhamento nativo do sistema operacional (que dá acesso a e-mail, mensagens, drive em nuvem, AirDrop, Nearby Share, impressão e demais aplicativos instalados).
 4) O Cidadão seleciona a opção desejada.
 5) O Sistema executa a entrega conforme a opção escolhida.
-
-Fluxo Alternativo (2): CEP não informado e geolocalização indisponível
-
-a) O Sistema identifica que o CEP não foi informado no perfil e que não há geolocalização ativa na sessão. <br>
-b) O Sistema solicita que o Cidadão informe o CEP ou bairro de residência para identificar a unidade de atendimento mais próxima. <br>
-c) Se o Cidadão informar o CEP, o Sistema inclui a unidade identificada no documento. Se o Cidadão optar por não informar, o Sistema inclui no lugar uma orientação para consultar a unidade mais próxima no portal oficial do órgão responsável, com o link correspondente. <br>
 
 Fluxo Alternativo (4): Gerar PDF
 
