@@ -61,7 +61,7 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 |--------|--------------------------------------|-----------|------------|
 | RF01 | Cadastro de cidadão | O cidadão cria uma conta no sistema, informando nome completo, CPF, data de nascimento, senha e ao menos um canal de contato (e-mail ou telefone). | Alta |
 | RF02 | Autenticação | O cidadão, o colaborador e o administrador autenticam-se no sistema e recuperam seu acesso por meio de código enviado ao canal de contato cadastrado. | Alta |
-| RF03 | Gestão de perfil | O cidadão, o colaborador e o administrador editam seus dados cadastrais, alteram sua senha e excluem sua conta. | Alta |
+| RF03 | Gestão de perfil | O cidadão edita seus dados cadastrais, altera sua senha e exclui sua conta. O colaborador e o administrador editam seus dados cadastrais e alteram sua senha; a desativação de suas contas é tratada pelo perfil imediatamente superior (CSU13). | Alta |
 | RF04 | Gestão do perfil familiar | O cidadão gerencia os dados socioeconômicos do seu núcleo familiar (membros, rendas, vínculo empregatício, condição de moradia e CEP), com cálculo automático da renda total e per capita. | Alta |
 | RF05 | Verificação de elegibilidade | O cidadão consulta os benefícios compatíveis com seu perfil, classificados como elegíveis, potencialmente elegíveis ou não elegíveis. | Alta |
 | RF06 | Simulação de cenários | O cidadão simula alterações no seu perfil para analisar o impacto na sua elegibilidade, sem afetar seus dados reais, podendo armazenar até cinco simulações salvas por conta. | Média |
@@ -121,7 +121,7 @@ O Colaborador e o Administrador acessam o painel administrativo. O Colaborador �
 
 #### Gerenciar Conta (CSU01)
 
-Sumário: O Cidadão realiza o autoatendimento completo da sua conta no sistema (cadastro, autenticação, edição, alteração e recuperação de senha, exclusão). O Colaborador e o Administrador também autenticam-se, editam dados, alteram senha e excluem a própria conta, mas suas contas são criadas pelo perfil imediatamente superior (Colaborador pelo Administrador; Administrador pelo provisionamento inicial do sistema) e não estão disponíveis para autocadastro.
+Sumário: O Cidadão realiza o autoatendimento completo da sua conta no sistema (cadastro, autenticação, edição, alteração e recuperação de senha, exclusão). O Colaborador e o Administrador também autenticam-se, editam dados e alteram senha, mas suas contas são criadas pelo perfil imediatamente superior (Colaborador pelo Administrador; Administrador pelo provisionamento inicial do sistema) e não estão disponíveis para autocadastro nem autoexclusão - a desativação dessas contas é responsabilidade do perfil que as criou (CSU13).
 
 Atores Primários: Cidadão, Colaborador, Administrador.
 
@@ -129,14 +129,15 @@ Pré-condições:
 
 * Cadastro: nenhuma; disponível apenas para o Cidadão.
 * Autenticação: para o Colaborador, a conta deve ter sido previamente criada pelo Administrador; para o Administrador, a conta deve ter sido provisionada no setup inicial.
-* Edição de dados, alteração de senha e exclusão de conta: o usuário deve estar autenticado no Sistema.
+* Edição de dados e alteração de senha: o usuário deve estar autenticado no Sistema.
+* Exclusão de conta: o usuário deve estar autenticado e ser do perfil Cidadão.
 
 Fluxo Principal:
 
 1) O usuário acessa o sistema.
 2) O Sistema identifica se o usuário está autenticado e apresenta as opções correspondentes:
    * **Não autenticado:** cadastrar-se (apenas Cidadão), autenticar-se ou recuperar senha.
-   * **Autenticado:** editar dados, alterar senha ou excluir conta.
+   * **Autenticado:** editar dados, alterar senha ou - apenas para o Cidadão - excluir conta.
 3) O usuário seleciona a operação desejada ou opta por encerrar.
 4) Se o usuário desejar continuar, o caso de uso retorna ao passo 2; caso contrário, encerra.
 
@@ -179,12 +180,12 @@ b) O Sistema solicita a senha atual e a nova senha (digitada duas vezes para con
 c) O Sistema valida a senha atual e verifica se a nova senha atende à política mínima definida no RNF10. Se inválida, reporta o erro e permite nova tentativa. <br>
 d) Validada, o Sistema persiste a nova senha, encerra a sessão em todos os dispositivos e exige nova autenticação. <br>
 
-Fluxo Alternativo (3.f): Exclusão de conta (autenticado)
+Fluxo Alternativo (3.f): Exclusão de conta (autenticado, apenas Cidadão)
 
-a) O usuário solicita a exclusão da própria conta. <br>
+a) O Cidadão solicita a exclusão da própria conta. <br>
 b) O Sistema solicita confirmação e informa que os dados pessoais entrarão em processo de remoção permanente em até 15 dias úteis, conforme RNF06. <br>
 c) Confirmada a solicitação, o Sistema inicia o procedimento de anonimização e exclusão, registra o evento e encerra a sessão. <br>
-d) Se o solicitante for o único Administrador ativo do sistema, o Sistema impede a exclusão e orienta o provisionamento de outro Administrador antes da operação. <br>
+d) Para Colaborador e Administrador este fluxo não está disponível: a desativação dessas contas é feita pelo perfil imediatamente superior em CSU13. <br>
 
 Pós-condições:
 
