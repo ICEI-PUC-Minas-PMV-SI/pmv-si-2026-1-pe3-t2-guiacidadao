@@ -11,10 +11,14 @@
     .uc { fill: #fff; stroke: #1a1a1a; stroke-width: 1; }
     .assoc { stroke: #1a1a1a; stroke-width: 0.8; fill: none; }
     .relation { stroke: #888; stroke-width: 0.8; fill: none; stroke-dasharray: 5 3; }
+    .gen { stroke: #1a1a1a; stroke-width: 1.2; fill: none; }
   </style>
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M2 1L8 5L2 9" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="gen" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M0 0 L11 6 L0 12 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1"/>
     </marker>
   </defs>
 
@@ -94,7 +98,7 @@
   <!-- CSU06 -->
   <ellipse cx="500" cy="450" rx="145" ry="22" class="uc"/>
   <text x="500" y="445" text-anchor="middle" class="label-code">CSU06</text>
-  <text x="500" y="462" text-anchor="middle" class="label-sm">Gerenciar checklist</text>
+  <text x="500" y="462" text-anchor="middle" class="label-sm">Gerenciar checklist de documentos</text>
 
   <!-- CSU08 -->
   <ellipse cx="500" cy="510" rx="145" ry="22" class="uc"/>
@@ -109,7 +113,7 @@
   <!-- CSU10 -->
   <ellipse cx="500" cy="630" rx="145" ry="22" class="uc"/>
   <text x="500" y="625" text-anchor="middle" class="label-code">CSU10</text>
-  <text x="500" y="642" text-anchor="middle" class="label-sm">Registrar resultado presencial</text>
+  <text x="500" y="642" text-anchor="middle" class="label-sm">Registrar resultado de atendimento</text>
 
   <!-- CSU11 -->
   <ellipse cx="500" cy="700" rx="145" ry="22" class="uc"/>
@@ -127,11 +131,10 @@
   <text x="500" y="822" text-anchor="middle" class="label-sm">Gerenciar contas de colaborador</text>
 
   <!-- ===== ASSOCIAÇÕES ===== -->
-  <!-- Visitante → CSU01, CSU07 -->
-  <line x1="104" y1="108" x2="355" y2="80" class="assoc"/>
+  <!-- Visitante → CSU07 apenas (acesso a CSU01 via «extend» CSU01 «extend» CSU07) -->
   <line x1="104" y1="115" x2="355" y2="140" class="assoc"/>
 
-  <!-- Cidadão → CSU01 e CSU02..CSU10 -->
+  <!-- Cidadão → CSU01, CSU02, CSU03, CSU04, CSU05, CSU06, CSU08, CSU10 (CSU09 acessado via «include») -->
   <line x1="104" y1="440" x2="355" y2="80" class="assoc"/>
   <line x1="104" y1="443" x2="355" y2="210" class="assoc"/>
   <line x1="104" y1="446" x2="355" y2="270" class="assoc"/>
@@ -139,7 +142,6 @@
   <line x1="104" y1="452" x2="355" y2="390" class="assoc"/>
   <line x1="104" y1="455" x2="355" y2="450" class="assoc"/>
   <line x1="104" y1="458" x2="355" y2="510" class="assoc"/>
-  <line x1="104" y1="461" x2="355" y2="570" class="assoc"/>
   <line x1="104" y1="464" x2="355" y2="630" class="assoc"/>
 
   <!-- Colaborador → CSU01, CSU11, CSU12 -->
@@ -151,12 +153,42 @@
   <line x1="896" y1="825" x2="645" y2="80" class="assoc"/>
   <line x1="896" y1="828" x2="645" y2="810" class="assoc"/>
 
-  <!-- ===== RELAÇÕES «include» / «extend» ===== -->
-  <!-- CSU04 «extend» CSU03 (Simular estende Verificar) -->
-  <path d="M648 330 L680 330 L680 270 L648 270" class="relation" marker-end="url(#arr)"/>
-  <text x="685" y="303" class="label-hint">«extend»</text>
+  <!-- ===== RELAÇÕES «include» / «extend» =====
+       Layout em bandas verticais (x=663, 695, 725, 755) e desvios de y de ±2-4 px
+       nas bordas dos casos de uso para evitar sobreposição de segmentos horizontais. -->
 
-  <!-- CSU09 «extend» CSU08 (Localizar unidade é condicional dentro de Gerar documento) -->
-  <path d="M648 570 L680 570 L680 510 L648 510" class="relation" marker-end="url(#arr)"/>
-  <text x="685" y="543" class="label-hint">«extend»</text>
+  <!-- BANDA A (x=663): adjacências de 1 passo — y desviado em +2/-2 nas bordas -->
+
+  <!-- CSU01 «extend» CSU07 (visitante opta por criar conta após triagem — CSU07 fluxo alt 10) -->
+  <path d="M648 82 L663 82 L663 140 L648 140" class="relation" marker-end="url(#arr)"/>
+  <text x="666" y="113" class="label-hint">«extend»</text>
+
+  <!-- CSU06 «extend» CSU05 (cidadão abre checklist a partir da consulta de benefício — CSU05 passo 5) -->
+  <path d="M648 452 L663 452 L663 392 L648 392" class="relation" marker-end="url(#arr)"/>
+  <text x="666" y="424" class="label-hint">«extend»</text>
+
+  <!-- CSU08 «include» CSU09 (geração de documento sempre invoca localização da unidade — CSU08 passo 2) -->
+  <path d="M648 512 L663 512 L663 568 L648 568" class="relation" marker-end="url(#arr)"/>
+  <text x="666" y="542" class="label-hint">«include»</text>
+
+  <!-- BANDA B (x=695): 1-2 passos -->
+
+  <!-- CSU02 «extend» CSU01 (preenchimento do perfil familiar é acionado após cadastro de Cidadão — CSU01 fluxo 3.a passo i) -->
+  <path d="M648 208 L695 208 L695 78 L648 78" class="relation" marker-end="url(#arr)"/>
+  <text x="698" y="145" class="label-hint">«extend»</text>
+
+  <!-- CSU05 «extend» CSU03 (cidadão acessa detalhe de benefício a partir do diagnóstico — CSU03 passo 6) -->
+  <path d="M648 388 L695 388 L695 272 L648 272" class="relation" marker-end="url(#arr)"/>
+  <text x="698" y="332" class="label-hint">«extend»</text>
+
+  <!-- CSU08 «extend» CSU06 (cidadão gera documento a partir do checklist — CSU06 fluxo alt 5) -->
+  <path d="M648 508 L695 508 L695 448 L648 448" class="relation" marker-end="url(#arr)"/>
+  <text x="698" y="480" class="label-hint">«extend»</text>
+
+  <!-- BANDA C (x=725): salto longo descendente -->
+
+  <!-- CSU05 «include» CSU09 (consulta detalhada do benefício mostra unidade de atendimento) -->
+  <path d="M648 395 L725 395 L725 572 L648 572" class="relation" marker-end="url(#arr)"/>
+  <text x="728" y="445" class="label-hint">«include»</text>
+
 </svg>
