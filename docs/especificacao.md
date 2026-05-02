@@ -65,17 +65,17 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RF04 | Gestão do perfil familiar | O cidadão gerencia os dados socioeconômicos do seu núcleo familiar (membros, rendas, vínculo empregatício, condição de moradia e CEP), com cálculo automático da renda total e per capita. | Alta |
 | RF05 | Verificação de elegibilidade | O cidadão consulta os benefícios compatíveis com seu perfil, classificados como elegíveis, potencialmente elegíveis ou não elegíveis. | Alta |
 | RF06 | Simulação de cenários | O cidadão simula alterações no seu perfil para analisar o impacto na sua elegibilidade, sem afetar seus dados reais, podendo armazenar até cinco simulações salvas por conta. | Média |
-| RF07 | Consulta detalhada de benefício | O cidadão consulta a descrição, os critérios, os documentos exigidos e o link oficial de cada benefício, em linguagem simples. | Alta |
+| RF07 | Consulta detalhada de benefício | O cidadão consulta a descrição, os requisitos, os documentos exigidos e o link oficial de cada benefício, em linguagem simples. | Alta |
 | RF08 | Preenchimento de checklist | O cidadão preenche o checklist de documentos exigidos para cada benefício elegível, marcando cada item como pendente, obtido ou não aplicável. | Média |
 | RF09 | Triagem rápida | O visitante realiza uma triagem rápida e obtém uma lista preliminar de benefícios compatíveis, sem necessidade de cadastro. | Alta |
 | RF10 | Geração e compartilhamento de documento | O cidadão gera um PDF com o resumo da sua situação e o compartilha via WhatsApp ou impressão. | Baixa |
 | RF11 | Localização de unidade de atendimento | O cidadão consulta a unidade de atendimento mais próxima a partir do CEP ou da geolocalização, com nome, endereço, distância e horário de funcionamento. | Baixa |
 | RF12 | Registro de resultado de atendimento presencial | O cidadão registra o resultado do atendimento presencial (protocolado, documentação complementar, concedido ou indeferido), atualizando o status do benefício. | Média |
-| RF13 | Gestão do catálogo de benefícios | O colaborador gerencia o catálogo de benefícios e seus critérios de elegibilidade (inclusão, edição, desativação e consulta). | Alta |
+| RF13 | Gestão do catálogo de benefícios | O colaborador gerencia o catálogo de benefícios e seus requisitos de elegibilidade (inclusão, edição, desativação e consulta). | Alta |
 | RF14 | Gestão de unidades de atendimento | O colaborador gerencia as unidades de atendimento (inclusão, edição, desativação e consulta). | Alta |
 | RF15 | Gestão de contas de colaborador | O administrador gerencia as contas de colaborador (inclusão, edição, desativação e consulta). | Alta |
-| RF16 | Notificação a usuários afetados | O sistema notifica cidadãos afetados por alterações no catálogo de benefícios (mudança em critérios, lista de documentos ou desativação) pelo canal de contato preferencial cadastrado. | Média |
-| RF17 | Reavaliação automática de elegibilidade | Sempre que um critério de elegibilidade for alterado pelo Colaborador, o sistema reexecuta a verificação de elegibilidade (CSU03) para todos os perfis que possuíam classificação anterior para aquele benefício. | Média |
+| RF16 | Notificação a usuários afetados | O sistema notifica cidadãos afetados por alterações no catálogo de benefícios (mudança em requisitos, lista de documentos ou desativação) pelo canal de contato preferencial cadastrado. | Média |
+| RF17 | Reavaliação automática de elegibilidade | O Sistema reexecuta a verificação de elegibilidade (CSU03) para todos os perfis que possuíam classificação anterior para um benefício sempre que um requisito de elegibilidade desse benefício for alterado pelo Colaborador. | Média |
 
 ### 3.4.2 Requisitos Não Funcionais
 
@@ -99,7 +99,7 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | Ator | Descrição |
 |--------------------|------------------------------------|
 | Cidadão |	Usuário primário do sistema. Pessoa em situação de vulnerabilidade socioeconômica (desempregada, trabalhadora informal, MEI ou idosa) que busca compreender seus direitos e identificar benefícios sociais compatíveis com seu perfil. Caracteriza-se por acesso básico à tecnologia, geralmente via smartphone, e pode apresentar baixo letramento digital. |
-| Colaborador | Usuário interno responsável pela manutenção do conteúdo da plataforma: atualização das informações sobre benefícios, critérios de elegibilidade e listas de documentos. Não realiza atendimento direto ao cidadão, atuando na camada administrativa e de curadoria do sistema. Sua conta é criada pelo administrador do sistema, que fornece as credenciais de acesso provisórias. No primeiro acesso, o Colaborador é obrigado a definir uma senha definitiva. |
+| Colaborador | Usuário interno responsável pela manutenção do conteúdo da plataforma: atualização das informações sobre benefícios, requisitos de elegibilidade e listas de documentos. Não realiza atendimento direto ao cidadão, atuando na camada administrativa e de curadoria do sistema. Sua conta é criada pelo administrador do sistema, que fornece as credenciais de acesso provisórias. No primeiro acesso, o Colaborador é obrigado a definir uma senha definitiva. |
 | Visitante | Pessoa que acessa o sistema sem conta cadastrada. Pode realizar a triagem rápida de elegibilidade e visualizar o resultado preliminar. Não tem acesso às funcionalidades que exigem autenticação. |
 | Administrador | Usuário interno com perfil de maior privilégio, responsável pela criação, edição, desativação e auditoria das contas de Colaborador (CSU13). Não edita o catálogo de benefícios nem o cadastro de unidades de atendimento, atribuições que pertencem ao Colaborador, e não interage diretamente com os cidadãos. |
 
@@ -229,7 +229,7 @@ Pós-condições: O perfil familiar do Cidadão foi salvo no Sistema com renda t
 
 #### Verificar Elegibilidade (CSU03)
 
-Sumário: O Sistema analisa o perfil socioeconômico do Cidadão e identifica os benefícios sociais para os quais ele potencialmente atende os critérios de elegibilidade.
+Sumário: O Sistema analisa o perfil socioeconômico do Cidadão e identifica os benefícios sociais para os quais ele potencialmente atende os requisitos de elegibilidade.
 
 Ator Primário: Cidadão.
 
@@ -239,15 +239,15 @@ Fluxo Principal:
 
 1) O Cidadão acessa a funcionalidade "Verificar meus benefícios" no painel, ou a elegibilidade é reavaliada automaticamente após uma atualização no perfil familiar (CSU02) ou no catálogo de benefícios (RF17).
 2) O Sistema recupera o perfil socioeconômico do Cidadão.
-3) O Sistema percorre o catálogo de benefícios cadastrados e aplica os critérios de elegibilidade de cada um ao perfil do Cidadão.
+3) O Sistema percorre o catálogo de benefícios cadastrados e aplica os requisitos de elegibilidade de cada um ao perfil do Cidadão.
 4) O Sistema classifica cada benefício em: elegível, potencialmente elegível ou não elegível.
-5) O Sistema exibe a lista de benefícios classificados, com indicação do critério que determinou cada classificação.
+5) O Sistema exibe a lista de benefícios classificados, com indicação do requisito que determinou cada classificação.
 6) O Cidadão seleciona um benefício para obter a consulta detalhada (CSU05).
 
 Fluxo Alternativo (4): Nenhum benefício elegível identificado
 
 a) O Sistema não encontra benefícios que atendam ao perfil informado. <br>
-b) O Sistema informa o fato ao Cidadão em linguagem simples, explica quais critérios não foram atendidos e sugere a simulação de cenários (CSU04) para explorar possibilidades. <br>
+b) O Sistema informa o fato ao Cidadão em linguagem simples, explica quais requisitos não foram atendidos e sugere a simulação de cenários (CSU04) para explorar possibilidades. <br>
 
 Fluxo Alternativo (4): Dados insuficientes para avaliação
 
@@ -291,7 +291,7 @@ Pós-condições: O resultado da simulação foi exibido. Os dados reais do Cida
 
 #### Consultar Benefícios (CSU05)
 
-Sumário: O Cidadão consulta as informações detalhadas sobre os benefícios sociais identificados em seu perfil (elegíveis, potencialmente elegíveis ou não elegíveis), apresentadas em linguagem simples. Para os não elegíveis, a consulta explica os critérios não atendidos e o que precisaria mudar no perfil.
+Sumário: O Cidadão consulta as informações detalhadas sobre os benefícios sociais identificados em seu perfil (elegíveis, potencialmente elegíveis ou não elegíveis), apresentadas em linguagem simples. Para os não elegíveis, a consulta explica os requisitos não atendidos e o que precisaria mudar no perfil.
 
 Ator Primário: Cidadão.
 
@@ -302,13 +302,13 @@ Fluxo Principal:
 1) O Cidadão acessa a lista de benefícios identificados no seu painel.
 2) O Sistema exibe os benefícios com nome, descrição resumida em linguagem simples e classificação de elegibilidade.
 3) O Cidadão seleciona um benefício para ver os detalhes.
-4) O Sistema exibe: descrição completa do benefício, critérios de elegibilidade traduzidos para linguagem simples, lista de documentos exigidos e link para a fonte oficial do governo.
+4) O Sistema exibe: descrição completa do benefício, requisitos de elegibilidade traduzidos para linguagem simples, lista de documentos exigidos e link para a fonte oficial do governo.
 5) O Cidadão pode acessar o checklist de documentos do benefício selecionado (CSU06).
 
 Fluxo Alternativo (3): Benefício não elegível selecionado
 
 a) O Cidadão seleciona um benefício classificado como não elegível para entender o motivo. <br>
-b) O Sistema exibe quais critérios não foram atendidos e orienta sobre o que precisaria mudar no perfil para que o benefício se tornasse elegível. <br>
+b) O Sistema exibe quais requisitos não foram atendidos e orienta sobre o que precisaria mudar no perfil para que o benefício se tornasse elegível. <br>
 
 Pós-condições: O Cidadão visualizou as informações detalhadas do benefício selecionado em linguagem acessível.
 
@@ -368,7 +368,7 @@ Fluxo Principal:
 Fluxo Alternativo (9): Nenhum benefício compatível identificado
 
 a) O Sistema não identifica benefícios compatíveis com as respostas fornecidas. <br>
-b) O Sistema informa o fato em linguagem simples, explica quais critérios não foram atendidos e sugere a criação de conta para uma análise mais detalhada do perfil. <br>
+b) O Sistema informa o fato em linguagem simples, explica quais requisitos não foram atendidos e sugere a criação de conta para uma análise mais detalhada do perfil. <br>
 
 Fluxo Alternativo (10): Visitante opta por criar conta
 
@@ -514,7 +514,7 @@ Pós-condições: O resultado do atendimento presencial foi registrado no painel
 
 #### Gerenciar Catálogo de Benefícios (CSU11)
 
-Sumário: O Colaborador realiza a gestão do catálogo de benefícios sociais disponíveis na plataforma, incluindo inclusão, edição, desativação e consulta de benefícios e seus critérios. Alterações nos critérios de elegibilidade ou na lista de documentos exigidos disparam a reavaliação automática dos perfis afetados e a sincronização dos checklists em andamento.
+Sumário: O Colaborador realiza a gestão do catálogo de benefícios sociais disponíveis na plataforma, incluindo inclusão, edição, desativação e consulta de benefícios e seus requisitos. Alterações nos requisitos de elegibilidade ou na lista de documentos exigidos disparam a reavaliação automática dos perfis afetados e a sincronização dos checklists em andamento.
 
 Ator Primário: Colaborador.
 
@@ -530,15 +530,15 @@ Fluxo Principal:
 Fluxo Alternativo (3): Inclusão
 
 a) O Colaborador requisita a inclusão de novo benefício. <br>
-b) O Sistema apresenta formulário com os campos: nome do benefício, órgão responsável, descrição em linguagem simples, critérios de elegibilidade, lista de documentos exigidos e link para a fonte oficial. <br>
+b) O Sistema apresenta formulário com os campos: nome do benefício, órgão responsável, descrição em linguagem simples, requisitos de elegibilidade, lista de documentos exigidos e link para a fonte oficial. <br>
 c) O Colaborador preenche os dados e confirma. <br>
 d) O Sistema valida as informações e publica o benefício no catálogo, tornando-o disponível para a verificação de elegibilidade dos usuários. <br>
 
 Fluxo Alternativo (3): Edição
 
 a) O Colaborador seleciona um benefício e atualiza um ou mais campos. <br>
-b) O Sistema identifica se a alteração afeta critérios de elegibilidade ou a lista de documentos exigidos. <br>
-c) Se critérios de elegibilidade foram alterados, o Sistema agenda a reavaliação automática de todos os perfis que possuem aquele benefício classificado, notificando os usuários afetados pelo canal de contato cadastrado sobre eventual mudança na sua situação. <br>
+b) O Sistema identifica se a alteração afeta requisitos de elegibilidade ou a lista de documentos exigidos. <br>
+c) Se requisitos de elegibilidade foram alterados, o Sistema agenda a reavaliação automática de todos os perfis que possuem aquele benefício classificado, notificando os usuários afetados pelo canal de contato cadastrado sobre eventual mudança na sua situação. <br>
 d) Se a lista de documentos exigidos foi alterada, o Sistema sincroniza automaticamente todos os checklists em andamento daquele benefício, adicionando novos itens como pendentes ou removendo itens do catálogo que deixaram de ser exigidos, e notifica os usuários afetados (RF16). Itens adicionados manualmente pelo Cidadão em CSU10 são preservados e não são afetados pela sincronização. <br>
 e) O Sistema salva as alterações, registrando data e autor da modificação. <br>
 
@@ -555,7 +555,7 @@ b) O Sistema apresenta a lista de benefícios correspondente aos termos pesquisa
 c) O Colaborador seleciona um benefício. <br>
 d) O Sistema apresenta os detalhes completos do benefício selecionado. <br>
 
-Pós-condições: O catálogo de benefícios foi atualizado. Alterações em critérios de elegibilidade disparam reavaliação automática dos perfis afetados (RF17). Alterações na lista de documentos sincronizam os checklists em andamento. Os usuários afetados são notificados em ambos os casos (RF16).
+Pós-condições: O catálogo de benefícios foi atualizado. Alterações em requisitos de elegibilidade disparam reavaliação automática dos perfis afetados (RF17). Alterações na lista de documentos sincronizam os checklists em andamento. Os usuários afetados são notificados em ambos os casos (RF16).
 
 ---
 
@@ -664,7 +664,7 @@ A Figura 2 mostra o diagrama de classes do sistema. Ele ilustra as entidades pri
 | 3 | Colaborador    | Representa o funcionário do sistema que gerencia as unidades de atendimento e os benefícios oferecidos aos cidadãos.                                                                    |
 | 4 | PerfilFamiliar | Armazena a composição familiar do cidadão, incluindo membros e renda total, sendo utilizado no cálculo de renda per capita.                                                             |
 | 5 | MembroFamiliar | Representa cada integrante da família, contendo dados como nome, idade e renda.                                                                                                         |
-| 6 | Beneficio      | Contém as informações dos benefícios sociais disponíveis, incluindo critérios de elegibilidade, descrição e valor.                                                                      |
+| 6 | Beneficio      | Contém as informações dos benefícios sociais disponíveis, incluindo requisitos de elegibilidade, descrição e valor.                                                                      |
 | 7 | Simulacao      | Representa um cenário hipotético criado pelo Cidadão, no qual valores do perfil familiar (renda, vínculo empregatício, composição) são alterados temporariamente para avaliar o impacto na elegibilidade, sem modificar os dados reais. |
 | 8 | Agendamento    | Registra a reserva de um atendimento, contendo informações sobre o cidadão, a unidade, a data e o status da solicitação.                                                                |
 | 9 | UnidadeAtendimento | Representa o local físico de atendimento, contendo nome, endereço e telefone para localização.                                                                                      |
