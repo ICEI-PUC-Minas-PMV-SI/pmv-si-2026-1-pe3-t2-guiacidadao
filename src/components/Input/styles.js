@@ -11,18 +11,18 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 500,
     fontSize: 13,
-    color: colors.textSubtle
+    color: colors.textMuted
   },
   field: {
     height: 48,
     borderRadius: radii.lg,
     background: colors.white,
-    border: `1px solid ${colors.borderLight}`,
+    border: `1px solid ${colors.border}`,
     boxShadow: shadows.card,
     padding: '0 14px',
     fontFamily: fonts.body,
     fontSize: 15,
-    color: colors.textDark,
+    color: colors.text,
     width: '100%'
   },
   fieldFocus: {
@@ -31,7 +31,7 @@ export const styles = {
   hint: {
     fontFamily: fonts.body,
     fontSize: 12,
-    color: colors.textSubtle
+    color: colors.textMuted
   },
   helperRow: {
     display: 'flex',

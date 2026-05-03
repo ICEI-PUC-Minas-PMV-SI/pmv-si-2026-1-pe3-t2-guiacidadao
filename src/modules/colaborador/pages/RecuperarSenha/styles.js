@@ -10,7 +10,7 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 700,
     fontSize: 17,
-    color: colors.textDark
+    color: colors.text
   },
   message: {
     fontFamily: fonts.body,

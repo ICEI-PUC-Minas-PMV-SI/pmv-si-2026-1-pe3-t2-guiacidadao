@@ -11,18 +11,18 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 500,
     fontSize: 13,
-    color: colors.textSubtle
+    color: colors.textMuted
   },
   field: {
     minHeight: 92,
     borderRadius: radii.lg,
     background: colors.white,
-    border: `1px solid ${colors.borderLight}`,
+    border: `1px solid ${colors.border}`,
     boxShadow: shadows.card,
     padding: '12px 14px',
     fontFamily: fonts.body,
     fontSize: 15,
-    color: colors.textDark,
+    color: colors.text,
     width: '100%',
     resize: 'vertical',
     lineHeight: 1.4

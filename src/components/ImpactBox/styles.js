@@ -15,12 +15,12 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 600,
     fontSize: 14,
-    color: colors.warningText
+    color: colors.warning
   },
   list: {
     fontFamily: fonts.body,
     fontSize: 13,
-    color: colors.warningText,
+    color: colors.warning,
     display: 'flex',
     flexDirection: 'column',
     gap: 4,

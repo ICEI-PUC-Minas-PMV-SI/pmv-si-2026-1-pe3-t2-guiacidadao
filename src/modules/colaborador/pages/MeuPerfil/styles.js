@@ -24,12 +24,12 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 700,
     fontSize: 18,
-    color: colors.textDark
+    color: colors.text
   },
   role: {
     fontFamily: fonts.body,
     fontSize: 13,
-    color: colors.textSubtle
+    color: colors.textMuted
   },
   fields: {
     display: 'flex',

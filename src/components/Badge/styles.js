@@ -1,9 +1,9 @@
 import { colors, fonts, radii } from '../../styles/theme'
 
 const palette = {
-  ativo: { bg: colors.successSoft, fg: colors.successText },
-  inativo: { bg: colors.inactiveSoft, fg: colors.inactiveText },
-  pendente: { bg: colors.pendingSoft, fg: colors.pendingText },
+  ativo: { bg: colors.successSoft, fg: colors.success },
+  inativo: { bg: colors.bg, fg: colors.textMuted },
+  pendente: { bg: colors.warningSoft, fg: colors.warning },
   primario: { bg: colors.primarySoft, fg: colors.primary }
 }
 
@@ -14,8 +14,8 @@ export const styles = {
     height: 22,
     padding: '0 10px',
     borderRadius: radii.pill,
-    background: palette[variant]?.bg ?? colors.inactiveSoft,
-    color: palette[variant]?.fg ?? colors.inactiveText,
+    background: palette[variant]?.bg ?? colors.bg,
+    color: palette[variant]?.fg ?? colors.textMuted,
     fontFamily: fonts.body,
     fontSize: 11,
     fontWeight: 600,

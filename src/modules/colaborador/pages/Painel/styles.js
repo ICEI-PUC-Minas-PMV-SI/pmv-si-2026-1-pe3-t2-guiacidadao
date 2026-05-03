@@ -5,7 +5,7 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 700,
     fontSize: 18,
-    color: colors.textDark
+    color: colors.text
   },
   subtitle: {
     fontFamily: fonts.body,

@@ -20,7 +20,7 @@ export const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 4,
-    color: active ? colors.primary : colors.navInactive,
+    color: active ? colors.primary : colors.textMuted,
     fontFamily: fonts.body,
     fontWeight: active ? 600 : 500,
     fontSize: 11,

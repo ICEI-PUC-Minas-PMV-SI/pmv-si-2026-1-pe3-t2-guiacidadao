@@ -61,7 +61,7 @@ export const styles = {
     fontFamily: fonts.display,
     fontWeight: 700,
     fontSize: 20,
-    color: colors.textDark
+    color: colors.text
   },
   back: {
     display: 'block',

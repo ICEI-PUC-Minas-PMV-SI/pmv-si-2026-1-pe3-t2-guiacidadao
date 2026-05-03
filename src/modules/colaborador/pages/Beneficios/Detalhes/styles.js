@@ -48,6 +48,6 @@ export const styles = {
   meta: {
     fontFamily: fonts.body,
     fontSize: 12,
-    color: colors.textSubtle
+    color: colors.textMuted
   }
 }

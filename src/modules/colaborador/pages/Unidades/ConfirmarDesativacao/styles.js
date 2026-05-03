@@ -12,13 +12,13 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 700,
     fontSize: 19,
-    color: colors.textDark,
+    color: colors.text,
     textAlign: 'center'
   },
   note: {
     fontFamily: fonts.body,
     fontSize: 13,
-    color: colors.textSubtle,
+    color: colors.textMuted,
     textAlign: 'center',
     lineHeight: 1.4
   },

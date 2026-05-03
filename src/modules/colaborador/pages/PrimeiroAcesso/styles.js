@@ -10,7 +10,7 @@ export const styles = {
     fontFamily: fonts.body,
     fontWeight: 700,
     fontSize: 18,
-    color: colors.textDark
+    color: colors.text
   },
   message: {
     fontFamily: fonts.body,
@@ -24,7 +24,7 @@ export const styles = {
     gap: 4,
     fontFamily: fonts.body,
     fontSize: 12,
-    color: colors.textSubtle
+    color: colors.textMuted
   },
   rulesTitle: {
     fontWeight: 600,

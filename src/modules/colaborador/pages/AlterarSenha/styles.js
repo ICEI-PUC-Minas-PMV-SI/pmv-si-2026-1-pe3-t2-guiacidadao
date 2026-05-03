@@ -12,7 +12,7 @@ export const styles = {
     gap: 4,
     fontFamily: fonts.body,
     fontSize: 12,
-    color: colors.textSubtle
+    color: colors.textMuted
   },
   rulesTitle: {
     fontWeight: 600,

@@ -24,7 +24,7 @@ export const styles = {
   hint: {
     fontFamily: fonts.body,
     fontSize: 12,
-    color: colors.textSubtle
+    color: colors.textMuted
   },
   fields: {
     display: 'flex',
