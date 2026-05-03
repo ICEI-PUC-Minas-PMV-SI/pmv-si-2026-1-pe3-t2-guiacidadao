@@ -1,14 +1,25 @@
+const outerBase = {
+  background: '#f4f4f4',
+  overflow: 'hidden',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column'
+}
+
 export const styles = {
-  outer: {
+  outerDesktop: {
+    ...outerBase,
     width: 390,
-    minHeight: 844,
-    background: '#f4f4f4',
+    height: 844,
     boxShadow: '0 30px 60px rgba(0, 0, 0, 0.18)',
-    borderRadius: 24,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column'
+    borderRadius: 24
+  },
+  outerMobile: {
+    ...outerBase,
+    width: '100vw',
+    height: '100vh',
+    boxShadow: 'none',
+    borderRadius: 0
   },
   scroll: {
     flex: 1,
