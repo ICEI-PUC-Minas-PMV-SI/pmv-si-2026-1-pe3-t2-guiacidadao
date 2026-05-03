@@ -101,6 +101,12 @@ A análise está organizada em dois grupos. O primeiro percorre o fluxo principa
     <td><img src="imagens/telas/colaborador/detalhes_beneficio.png" width="160" alt="Detalhes do Benefício"/></td>
     <td><img src="imagens/telas/colaborador/editar_beneficio.png" width="160" alt="Editar Benefício"/></td>
   </tr>
+  <tr>
+    <td align="center"><sub>Painel</sub></td>
+    <td align="center"><sub>Catálogo</sub></td>
+    <td align="center"><sub>Detalhes do Benefício</sub></td>
+    <td align="center"><sub>Editar Benefício</sub></td>
+  </tr>
 </table>
 
 **Objetivo**
@@ -143,6 +149,12 @@ As quatro telas representam o ciclo principal de gestão de benefícios. O Paine
     <td><img src="imagens/telas/colaborador/reativar_beneficio.png" width="160" alt="Confirmar Reativação"/></td>
     <td><img src="imagens/telas/colaborador/descartar_alteracoes.png" width="160" alt="Descartar Alterações"/></td>
     <td><img src="imagens/telas/colaborador/adicionar_requisito.png" width="160" alt="Adicionar Requisito"/></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Confirmar Desativação</sub></td>
+    <td align="center"><sub>Confirmar Reativação</sub></td>
+    <td align="center"><sub>Descartar Alterações</sub></td>
+    <td align="center"><sub>Adicionar Requisito</sub></td>
   </tr>
 </table>
 
