@@ -135,6 +135,49 @@ As quatro telas representam o ciclo principal de gestão de benefícios. O Paine
 
 ---
 
+#### **Ações críticas e padrões complementares**
+
+<table>
+  <tr>
+    <td><img src="imagens/telas/colaborador/desativar_beneficio.png" width="160" alt="Confirmar Desativação"/></td>
+    <td><img src="imagens/telas/colaborador/reativar_beneficio.png" width="160" alt="Confirmar Reativação"/></td>
+    <td><img src="imagens/telas/colaborador/descartar_alteracoes.png" width="160" alt="Descartar Alterações"/></td>
+    <td><img src="imagens/telas/colaborador/adicionar_requisito.png" width="160" alt="Adicionar Requisito"/></td>
+  </tr>
+</table>
+
+**Objetivo**
+
+As quatro telas tratam de situações de risco, reuso e proteção contra perda de dados. As três primeiras são modais de confirmação que antecedem ações com impacto sobre o sistema ou sobre dados em curso: desativar um benefício, reativar um benefício previamente desativado e descartar alterações de um formulário em edição. A quarta é um bottom sheet acionado dentro da edição de benefício e permite associar requisitos já cadastrados na biblioteca ou criar um novo requisito sem sair do contexto.
+
+**Princípios Gestálticos**
+
+- Figura e fundo: nas três telas de confirmação, o ícone central em círculo (alerta nas desativações e descarte, check na reativação) recebe destaque sobre o fundo neutro e indica o tipo de ação. No bottom sheet, o backdrop escurecido foca a atenção no painel inferior.
+- Proximidade: a "Caixa de Impacto" reúne as consequências da ação em um único container, deixando claro que descrevem o mesmo evento. No bottom sheet, as abas "Da biblioteca" e "Criar novo" ficam lado a lado e indicam alternativas para a mesma intenção.
+- Semelhança: as três telas de confirmação compartilham a mesma estrutura: ícone, título, caixa de impacto, texto de reversibilidade e dois botões. Os itens do bottom sheet seguem o mesmo formato dos itens da Biblioteca de Requisitos.
+- Continuidade: a leitura de cima para baixo nas telas de confirmação acompanha a progressão alerta, pergunta, impacto, reversibilidade e ação.
+- Fechamento: cada Caixa de Impacto e o cartão do bottom sheet têm cantos arredondados que separam essas regiões do restante da tela.
+
+**Regras de Ouro**
+
+- Prevenção de erros: as três telas de confirmação interrompem ações de alto impacto e exigem um passo intermediário antes da execução. A tela de Descartar Alterações protege contra perda acidental de dados em formulários.
+- Feedback informativo: cada Caixa de Impacto detalha as consequências em linguagem direta, com frases como "1.240 cidadãos afetados", "8 benefícios serão reavaliados", "Cidadãos elegíveis serão notificados" e "Campos preenchidos do formulário".
+- Reversão de ações: textos como "Você poderá reativar a qualquer momento pelo Painel" e "Você poderá desativar novamente a qualquer momento" reduzem o medo de errar. A tela de Reativação demonstra na prática que a desativação não é permanente.
+- Diálogos que indicam fim de ação: dois botões claros em cada confirmação ("Cancelar" e "Confirmar", "Desativar" ou "Reativar") encerram o fluxo de forma inequívoca.
+- Senso de controle: no bottom sheet, o usuário escolhe entre reusar um requisito existente ou criar um novo sem sair da edição. Backdrop clicável e botão de fechar (×) oferecem saída imediata, e a busca interna acelera a localização.
+- Redução da carga de memória de curto prazo: a aba "Da biblioteca" lista os requisitos disponíveis com checkboxes e seleção múltipla, e o usuário não precisa lembrar nomes ou parâmetros exatos.
+- Consistência: o padrão "Caixa de Impacto, texto de reversibilidade, dois botões" se repete em todas as confirmações de desativação dos quatro domínios e na tela de Reativação. O bottom sheet é replicado para "Adicionar Documento" com a mesma estrutura.
+
+**Recomendações Ergonômicas**
+
+- Posicionamento: o bottom sheet ocupa a parte inferior da tela, dentro do alcance do polegar em uso de uma só mão. Os modais de confirmação são centralizados verticalmente, com o ícone como ponto focal.
+- Áreas de toque: botões com altura entre 48px e 52px nos modais; checkboxes do bottom sheet com 20px e área expandida; drag handle e ícone de fechar (×) com 32px.
+- Hierarquia visual: pergunta principal em fonte grande nas confirmações ("Desativar Bolsa Família?", "Reativar Vale-Gás Nacional?", "Tem certeza?"), com detalhes em fonte menor.
+- Distinção entre ações: botão primário à direita, botão secundário ("Cancelar") à esquerda, com separação horizontal suficiente. Cores diferenciam ações construtivas (reativação) de destrutivas (desativação e descarte).
+- Linguagem simples: os textos evitam jargão técnico ("O que muda", "O que será perdido", "Você poderá reativar"), atendendo ao RNF05.
+
+---
+
 ## 4.4 Testes com Protótipos
 
 Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
