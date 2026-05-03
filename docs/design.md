@@ -97,13 +97,20 @@ A análise está organizada em dois grupos. O primeiro percorre o fluxo principa
 **Tabela 1:** Telas do fluxo central do Colaborador
 
 <table>
-<thead><tr><th width="25%">Painel</th><th width="25%">Catálogo</th><th width="25%">Detalhes do Benefício</th><th width="25%">Editar Benefício</th></tr></thead>
-<tbody><tr>
-<td><img src="imagens/telas/colaborador/painel.png" width="230" alt="Painel do Colaborador"/></td>
-<td><img src="imagens/telas/colaborador/catalogo.png" width="230" alt="Catálogo de Benefícios"/></td>
-<td><img src="imagens/telas/colaborador/detalhes_beneficio.png" width="230" alt="Detalhes do Benefício"/></td>
-<td><img src="imagens/telas/colaborador/editar_beneficio.png" width="230" alt="Editar Benefício"/></td>
-</tr></tbody>
+<tbody>
+<tr>
+<td width="25%"><img src="imagens/telas/colaborador/painel.png" width="230" alt="Painel do Colaborador"/></td>
+<td width="25%"><img src="imagens/telas/colaborador/catalogo.png" width="230" alt="Catálogo de Benefícios"/></td>
+<td width="25%"><img src="imagens/telas/colaborador/detalhes_beneficio.png" width="230" alt="Detalhes do Benefício"/></td>
+<td width="25%"><img src="imagens/telas/colaborador/editar_beneficio.png" width="230" alt="Editar Benefício"/></td>
+</tr>
+<tr>
+<td align="center"><strong>Painel</strong></td>
+<td align="center"><strong>Catálogo</strong></td>
+<td align="center"><strong>Detalhes do Benefício</strong></td>
+<td align="center"><strong>Editar Benefício</strong></td>
+</tr>
+</tbody>
 </table>
 
 **Objetivo**
@@ -136,20 +143,27 @@ As quatro telas representam o ciclo principal de gestão de benefícios. O Paine
 - Acessibilidade: tamanhos de fonte legíveis em telas a partir de 4 polegadas, atendendo ao RNF01. Rótulos sempre acima dos campos. Botões primários e secundários diferenciados por cor e proeminência.
 - Compatibilidade com o usuário: linguagem direta nos textos da interface ("Veja um resumo da plataforma", "Acesso rápido", "Cadastro: 1.240 cidadãos elegíveis"), alinhada ao RNF05.
 
----
+<h2></h2>
 
 #### **Ações críticas e padrões complementares**
 
 **Tabela 2:** Telas de ações críticas e padrões complementares do Colaborador
 
 <table>
-<thead><tr><th width="25%">Confirmar Desativação</th><th width="25%">Confirmar Reativação</th><th width="25%">Descartar Alterações</th><th width="25%">Adicionar Requisito</th></tr></thead>
-<tbody><tr>
-<td><img src="imagens/telas/colaborador/desativar_beneficio.png" width="230" alt="Confirmar Desativação"/></td>
-<td><img src="imagens/telas/colaborador/reativar_beneficio.png" width="230" alt="Confirmar Reativação"/></td>
-<td><img src="imagens/telas/colaborador/descartar_alteracoes.png" width="230" alt="Descartar Alterações"/></td>
-<td><img src="imagens/telas/colaborador/adicionar_requisito.png" width="230" alt="Adicionar Requisito"/></td>
-</tr></tbody>
+<tbody>
+<tr>
+<td width="25%"><img src="imagens/telas/colaborador/desativar_beneficio.png" width="230" alt="Confirmar Desativação"/></td>
+<td width="25%"><img src="imagens/telas/colaborador/reativar_beneficio.png" width="230" alt="Confirmar Reativação"/></td>
+<td width="25%"><img src="imagens/telas/colaborador/descartar_alteracoes.png" width="230" alt="Descartar Alterações"/></td>
+<td width="25%"><img src="imagens/telas/colaborador/adicionar_requisito.png" width="230" alt="Adicionar Requisito"/></td>
+</tr>
+<tr>
+<td align="center"><strong>Confirmar Desativação</strong></td>
+<td align="center"><strong>Confirmar Reativação</strong></td>
+<td align="center"><strong>Descartar Alterações</strong></td>
+<td align="center"><strong>Adicionar Requisito</strong></td>
+</tr>
+</tbody>
 </table>
 
 **Objetivo**
