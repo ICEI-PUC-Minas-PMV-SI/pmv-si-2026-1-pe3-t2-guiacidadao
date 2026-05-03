@@ -42,11 +42,29 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 
 ## **4.3 Protótipos das Interfaces**
 
-![Painel Principal](imagens/telas/painelprincipal.png)
+#### **Painel Inicial**
 
-## **Objetivo da Tela**
+<table>
+<thead>
+<tr><th colspan="4" align="left"><strong>Tabela 1:</strong> Telas do Painel Inicial do Visitante </th></tr>
+</thead>
+<tbody>
+<tr>
+<td width="33%"><img src="imagens/telas/dashboard1.png" width="230" alt="Painel do Visitante"/></td>
+<td width="33%"><img src="imagens/telas/dashboard2.png" width="230" alt="Parte Inferior do Painel"/></td>
+<td width="33%"><img src="imagens/telas/menulateral.png" width="230" alt="Menu Lateral"/></td>
+</tr>
+<tr>
+<td align="center">Painel do Visitante</td>
+<td align="center">Parte Inferior do Painel</td>
+<td align="center">Menu Lateral</td>
+</tr>
+</tbody>
+</table>
 
-É o ponto de entrada ao sistema, apresenta informações básicas e de fácil acesso para o usuário leitor que apenas busca se informar sem se cadastrar com o sistema. Também inclui portas para um menu lateral que trará mais opções para os usuários que desejam se cadastrar e utilizar das funcionalidades do sistema.
+## **Objetivo**
+
+É o ponto de entrada ao sistema, apresenta informações básicas e de fácil acesso para o usuário leitor que apenas busca se informar sem se cadastrar com o sistema. Na parte superior, encontra-se opções sobre o perfil, menu lateral e pesquisa de benefícios. O Dashboard é apresentado em forma de cards, com uma breve descrição do benefício, uma imagem ilustrativa e um botão para mais informações. O menu lateral mostra opções sobre os benefícios, agendamentos, documentos, agências, notificações e o perfil do usuário. Todo o conjunto traz as informações de forma intuitiva e de fácil entendimento.
 
 ---
 
@@ -87,10 +105,6 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 - Acessibilidade: O tamanho dos títulos e dos botões facilita a visualização dos elementos.
 
 - Compatibilidade com o usuário: Textos claros ( "Saiba Mais", "Ver Mais Notícias" ) se conectam melhor com o usuário, facilitando seu entendimento.
-
----
-
-![Menu Lateral](imagens/telas/menulateral.png)
 
 ---
 
