@@ -4,8 +4,12 @@ import ConfirmarDesativacaoRequisito from './pages/Requisitos/ConfirmarDesativac
 import ConfirmarDesativacaoDocumento from './pages/Documentos/ConfirmarDesativacao'
 import ConfirmarDesativacaoBeneficio from './pages/Beneficios/ConfirmarDesativacao'
 import ConfirmarDesativacaoUnidade from './pages/Unidades/ConfirmarDesativacao'
+import AdicionarRequisitoModal from './pages/Modais/AdicionarRequisito'
+import AdicionarDocumentoModal from './pages/Modais/AdicionarDocumento'
+import AdicionarBeneficioModal from './pages/Modais/AdicionarBeneficio'
 import AdicionarBeneficio from './pages/Beneficios/Adicionar'
 import DetalhesBeneficio from './pages/Beneficios/Detalhes'
+import DescartarModal from './pages/Modais/Descartar'
 import EditarRequisito from './pages/Requisitos/Editar'
 import ListaRequisitos from './pages/Requisitos/Lista'
 import EditarDocumento from './pages/Documentos/Editar'
@@ -14,6 +18,7 @@ import EditarBeneficio from './pages/Beneficios/Editar'
 import ListaBeneficios from './pages/Beneficios/Lista'
 import EditarUnidade from './pages/Unidades/Editar'
 import ListaUnidades from './pages/Unidades/Lista'
+import ReativarModal from './pages/Modais/Reativar'
 import NovoDocumento from './pages/Documentos/Novo'
 import NovoRequisito from './pages/Requisitos/Novo'
 import RecuperarSenha from './pages/RecuperarSenha'
@@ -48,7 +53,12 @@ const colaboradorRoutes = [
   { path: 'unidades', element: <ListaUnidades /> },
   { path: 'unidades/nova', element: <NovaUnidade /> },
   { path: 'unidades/:unidadeId/editar', element: <EditarUnidade /> },
-  { path: 'unidades/:unidadeId/desativar', element: <ConfirmarDesativacaoUnidade /> }
+  { path: 'unidades/:unidadeId/desativar', element: <ConfirmarDesativacaoUnidade /> },
+  { path: 'modais/descartar', element: <DescartarModal /> },
+  { path: 'modais/adicionar-requisito', element: <AdicionarRequisitoModal /> },
+  { path: 'modais/adicionar-documento', element: <AdicionarDocumentoModal /> },
+  { path: 'modais/adicionar-beneficio', element: <AdicionarBeneficioModal /> },
+  { path: 'modais/reativar', element: <ReativarModal /> }
 ]
 
 export default colaboradorRoutes
