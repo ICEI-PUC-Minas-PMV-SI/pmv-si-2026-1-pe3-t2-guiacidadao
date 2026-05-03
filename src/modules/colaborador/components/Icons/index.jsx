@@ -11,11 +11,9 @@ export const IconHome = ({ size = 20 }) => wrap(
 
 export const IconBeneficio = ({ size = 20 }) => wrap(
   <>
-    <rect x="3" y="7" width="14" height="11" rx="1" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M3 11H17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <path d="M10 7V18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <path d="M10 7C8.5 4 5.5 4.8 6 6.5C6.5 8.5 10 7 10 7Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-    <path d="M10 7C11.5 4 14.5 4.8 14 6.5C13.5 8.5 10 7 10 7Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    <rect x="2" y="4" width="16" height="2" rx="1" fill="currentColor" />
+    <rect x="2" y="9" width="16" height="2" rx="1" fill="currentColor" />
+    <rect x="2" y="14" width="16" height="2" rx="1" fill="currentColor" />
   </>,
   size
 )
