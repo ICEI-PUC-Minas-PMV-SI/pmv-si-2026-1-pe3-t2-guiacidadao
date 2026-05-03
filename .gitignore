@@ -22,6 +22,9 @@ build
 .vite
 vite.config.*.timestamp-*
 
+# Vercel
+.vercel
+
 # Variaveis de ambiente
 .env
 .env.local
