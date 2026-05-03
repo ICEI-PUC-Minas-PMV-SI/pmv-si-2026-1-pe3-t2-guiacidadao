@@ -1,10 +1,14 @@
 import { Navigate } from 'react-router-dom'
 
+import ConfirmarDesativacaoDocumento from './pages/Documentos/ConfirmarDesativacao'
 import ConfirmarDesativacaoBeneficio from './pages/Beneficios/ConfirmarDesativacao'
 import AdicionarBeneficio from './pages/Beneficios/Adicionar'
 import DetalhesBeneficio from './pages/Beneficios/Detalhes'
+import EditarDocumento from './pages/Documentos/Editar'
+import ListaDocumentos from './pages/Documentos/Lista'
 import EditarBeneficio from './pages/Beneficios/Editar'
 import ListaBeneficios from './pages/Beneficios/Lista'
+import NovoDocumento from './pages/Documentos/Novo'
 import RecuperarSenha from './pages/RecuperarSenha'
 import PrimeiroAcesso from './pages/PrimeiroAcesso'
 import AlterarSenha from './pages/AlterarSenha'
@@ -24,7 +28,11 @@ const colaboradorRoutes = [
   { path: 'beneficios/novo', element: <AdicionarBeneficio /> },
   { path: 'beneficios/:beneficioId', element: <DetalhesBeneficio /> },
   { path: 'beneficios/:beneficioId/editar', element: <EditarBeneficio /> },
-  { path: 'beneficios/:beneficioId/desativar', element: <ConfirmarDesativacaoBeneficio /> }
+  { path: 'beneficios/:beneficioId/desativar', element: <ConfirmarDesativacaoBeneficio /> },
+  { path: 'documentos', element: <ListaDocumentos /> },
+  { path: 'documentos/novo', element: <NovoDocumento /> },
+  { path: 'documentos/:documentoId/editar', element: <EditarDocumento /> },
+  { path: 'documentos/:documentoId/desativar', element: <ConfirmarDesativacaoDocumento /> }
 ]
 
 export default colaboradorRoutes
