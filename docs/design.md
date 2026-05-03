@@ -96,9 +96,15 @@ A análise está organizada em dois grupos. O primeiro percorre o fluxo principa
 
 **Tabela 1:** Telas do fluxo central do Colaborador
 
-| Painel | Catálogo | Detalhes do Benefício | Editar Benefício |
-|:---:|:---:|:---:|:---:|
-| <img src="imagens/telas/colaborador/painel.png" width="230" alt="Painel do Colaborador"/> | <img src="imagens/telas/colaborador/catalogo.png" width="230" alt="Catálogo de Benefícios"/> | <img src="imagens/telas/colaborador/detalhes_beneficio.png" width="230" alt="Detalhes do Benefício"/> | <img src="imagens/telas/colaborador/editar_beneficio.png" width="230" alt="Editar Benefício"/> |
+<table>
+<thead><tr><th width="25%">Painel</th><th width="25%">Catálogo</th><th width="25%">Detalhes do Benefício</th><th width="25%">Editar Benefício</th></tr></thead>
+<tbody><tr>
+<td><img src="imagens/telas/colaborador/painel.png" width="230" alt="Painel do Colaborador"/></td>
+<td><img src="imagens/telas/colaborador/catalogo.png" width="230" alt="Catálogo de Benefícios"/></td>
+<td><img src="imagens/telas/colaborador/detalhes_beneficio.png" width="230" alt="Detalhes do Benefício"/></td>
+<td><img src="imagens/telas/colaborador/editar_beneficio.png" width="230" alt="Editar Benefício"/></td>
+</tr></tbody>
+</table>
 
 **Objetivo**
 
@@ -136,9 +142,15 @@ As quatro telas representam o ciclo principal de gestão de benefícios. O Paine
 
 **Tabela 2:** Telas de ações críticas e padrões complementares do Colaborador
 
-| Confirmar Desativação | Confirmar Reativação | Descartar Alterações | Adicionar Requisito |
-|:---:|:---:|:---:|:---:|
-| <img src="imagens/telas/colaborador/desativar_beneficio.png" width="230" alt="Confirmar Desativação"/> | <img src="imagens/telas/colaborador/reativar_beneficio.png" width="230" alt="Confirmar Reativação"/> | <img src="imagens/telas/colaborador/descartar_alteracoes.png" width="230" alt="Descartar Alterações"/> | <img src="imagens/telas/colaborador/adicionar_requisito.png" width="230" alt="Adicionar Requisito"/> |
+<table>
+<thead><tr><th width="25%">Confirmar Desativação</th><th width="25%">Confirmar Reativação</th><th width="25%">Descartar Alterações</th><th width="25%">Adicionar Requisito</th></tr></thead>
+<tbody><tr>
+<td><img src="imagens/telas/colaborador/desativar_beneficio.png" width="230" alt="Confirmar Desativação"/></td>
+<td><img src="imagens/telas/colaborador/reativar_beneficio.png" width="230" alt="Confirmar Reativação"/></td>
+<td><img src="imagens/telas/colaborador/descartar_alteracoes.png" width="230" alt="Descartar Alterações"/></td>
+<td><img src="imagens/telas/colaborador/adicionar_requisito.png" width="230" alt="Adicionar Requisito"/></td>
+</tr></tbody>
+</table>
 
 **Objetivo**
 
