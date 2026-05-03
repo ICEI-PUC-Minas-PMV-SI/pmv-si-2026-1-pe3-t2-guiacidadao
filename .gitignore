@@ -7,10 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Processos Node
+*.pid
+*.seed
+*.pid.lock
+
 # Dependencies
 node_modules
 .pnp
 .pnp.js
+*.tgz
 
 # Build output
 dist
@@ -43,10 +49,15 @@ coverage
 .parcel-cache
 .eslintcache
 
+# Temporarios
+.tmp
+tmp
+
 # Editores e IDEs
 .vscode/*
 !.vscode/extensions.json
 .idea
+.history
 *.suo
 *.ntvs*
 *.njsproj
