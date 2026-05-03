@@ -19,12 +19,12 @@ export const IconBeneficio = ({ size = 20 }) => wrap(
 )
 
 export const IconDocumento = ({ size = 20 }) => wrap(
-  <>
-    <rect x="4" y="2" width="12" height="16" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-    <line x1="6.5" y1="6.5" x2="13.5" y2="6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <line x1="6.5" y1="10" x2="13.5" y2="10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <line x1="6.5" y1="13.5" x2="11" y2="13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </>,
+  <path
+    d="M3 6 H8.5 L10.5 8 H17 Q18 8 18 9 V16 Q18 17 17 17 H3 Q2 17 2 16 V7 Q2 6 3 6 Z"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinejoin="round"
+  />,
   size
 )
 
