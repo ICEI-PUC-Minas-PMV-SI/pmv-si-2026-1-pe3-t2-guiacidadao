@@ -94,9 +94,10 @@ A análise está organizada em dois grupos. O primeiro percorre o fluxo principa
 
 #### **Fluxo central**
 
-**Tabela 1:** Telas do fluxo central do Colaborador
-
 <table>
+<thead>
+<tr><th colspan="4" align="left"><strong>Tabela 1:</strong> Telas do fluxo central do Colaborador</th></tr>
+</thead>
 <tbody>
 <tr>
 <td width="25%"><img src="imagens/telas/colaborador/painel.png" width="230" alt="Painel do Colaborador"/></td>
@@ -105,10 +106,10 @@ A análise está organizada em dois grupos. O primeiro percorre o fluxo principa
 <td width="25%"><img src="imagens/telas/colaborador/editar_beneficio.png" width="230" alt="Editar Benefício"/></td>
 </tr>
 <tr>
-<td align="center"><strong>Painel</strong></td>
-<td align="center"><strong>Catálogo</strong></td>
-<td align="center"><strong>Detalhes do Benefício</strong></td>
-<td align="center"><strong>Editar Benefício</strong></td>
+<td align="center">Painel</td>
+<td align="center">Catálogo</td>
+<td align="center">Detalhes do Benefício</td>
+<td align="center">Editar Benefício</td>
 </tr>
 </tbody>
 </table>
@@ -147,9 +148,10 @@ As quatro telas representam o ciclo principal de gestão de benefícios. O Paine
 
 #### **Ações críticas e padrões complementares**
 
-**Tabela 2:** Telas de ações críticas e padrões complementares do Colaborador
-
 <table>
+<thead>
+<tr><th colspan="4" align="left"><strong>Tabela 2:</strong> Telas de ações críticas e padrões complementares do Colaborador</th></tr>
+</thead>
 <tbody>
 <tr>
 <td width="25%"><img src="imagens/telas/colaborador/desativar_beneficio.png" width="230" alt="Confirmar Desativação"/></td>
@@ -158,10 +160,10 @@ As quatro telas representam o ciclo principal de gestão de benefícios. O Paine
 <td width="25%"><img src="imagens/telas/colaborador/adicionar_requisito.png" width="230" alt="Adicionar Requisito"/></td>
 </tr>
 <tr>
-<td align="center"><strong>Confirmar Desativação</strong></td>
-<td align="center"><strong>Confirmar Reativação</strong></td>
-<td align="center"><strong>Descartar Alterações</strong></td>
-<td align="center"><strong>Adicionar Requisito</strong></td>
+<td align="center">Confirmar Desativação</td>
+<td align="center">Confirmar Reativação</td>
+<td align="center">Descartar Alterações</td>
+<td align="center">Adicionar Requisito</td>
 </tr>
 </tbody>
 </table>
