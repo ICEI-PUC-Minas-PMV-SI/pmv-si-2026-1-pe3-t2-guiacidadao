@@ -25,7 +25,8 @@ export const styles = {
   menuList: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 10
+    gap: 10,
+    flex: 1
   },
   iconList: {
     display: 'inline-flex',

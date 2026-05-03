@@ -4,7 +4,7 @@ export const styles = {
   shell: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: 844,
+    minHeight: '100%',
     background: colors.bg
   },
   body: {
