@@ -10,7 +10,14 @@ export const styles = {
     padding: '12px 14px',
     display: 'flex',
     flexDirection: 'column',
-    gap: 4
+    gap: 4,
+    textAlign: 'left',
+    cursor: 'pointer',
+    transition: 'border-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease'
+  },
+  cardActive: {
+    borderColor: colors.primary,
+    boxShadow: '0 2px 12px rgba(74, 110, 141, 0.18)'
   },
   value: {
     fontFamily: fonts.body,

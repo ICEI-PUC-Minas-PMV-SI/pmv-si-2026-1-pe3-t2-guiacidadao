@@ -36,10 +36,30 @@ const Painel = () => {
       </section>
 
       <div style={styles.statsGrid}>
-        <StatCard value={beneficios.length} label="Benefícios" hint={`${ativosBeneficios} ativos`} />
-        <StatCard value={documentos.length} label="Documentos" hint="na biblioteca" />
-        <StatCard value={requisitos.length} label="Requisitos" hint="cadastrados" />
-        <StatCard value={unidades.length} label="Unidades" hint={`${ativasUnidades} ativas`} />
+        <StatCard
+          value={beneficios.length}
+          label="Benefícios"
+          hint={`${ativosBeneficios} ativos`}
+          onClick={() => navigate('/colaborador/beneficios')}
+        />
+        <StatCard
+          value={documentos.length}
+          label="Documentos"
+          hint="na biblioteca"
+          onClick={() => navigate('/colaborador/documentos')}
+        />
+        <StatCard
+          value={requisitos.length}
+          label="Requisitos"
+          hint="cadastrados"
+          onClick={() => navigate('/colaborador/requisitos')}
+        />
+        <StatCard
+          value={unidades.length}
+          label="Unidades"
+          hint={`${ativasUnidades} ativas`}
+          onClick={() => navigate('/colaborador/unidades')}
+        />
       </div>
 
       <SectionTitle>Acesso rápido</SectionTitle>
