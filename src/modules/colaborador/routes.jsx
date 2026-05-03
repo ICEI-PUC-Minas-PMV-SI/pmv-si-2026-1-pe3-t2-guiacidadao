@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import ConfirmarDesativacaoRequisito from './pages/Requisitos/ConfirmarDesativacao'
 import ConfirmarDesativacaoDocumento from './pages/Documentos/ConfirmarDesativacao'
 import ConfirmarDesativacaoBeneficio from './pages/Beneficios/ConfirmarDesativacao'
+import ConfirmarDesativacaoUnidade from './pages/Unidades/ConfirmarDesativacao'
 import AdicionarBeneficio from './pages/Beneficios/Adicionar'
 import DetalhesBeneficio from './pages/Beneficios/Detalhes'
 import EditarRequisito from './pages/Requisitos/Editar'
@@ -11,10 +12,13 @@ import EditarDocumento from './pages/Documentos/Editar'
 import ListaDocumentos from './pages/Documentos/Lista'
 import EditarBeneficio from './pages/Beneficios/Editar'
 import ListaBeneficios from './pages/Beneficios/Lista'
+import EditarUnidade from './pages/Unidades/Editar'
+import ListaUnidades from './pages/Unidades/Lista'
 import NovoDocumento from './pages/Documentos/Novo'
 import NovoRequisito from './pages/Requisitos/Novo'
 import RecuperarSenha from './pages/RecuperarSenha'
 import PrimeiroAcesso from './pages/PrimeiroAcesso'
+import NovaUnidade from './pages/Unidades/Nova'
 import AlterarSenha from './pages/AlterarSenha'
 import MeuPerfil from './pages/MeuPerfil'
 import Painel from './pages/Painel'
@@ -40,7 +44,11 @@ const colaboradorRoutes = [
   { path: 'requisitos', element: <ListaRequisitos /> },
   { path: 'requisitos/novo', element: <NovoRequisito /> },
   { path: 'requisitos/:requisitoId/editar', element: <EditarRequisito /> },
-  { path: 'requisitos/:requisitoId/desativar', element: <ConfirmarDesativacaoRequisito /> }
+  { path: 'requisitos/:requisitoId/desativar', element: <ConfirmarDesativacaoRequisito /> },
+  { path: 'unidades', element: <ListaUnidades /> },
+  { path: 'unidades/nova', element: <NovaUnidade /> },
+  { path: 'unidades/:unidadeId/editar', element: <EditarUnidade /> },
+  { path: 'unidades/:unidadeId/desativar', element: <ConfirmarDesativacaoUnidade /> }
 ]
 
 export default colaboradorRoutes
