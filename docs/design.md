@@ -84,6 +84,57 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 
 ![Menu Lateral](imagens/telas/menulateral.png)
 
+---
+
+### **Perfil do Colaborador**
+
+O Colaborador é o usuário interno responsável por manter o conteúdo da plataforma, o que inclui o catálogo de benefícios, a biblioteca de requisitos de elegibilidade, a biblioteca de documentos e o cadastro das unidades de atendimento. Como cada alteração afeta diretamente a experiência do Cidadão, o painel prioriza consistência visual, prevenção de erros e visibilidade do impacto das operações. Requisitos e documentos foram tratados como entidades reutilizáveis entre benefícios, decisão que reduz duplicação no cadastro e padroniza os checklists apresentados aos cidadãos.
+
+A análise está organizada em dois grupos. O primeiro percorre o fluxo principal do Colaborador, da entrada no sistema até a edição de um benefício. O segundo apresenta as telas de proteção, reversão e reuso, que aparecem em momentos críticos da edição. Os demais fluxos do painel, como autenticação, perfil próprio e a gestão de Documentos, Requisitos e Unidades, seguem os mesmos padrões descritos a seguir.
+
+#### **Fluxo central**
+
+<table>
+  <tr>
+    <td><img src="imagens/telas/colaborador/painel.png" width="160" alt="Painel do Colaborador"/></td>
+    <td><img src="imagens/telas/colaborador/catalogo.png" width="160" alt="Catálogo de Benefícios"/></td>
+    <td><img src="imagens/telas/colaborador/detalhes_beneficio.png" width="160" alt="Detalhes do Benefício"/></td>
+    <td><img src="imagens/telas/colaborador/editar_beneficio.png" width="160" alt="Editar Benefício"/></td>
+  </tr>
+</table>
+
+**Objetivo**
+
+As quatro telas representam o ciclo principal de gestão de benefícios. O Painel é a entrada após a autenticação e mostra um resumo quantitativo da plataforma e atalhos para os domínios sob responsabilidade do Colaborador. O Catálogo lista os benefícios cadastrados, com busca, filtros por status e contadores. A tela de Detalhes traz o conteúdo completo de um benefício em modo de leitura, com requisitos, documentos exigidos, link oficial, contagem de cidadãos elegíveis e data da última atualização. A tela de Edição permite alterar todos os atributos do benefício, com chips reutilizáveis para requisitos e documentos.
+
+**Princípios Gestálticos**
+
+- Proximidade: elementos relacionados aparecem agrupados. No Painel, as quatro métricas formam um bloco e os quatro atalhos formam outro. No Catálogo, busca e botão de adição compartilham o mesmo eixo horizontal. Na Edição, os campos são distribuídos em seções de identificação, descrição, requisitos, documentos e link oficial, separadas por linhas divisórias.
+- Semelhança: cards de métrica, atalhos do menu, itens das listas e chips repetem forma e tratamento visual dentro de cada categoria, o que torna os elementos interativos imediatamente reconhecíveis.
+- Continuidade: a leitura de cima para baixo acompanha a sequência natural de uso, e a ordem das telas espelha a ordem das ações.
+- Figura e fundo: o cabeçalho colorido contrasta com o corpo neutro e mantém o título e o contexto em destaque. Na Edição, o badge "Editando: Bolsa Família" funciona como ponto de referência permanente.
+- Fechamento: cartões com cantos arredondados, linhas divisórias e chips formam unidades visuais autônomas que separam blocos de conteúdo.
+
+**Regras de Ouro**
+
+- Consistência: cabeçalho, navegação inferior, padrão de busca com filtros, layout dos formulários e disposição dos botões se repetem em todas as telas autenticadas.
+- Atalhos para usuários frequentes: a busca no Catálogo evita rolagem extensa, e o link "Editar" no canto da tela de Detalhes leva direto à edição.
+- Feedback informativo: contadores nos filtros do Catálogo, contagem de cidadãos elegíveis e data da última atualização na tela de Detalhes, chips visíveis dos requisitos e documentos vinculados na Edição.
+- Prevenção de erros: campos obrigatórios marcados com asterisco e legenda no topo dos formulários. A tela de Detalhes funciona como etapa de consulta antes da edição.
+- Reversão de ações: o botão "Cancelar" acompanha "Salvar" na Edição, e os chips podem ser removidos pelo "×" e readicionados pelo "+ Adicionar".
+- Senso de controle: o Colaborador escolhe o domínio no Painel, alterna entre filtros no Catálogo e decide entre apenas consultar ou editar.
+- Redução da carga de memória de curto prazo: as métricas do Painel deixam visíveis as quantidades de cada categoria, e a tela de Detalhes mostra o conteúdo completo do benefício antes da edição.
+
+**Recomendações Ergonômicas**
+
+- Áreas de toque: itens de lista, atalhos e cartões com altura mínima de 60px; campos de formulário entre 44px e 65px; chips com 30px. Todos atendem o mínimo recomendado de 44px para mobile.
+- Hierarquia da informação: títulos contextuais ("Olá, Maria!", "Todos os benefícios", "Editando: Bolsa Família") orientam o foco do usuário. Tipografia maior para nomes principais, menor para metadados.
+- Contraste: texto escuro sobre fundo claro garante legibilidade nos campos e listas, e o cabeçalho colorido cria contraste consistente em todas as telas autenticadas.
+- Acessibilidade: tamanhos de fonte legíveis em telas a partir de 4 polegadas, atendendo ao RNF01. Rótulos sempre acima dos campos. Botões primários e secundários diferenciados por cor e proeminência.
+- Compatibilidade com o usuário: linguagem direta nos textos da interface ("Veja um resumo da plataforma", "Acesso rápido", "Cadastro: 1.240 cidadãos elegíveis"), alinhada ao RNF05.
+
+---
+
 ## 4.4 Testes com Protótipos
 
 Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
