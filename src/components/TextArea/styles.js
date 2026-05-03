@@ -16,7 +16,7 @@ export const styles = {
   field: {
     minHeight: 92,
     borderRadius: radii.lg,
-    background: colors.bg,
+    background: colors.white,
     border: `1px solid ${colors.borderLight}`,
     boxShadow: shadows.card,
     padding: '12px 14px',
