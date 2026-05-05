@@ -190,7 +190,7 @@ A análise está organizada em dois grupos. O primeiro percorre o fluxo principa
 
 <table>
 <thead>
-<tr><th colspan="4" align="left"><strong>Tabela 1:</strong> Telas do fluxo central do Colaborador</th></tr>
+<tr><th colspan="4" align="left"><strong>Tabela 3:</strong> Telas do fluxo central do Colaborador</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -244,7 +244,7 @@ As quatro telas representam o ciclo principal de gestão de benefícios. O Paine
 
 <table>
 <thead>
-<tr><th colspan="4" align="left"><strong>Tabela 2:</strong> Telas de ações críticas e padrões complementares do Colaborador</th></tr>
+<tr><th colspan="4" align="left"><strong>Tabela 4:</strong> Telas de ações críticas e padrões complementares do Colaborador</th></tr>
 </thead>
 <tbody>
 <tr>
