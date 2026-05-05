@@ -108,6 +108,78 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 
 ---
 
+#### **Fluxo de Autenticação do Cidadão**
+
+<table>
+<thead>
+<tr><th colspan="4" align="left"><strong>Tabela 2:</strong> Telas do fluxo de autenticação </th></tr>
+</thead>
+<tbody>
+<tr>
+<td width="33%"><img src="imagens/telas/autenticação/page_cadastro_mobile.png" width="230" alt="Cadastro"/></td>
+<td width="33%"><img src="imagens/telas/autenticação/page_login_mobile.png" width="230" alt="Login"/></td>
+<td width="33%"><img src="imagens/telas/autenticação/page_recuperarSenha_mobile.png" width="230" alt="Recuperação de Senha"/></td>
+</tr>
+<tr>
+<td align="center">Cadastro</td>
+<td align="center">Login</td>
+<td align="center">Recuperação de Senha</td>
+</tr>
+</tbody>
+</table>
+
+## **Objetivo**
+
+As telas de Cadastro, Login e Recuperação de Senha compõem o fluxo de autenticação do cidadão no sistema GuiaCidadão. Esse fluxo permite ao usuário criar uma conta, acessar a plataforma e recuperar seu acesso de forma segura quando necessário.
+
+A tela de Cadastro é responsável por coletar dados essenciais do usuário, como nome, CPF, data de nascimento, e credenciais de acesso, garantindo conformidade com requisitos de identificação e segurança. A tela de Login permite a autenticação de usuários já cadastrados, sendo o principal ponto de entrada para funcionalidades protegidas do sistema. Já a tela de Recuperação de Senha possibilita a redefinição de acesso por meio do envio de um código ao canal de contato informado.
+
+O conjunto dessas telas atende diretamente aos requisitos funcionais de cadastro e autenticação (RF01 e RF02), além de reforçar aspectos de segurança, usabilidade e acessibilidade definidos nos requisitos não funcionais do sistema.
+
+---
+
+### **Princípios Gestálticos**
+
+- Proximidade: Os campos de entrada estão organizados em blocos lógicos (dados pessoais, credenciais e ações), facilitando o entendimento e preenchimento por parte do usuário.
+
+- Semelhança: Inputs, botões e links seguem um padrão visual consistente entre as três telas, permitindo reconhecimento imediato dos elementos interativos.
+
+- Continuidade: A navegação entre cadastro, login e recuperação de senha segue um fluxo natural e esperado pelo usuário, reduzindo dificuldades de uso.
+
+- Figura-fundo: Os botões de ação principal em cor azul se destacam sobre o fundo claro, direcionando a atenção do usuário para as ações mais importantes.
+
+- Fechamento: Os campos e seções possuem delimitações visuais claras, permitindo ao usuário identificar facilmente o início e fim de cada grupo de informações.
+
+---
+
+### **Regras de Ouro**
+
+- Consistência: O cabeçalho, os campos de entrada e os botões seguem o mesmo padrão visual em todas as telas, garantindo uniformidade na experiência.
+
+- Feedback: Botões com textos claros como "Criar conta", "Entrar" e "Enviar Código" comunicam diretamente a ação que será executada.
+
+- Reconhecimento em vez de memorização: O uso de placeholders e labels (como CPF, Email e Senha) reduz a necessidade de memorização por parte do usuário.
+
+- Prevenção de erros: Campos com máscara (CPF) e confirmação de senha ajudam a evitar erros de preenchimento, alinhando-se às boas práticas de validação de dados.
+
+- Controle do usuário: Links como "Voltar", "Esqueci minha senha" e "Criar conta" permitem navegação livre entre as telas sem bloqueios.
+
+---
+
+### **Recomendações Ergonômicas**
+
+- Clareza visual: O contraste entre fundo, textos e botões facilita a leitura e identificação dos elementos da interface.
+
+- Hierarquia da informação: Títulos como "Login" e "Registrar conta" são destacados, orientando o foco do usuário na ação principal da tela.
+
+- Redução da carga cognitiva: Cada tela apresenta apenas os elementos essenciais para sua função, evitando sobrecarga de informações.
+
+- Acessibilidade: Os campos e botões possuem tamanho adequado para interação em dispositivos móveis, respeitando padrões mínimos de usabilidade.
+
+- Compatibilidade com o usuário: A interface utiliza linguagem simples e direta, adequada ao público-alvo com diferentes níveis de letramento digital.
+
+---
+
 ### **Perfil do Colaborador**
 
 O Colaborador é o usuário interno responsável por manter o conteúdo da plataforma, o que inclui o catálogo de benefícios, a biblioteca de requisitos de elegibilidade, a biblioteca de documentos e o cadastro das unidades de atendimento. Como cada alteração afeta diretamente a experiência do Cidadão, o painel prioriza consistência visual, prevenção de erros e visibilidade do impacto das operações. Requisitos e documentos foram tratados como entidades reutilizáveis entre benefícios, decisão que reduz duplicação no cadastro e padroniza os checklists apresentados aos cidadãos.
