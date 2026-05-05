@@ -50,9 +50,9 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 </thead>
 <tbody>
 <tr>
-<td width="33%"><img src="imagens/telas/dashboard1.png" width="230" alt="Painel do Visitante"/></td>
-<td width="33%"><img src="imagens/telas/dashboard2.png" width="230" alt="Parte Inferior do Painel"/></td>
-<td width="33%"><img src="imagens/telas/menulateral.png" width="230" alt="Menu Lateral"/></td>
+<td width="33%"><img src="imagens/telas/principal/dashboard1.png" width="230" alt="Painel do Visitante"/></td>
+<td width="33%"><img src="imagens/telas/principal/dashboard2.png" width="230" alt="Parte Inferior do Painel"/></td>
+<td width="33%"><img src="imagens/telas/principal/menulateral.png" width="230" alt="Menu Lateral"/></td>
 </tr>
 <tr>
 <td align="center">Painel do Visitante</td>
