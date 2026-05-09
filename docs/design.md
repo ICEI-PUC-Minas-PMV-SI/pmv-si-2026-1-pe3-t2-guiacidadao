@@ -296,10 +296,93 @@ As quatro telas tratam de situações de risco, reuso e proteção contra perda 
 
 ## 4.4 Testes com Protótipos
 
-Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
+Nesta seção serão apresentados os resultados dos testes realizados com os protótipos de alta fidelidade do sistema GuiaCidadão, conduzidos com 6 candidatos a usuários do sistema. O objetivo principal foi avaliar a clareza das informações, a facilidade de navegação, a compreensão das funcionalidades e a acessibilidade do sistema para usuários com baixa familiaridade tecnológica e dificuldades relacionadas à burocracia e linguagem técnica.
 
-Cada integrante do grupo deverá aplicar o teste com um usuário distinto, preferencialmente alinhado ao perfil das personas criadas. Devem ser definidas previamente as tarefas que o usuário deverá executar no protótipo (por exemplo: realizar um cadastro, buscar um produto, concluir uma compra).
+Primeiramente, será apresentada a metodologia utilizada pelo grupo durante os testes. Em seguida, serão sintetizados os comentários, opiniões e observações fornecidos pelos participantes, contribuindo para os próximos ciclos de melhoria do sistema.
 
-Durante a aplicação do teste, registre observações sobre comportamentos, dúvidas, erros e comentários feitos pelo usuário, bem como o tempo necessário para a execução de cada tarefa. Ao final, colete o feedback do participante, destacando pontos positivos e aspectos a serem melhorados.
+---
 
-Os resultados obtidos por todos os integrantes devem ser consolidados, apresentando uma análise geral com os principais problemas encontrados, oportunidades de melhoria e as ações previstas para o projeto final.
+### Metodologia
+#### Perguntas
+
+Foram escolhidas oito perguntas para serem direcionadas aos usuários, com o intuito de captar e analisar suas impressões sobre o sistema:
+
+<ol>
+  <li>Ao analisar a página inicial, você conseguiu entender rapidamente qual é o propósito principal do aplicativo?</li>
+  <li>Os menus e botões estavam posicionados de forma clara e fácil de encontrar?</li>
+  <li>As etapas para realizar tarefas, como cadastro, busca de benefícios e agendamento, estavam claras e seguiam uma lógica compreensível?</li>
+  <li>Os elementos visuais (cores, ícones e disposição dos botões) ajudaram a identificar o que era clicável e o que era apenas informativo?</li>
+  <li>Houve alguma informação, botão ou funcionalidade que gerou confusão?</li>
+  <li>Você sentiu que conseguiria utilizar o aplicativo sem ajuda de terceiros?</li>
+  <li>Classifique sua experiência com uma nota entre 1 e 5.</li>
+  <li>Comente os fatores que o levaram a essa nota.</li>
+</ol>
+
+---
+
+### Passo a passo
+
+De posse dessas perguntas, foi definido um conjunto de cinco passos para a realização dos testes, com a finalidade de tornar o processo menos cansativo e mais eficiente para os participantes. As telas foram divididas em grupos relacionados às funcionalidades do sistema, reduzindo o esforço cognitivo dos usuários e facilitando a compreensão do fluxo de navegação.
+
+Os cinco passos efetuados foram:
+
+#### Passo 1
+
+Foram apresentadas as telas de login, cadastro e recuperação de senha. Após a visualização dessas telas, os usuários responderam à pergunta 1, relacionada à compreensão inicial do propósito do sistema.
+
+#### Passo 2
+
+Foram apresentadas as telas da página inicial, menu lateral e notificações. Após a visualização, os usuários responderam às perguntas 2 a 5, relacionadas à navegação, organização das funcionalidades e clareza visual.
+
+#### Passo 3
+
+Foram apresentadas as telas informativas dos benefícios sociais, incluindo BPC, Bolsa Família, Auxílio Gás, CadÚnico, TSEE e Auxílio Acidente. Após a visualização, os usuários responderam novamente às perguntas 2 a 5.
+
+#### Passo 4
+
+Foram apresentadas as telas do checklist de documentos, localizador de CRAS e fluxo de agendamento de atendimento, incluindo confirmação e gerenciamento de agendamentos. Após a visualização, os usuários responderam mais uma vez às perguntas 2 a 5.
+
+#### Passo 5
+
+Após a apresentação de todas as telas selecionadas para o teste, os usuários responderam às perguntas 6 a 8, apresentando suas conclusões gerais sobre o sistema.
+
+---
+
+### Síntese dos resultados
+#### Pontos positivos
+
+Houve convergência entre os participantes em relação a diversos pontos positivos do sistema:
+
+- A organização geral das telas foi considerada clara e intuitiva.
+- Os ícones e botões ajudaram significativamente na identificação das funcionalidades do aplicativo.
+- A separação dos benefícios em categorias específicas facilitou a busca por informações.
+- Os participantes relataram que a linguagem utilizada aparentava ser mais simples e acessível do que a normalmente encontrada em sistemas governamentais.
+- O fluxo de tarefas, principalmente nos processos de cadastro, consulta de benefícios e agendamento, foi considerado fácil de acompanhar.
+- A funcionalidade de checklist de documentos foi bastante elogiada, pois auxilia o usuário a entender quais documentos já possui e quais ainda precisa providenciar.
+- O localizador de CRAS foi apontado como uma funcionalidade importante e útil para usuários que possuem dificuldade em encontrar unidades de atendimento.
+- Todos os participantes afirmaram que conseguiriam utilizar o sistema sem ajuda externa após um curto período de adaptação.
+- A média das avaliações atribuídas pelos participantes foi de 4,7 em 5.
+
+---
+
+### Pontos de atenção
+
+Durante os testes, também foram identificados pontos de atenção e sugestões de melhoria:
+
+- Alguns participantes demonstraram dúvidas sobre determinados termos técnicos utilizados nas telas, especialmente expressões relacionadas à renda familiar e critérios de elegibilidade.
+- O termo “colaborador”, presente na tela de login, gerou confusão em alguns usuários, que não compreenderam imediatamente seu significado.
+- Alguns usuários relataram dificuldade para entender funcionalidades relacionadas à exportação em PDF, sugerindo a utilização de termos mais simples, como “Salvar lista”.
+- Houve participantes que demonstraram dificuldade ao utilizar o calendário na tela de agendamento, principalmente em dispositivos móveis.
+- Alguns usuários relataram que o menu lateral poderia ser mais evidente, pois o ícone de abertura do menu não foi imediatamente identificado por todos.
+- Certos textos informativos foram considerados longos, o que pode dificultar a leitura para usuários com baixa escolaridade ou pouca familiaridade com leitura digital.
+- Alguns participantes sugeriram aumentar o tamanho das fontes e destacar ainda mais os botões principais de ação.
+- Usuários também sugeriram adicionar uma opção de “Usar minha localização” no localizador de CRAS, facilitando a busca para pessoas que não sabem informar o CEP corretamente.
+- Foi observado que algumas palavras utilizadas nos benefícios sociais poderiam ser substituídas por termos mais simples e populares, tornando o sistema ainda mais acessível.
+
+---
+
+### Próximos passos
+
+Os testes realizados com os protótipos de alta fidelidade demonstraram que o GuiaCidadão possui uma proposta acessível e alinhada às necessidades do público-alvo. O retorno fornecido pelos candidatos a usuários foi essencial para identificar melhorias relacionadas à clareza das informações, simplificação da linguagem e aprimoramento da navegação.
+
+Com base nas observações coletadas, a equipe pretende revisar elementos visuais, simplificar termos técnicos, melhorar a acessibilidade em dispositivos móveis e tornar algumas funcionalidades mais intuitivas nos próximos ciclos de desenvolvimento. Essas melhorias têm como objetivo aumentar ainda mais a autonomia dos usuários no acesso às informações e serviços relacionados aos benefícios sociais.
