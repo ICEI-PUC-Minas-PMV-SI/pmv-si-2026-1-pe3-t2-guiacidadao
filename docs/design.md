@@ -363,6 +363,76 @@ As três telas representam o ciclo de vida do agendamento sob a perspectiva do C
 - Compatibilidade com o usuário: Utilização de termos simples e diretos ("Meus Agendamentos", "Novo Agendamento", "Editar"), evitando termos técnicos ou burocráticos excessivos para garantir a inclusão de todos os perfis de cidadãos.
 ---
 
+#### **Gestão do Perfil e Composição Familiar**
+
+<table>
+<thead>
+<tr><th colspan="4" align="left"><strong>Tabela 6:</strong> Telas de gestão de perfil e composição familiar </th></tr>
+</thead>
+<tbody>
+<tr>
+<td width="25%"><img src="imagens/telas/perfil/page_perfil_mobile.png" width="230" alt="Meu Perfil"/></td>
+<td width="25%"><img src="imagens/telas/perfil/page_perfil_familiar_mobile.png" width="230" alt="Perfil Familiar"/></td>
+<td width="25%"><img src="imagens/telas/perfil/page_adicionar_membro_mobile.png" width="230" alt="Adicionar Membro"/></td>
+<td width="25%"><img src="imagens/telas/perfil/page_endereco_mobile.png" width="230" alt="Endereço"/></td>
+</tr>
+<tr>
+<td align="center">Meu Perfil</td>
+<td align="center">Perfil Familiar</td>
+<td align="center">Adicionar Membro</td>
+<td align="center">Endereço</td>
+</tr>
+</tbody>
+</table>
+
+## **Objetivo**
+
+Este conjunto de telas permite ao cidadão gerenciar suas informações pessoais e a composição de seu núcleo familiar, dados que são fundamentais para o cálculo de elegibilidade a benefícios sociais. 
+
+A tela "Meu Perfil" centraliza o acesso às configurações de dados. O "Perfil Familiar" oferece uma visão consolidada da renda do grupo, apresentando o cálculo automático da renda per capita e a listagem de membros. A tela "Adicionar Membro" possibilita a expansão do grupo familiar com coleta de dados socioeconômicos específicos, enquanto a tela "Endereço" foca na situação habitacional, essencial para auxílios de moradia. Todo o fluxo visa manter o cadastro do usuário atualizado para que o sistema possa sugerir benefícios de forma assertiva.
+
+---
+
+### **Princípios Gestálticos**
+
+- **Proximidade:** Na tela de Perfil Familiar, os dados de "Resumo" (membros, renda total e per capita) estão agrupados em um card branco, indicando que pertencem à mesma métrica de análise. Da mesma forma, os campos do formulário de Adição de Membro estão próximos uns dos outros para formar uma unidade de preenchimento.
+
+- **Semelhança:** Os cards que representam cada membro da família (Jorge Silva e João Silva) possuem o mesmo tratamento visual, ícones e botões "Editar", permitindo que o usuário entenda que possuem a mesma função e importância.
+
+- **Figura-fundo:** O uso de um fundo cinza claro contrasta com os cards brancos e botões azuis, destacando os elementos de interação e as informações principais sobre o plano de fundo neutro.
+
+- **Fechamento:** O uso de bordas arredondadas e o contorno pontilhado na seção de membros criam uma área delimitada que ajuda o usuário a perceber onde começa e termina a lista de dependentes.
+
+- **Continuidade:** A disposição vertical dos itens no menu "Meu Perfil" e nos formulários guia o olhar do usuário de cima para baixo em uma sequência lógica de leitura e ação.
+
+---
+
+### **Regras de Ouro**
+
+- **Consistência:** Os botões "Salvar", "Adicionar Membro" e "Editar" mantêm o padrão de cor azul e cantos arredondados utilizado em todo o sistema, garantindo uma identidade visual uniforme.
+
+- **Redução da carga de memória de curto prazo:** O sistema realiza e exibe o cálculo da "Renda Per Capita" automaticamente na tela de Perfil Familiar, poupando o usuário de realizar cálculos matemáticos para entender sua situação.
+
+- **Feedback informativo:** Ao entrar na edição de endereço ou membros, os campos apresentam placeholders e máscaras (como no CEP e Renda Mensal) que orientam o preenchimento correto em tempo real.
+
+- **Controle do usuário:** A presença constante do botão de "Voltar" (seta no topo esquerdo) e do botão "Editar" permite que o usuário corrija informações ou cancele ações de forma simples e direta.
+
+- **Reconhecimento em vez de memorização:** As etiquetas (labels) acima de cada campo de entrada (Nome, Data de Nascimento, Parentesco) garantem que o usuário saiba exatamente o que deve preencher sem precisar recordar instruções de telas anteriores.
+
+---
+
+### **Recomendações Ergonômicas**
+
+- **Clareza visual:** O uso de negrito para destacar valores (R$ 2.400,00) e nomes de membros facilita a varredura visual rápida da tela, permitindo encontrar informações importantes em poucos segundos.
+
+- **Áreas de toque:** Os botões de ação e os itens de menu possuem altura suficiente para serem acionados facilmente por dedos de diferentes tamanhos em dispositivos móveis, evitando cliques acidentais em campos vizinhos.
+
+- **Hierarquia da informação:** O título da página é o elemento de maior destaque no topo, seguido por subtítulos de seção ("Resumo", "Membros"), organizando o conteúdo de forma que o usuário entenda a prioridade dos dados.
+
+- **Acessibilidade:** O alto contraste entre o texto escuro e o fundo claro, juntamente com o uso de ícones intuitivos (casa para endereço, pessoas para perfil familiar), auxilia na compreensão por usuários com diferentes níveis de literacia digital.
+
+- **Compatibilidade com o usuário:** O uso de termos familiares como "Vínculo" e "Parentesco", além da máscara de moeda (R$), torna a interface amigável e próxima do vocabulário cotidiano do cidadão brasileiro.
+
 ## 4.4 Testes com Protótipos
 
 Nesta seção serão apresentados os resultados dos testes realizados com os protótipos de alta fidelidade do sistema GuiaCidadão, conduzidos com 6 candidatos a usuários do sistema. O objetivo principal foi avaliar a clareza das informações, a facilidade de navegação, a compreensão das funcionalidades e a acessibilidade do sistema para usuários com baixa familiaridade tecnológica e dificuldades relacionadas à burocracia e linguagem técnica.
