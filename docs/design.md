@@ -294,6 +294,75 @@ As quatro telas tratam de situações de risco, reuso e proteção contra perda 
 
 ---
 
+#### **Fluxo de Agendamento e Gestão**
+
+<table>
+<thead>
+<tr><th colspan="4" align="left"><strong>Tabela 5:</strong> Telas do fluxo de Agendamento e Gestão </th></tr>
+</thead>
+<tbody>
+<tr>
+<td width="33%"><img src="imagens/telas/agendamento/page_meus_agendamentos.png" width="230" alt="Meus Agendamentos"/></td>
+<td width="33%"><img src="imagens/telas/agendamento/page_agendamento_mobile.png" width="230" alt="Agendamento"/></td>
+<td width="33%"><img src="imagens/telas/agendamento/page_confirmarAgendamento_mobile.png" width="230" alt="Confirmar Agendamento"/></td>
+</tr>
+<tr>
+<td align="center">Meus Agendamentos</td>
+<td align="center">Agendamento</td>
+<td align="center">Confirmar Agendamento</td>
+</tr>
+</tbody>
+</table>
+
+## **Objetivo**
+
+As três telas representam o ciclo de vida do agendamento sob a perspectiva do Cidadão. A tela Meus Agendamentos funciona como o centro de controle, organizando os compromissos em abas de "Próximos" e "Histórico", com status claros (Confirmado, Pendente). A tela de Agendamento é o formulário de entrada, onde o usuário seleciona o serviço, unidade, data e horário. Por fim, a tela de Confirmar Atendimento atua como uma camada de segurança, apresentando um resumo detalhado para conferência antes da geração do protocolo definitivo.
+
+---
+
+### **Princípios Gestálticos**
+
+- Proximidade: Informações correlatas são agrupadas em cards. Em "Meus Agendamentos", o ícone de calendário, a data e o local formam um bloco coeso. No formulário, rótulos e campos de entrada estão estritamente próximos para evitar confusão.
+
+- Semelhança: Os botões de ação ("Reagendar", "Cancelar", "Novo Agendamento") mantêm padrões cromáticos e de arredondamento, permitindo que o usuário identifique rapidamente o que é uma ação primária ou secundária.
+
+- Continuidade: O fluxo segue uma lógica linear e vertical. No formulário de agendamento, a sequência (Quem -> O quê -> Onde -> Quando) respeita a ordem mental de planejamento do cidadão.
+
+- Figura-fundo: O uso de sombras leves nos cards sobre o fundo cinza claro destaca o conteúdo principal, criando uma hierarquia visual que separa a interface do plano de fundo.
+
+- Fechamento: O uso de bordas arredondadas e divisórias sutis delimita as seções de "Informações Importantes", criando unidades de leitura autônomas que não sobrecarregam a visão.
+
+---
+
+### **Regras de Ouro**
+
+- Consistência: O cabeçalho com a marca "GuiaCidadão" e a identidade visual azul permanecem constantes, reforçando a confiança institucional.
+
+- Feedback: O uso de badges coloridos (verde para "Confirmado", amarelo para "Pendente") oferece resposta imediata sobre o status do serviço sem necessidade de leitura profunda.
+
+- Reconhecimento em vez de memorização: O uso de placeholders e labels (como CPF, Email e Senha) reduz a necessidade de memorização por parte do usuário.
+
+- Prevenção de erros: A tela de confirmação é a principal barreira contra erros, forçando o usuário a revisar CPF, Benefício e Local antes de gerar o protocolo.
+
+- Reversão de ações: Todas as telas oferecem caminhos de volta: o botão "Cancelar Agendamento" ou "Editar" na confirmação, e a opção "Reagendar" na listagem inicial.
+
+- Redução de carga de memória: A seção "Documentos para levar" aparece tanto no agendamento quanto na confirmação, garantindo que o usuário não precise memorizar os requisitos em telas anteriores.
+
+---
+
+### **Recomendações Ergonômicas**
+
+- Áreas de toque: Os slots de horário na tela de agendamento e os botões de ação possuem dimensões generosas, facilitando o clique em dispositivos móveis e evitando toques acidentais em opções vizinhas.
+
+- Hierarquia da informação: O uso de negrito em campos-chave (Protocolo, Nome, Benefício) destaca o que é essencial. Na tela de listagem, o nome do serviço é o elemento de maior peso visual.
+
+- Contraste: A combinação de azul marinho para ações principais e tons de cinza para textos secundários garante excelente legibilidade, cumprindo requisitos de acessibilidade visual.
+
+- Acessibilidade: Os campos e botões possuem tamanho adequado para interação em dispositivos móveis, respeitando padrões mínimos de usabilidade.
+
+- Compatibilidade com o usuário: Utilização de termos simples e diretos ("Meus Agendamentos", "Novo Agendamento", "Editar"), evitando termos técnicos ou burocráticos excessivos para garantir a inclusão de todos os perfis de cidadãos.
+---
+
 ## 4.4 Testes com Protótipos
 
 Nesta seção serão apresentados os resultados dos testes realizados com os protótipos de alta fidelidade do sistema GuiaCidadão, conduzidos com 6 candidatos a usuários do sistema. O objetivo principal foi avaliar a clareza das informações, a facilidade de navegação, a compreensão das funcionalidades e a acessibilidade do sistema para usuários com baixa familiaridade tecnológica e dificuldades relacionadas à burocracia e linguagem técnica.
