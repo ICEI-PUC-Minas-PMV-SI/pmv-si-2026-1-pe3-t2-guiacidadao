@@ -364,7 +364,7 @@ As quatro telas tratam de situações de risco, reuso e proteção contra perda 
 <tbody>
 <tr>
 <td width="33%"><img src="imagens/telas/agendamento/page_meus_agendamentos.png" width="230" alt="Meus Agendamentos"/></td>
-<td width="33%"><img src="imagens/telas/agendamento/page_agendamento_mobile.png" width="230" alt="Agendamento"/></td>
+<td width="33%"><img src="imagens/telas/agendamento/page_agendamento1_mobile.png" width="230" alt="Agendamento"/></td>
 <td width="33%"><img src="imagens/telas/agendamento/page_confirmarAgendamento_mobile.png" width="230" alt="Confirmar Agendamento"/></td>
 </tr>
 <tr>
