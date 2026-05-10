@@ -108,6 +108,67 @@ Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A p
 
 ---
 
+#### **Benefícios**
+
+<table>
+<thead>
+<tr><th colspan="4" align="left"><strong>Tabela 1:</strong> Telas dos Benefícios </th></tr>
+</thead>
+<tbody>
+<tr>
+<td width="33%"><img src="imagens/telas/principal/beneficio1.png" width="230" alt="Beneficio1"/></td>
+<td width="33%"><img src="imagens/telas/principal/beneficio2.png" width="230" alt="Beneficio2"/></td>
+<td width="33%"><img src="imagens/telas/principal/beneficio3.png" width="230" alt="Beneficio2"/></td>
+</tr>
+</tbody>
+</table>
+
+## **Objetivo**
+
+O objetivo principal é agregar informações de forma compacta, resumida e bem explicada sobre cada benefício em destaque. Na parte superior, encontra-se opções para o retorno ao painel inicial e para o perfil do usuário.
+
+---
+
+### **Princípios Gestálticos**
+
+- Proximidade: As opções de Retorno e Perfil encontram-se na parte superior da tela, além do logo do projeto.
+
+- Semelhança: A informações encontram-se agrupadas em cards abaixo do título em destaque.
+
+- Continuidade: As informações organizadas e agrupadas de forma simples facilita a compreensão.
+
+- Figura-fundo: O fundo em tom mais claro contrasta com os cards que estão ao lado de uma cor vibrante, que conduz o usuário através de cada tópico.
+
+- Fechamento: O contorno dos cards e a cor lateral gera fácil compreensão do seu fim, e consequentemente, do início de outro card, separando as informações e facilitando o uso.
+
+---
+
+### **Regras de Ouro**
+
+- Consistência: Os campos mantém uma padronização de texto, imagem e formato, facilitando a compreensão de cada elemento.
+
+- Feedback: Presença de informações claras através de uma linguagem direta, com frases como "O que é?","Quem tem direito?" e "Documentação Necessária".
+
+- Reconhecimento em vez de memorização: O uso de títulos em destaque conduz o usuário entre a grande quantidade de conteúdo, sem a necessidade de memorização de cada parte.
+
+- Controle do usuário: O usuário pode navegar livremente entre as informações sem bloqueios.
+
+---
+
+### **Recomendações Ergonômicas**
+
+- Clareza visual: As cores ao início de cada tópico destaca o seu conteúdo.
+
+- Hierarquia da informação: O título ao topo dos tópicos é tido como prioridade ao leitor, guiando-se por entre as partes.
+
+- Redução da carga cognitiva: O painel inclui as informações agrupadas e escritas de uma forma direta, com seus respectivos títulos escritos em destaque.
+
+- Acessibilidade: O tamanho dos títulos e do texto facilita a visualização dos elementos.
+
+- Compatibilidade com o usuário: Textos claros ( "O que é?", "Quem tem direito?" ) se conectam melhor com o usuário, facilitando seu entendimento.
+
+---
+
 #### **Fluxo de Autenticação do Cidadão**
 
 <table>
