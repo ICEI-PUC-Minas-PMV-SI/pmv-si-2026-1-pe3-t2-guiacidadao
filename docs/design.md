@@ -367,20 +367,22 @@ As três telas representam o ciclo de vida do agendamento sob a perspectiva do C
 
 <table>
 <thead>
-<tr><th colspan="4" align="left"><strong>Tabela 6:</strong> Telas de gestão de perfil e composição familiar </th></tr>
+<tr><th colspan="5" align="left"><strong>Tabela 6:</strong> Telas de gestão de perfil e composição familiar </th></tr>
 </thead>
 <tbody>
 <tr>
-<td width="25%"><img src="imagens/telas/perfil/page_perfil_mobile.png" width="230" alt="Meu Perfil"/></td>
-<td width="25%"><img src="imagens/telas/perfil/page_perfil_familiar_mobile.png" width="230" alt="Perfil Familiar"/></td>
-<td width="25%"><img src="imagens/telas/perfil/page_adicionar_membro_mobile.png" width="230" alt="Adicionar Membro"/></td>
-<td width="25%"><img src="imagens/telas/perfil/page_endereco_mobile.png" width="230" alt="Endereço"/></td>
+<td width="20%"><img src="imagens/telas/perfil/page_perfil_mobile.png" width="230" alt="Meu Perfil"/></td>
+<td width="20%"><img src="imagens/telas/perfil/page_perfil_familiar_mobile.png" width="230" alt="Perfil Familiar"/></td>
+<td width="20%"><img src="imagens/telas/perfil/page_adicionar_membro_mobile.png" width="230" alt="Adicionar Membro"/></td>
+<td width="20%"><img src="imagens/telas/perfil/page_endereco_mobile.png" width="230" alt="Endereço"/></td>
+<td width="20%"><img src="imagens/telas/perfil/page_meus_beneficios.png" width="230" alt="Endereço"/></td>
 </tr>
 <tr>
 <td align="center">Meu Perfil</td>
 <td align="center">Perfil Familiar</td>
 <td align="center">Adicionar Membro</td>
 <td align="center">Endereço</td>
+<td align="center">Meus Benefícios</td>
 </tr>
 </tbody>
 </table>
@@ -389,7 +391,9 @@ As três telas representam o ciclo de vida do agendamento sob a perspectiva do C
 
 Este conjunto de telas permite ao cidadão gerenciar suas informações pessoais e a composição de seu núcleo familiar, dados que são fundamentais para o cálculo de elegibilidade a benefícios sociais. 
 
-A tela "Meu Perfil" centraliza o acesso às configurações de dados. O "Perfil Familiar" oferece uma visão consolidada da renda do grupo, apresentando o cálculo automático da renda per capita e a listagem de membros. A tela "Adicionar Membro" possibilita a expansão do grupo familiar com coleta de dados socioeconômicos específicos, enquanto a tela "Endereço" foca na situação habitacional, essencial para auxílios de moradia. Todo o fluxo visa manter o cadastro do usuário atualizado para que o sistema possa sugerir benefícios de forma assertiva.
+A tela "Meu Perfil" centraliza o acesso às configurações de dados. O "Perfil Familiar" oferece uma visão consolidada da renda do grupo, apresentando o cálculo automático da renda per capita e a listagem de membros. A tela "Adicionar Membro" possibilita a expansão do grupo familiar com coleta de dados socioeconômicos específicos, enquanto a tela "Endereço" foca na situação habitacional, essencial para auxílios de moradia. Todo o fluxo visa manter o cadastro do usuário atualizado para que o sistema possa sugerir benefícios de forma assertiva. A tela "Meus Benefícios" complementa esse fluxo ao oferecer ao cidadão uma visão consolidada dos benefícios vinculados ao seu perfil, com ações rápidas de edição e cancelamento, reforçando a autonomia no acompanhamento da sua situação social.
+
+
 
 ---
 
