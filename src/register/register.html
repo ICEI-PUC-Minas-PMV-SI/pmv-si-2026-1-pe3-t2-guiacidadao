@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<div id="app">
+<body>
+
+  <div id="login" class="screen active auth-screen">
+    <div class="app-header">
+      <div style="width:36px"></div>
+      <a class="header-logo">
+        <img src="/src/assets/icons/Logo.png" alt="Logo">
+        GuiaCidadão
+      </a>
+      <div style="width:36px"></div>
+    </div>
+    <div class="scroll-content">
+      <div class="auth-body">
+        <div class="auth-title-block">
+          <h1 class="page-title">Registrar conta</h1>
+          <p class="page-subtitle">Crie sua conta para acessar os serviços</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Nome completo</label>
+          <input class="form-input" type="text" id="cad-nome" placeholder="Jorge Silva" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">CPF</label>
+          <input class="form-input" type="text" id="cad-cpf" placeholder="000.000.000-00" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Data de nascimento</label>
+          <input class="form-input" type="text" id="cad-dob" placeholder="DD/MM/AAAA" autocomplete="bday">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" id="cad-email" placeholder="joao@gmail.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Senha</label>
+          <input class="form-input" type="password" id="cad-pw" placeholder="Crie sua senha" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirmar senha</label>
+          <input class="form-input" type="password" id="cad-pw2" placeholder="Repita a senha" autocomplete="new-password">
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="cad-terms">
+            <span>Aceito os <a href="#">termos de uso</a> e <a href="#">política de privacidade</a></span>
+          </label>
+        </div>
+
+        <button class="btn btn-primary" id="btn-cadastrar">Criar conta</button>
+
+        <div class="auth-links">
+          <button class="btn-link" data-back="login">Já tem uma conta? Entrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+ </body>
+ </html>
