@@ -1,10 +1,13 @@
-const Placeholder = () => (
-  <main style={{ padding: 24, fontFamily: 'Inter, system-ui, sans-serif' }}>
-    <h1 style={{ fontSize: 18, color: '#1a2332' }}>Módulo Cidadão</h1>
-    <p style={{ fontSize: 14, color: '#64748b' }}>Será implementado em fase futura.</p>
-  </main>
-)
+import { Navigate } from 'react-router-dom'
 
-const cidadaoRoutes = [{ path: '*', element: <Placeholder /> }]
+import MeusBeneficios from './pages/MeusBeneficios'
+import PerfilFamiliar from './pages/PerfilFamiliar'
+
+const cidadaoRoutes = [
+  { path: '', element: <Navigate to="/cidadao/perfil-familiar" replace /> },
+  { path: 'perfil-familiar', element: <PerfilFamiliar /> },
+  { path: 'meus-beneficios', element: <MeusBeneficios /> },
+  { path: '*', element: <Navigate to="/cidadao/perfil-familiar" replace /> }
+]
 
 export default cidadaoRoutes

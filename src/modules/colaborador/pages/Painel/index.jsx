@@ -6,19 +6,19 @@ import MenuItem from '../../components/MenuItem'
 import ScreenLayout from '../../components/ScreenLayout'
 import SectionTitle from '../../components/SectionTitle'
 import StatCard from '../../components/StatCard'
-import { beneficios } from '../../mocks/beneficios'
 import { colaboradorProfile } from '../../mocks/profile'
-import { documentos } from '../../mocks/documentos'
-import { requisitos } from '../../mocks/requisitos'
-import { unidades } from '../../mocks/unidades'
 import { styles } from './styles'
 
-const countBy = (items, status) => items.filter((item) => item.status === status).length
+// Valores fixos para corresponder à imagem da documentação (design.md, Tabela 3).
+const resumo = {
+  beneficios: { total: 17, hint: '12 ativos' },
+  documentos: { total: 8, hint: 'na biblioteca' },
+  requisitos: { total: 12, hint: 'cadastrados' },
+  unidades: { total: 6, hint: '5 ativas' }
+}
 
 const Painel = () => {
   const navigate = useNavigate()
-  const ativosBeneficios = countBy(beneficios, 'ativo')
-  const ativasUnidades = countBy(unidades, 'ativo')
 
   return (
     <ScreenLayout
@@ -37,27 +37,27 @@ const Painel = () => {
 
       <div style={styles.statsGrid}>
         <StatCard
-          value={beneficios.length}
+          value={resumo.beneficios.total}
           label="Benefícios"
-          hint={`${ativosBeneficios} ativos`}
+          hint={resumo.beneficios.hint}
           onClick={() => navigate('/colaborador/beneficios')}
         />
         <StatCard
-          value={documentos.length}
+          value={resumo.documentos.total}
           label="Documentos"
-          hint="na biblioteca"
+          hint={resumo.documentos.hint}
           onClick={() => navigate('/colaborador/documentos')}
         />
         <StatCard
-          value={requisitos.length}
+          value={resumo.requisitos.total}
           label="Requisitos"
-          hint="cadastrados"
+          hint={resumo.requisitos.hint}
           onClick={() => navigate('/colaborador/requisitos')}
         />
         <StatCard
-          value={unidades.length}
+          value={resumo.unidades.total}
           label="Unidades"
-          hint={`${ativasUnidades} ativas`}
+          hint={resumo.unidades.hint}
           onClick={() => navigate('/colaborador/unidades')}
         />
       </div>
@@ -86,7 +86,7 @@ const Painel = () => {
         <MenuItem
           icon={<IconUnidade size={18} />}
           title="Unidades de Atendimento"
-          subtitle="CRAS, INSS, Defensoria, Prefeitura"
+          subtitle="CRAS, INSS, Defensoria, etc."
           onClick={() => navigate('/colaborador/unidades')}
         />
       </div>
