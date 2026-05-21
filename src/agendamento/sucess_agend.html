@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<div id="app">
+<body>
+  <div id="sucesso-agendamento" class="screen">
+    <div class="app-header">
+      <div style="width:36px"></div>
+      <a class="header-logo">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+          <path d="M14 2L4 6.5V13C4 18.5 8.5 23.5 14 25C19.5 23.5 24 18.5 24 13V6.5L14 2Z" fill="#4A6FA5"/>
+          <circle cx="14" cy="12" r="3" fill="white" opacity="0.9"/>
+          <path d="M10 18c0-2.2 1.8-4 4-4s4 1.8 4 4" fill="white" opacity="0.9"/>
+        </svg>
+        GuiaCidadão
+      </a>
+      <div style="width:36px"></div>
+    </div>
+
+    <div class="success-content">
+      <div class="success-icon">
+        <svg width="40" height="40" fill="none" stroke="#276749" stroke-width="2.5" viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h1 class="success-title">Agendamento<br>Confirmado!</h1>
+      <p class="success-msg">Seu atendimento foi agendado com sucesso. Você receberá uma confirmação em breve.</p>
+
+      <div class="card" style="width:100%;margin-bottom:28px;background:var(--primary-bg);border:1.5px solid var(--border);">
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-main);font-size:12px;font-weight:700;color:var(--text-light);margin-bottom:4px;">PROTOCOLO</div>
+          <div style="font-family:var(--font-main);font-size:22px;font-weight:800;color:var(--primary);letter-spacing:2px;" id="protocolo-num">GC-000000</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;color:var(--text-light);text-align:center;line-height:1.6;margin-bottom:28px;">
+        Guarde este número de protocolo.<br>Apresente-o no dia do atendimento.
+      </div>
+
+      <a href="/src/home/home.html">
+      <button class="btn btn-primary" id="btn-sucesso-home">Voltar para o Início</button>
+      </a>
+
+    </div>
+  </div>
+  </body>
+  <!-- ===== TOAST ===== -->
+  <div id="toast"></div>
+</div>
+
+<script src="/src/js/main.js"></script>
+<script>
+  // Setup protocol number on success
+  document.addEventListener('DOMContentLoaded', () => {
+    // Override confirm to also set protocol
+    const origConfirm = window.handleConfirmarAgendamento;
+    const btnConf = document.getElementById('btn-confirmar-ag');
+    if (btnConf) {
+      btnConf.addEventListener('click', () => {
+        const proto = 'GC-' + Math.floor(Math.random() * 900000 + 100000);
+        const el = document.getElementById('protocolo-num');
+        if (el) el.textContent = proto;
+      }, true);
+    }
+
+    // CRAS Mais próximo navigation from sidebar
+    document.querySelectorAll('[data-nav="unidades"]').forEach(el => {
+      el.addEventListener('click', () => {
+        renderUnidades();
+        navigate('unidades');
+      });
+    });
+  });
+</script>
+  </div>
+  </html>

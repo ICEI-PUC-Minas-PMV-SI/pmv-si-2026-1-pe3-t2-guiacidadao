@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<div id="app">
+<body>
+  <div id="agendamento" class="screen">
+    <div class="app-header">
+      <button class="back-btn" data-back="home">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      <a class="header-logo">
+        <img src="/src/assets/icons/Logo.png" alt="Logo">
+        GuiaCidadão
+      </a>
+      <div style="width:36px"></div>
+    </div>
+
+    <div class="scroll-content">
+      <div style="padding:24px 20px 28px;">
+        <div class="auth-title-block" style="margin-bottom:24px;">
+          <h1 class="page-title">Agendar Atendimento</h1>
+          <p class="page-subtitle">Informe a unidade, data e horário<br>para salvar seu atendimento</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Nome completo</label>
+          <input class="form-input" type="text" id="ag-nome" placeholder="Jorge Silva">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">CPF</label>
+          <input class="form-input" type="text" id="ag-cpf" placeholder="000.000.000-00">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Serviço/Benefício</label>
+          <div class="form-select-wrapper">
+            <select class="form-input" id="ag-servico" style="cursor:pointer;">
+              <option value="">Selecionar</option>
+              <option value="bpc">BPC – Benefício de Prestação Continuada</option>
+              <option value="auxgás">Auxílio Gás</option>
+              <option value="cadunico">CadÚnico – Cadastro Único</option>
+              <option value="bolsa">Bolsa Família</option>
+              <option value="seguro">Seguro Desemprego</option>
+              <option value="energia">Tarifa Social de Energia</option>
+            </select>
+            <svg class="form-select-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Unidade de Atendimento</label>
+          <div class="form-select-wrapper">
+            <select class="form-input" id="ag-unidade" style="cursor:pointer;">
+              <option value="">Selecionar</option>
+              <option value="rj-centro">Rio de Janeiro - Centro</option>
+              <option value="rj-tijuca">Rio de Janeiro - Tijuca</option>
+              <option value="rj-botafogo">Rio de Janeiro - Botafogo</option>
+              <option value="rj-meier">Rio de Janeiro - Méier</option>
+              <option value="rj-bangu">Rio de Janeiro - Bangu</option>
+            </select>
+            <svg class="form-select-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="form-group">
+          <p class="section-title">Datas</p>
+          <div class="calendar-wrapper">
+            <div class="calendar-header">
+              <button class="calendar-nav-btn" id="btn-cal-prev">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <span class="calendar-month" id="cal-month-label">Maio - 2026</span>
+              <button class="calendar-nav-btn" id="btn-cal-next">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+            <div class="calendar-grid" id="cal-grid"></div>
+          </div>
+        </div>
+
+        <!-- Time Slots -->
+        <div class="form-group">
+          <p class="section-title">Horários</p>
+          <div class="time-slots">
+            <div class="time-slot" data-time="08:00">08:00</div>
+            <div class="time-slot" data-time="08:30">08:30</div>
+            <div class="time-slot" data-time="09:00">09:00</div>
+            <div class="time-slot" data-time="09:30">09:30</div>
+            <div class="time-slot" data-time="10:00">10:00</div>
+            <div class="time-slot" data-time="10:30">10:30</div>
+            <div class="time-slot unavailable" data-time="11:00">11:00</div>
+            <div class="time-slot" data-time="13:00">13:00</div>
+            <div class="time-slot" data-time="13:30">13:30</div>
+            <div class="time-slot" data-time="14:00">14:00</div>
+            <div class="time-slot unavailable" data-time="14:30">14:30</div>
+            <div class="time-slot" data-time="15:00">15:00</div>
+          </div>
+        </div>
+
+        <a href="/src/agendamento/confirm_agend.html">
+        <button class="btn btn-primary" id="btn-agendar-submit" style="margin-top:8px;">
+          Continuar
+        </button>
+        </a>
+      </div>
+    </div>
+  </div>
+<div id="toast"></div>
+</div>
+  </div>
+</body>
+<script src="/src/js/main.js"></script>
+<script>
+  // Setup protocol number on success
+  document.addEventListener('DOMContentLoaded', () => {
+    // Override confirm to also set protocol
+    const origConfirm = window.handleConfirmarAgendamento;
+    const btnConf = document.getElementById('btn-confirmar-ag');
+    if (btnConf) {
+      btnConf.addEventListener('click', () => {
+        const proto = 'GC-' + Math.floor(Math.random() * 900000 + 100000);
+        const el = document.getElementById('protocolo-num');
+        if (el) el.textContent = proto;
+      }, true);
+    }
+
+    // CRAS Mais próximo navigation from sidebar
+    document.querySelectorAll('[data-nav="unidades"]').forEach(el => {
+      el.addEventListener('click', () => {
+        renderUnidades();
+        navigate('unidades');
+      });
+    });
+  });
+</script>
+</html>

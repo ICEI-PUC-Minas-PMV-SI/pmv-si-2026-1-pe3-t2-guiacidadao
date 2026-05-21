@@ -80,7 +80,7 @@ body {
 .screen {
   position: absolute;
   inset: 0;
-  display: none;
+  display: flex;
   flex-direction: column;
   background: var(--bg-main);
   overflow: hidden;
