@@ -39,15 +39,15 @@
         </div>
         <div class="form-group">
           <label class="form-label">CPF</label>
-          <input class="form-input" type="text" id="cad-cpf" placeholder="000.000.000-00" autocomplete="off">
+          <input class="form-input" type="text" id="cad-cpf" placeholder="000.000.000-00" autocomplete="off" maxlength="11">
         </div>
         <div class="form-group">
           <label class="form-label">Data de nascimento</label>
-          <input class="form-input" type="text" id="cad-dob" placeholder="DD/MM/AAAA" autocomplete="bday">
+          <input class="form-input" type="date" id="cad-dob" placeholder="DD/MM/AAAA" autocomplete="bday">
         </div>
         <div class="form-group">
           <label class="form-label">Email</label>
-          <input class="form-input" type="email" id="cad-email" placeholder="joao@gmail.com" autocomplete="email">
+          <input class="form-input" type="email" id="cad-email" placeholder="exemplo@gmail.com" autocomplete="email">
         </div>
         <div class="form-group">
           <label class="form-label">Senha</label>
@@ -65,7 +65,7 @@
           </label>
         </div>
 
-        <button class="btn btn-primary" id="btn-cadastrar">Criar conta</button>
+        <button class="btn btn-primary" id="btn-cadastrar" onclick="registrar()">Criar conta</button>
 
         <div class="auth-links">
           <a href="/src/login/login.html">
@@ -77,4 +77,5 @@
   </div>
   </div>
  </body>
+<script src="/src/register/register.js"> </script>
  </html>
