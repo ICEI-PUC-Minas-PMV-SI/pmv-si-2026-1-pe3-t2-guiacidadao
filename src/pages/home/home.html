@@ -27,7 +27,7 @@
           <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
       </div>
-      <span class="sidebar-username" id="sidebar-username">Usuário</span>
+      <span class="sidebar-username" id="sidebar-username"></span>
       <button class="sidebar-close" id="btn-sidebar-close">✕</button>
     </div>
 
@@ -49,8 +49,10 @@
         Notificações
       </div>
       <div class="sidebar-item" data-nav="home">
+        <a href="/src/pages/profile/profile.html" style="text-decoration: none;">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         Meu Perfil
+        </a>
       </div>
 
       <div class="sidebar-divider"></div>
@@ -159,5 +161,17 @@
       });
     });
   });
+  
+// 1. Pega o dado salvo no localStorage (substitua 'usuario' pela chave que você usou para salvar)
+        const usuarioon = localStorage.getItem('usuarioLogado');
+        const nomeuser= JSON.parse(usuarioon);
+        const nomeusuario = nomeuser.nome;
+
+        // 2. Verifica se o dado realmente existe
+        if (nomeusuario) {
+            // 3. Atualiza o texto do elemento HTML com o nome do usuário
+            document.getElementById('sidebar-username').textContent = nomeuser.nome;
+        }
+  
 </script>
 </html>
