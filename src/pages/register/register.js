@@ -35,6 +35,6 @@ function registrar() {
     usuarios.push(novoUsuario);
     localStorage.setItem('userlist', JSON.stringify(usuarios));
     alert('Cadastro realizado!');
-    window.location.href = "/src/login/login.html";
+    window.location.href = "/src/pages/login/login.html";
 }
 

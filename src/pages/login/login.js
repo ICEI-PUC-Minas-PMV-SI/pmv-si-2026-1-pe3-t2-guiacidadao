@@ -15,7 +15,7 @@ function login() {
         // Armazena o objeto completo ou apenas o nome/email para referência
         localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado));
         
-        window.location.href = '/src/home/home.html';
+        window.location.href = '/src/pages/home/home.html';
     } else {
         alert('Credenciais inválidas.');
     }
