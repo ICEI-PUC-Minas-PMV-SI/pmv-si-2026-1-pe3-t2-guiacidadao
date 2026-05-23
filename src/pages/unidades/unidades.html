@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<div id="app">
+<body>
+  <div id="unidades" class="screen">
+    <div class="app-header">
+      <a href="/src/pages/home/home.html">
+        <button class="back-btn">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
+      </a>
+      <a class="header-logo">
+        <img src="/src/assets/icons/Logo.png" alt="Logo">
+        GuiaCidadão
+      </a>
+      <div style="width:36px"></div>
+    </div>
+
+    <div class="scroll-content">
+      <div style="padding:24px 20px 28px;">
+        <div class="auth-title-block" style="margin-bottom:20px;">
+          <h1 class="page-title">Localizar Unidade</h1>
+        </div>
+
+         <div class="form-group">
+          <label class="form-label">Selecione o tipo da Unidade de Atendimento</label>
+          <select class="form-input" id="unidade" onchange="filtrar()">
+            <option value="cras">CRAS</option>
+            <option value="creas">CREAS</option>
+            <option value="inss">INSS</option>
+            <option value="dp">Defensoria Pública</option>
+            <option value="pref">Prefeitura</option>
+            <option value="todos">Todos</option>
+          </select>
+        </div>
+
+<div class="form-group">
+  <label class="form-label" for="cidade">Selecione a Cidade</label>
+  <select class="form-input" id="cidade" onchange="filtrar()">
+    <option value="todos">Todas</option>
+    <option value="bh">Belo Horizonte</option>
+    <option value="contagem">Contagem</option>
+  </select> 
+</div>
+<div class="scroll-content">
+        <ul id="listaTipo">
+
+        <li class="tipo-cras cidade-bh">
+        <div class="item">
+          <h3>CRAS Centro - Belo Horizonte</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+        </div>
+    </div>
+  </li>
+
+        <li class="tipo-cras cidade-contagem">
+        <div class="item">
+          <h3>CRAS Ressaca - Contagem</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+         </div>
+      </li>
+
+        <li class="tipo-creas cidade-contagem">
+        <div class="item">
+          <h3>CREAS Fonte Grande - Contagem</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+         </div>
+      </li>
+
+        <li class="tipo-creas cidade-bh">
+        <div class="item">
+          <h3>CREAS Venda Nova - Belo Horizonte</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+         </div>
+        </li>
+
+        <li class="tipo-inss cidade-bh">
+        <div class="item">
+          <h3>INSS Padre Eustáquio - Belo Horizonte</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+         </div>
+        </li>
+
+        <li class="tipo-inss cidade-contagem">
+        <div class="item">
+          <h3>INSS Centro - Contagem</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+          </div>
+        </li>
+
+        <li class="tipo-dp cidade-bh">
+        <div class="item">
+          <h3>Defensoria Pública Barro Preto - Belo Horizonte</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+          </div>
+        </li>
+
+        <li class="tipo-dp cidade-contagem">
+        <div class="item">
+          <h3>Defensoria Pública Centro - Contagem</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+          </div>
+        </li>
+
+        <li class="tipo-pref cidade-bh">
+        <div class="item">
+          <h3>Prefeitura de Belo Horizonte Centro</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+          </div>
+          </li>
+
+        <li class="tipo-pref cidade-contagem">
+        <div class="item">
+          <h3>Prefeitura Municipal de Contagem - Bairro da Gloria</h3>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+          <p><strong>Horário:</strong> 08:00 às 17:00</p>
+          <div class="detalhes-extras" id="extra-cras-bh" style="display:none;">
+          <p><strong>Telefone:</strong> (31) 3333-4444</p>
+          <p><strong>CEP:</strong> 30000-000</p>
+          </div>
+          </div>
+        </li>
+
+        </ul>
+        </div>
+
+
+        <!-- <div style="background:linear-gradient(135deg,#C8D8F0,#D4E4F8);border-radius:var(--radius-lg);height:140px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1.5px solid var(--border);">
+          <div style="position:absolute;inset:0;opacity:0.3;background-image:repeating-linear-gradient(0deg,rgba(74,111,165,0.2) 0,rgba(74,111,165,0.2) 1px,transparent 1px,transparent 30px),repeating-linear-gradient(90deg,rgba(74,111,165,0.2) 0,rgba(74,111,165,0.2) 1px,transparent 1px,transparent 30px);"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1;">
+            <svg width="32" height="32" fill="none" stroke="#4A6FA5" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <span style="font-family:var(--font-main);font-size:13px;font-weight:700;color:var(--primary);">Rio de Janeiro, RJ</span>
+          </div>
+        </div>
+-->
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+
+function filtrar() {
+    // Pega os valores selecionados
+    const filtroUnidade = document.getElementById('unidade').value;
+    const filtroCidade = document.getElementById('cidade').value;
+    
+    // Pega todos os itens da lista
+    const itens = document.querySelectorAll('#listaTipo li');
+
+    itens.forEach(item => {
+        // Verifica se o item possui a classe correspondente
+        const mostraUnidade = (filtroUnidade === 'todos' || item.classList.contains('tipo-' + filtroUnidade));
+        const mostraCidade = (filtroCidade === 'todos' || item.classList.contains('cidade-' + filtroCidade));
+
+        // Exibe ou oculta baseado na lógica
+        if (mostraUnidade && mostraCidade) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+</script>
+</html>
