@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuiaCidadão – Notificações</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Usa global.css e screens.css do projeto -->
+  <link rel="stylesheet" href="/src/css/global.css" />
+  <link rel="stylesheet" href="/src/css/screens.css" />
+  <style>
+    /* ── Notificações: apenas classes exclusivas desta tela ── */
+
+    /* Hero / Page Header */
+    .notif-hero {
+      padding: 20px 20px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .notif-hero h1 {
+      font-family: var(--font-main);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+    .notif-hero p {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 3px;
+    }
+
+    /* Botão marcar como lidas */
+    .mark-all-btn {
+      flex-shrink: 0;
+      font-family: var(--font-main);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition);
+      margin-top: 2px;
+    }
+    .mark-all-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Filtros */
+    .filters {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 16px 20px 0;
+      scrollbar-width: none;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      flex-shrink: 0;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-main);
+      font-size: 12px;
+      font-weight: 700;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      color: var(--text-medium);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-bg);
+    }
+    .filter-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* Contador não lidas */
+    .unread-label {
+      padding: 12px 20px 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-weight: 700;
+    }
+    .unread-label span { color: var(--primary); }
+
+    /* Lista */
+    .notif-list {
+      padding: 0 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Card */
+    .notif-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+    .notif-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+    .notif-card.unread {
+      background: #EDF2FB;
+      border-color: var(--border);
+    }
+
+    .notif-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+    }
+
+    /* Ícone */
+    .notif-icon {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .notif-icon.schedule { background: var(--primary-bg); color: var(--primary); }
+    .notif-icon.benefit  { background: #E6FAF0; color: #2E855A; }
+    .notif-icon.alert    { background: #FFFBEB; color: #B45309; }
+
+    /* Corpo */
+    .notif-body { flex: 1; min-width: 0; }
+
+    .notif-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+
+    .notif-title {
+      font-family: var(--font-main);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .notif-card:not(.unread) .notif-title {
+      font-weight: 700;
+      color: var(--text-medium);
+    }
+
+    .notif-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .notif-desc {
+      font-size: 12.5px;
+      color: var(--text-light);
+      line-height: 1.55;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .notif-time {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-family: var(--font-main);
+    }
+
+    /* Estado vazio */
+    .empty-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 24px;
+      gap: 12px;
+    }
+    .empty-state.visible { display: flex; }
+    .empty-icon { font-size: 48px; }
+    .empty-title {
+      font-family: var(--font-main);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    .empty-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 240px;
+    }
+
+    /* Bottom nav badge */
+    .nav-badge {
+      position: absolute;
+      top: -5px;
+      right: -8px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+    }
+
+    /* Bottom nav (padrão do projeto) */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: #fff;
+      border-top: 1.5px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+      flex-shrink: 0;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      font-family: var(--font-main);
+      cursor: pointer;
+      transition: color var(--transition);
+      min-width: 52px;
+      background: none;
+      border: none;
+      text-decoration: none;
+    }
+    .nav-item:hover, .nav-item.active { color: var(--primary); }
+    .nav-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="screen active">
+
+    <!-- ===== HEADER ===== -->
+    <div class="app-header">
+      <button class="header-icon-btn" id="menuBtn" aria-label="Abrir menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      <a class="header-logo" href="#">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9.5L12 3L21 9.5V20c0 .55-.45 1-1 1h-5v-6H9v6H4c-.55 0-1-.45-1-1V9.5Z"/>
+        </svg>
+        GuiaCidadão
+      </a>
+
+      <button class="header-icon-btn" aria-label="Perfil">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ===== CONTEÚDO ROLÁVEL ===== -->
+    <div class="scroll-content">
+
+      <!-- Hero -->
+      <div class="notif-hero">
+        <div>
+          <h1>Notificações</h1>
+          <p>Fique por dentro da sua conta</p>
+        </div>
+        <button class="mark-all-btn" id="markAllBtn">Marcar como lidas</button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filters">
+        <button class="filter-pill active" data-filter="all">Todas</button>
+        <button class="filter-pill" data-filter="agendamentos">Agendamentos</button>
+        <button class="filter-pill" data-filter="beneficios">Benefícios</button>
+        <button class="filter-pill" data-filter="avisos">Avisos</button>
+      </div>
+
+      <!-- Contador -->
+      <div class="unread-label" id="unreadLabel">
+        <span id="unreadNum">3</span> não lidas
+      </div>
+
+      <!-- Lista de notificações -->
+      <div class="notif-list" id="notifList">
+
+        <!-- 1 – Agendamento NÃO LIDA -->
+        <div class="notif-card unread" data-category="agendamentos" data-id="1">
+          <div class="notif-inner">
+            <div class="notif-icon schedule">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+            </div>
+            <div class="notif-body">
+              <div class="notif-row">
+                <span class="notif-title">Agendamento Confirmado</span>
+                <span class="notif-dot"></span>
+              </div>
+              <p class="notif-desc">Seu atendimento no CRAS Centro foi confirmado para 28/05 às 14h00. Lembre-se de levar seus documentos.</p>
+              <span class="notif-time">Hoje, 10:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 – Benefício NÃO LIDA -->
+        <div class="notif-card unread" data-category="beneficios" data-id="2">
+          <div class="notif-inner">
+            <div class="notif-icon benefit">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.8 10.9C9.53 10.31 8.8 9.7 8.8 8.75c0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3H10v2.16C8.06 5.58 6.5 6.84 6.5 8.77c0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-3-2.1H6.3c.14 2.19 1.78 3.42 3.7 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+              </svg>
+            </div>
+            <div class="notif-body">
+              <div class="notif-row">
+                <span class="notif-title">Benefício Aprovado</span>
+                <span class="notif-dot"></span>
+              </div>
+              <p class="notif-desc">Sua solicitação do Auxílio Cidadão foi aprovada. O valor de R$ 412,00 será depositado na próxima sexta-feira.</p>
+              <span class="notif-time">Hoje, 08:15</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 – Aviso NÃO LIDA -->
+        <div class="notif-card unread" data-category="avisos" data-id="3">
+          <div class="notif-inner">
+            <div class="notif-icon alert">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+              </svg>
+            </div>
+            <div class="notif-body">
+              <div class="notif-row">
+                <span class="notif-title">Manutenção Programada</span>
+                <span class="notif-dot"></span>
+              </div>
+              <p class="notif-desc">O sistema ficará indisponível em 26/05 das 01h às 04h para manutenção. Planeje seus acessos com antecedência.</p>
+              <span class="notif-time">Ontem, 16:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 – Agendamento LIDA -->
+        <div class="notif-card" data-category="agendamentos" data-id="4">
+          <div class="notif-inner">
+            <div class="notif-icon schedule">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+              </svg>
+            </div>
+            <div class="notif-body">
+              <div class="notif-row">
+                <span class="notif-title">Lembrete de Agendamento</span>
+              </div>
+              <p class="notif-desc">Você tem um atendimento amanhã às 09h30 no Posto de Saúde da Família – Unidade Leste.</p>
+              <span class="notif-time">Ontem, 09:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 – Benefício LIDA -->
+        <div class="notif-card" data-category="beneficios" data-id="5">
+          <div class="notif-inner">
+            <div class="notif-icon benefit">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+              </svg>
+            </div>
+            <div class="notif-body">
+              <div class="notif-row">
+                <span class="notif-title">Documentação Pendente</span>
+              </div>
+              <p class="notif-desc">Sua solicitação do Bolsa Família aguarda o envio do comprovante de renda. Acesse Meus Documentos para anexar.</p>
+              <span class="notif-time">23 mai, 14:20</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /notif-list -->
+
+      <!-- Estado vazio -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🔕</div>
+        <div class="empty-title">Tudo em dia por aqui!</div>
+        <p class="empty-desc">Você não tem novas notificações. Quando houver uma atualização, ela aparecerá aqui.</p>
+      </div>
+
+    </div>
+
+
+  </div>
+  <!-- /screen -->
+
+  <!-- ===== OVERLAY ===== -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ===== SIDEBAR ===== -->
+  <nav id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-avatar">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+      <span class="sidebar-username" id="sidebar-username"></span>
+      <button class="sidebar-close" id="btn-sidebar-close">✕</button>
+    </div>
+
+    <div class="sidebar-nav">
+      <div class="sidebar-item active" data-nav="home">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Início
+      </div>
+      <div class="sidebar-item" data-nav="home">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Meus Benefícios
+      </div>
+      <div class="sidebar-item" data-nav="home">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Cálculo de Renda
+      </div>
+      <div class="sidebar-item" data-nav="home">
+        <a href="../notificacoes/notificacoes.html">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Notificações
+        </a>
+      </div>
+      <div class="sidebar-item" data-nav="home">
+        <a href="/src/pages/perfil-familiar/perfil-familiar.html">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        Meu Perfil
+      </a>
+    </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-item" data-nav="home">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Lista de Documentos
+      </div>
+      <div class="sidebar-item" data-nav="home">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Status Agendamento
+      </div>
+      <div class="sidebar-item" data-nav="home">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Resultado Agendamento
+      </div>
+      
+      <div class="sidebar-item" data-nav="unidades">
+        <a href="/src/pages/unidades/unidades.html" style="text-decoration: none;">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        CRAS Mais Próximo
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="btn btn-danger" id="btn-sair" style="height:44px;font-size:14px;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sair
+      </button>
+    </div>
+  </nav>
+
+</div>
+<!-- /#app -->
+
+<script src="/src/js/main.js"></script>
+<script>
+  const menuBtn     = document.getElementById('menuBtn');
+  const overlay     = document.getElementById('overlay');
+  const sidebar     = document.getElementById('sidebar');
+  const sidebarClose= document.getElementById('sidebarClose');
+  const markAllBtn  = document.getElementById('markAllBtn');
+  const notifList   = document.getElementById('notifList');
+  const unreadNum   = document.getElementById('unreadNum');
+  const unreadLabel = document.getElementById('unreadLabel');
+  const navBadge    = document.getElementById('navBadge');
+  const emptyState  = document.getElementById('emptyState');
+
+  // Sidebar
+  function openSidebar()  { sidebar.classList.add('open');  overlay.classList.add('active'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); }
+  menuBtn.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+  sidebarClose.addEventListener('click', closeSidebar);
+
+  // Atualiza contador
+  function updateCount() {
+    const unread  = notifList.querySelectorAll('.notif-card.unread').length;
+    const visible = notifList.querySelectorAll('.notif-card:not([style*="display: none"])').length;
+
+    unreadNum.textContent  = unread;
+    navBadge.textContent   = unread;
+    navBadge.style.display = unread > 0 ? 'flex' : 'none';
+    unreadLabel.style.display = unread > 0 ? 'block' : 'none';
+    emptyState.classList.toggle('visible', visible === 0);
+  }
+
+  // Clique no card → marcar como lida
+  notifList.addEventListener('click', e => {
+    const card = e.target.closest('.notif-card');
+    if (card && card.classList.contains('unread')) {
+      card.classList.remove('unread');
+      card.querySelector('.notif-dot')?.remove();
+      updateCount();
+    }
+  });
+
+  // Marcar todas
+  markAllBtn.addEventListener('click', () => {
+    notifList.querySelectorAll('.notif-card.unread').forEach(card => {
+      card.classList.remove('unread');
+      card.querySelector('.notif-dot')?.remove();
+    });
+    updateCount();
+  });
+
+  // Filtros
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      let visible = 0;
+      notifList.querySelectorAll('.notif-card').forEach(card => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      emptyState.classList.toggle('visible', visible === 0);
+    });
+  });
+
+  
+
+  // Setup protocol number on success
+  document.addEventListener('DOMContentLoaded', () => {
+    // Override confirm to also set protocol
+    const origConfirm = window.handleConfirmarAgendamento;
+    const btnConf = document.getElementById('btn-confirmar-ag');
+    if (btnConf) {
+      btnConf.addEventListener('click', () => {
+        const proto = 'GC-' + Math.floor(Math.random() * 900000 + 100000);
+        const el = document.getElementById('protocolo-num');
+        if (el) el.textContent = proto;
+      }, true);
+    }
+
+    // CRAS Mais próximo navigation from sidebar
+    document.querySelectorAll('[data-nav="unidades"]').forEach(el => {
+      el.addEventListener('click', () => {
+        renderUnidades();
+        navigate('unidades');
+      });
+    });
+  });
+  
+// 1. Pega o dado salvo no localStorage (substitua 'usuario' pela chave que você usou para salvar)
+        const usuarioon = localStorage.getItem('usuarioLogado');
+        const nomeuser= JSON.parse(usuarioon);
+        const nomeusuario = nomeuser.nome;
+
+        // 2. Verifica se o dado realmente existe
+        if (nomeusuario) {
+            // 3. Atualiza o texto do elemento HTML com o nome do usuário
+            document.getElementById('sidebar-username').textContent = nomeuser.nome;
+        }
+  
+</script>
+</body>
+</html>
