@@ -537,3 +537,13 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+.beneficiocard{
+  background-color: #E8E8E8;
+  text-align: left;
+  margin: 2px;
+  font-size: 13px;
+  border-radius: 7px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  padding: 8px;
+}
