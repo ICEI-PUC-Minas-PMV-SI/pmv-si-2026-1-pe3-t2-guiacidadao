@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Adicionar Membro - GuiaCidadão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/global.css">
+    <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="adicionar-membro" class="screen active auth-screen">
+            <!-- Header -->
+            <div class="app-header">
+                <a href="/src/pages/perfil-familiar/perfil-familiar.html">
+                    <button class="back-btn">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path d="M19 12H5M12 5l-7 7 7 7" />
+                        </svg>
+                    </button>
+                </a>
+                <a class="header-logo">
+                    <img src="/src/assets/icons/Logo.png" alt="Logo">
+                    GuiaCidadão
+                </a>
+                <div style="width:36px"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="scroll-content">
+                <div class="auth-body">
+                    <div class="auth-title-block">
+                        <h1 class="page-title">Adicionar Membro</h1>
+                        <p class="page-subtitle">Cadastre um novo membro no perfil familiar</p>
+                    </div>
+
+                    <!-- Nome completo -->
+                    <div class="form-group">
+                        <label class="form-label" for="membro-nome">Nome completo</label>
+                        <input class="form-input" type="text" id="membro-nome" placeholder="Nome do membro"
+                            autocomplete="name">
+                    </div>
+
+                    <!-- Data de nascimento -->
+                    <div class="form-group">
+                        <label class="form-label" for="membro-dob">Data de nascimento</label>
+                        <input class="form-input" type="date" id="membro-dob" autocomplete="bday">
+                    </div>
+
+                    <!-- Parentesco -->
+                    <div class="form-group">
+                        <label class="form-label" for="membro-parentesco">Parentesco</label>
+                        <div class="form-select-wrapper">
+                            <select class="form-input" id="membro-parentesco">
+                                <option value="" disabled selected>Selecione o parentesco</option>
+                                <option value="Titular">Titular</option>
+                                <option value="Filho">Filho</option>
+                                <option value="Conjuge">Cônjuge</option>
+                                <option value="Pai">Pai</option>
+                                <option value="Mãe">Mãe</option>
+                            </select>
+                            <svg class="form-select-arrow" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2.5" viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Vínculo -->
+                    <div class="form-group">
+                        <label class="form-label" for="membro-vinculo">Vínculo</label>
+                        <div class="form-select-wrapper">
+                            <select class="form-input" id="membro-vinculo">
+                                <option value="" disabled selected>Selecione o vínculo</option>
+                                <option value="Ativo">CLT</option>
+                                <option value="Dependente">Menor sem renda</option>
+                                <option value="Agregado">Desempregado</option>
+                            </select>
+                            <svg class="form-select-arrow" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2.5" viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Renda mensal -->
+                    <div class="form-group">
+                        <label class="form-label" for="membro-renda">Renda mensal (R$)</label>
+                        <input class="form-input" type="number" id="membro-renda" placeholder="0,00" min="0"
+                            step="0.01">
+                    </div>
+
+                    <!-- Botão Adicionar -->
+                    <button class="btn btn-primary" id="btn-adicionar-membro" onclick="adicionarMembro()">Adicionar
+                        membro</button>
+
+                    <!-- Link voltar -->
+                    <div class="auth-links">
+                        <a href="/src/pages/perfil-familiar/perfil-familiar.html">
+                            <button class="btn-link">Voltar para Perfil Familiar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/pages/perfil-familiar/adicionar-membro.js"></script>
+</body>
+
+</html>
