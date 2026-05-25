@@ -508,3 +508,20 @@ body {
 .badge-success { background: #C6F6D5; color: #276749; }
 .badge-warning { background: #FEEBC8; color: #9C4221; }
 .badge-info    { background: var(--primary-bg); color: var(--primary-dark); }
+
+.beneficios{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;
+  max-width: 600px;
+  margin: 20px 20px auto;
+  font-family: sans-serif;
+
+}
+.beneficio{
+  padding: 15px;
+  border-radius: 7px;
+  text-align: left;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
