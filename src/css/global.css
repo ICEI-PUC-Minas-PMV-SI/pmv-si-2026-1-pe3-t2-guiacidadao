@@ -463,6 +463,18 @@ body {
   color: var(--text-dark);
   border-left: 3px solid transparent;
 }
+
+.sidebar-item a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  text-decoration: none;
+  color: inherit;
+
+  width: 100%;
+}
+
 .sidebar-item:hover { background: var(--bg-main); }
 .sidebar-item.active {
   background: var(--primary-bg);
