@@ -512,6 +512,7 @@ a { text-decoration: none; }
   /* Limitar a 3 linhas por padrão (expansível via JS se quiser) */
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
