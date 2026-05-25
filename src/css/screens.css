@@ -418,3 +418,132 @@
   line-height: 1.6;
   margin-bottom: 32px;
 }
+/* ===== MEUS AGENDAMENTOS ===== */
+.agend-section-label {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+.appt-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1.5px solid var(--border-light);
+}
+
+.appt-card-top {
+  padding: 14px 16px 12px;
+  border-bottom: 1.5px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.appt-service {
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.badge-done { background: #E2E8F0; color: #4A5568; }
+
+.appt-card-body { padding: 12px 16px 4px; }
+
+.appt-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.appt-row:last-of-type { border-bottom: none; }
+
+.appt-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.appt-row-label {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 1px;
+}
+
+.appt-row-value {
+  font-size: 13px;
+  color: var(--text-dark);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.appt-proto {
+  font-family: var(--font-main);
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 8px 16px 6px;
+  letter-spacing: 0.3px;
+}
+.appt-proto span { color: var(--primary); font-weight: 700; }
+
+.appt-actions { display: flex; gap: 8px; padding: 0 16px 14px; }
+
+.appt-btn {
+  flex: 1;
+  height: 36px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-main);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  transition: background var(--transition);
+}
+.appt-btn-cancel    { background: #FFF5F5; color: var(--danger); }
+.appt-btn-cancel:hover { background: #FED7D7; }
+.appt-btn-reschedule    { background: var(--primary-bg); color: var(--primary); }
+.appt-btn-reschedule:hover { background: #D6E4F4; }
+
+/* Empty state */
+.empty-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+}
+.empty-state.show { display: flex; }
+
+/* Barra de ação inferior */
+.agend-bottom-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 18px;
+  background: rgba(240, 244, 250, 0.95);
+  border-top: 1.5px solid var(--border-light);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
