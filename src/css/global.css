@@ -534,7 +534,7 @@ body {
   padding: 15px;
   border-radius: 7px;
   text-align: left;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 .beneficiocard{
@@ -546,4 +546,10 @@ body {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   margin-top: 20px;
   padding: 8px;
+  border-left: 6px solid #D9EEFF;
+}
+.imgbenefi{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
