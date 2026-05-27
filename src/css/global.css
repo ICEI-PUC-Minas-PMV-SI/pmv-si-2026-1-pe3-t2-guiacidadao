@@ -521,6 +521,8 @@ body {
 .badge-warning { background: #FEEBC8; color: #9C4221; }
 .badge-info    { background: var(--primary-bg); color: var(--primary-dark); }
 
+/* home */
+
 .beneficios{
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
@@ -548,8 +550,30 @@ body {
   padding: 8px;
   border-left: 6px solid #D9EEFF;
 }
+
 .imgbenefi{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.app-bottom{  
+  background: #FFFFFF;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 1.5px solid var(--border-light);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.bt-bottom{
+  text-align: center;
+  display: inline-block;
+  align-items: center;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  width: auto;
+  height: auto;
 }
