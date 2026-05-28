@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Adicionar Endereço - GuiaCidadão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/global.css">
+    <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="adicionar-endereco" class="screen active auth-screen">
+            <!-- Cabeçalho -->
+            <div class="app-header">
+                <a href="/src/pages/meu-perfil/meu-perfil.html">
+                    <button class="back-btn">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path d="M19 12H5M12 5l-7 7 7 7" />
+                        </svg>
+                    </button>
+                </a>
+                <a class="header-logo">
+                    <img src="/src/assets/icons/Logo.png" alt="Logo">
+                    GuiaCidadão
+                </a>
+                <div style="width:36px"></div>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="scroll-content">
+                <div class="auth-body">
+                    <div class="auth-title-block">
+                        <h1 class="page-title" id="endereco-page-title">Adicionar Endereço</h1>
+                        <p class="page-subtitle" id="endereco-page-subtitle">Cadastre as informações de endereço</p>
+                    </div>
+
+                    <!-- Condição de moradia -->
+                    <div class="form-group">
+                        <label class="form-label" for="endereco-condicao">Condição de moradia</label>
+                        <div class="form-select-wrapper">
+                            <select class="form-input" id="endereco-condicao" required>
+                                <option value="" disabled selected>Selecione a condição</option>
+                                <option value="Propria">Própria</option>
+                                <option value="Alugada">Alugada</option>
+                                <option value="Cedida">Cedida</option>
+                                <option value="Financiada">Financiada</option>
+                                <option value="Outra">Outra</option>
+                            </select>
+                            <svg class="form-select-arrow" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2.5" viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- CEP -->
+                    <div class="form-group">
+                        <label class="form-label" for="endereco-cep">CEP</label>
+                        <input class="form-input" type="text" id="endereco-cep" placeholder="00000-000" maxlength="9">
+                        <span class="form-hint">Campo opcional</span>
+                    </div>
+
+                    <!-- Botão Salvar -->
+                    <button class="btn btn-primary" id="btn-salvar-endereco" onclick="salvarEndereco()">Salvar
+                        endereço</button>
+
+                    <!-- Link voltar -->
+                    <div class="auth-links">
+                        <a href="/src/pages/meu-perfil/meu-perfil.html">
+                            <button class="btn-link">Voltar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/pages/endereco/adicionar-endereco.js"></script>
+</body>
+
+</html>

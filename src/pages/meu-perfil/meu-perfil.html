@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Meu Perfil - GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<body>
+  <div id="app">
+    <div id="meu-perfil" class="screen active">
+      <!-- Cabeçalho -->
+      <div class="app-header">
+        <a href="/src/pages/home/home.html">
+          <button class="back-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+        </a>
+        <a class="header-logo">
+          <img src="/src/assets/icons/Logo.png" alt="Logo">
+          GuiaCidadão
+        </a>
+        <div style="width:36px"></div>
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="scroll-content">
+        <div style="padding: 0 20px 24px;">
+          <!-- Título -->
+          <div class="auth-title-block" style="margin-bottom: 24px;">
+            <h1 class="page-title">Meu Perfil</h1>
+          </div>
+
+          <!-- Lista de opções -->
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="/src/pages/perfil-familiar/perfil-familiar.html" style="text-decoration: none;">
+              <div class="benefit-card card-blue" style="display: flex; align-items: center; gap: 12px; padding: 18px 16px;">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: #2B4D8A; flex-shrink: 0;">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+                <div>
+                  <h3 style="margin: 0 0 4px;">Perfil Familiar</h3>
+                  <p style="margin: 0;">Gerencie os membros da sua família</p>
+                </div>
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: #2B4D8A; margin-left: auto; flex-shrink: 0;">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </a>
+
+            <a href="/src/pages/endereco/adicionar-endereco.html" style="text-decoration: none;">
+              <div class="benefit-card card-green" style="display: flex; align-items: center; gap: 12px; padding: 18px 16px;">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: #1D6B3E; flex-shrink: 0;">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                  <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+                <div>
+                  <h3 style="margin: 0 0 4px;">Endereço</h3>
+                  <p style="margin: 0;">Consulte e cadastre seus endereços</p>
+                </div>
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: #1D6B3E; margin-left: auto; flex-shrink: 0;">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
