@@ -777,3 +777,58 @@
   width: 36px;
   height: 36px;
 }
+
+.beneficios-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 16px 20px 8px;
+}
+
+.beneficios-toolbar .search-bar {
+  flex: 1;
+}
+
+.beneficios-filtros {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.beneficios-filtros::-webkit-scrollbar {
+  display: none;
+}
+
+.beneficios-count-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px 20px 8px;
+}
+
+.beneficios-count-label {
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.beneficios-count-total {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.beneficios-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px 24px;
+}
+
+.lista-empty {
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 14px;
+}
