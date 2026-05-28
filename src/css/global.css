@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --primary: #4A6FA5;
-  --primary-dark: #3A5A8A;
+  --primary: #4a6e8d;
+  --primary-dark: #3b5872;
   --primary-light: #6B8FBF;
-  --primary-bg: #EBF0F8;
+  --primary-bg: #e5ebf2;
   --accent: #5B8DD9;
-  --text-dark: #1A2340;
+  --text-dark: #1a2332;
   --text-medium: #4A5568;
-  --text-light: #718096;
+  --text-light: #64748b;
   --text-muted: #A0AEC0;
-  --border: #D1DCF0;
+  --border: #e2e8f0;
   --border-light: #E8EFF8;
-  --bg-main: #F0F4FA;
+  --bg-main: #f4f4f4;
   --bg-card: #FFFFFF;
   --bg-input: #FFFFFF;
-  --success: #38A169;
-  --danger: #E53E3E;
-  --warning: #DD6B20;
+  --success: #047857;
+  --danger: #b91c1c;
+  --warning: #b45309;
   --shadow-sm: 0 1px 3px rgba(74,111,165,0.12), 0 1px 2px rgba(74,111,165,0.08);
   --shadow-md: 0 4px 12px rgba(74,111,165,0.15), 0 2px 4px rgba(74,111,165,0.08);
   --shadow-lg: 0 10px 30px rgba(74,111,165,0.2), 0 4px 8px rgba(74,111,165,0.1);
