@@ -19,9 +19,10 @@ describe('renderStatCard', () => {
 
   it('renderiza como button quando href ausente', () => {
     const html = renderStatCard({ value: '5', label: 'X', id: 'stat-1' });
-    expect(html).toContain('<button class="stat-card"');
+    expect(html).toContain('class="stat-card"');
     expect(html).toContain('id="stat-1"');
     expect(html).toContain('type="button"');
+    expect(html).not.toContain('<a class="stat-card"');
   });
 
   it('renderiza hint quando fornecido', () => {
