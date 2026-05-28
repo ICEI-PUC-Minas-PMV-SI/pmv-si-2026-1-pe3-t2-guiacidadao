@@ -3,61 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>GuiaCidadão</title>
+  <title>Login - GuiaCidadao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/css/global.css">
-  <link rel="stylesheet" href="/src/css/screens.css">
+  <link rel="stylesheet" href="/src/css/colaborador.css">
 </head>
-<div id="app">
 <body>
-
-  <div id="login" class="screen active auth-screen">
-    <div class="app-header">
-      <div style="width:36px"></div>
-      <a class="header-logo">
-        <img src="/src/assets/icons/Logo.png" alt="Logo">
-        GuiaCidadão
-      </a>
-      <div style="width:36px"></div>
-    </div>
-
-    <div class="scroll-content">
-      <div class="auth-body">
-        <div class="auth-title-block">
-          <h1 class="page-title">Login</h1>
-          <p class="page-subtitle">Acesse sua conta para continuar</p>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="login-id">CPF ou Email</label>
-          <input class="form-input" type="text" id="login-id" placeholder="Ex: 000.000.000-00" autocomplete="username" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="login-pw">Senha</label>
-          <input class="form-input" type="password" id="login-pw" placeholder="Sua senha" autocomplete="current-password">
-        </div>
-
-        <button class="btn btn-primary" id="btn-login" style="margin-top:8px;" onclick="login()">Entrar</button>
-
-        <div class="auth-links">
-            
-         <a href="/src/pages/forgot_pass/forgot.html">
-            <button class="btn-link" data-nav="recuperar-senha">Esqueci minha senha</button>
-            </a>
-
-          <a href="/src/pages/register/register.html">
-          <button class="btn-link" data-nav="cadastro">Criar conta</button>
-          </a>
-
-          <button class="btn-link" data-nav="home" style="color:var(--text-light);text-decoration:none;">Sou colaborador</button>
-        </div>
+  <div id="app">
+    <main class="auth-shell">
+      <header class="auth-hero">
+        <h1 class="auth-brand">GuiaCidadao</h1>
+        <p class="auth-hero-sub">Acesso seguro</p>
+      </header>
+      <div class="auth-tabs" id="auth-tabs" role="tablist">
+        <button type="button" role="tab" class="auth-tab auth-tab--active" data-tab="cidadao">Cidadao</button>
+        <button type="button" role="tab" class="auth-tab" data-tab="colaborador">Colaborador</button>
       </div>
-    </div>
+      <form class="auth-card" id="form-cidadao">
+        <h2 class="auth-card-title">Acessar como cidadao</h2>
+        <div id="cidadao-fields"></div>
+        <div id="cidadao-actions"></div>
+      </form>
+      <form class="auth-card auth-card--hidden" id="form-colaborador">
+        <h2 class="auth-card-title">Acesso institucional</h2>
+        <div id="colaborador-fields"></div>
+        <div id="colaborador-actions"></div>
+      </form>
+    </main>
   </div>
-  </div>
+
+  <script src="/src/js/colaborador/utils/escape.js"></script>
+  <script src="/src/js/colaborador/shared/input.js"></script>
+  <script src="/src/js/colaborador/shared/button.js"></script>
+  <script src="/src/js/colaborador/mocks/profile.js"></script>
+  <script src="/src/pages/login/login-controller.js"></script>
+  <script src="/src/pages/login/login.js"></script>
 </body>
-<script src="/src/pages/login/login.js"> </script>
 </html>
