@@ -624,3 +624,42 @@
   align-items: center;
   margin-top: 8px;
 }
+
+.painel-greeting {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px 8px;
+}
+
+.painel-greeting-title {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.painel-greeting-sub {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.painel-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.painel-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px 24px;
+}
+
+#main-slot > div.painel-stats-grid {
+  margin-bottom: 8px;
+}
