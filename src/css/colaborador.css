@@ -229,3 +229,52 @@
   font-size: 12px;
   color: var(--text-light);
 }
+
+.header-title {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.app-header-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  background: var(--bg-card);
+  border-bottom: 1.5px solid var(--border-light);
+}
+
+.header-hero-brand {
+  font-family: var(--font-main);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.header-hero-subtitle {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.header-hero-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-bg);
+  color: var(--primary-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 14px;
+}
