@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap');
 
 :root {
   --primary: #4a6e8d;
@@ -27,7 +27,7 @@
   --radius-xl: 20px;
   --radius-full: 50px;
   --font-main: 'Nunito', sans-serif;
-  --font-body: 'Nunito Sans', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
   --transition: 0.2s ease;
 }
 
