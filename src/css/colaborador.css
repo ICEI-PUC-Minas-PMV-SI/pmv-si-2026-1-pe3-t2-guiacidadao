@@ -278,3 +278,22 @@
   font-weight: 800;
   font-size: 14px;
 }
+
+.filter-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  color: var(--text-medium);
+  border: 1.5px solid var(--border);
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-pill--active {
+  background: var(--primary);
+  color: var(--bg-card);
+  border-color: var(--primary);
+}
