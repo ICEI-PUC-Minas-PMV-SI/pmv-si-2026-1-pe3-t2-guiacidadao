@@ -17,6 +17,13 @@ describe('renderHeader modo padrao', () => {
     expect(html).toContain('>Beneficios<');
   });
 
+  it('inclui logo image no header bar', () => {
+    const html = renderHeader({ title: 'X', backHref: '/x' });
+    expect(html).toContain('class="header-logo-img"');
+    expect(html).toContain('src="/src/assets/icons/Logo.png"');
+    expect(html).toContain('alt="GuiaCidadao"');
+  });
+
   it('renderiza subtitle quando fornecido', () => {
     const html = renderHeader({ title: 'X', subtitle: 'Sub' });
     expect(html).toContain('class="header-subtitle"');
@@ -27,31 +34,37 @@ describe('renderHeader modo padrao', () => {
     const html = renderHeader({ title: 'X' });
     expect(html).not.toContain('back-btn');
   });
+
+  it('escapa title e subtitle', () => {
+    const html = renderHeader({ title: '<t>', subtitle: '<s>' });
+    expect(html).toContain('&lt;t&gt;');
+    expect(html).toContain('&lt;s&gt;');
+  });
 });
 
 describe('renderHeader modo hero', () => {
-  it('renderiza brand e subtitle no hero', () => {
-    const html = renderHeader({ hero: true, brand: 'GuiaCidadao', subtitle: 'Painel' });
+  it('renderiza app-header-hero', () => {
+    const html = renderHeader({ hero: true, subtitle: 'Painel' });
     expect(html).toContain('class="app-header-hero"');
-    expect(html).toContain('>GuiaCidadao<');
     expect(html).toContain('>Painel<');
     expect(html).not.toContain('back-btn');
   });
 
+  it('inclui logo image no hero', () => {
+    const html = renderHeader({ hero: true });
+    expect(html).toContain('class="header-logo-img"');
+    expect(html).toContain('src="/src/assets/icons/Logo.png"');
+    expect(html).toContain('alt="GuiaCidadao"');
+  });
+
   it('renderiza initials quando fornecido', () => {
-    const html = renderHeader({ hero: true, brand: 'X', initials: 'LC' });
+    const html = renderHeader({ hero: true, initials: 'LC' });
     expect(html).toContain('class="header-hero-avatar"');
     expect(html).toContain('>LC<');
   });
 
-  it('usa brand padrao GuiaCidadao', () => {
-    const html = renderHeader({ hero: true });
-    expect(html).toContain('>GuiaCidadao<');
-  });
-
-  it('escapa todos os campos do hero', () => {
-    const html = renderHeader({ hero: true, brand: '<a>', subtitle: '<b>', initials: '<c>' });
-    expect(html).toContain('&lt;a&gt;');
+  it('escapa subtitle e initials do hero', () => {
+    const html = renderHeader({ hero: true, subtitle: '<b>', initials: '<c>' });
     expect(html).toContain('&lt;b&gt;');
     expect(html).toContain('&lt;c&gt;');
   });

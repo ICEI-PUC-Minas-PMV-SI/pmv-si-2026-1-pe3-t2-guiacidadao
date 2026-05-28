@@ -1,10 +1,12 @@
-const renderHeaderHero = ({ brand = 'GuiaCidadao', subtitle, initials }) => {
+const HEADER_LOGO_HTML = `<img src="/src/assets/icons/Logo.png" alt="GuiaCidadao" class="header-logo-img">`;
+
+const renderHeaderHero = ({ subtitle, initials }) => {
   const subtitleMarkup = subtitle ? `<div class="header-hero-subtitle">${escapeHtml(subtitle)}</div>` : '';
   const avatarMarkup = initials ? `<div class="header-hero-avatar">${escapeHtml(initials)}</div>` : '';
   return `
     <header class="app-header-hero">
-      <div>
-        <div class="header-hero-brand">${escapeHtml(brand)}</div>
+      <div class="header-hero-brand-block">
+        ${HEADER_LOGO_HTML}
         ${subtitleMarkup}
       </div>
       ${avatarMarkup}
@@ -20,9 +22,12 @@ const renderHeaderBar = ({ title, subtitle, backHref }) => {
   return `
     <header class="app-header">
       ${backMarkup}
-      <div>
-        <div class="header-title">${escapeHtml(title)}</div>
-        ${subtitleMarkup}
+      <div class="header-title-block">
+        ${HEADER_LOGO_HTML}
+        <div class="header-title-text">
+          <div class="header-title">${escapeHtml(title)}</div>
+          ${subtitleMarkup}
+        </div>
       </div>
     </header>
   `;
