@@ -209,3 +209,23 @@
 .icon-button:hover {
   background: var(--border);
 }
+
+.section-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.section-title {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.section-title-hint {
+  font-size: 12px;
+  color: var(--text-light);
+}
