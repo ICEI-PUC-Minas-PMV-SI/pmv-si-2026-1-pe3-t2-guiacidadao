@@ -75,3 +75,8 @@
 .chip-remove:hover {
   opacity: 0.7;
 }
+
+.badge-danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
