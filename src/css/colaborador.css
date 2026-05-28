@@ -80,3 +80,24 @@
   background: #fee2e2;
   color: #991b1b;
 }
+
+.status-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.status-circle--warning { background: #fef3c7; color: #b45309; }
+.status-circle--danger  { background: #fee2e2; color: #991b1b; }
+.status-circle--success { background: #d1fae5; color: #047857; }
+
+.status-circle-glyph {
+  font-family: var(--font-main);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+}
