@@ -189,3 +189,23 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--primary-bg);
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.icon-button:hover {
+  background: var(--border);
+}
