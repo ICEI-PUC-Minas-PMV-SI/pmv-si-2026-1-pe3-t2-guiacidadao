@@ -110,11 +110,11 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 
 ### 3.5.1 Diagrama de Casos de Uso
 
-O diagrama de casos de uso da Figura 1 apresenta os quatro usuários do sistema e os casos em que cada um participa.
+O diagrama de casos de uso da Figura 1 apresenta os atores do sistema e os casos em que cada um participa.
 
 Na área pública, o Visitante pode realizar a triagem rápida ou iniciar o próprio cadastro. Após o cadastro e a autenticação, o Cidadão acessa a área autenticada, na qual encontra o diagnóstico de elegibilidade, o checklist de documentos, a simulação de cenários, a geração de documento e o registro do resultado do atendimento presencial.
 
-O Colaborador e o Administrador acessam o painel administrativo. O Colaborador é responsável pela manutenção do catálogo de benefícios (CSU11) e do cadastro das unidades de atendimento (CSU12). O Administrador atua apenas na gestão das contas de Colaborador (CSU13).
+Os atores internos — Colaborador e Administrador — são modelados como especializações do ator abstrato Usuário Interno, que centraliza o caso de uso Gerenciar conta (CSU01) na variante restrita (autenticação, edição de dados e alteração de senha; sem autocadastro e sem autoexclusão, atribuições exclusivas do Cidadão). O Colaborador responde pela manutenção do catálogo de benefícios (CSU11) e pelo cadastro das unidades de atendimento (CSU12). O Administrador atua apenas na gestão das contas de Colaborador (CSU13). A generalização preserva a separação de responsabilidades definida na seção 3.4.3.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema
 

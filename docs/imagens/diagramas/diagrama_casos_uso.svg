@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="1000" height="920" viewBox="0 0 1000 920" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+<svg width="1050" height="920" viewBox="0 0 1050 920" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
   <style>
     text { font-family: Arial, sans-serif; fill: #1a1a1a; }
     .label-sm { font-size: 12px; }
@@ -63,6 +63,16 @@
   <line x1="910" y1="879" x2="895" y2="899" class="actor-line"/>
   <line x1="910" y1="879" x2="925" y2="899" class="actor-line"/>
   <text x="910" y="914" text-anchor="middle" class="label-sm">Administrador</text>
+
+  <!-- Usuário Interno (ator abstrato, ancestral de Colaborador e Administrador) -->
+  <circle cx="970" cy="550" r="14" class="actor-circle"/>
+  <line x1="970" y1="564" x2="970" y2="599" class="actor-line"/>
+  <line x1="970" y1="574" x2="952" y2="589" class="actor-line"/>
+  <line x1="970" y1="574" x2="988" y2="589" class="actor-line"/>
+  <line x1="970" y1="599" x2="955" y2="619" class="actor-line"/>
+  <line x1="970" y1="599" x2="985" y2="619" class="actor-line"/>
+  <text x="970" y="634" text-anchor="middle" class="label-sm">Usuário Interno</text>
+  <text x="970" y="648" text-anchor="middle" class="label-hint" font-style="italic">{abstract}</text>
 
   <!-- ===== CASOS DE USO (todos com código único) ===== -->
   <!-- CSU01 — topo, compartilhado por todos -->
@@ -144,51 +154,39 @@
   <line x1="104" y1="458" x2="355" y2="510" class="assoc"/>
   <line x1="104" y1="464" x2="355" y2="630" class="assoc"/>
 
-  <!-- Colaborador → CSU01, CSU11, CSU12 -->
-  <line x1="896" y1="715" x2="645" y2="80" class="assoc"/>
+  <!-- Colaborador → CSU11, CSU12 (CSU01 via Usuário Interno por herança) -->
   <line x1="896" y1="720" x2="645" y2="700" class="assoc"/>
   <line x1="896" y1="725" x2="645" y2="760" class="assoc"/>
 
-  <!-- Administrador → CSU01, CSU13 -->
-  <line x1="896" y1="825" x2="645" y2="80" class="assoc"/>
+  <!-- Administrador → CSU13 (CSU01 via Usuário Interno por herança) -->
   <line x1="896" y1="828" x2="645" y2="810" class="assoc"/>
 
-  <!-- ===== RELAÇÕES «include» / «extend» =====
-       Layout em bandas verticais (x=663, 695, 725, 755) e desvios de y de ±2-4 px
-       nas bordas dos casos de uso para evitar sobreposição de segmentos horizontais. -->
+  <!-- Usuário Interno → CSU01 (compartilhado por Colaborador e Administrador via generalização) -->
+  <line x1="970" y1="536" x2="645" y2="80" class="assoc"/>
 
-  <!-- BANDA A (x=663): adjacências de 1 passo — y desviado em +2/-2 nas bordas -->
+  <!-- ===== RELAÇÕES ENTRE CASOS DE USO ===== -->
 
   <!-- CSU01 «extend» CSU07 (visitante opta por criar conta após triagem — CSU07 fluxo alt 10) -->
   <path d="M648 82 L663 82 L663 140 L648 140" class="relation" marker-end="url(#arr)"/>
   <text x="666" y="113" class="label-hint">«extend»</text>
 
-  <!-- CSU06 «extend» CSU05 (cidadão abre checklist a partir da consulta de benefício — CSU05 passo 5) -->
-  <path d="M648 452 L663 452 L663 392 L648 392" class="relation" marker-end="url(#arr)"/>
-  <text x="666" y="424" class="label-hint">«extend»</text>
-
   <!-- CSU08 «include» CSU09 (geração de documento sempre invoca localização da unidade — CSU08 passo 2) -->
   <path d="M648 512 L663 512 L663 568 L648 568" class="relation" marker-end="url(#arr)"/>
   <text x="666" y="542" class="label-hint">«include»</text>
 
-  <!-- BANDA B (x=695): 1-2 passos -->
-
-  <!-- CSU02 «extend» CSU01 (preenchimento do perfil familiar é acionado após cadastro de Cidadão — CSU01 fluxo 3.a passo i) -->
-  <path d="M648 208 L695 208 L695 78 L648 78" class="relation" marker-end="url(#arr)"/>
-  <text x="698" y="145" class="label-hint">«extend»</text>
-
-  <!-- CSU05 «extend» CSU03 (cidadão acessa detalhe de benefício a partir do diagnóstico — CSU03 passo 6) -->
-  <path d="M648 388 L695 388 L695 272 L648 272" class="relation" marker-end="url(#arr)"/>
-  <text x="698" y="332" class="label-hint">«extend»</text>
-
-  <!-- CSU08 «extend» CSU06 (cidadão gera documento a partir do checklist — CSU06 fluxo alt 5) -->
-  <path d="M648 508 L695 508 L695 448 L648 448" class="relation" marker-end="url(#arr)"/>
-  <text x="698" y="480" class="label-hint">«extend»</text>
-
-  <!-- BANDA C (x=725): salto longo descendente -->
-
   <!-- CSU05 «include» CSU09 (consulta detalhada do benefício mostra unidade de atendimento) -->
   <path d="M648 395 L725 395 L725 572 L648 572" class="relation" marker-end="url(#arr)"/>
   <text x="728" y="445" class="label-hint">«include»</text>
+
+  <!-- ===== GENERALIZAÇÕES DE ATORES ===== -->
+
+  <!-- Colaborador → junção (subtipo → supertipo Usuário Interno) -->
+  <line x1="924" y1="720" x2="940" y2="660" class="gen"/>
+
+  <!-- Administrador → junção (rota desviando de Colaborador) -->
+  <path d="M924 830 L940 830 L940 660" class="gen" fill="none"/>
+
+  <!-- Cabeça compartilhada apontando para Usuário Interno -->
+  <path d="M940 660 L940 550 L956 550" class="gen" marker-end="url(#gen)" fill="none"/>
 
 </svg>
