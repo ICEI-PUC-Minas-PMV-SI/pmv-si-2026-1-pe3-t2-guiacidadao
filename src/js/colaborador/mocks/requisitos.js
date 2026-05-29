@@ -6,4 +6,22 @@ const MOCK_REQUISITOS = [
   { id: 'req-5', name: 'Inscricao no CadUnico', category: 'documental', description: 'A familia deve estar com cadastro atualizado no Cadastro Unico para Programas Sociais do Governo Federal.', operator: 'eq', value: '1', status: 'ativo', benefitsLinked: 9 }
 ];
 
+const MOCK_REQUISITO_CATEGORIES = [
+  { value: 'renda', label: 'Renda' },
+  { value: 'familia', label: 'Familia' },
+  { value: 'vinculo', label: 'Vinculo de trabalho' },
+  { value: 'moradia', label: 'Moradia' },
+  { value: 'documental', label: 'Documental' }
+];
+
+const MOCK_OPERADORES = [
+  { value: 'lte', label: '<= (menor ou igual)' },
+  { value: 'gte', label: '>= (maior ou igual)' },
+  { value: 'eq', label: '= (igual)' },
+  { value: 'lt', label: '< (menor que)' },
+  { value: 'gt', label: '> (maior que)' }
+];
+
 globalThis.MOCK_REQUISITOS = MOCK_REQUISITOS;
+globalThis.MOCK_REQUISITO_CATEGORIES = MOCK_REQUISITO_CATEGORIES;
+globalThis.MOCK_OPERADORES = MOCK_OPERADORES;

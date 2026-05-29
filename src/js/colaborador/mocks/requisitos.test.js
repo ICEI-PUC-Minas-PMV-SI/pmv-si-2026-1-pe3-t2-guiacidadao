@@ -18,3 +18,29 @@ describe('MOCK_REQUISITOS', () => {
     });
   });
 });
+
+describe('MOCK_REQUISITO_CATEGORIES', () => {
+  it('expoe array com 5 categorias', () => {
+    expect(MOCK_REQUISITO_CATEGORIES).toHaveLength(5);
+  });
+
+  it('cada categoria tem value e label', () => {
+    MOCK_REQUISITO_CATEGORIES.forEach((cat) => {
+      expect(cat).toHaveProperty('value');
+      expect(cat).toHaveProperty('label');
+    });
+  });
+});
+
+describe('MOCK_OPERADORES', () => {
+  it('expoe array com 5 operadores', () => {
+    expect(MOCK_OPERADORES).toHaveLength(5);
+  });
+
+  it('cada operador tem value e label', () => {
+    MOCK_OPERADORES.forEach((op) => {
+      expect(op).toHaveProperty('value');
+      expect(op).toHaveProperty('label');
+    });
+  });
+});
