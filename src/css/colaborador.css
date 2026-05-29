@@ -1223,3 +1223,19 @@
 .painel-section-title {
   padding: 0 20px;
 }
+
+.list-item-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.list-item-subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-item-right {
+  flex-shrink: 0;
+  white-space: nowrap;
+}

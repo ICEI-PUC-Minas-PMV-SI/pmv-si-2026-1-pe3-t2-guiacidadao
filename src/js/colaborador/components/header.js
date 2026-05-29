@@ -1,5 +1,6 @@
 const HEADER_LOGO_HTML = `<img src="/src/assets/icons/Logo.png" alt="GuiaCidadao" class="header-logo-img">`;
 const HEADER_SPACER_HTML = '<div class="header-spacer"></div>';
+const HEADER_BACK_SVG = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>`;
 
 const renderHeaderHero = ({ subtitle, initials }) => {
   const subtitleMarkup = subtitle ? `<div class="header-hero-subtitle">${escapeHtml(subtitle)}</div>` : '';
@@ -17,7 +18,7 @@ const renderHeaderHero = ({ subtitle, initials }) => {
 
 const renderHeaderBar = ({ title, subtitle, backHref }) => {
   const backMarkup = backHref
-    ? `<a class="back-btn" href="${escapeHtml(backHref)}" aria-label="Voltar">&larr;</a>`
+    ? `<a class="back-btn" href="${escapeHtml(backHref)}" aria-label="Voltar">${HEADER_BACK_SVG}</a>`
     : HEADER_SPACER_HTML;
   const subtitleMarkup = subtitle ? `<div class="header-subtitle">${escapeHtml(subtitle)}</div>` : '';
   return `
