@@ -6,4 +6,13 @@ const MOCK_DOCUMENTOS = [
   { id: 'doc-5', name: 'Cadastro CadUnico (NIS)', category: 'familiar', guidance: 'Numero de Identificacao Social obtido apos cadastro presencial em uma unidade do CRAS.', optional: false, status: 'ativo' }
 ];
 
+const MOCK_DOCUMENTO_CATEGORIES = [
+  { value: 'identidade', label: 'Identidade' },
+  { value: 'renda', label: 'Renda' },
+  { value: 'moradia', label: 'Moradia' },
+  { value: 'familiar', label: 'Familiar' },
+  { value: 'outros', label: 'Outros' }
+];
+
 globalThis.MOCK_DOCUMENTOS = MOCK_DOCUMENTOS;
+globalThis.MOCK_DOCUMENTO_CATEGORIES = MOCK_DOCUMENTO_CATEGORIES;

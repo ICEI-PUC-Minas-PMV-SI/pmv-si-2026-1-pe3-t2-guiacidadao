@@ -18,3 +18,16 @@ describe('MOCK_DOCUMENTOS', () => {
     });
   });
 });
+
+describe('MOCK_DOCUMENTO_CATEGORIES', () => {
+  it('expoe array com 5 categorias', () => {
+    expect(MOCK_DOCUMENTO_CATEGORIES).toHaveLength(5);
+  });
+
+  it('cada categoria tem value e label', () => {
+    MOCK_DOCUMENTO_CATEGORIES.forEach((cat) => {
+      expect(cat).toHaveProperty('value');
+      expect(cat).toHaveProperty('label');
+    });
+  });
+});
