@@ -84,11 +84,11 @@ const init = () => {
   });
 
   document.getElementById('btn-add-requisito').addEventListener('click', () => {
-    alert('Selecionar requisito (Fase 8: modal).');
+    window.location.href = '/src/pages/colaborador/modais/adicionar-requisito.html';
   });
 
   document.getElementById('btn-add-documento').addEventListener('click', () => {
-    alert('Selecionar documento (Fase 8: modal).');
+    window.location.href = '/src/pages/colaborador/modais/adicionar-documento.html';
   });
 
   document.getElementById('novo-status').addEventListener('click', (event) => {

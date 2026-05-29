@@ -84,7 +84,7 @@ const init = () => {
   });
 
   document.getElementById('btn-add-beneficio').addEventListener('click', () => {
-    alert('Selecionar beneficio (Fase 8: modal).');
+    window.location.href = '/src/pages/colaborador/modais/adicionar-beneficio.html';
   });
 };
 
