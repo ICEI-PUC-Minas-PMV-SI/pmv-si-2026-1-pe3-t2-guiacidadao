@@ -38,7 +38,7 @@ const init = () => {
   const statsHtml = STATS.map((stat) => renderStatCard(stat)).join('');
   const statsGrid = `<div class="painel-stats-grid">${statsHtml}</div>`;
 
-  const menuTitle = renderSectionTitle({ children: 'Acesso rapido' });
+  const menuTitle = `<div class="painel-section-title">${renderSectionTitle({ children: 'Acesso rapido' })}</div>`;
   const menuList = `<div class="painel-menu-list">${MENU_ITEMS.map((item) => renderMenuItem({
     iconHtml: renderIcon(item.icon, 18),
     title: item.title,
