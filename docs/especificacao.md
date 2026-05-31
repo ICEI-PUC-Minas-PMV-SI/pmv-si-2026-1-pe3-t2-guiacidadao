@@ -71,14 +71,13 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RF07 | Consulta detalhada de benefício | O cidadão consulta a descrição, os requisitos, os documentos exigidos e o link oficial de cada benefício, em linguagem simples. | Alta |
 | RF08 | Preenchimento de checklist | O cidadão preenche o checklist de documentos exigidos para cada benefício elegível, marcando cada item como pendente, obtido ou não aplicável. | Média |
 | RF09 | Triagem rápida | O visitante realiza uma triagem rápida e obtém uma lista preliminar de benefícios compatíveis, sem necessidade de cadastro. | Alta |
-| RF10 | Geração e compartilhamento de documento | O cidadão gera um PDF com o resumo da sua situação e o compartilha via WhatsApp ou impressão. | Baixa |
-| RF11 | Localização de unidade de atendimento | O cidadão consulta a unidade de atendimento mais próxima a partir do CEP ou da geolocalização, com nome, endereço, distância e horário de funcionamento. | Baixa |
-| RF12 | Registro de resultado de atendimento presencial | O cidadão registra o resultado do atendimento presencial (protocolado, documentação complementar, concedido ou indeferido), atualizando o status do benefício. | Média |
-| RF13 | Gestão do catálogo de benefícios | O colaborador gerencia o catálogo de benefícios e seus requisitos de elegibilidade (inclusão, edição, desativação e consulta). | Alta |
-| RF14 | Gestão de unidades de atendimento | O colaborador gerencia as unidades de atendimento (inclusão, edição, desativação e consulta). | Alta |
-| RF15 | Gestão de contas de colaborador | O administrador gerencia as contas de colaborador (inclusão, edição, desativação e consulta). | Alta |
-| RF16 | Notificação a usuários afetados | O sistema notifica cidadãos afetados por alterações no catálogo de benefícios (mudança em requisitos, lista de documentos ou desativação) pelo canal de contato preferencial cadastrado. | Média |
-| RF17 | Reavaliação automática de elegibilidade | O Sistema reexecuta a verificação de elegibilidade (CSU03) para todos os perfis que possuíam classificação anterior para um benefício sempre que um requisito de elegibilidade desse benefício for alterado pelo Colaborador. | Média |
+| RF10 | Localização de unidade de atendimento | O cidadão consulta a unidade de atendimento mais próxima a partir do CEP ou da geolocalização, com nome, endereço, distância e horário de funcionamento. | Baixa |
+| RF11 | Registro de resultado de atendimento presencial | O cidadão registra o resultado do atendimento presencial (protocolado, documentação complementar, concedido ou indeferido), atualizando o status do benefício. | Média |
+| RF12 | Gestão do catálogo de benefícios | O colaborador gerencia o catálogo de benefícios e seus requisitos de elegibilidade (inclusão, edição, desativação e consulta). | Alta |
+| RF13 | Gestão de unidades de atendimento | O colaborador gerencia as unidades de atendimento (inclusão, edição, desativação e consulta). | Alta |
+| RF14 | Gestão de contas de colaborador | O administrador gerencia as contas de colaborador (inclusão, edição, desativação e consulta). | Alta |
+| RF15 | Notificação a usuários afetados | O sistema notifica cidadãos afetados por alterações no catálogo de benefícios (mudança em requisitos, lista de documentos ou desativação) pelo canal de contato preferencial cadastrado. | Média |
+| RF16 | Reavaliação automática de elegibilidade | O Sistema reexecuta a verificação de elegibilidade (CSU03) para todos os perfis que possuíam classificação anterior para um benefício sempre que um requisito de elegibilidade desse benefício for alterado pelo Colaborador. | Média |
 
 ### 3.4.2 Requisitos Não Funcionais
 
@@ -87,15 +86,14 @@ Em conformidade com os princípios de desenvolvimento ágil, os requisitos docum
 | RNF01 | O cálculo da renda per capita deve ser exibido em até 2 segundos após a submissão do formulário. | Alta |
 | RNF02 | O aplicativo deve ser compatível com Android 8.0 Oreo (API 26) ou superior e iOS 13 ou superior, abrangendo dispositivos de entrada como Moto G5/G6, Samsung Galaxy J5/J7/A10 e iPhone 6s/7/SE 1ª geração, comuns no público-alvo em situação de vulnerabilidade socioeconômica. | Média |
 | RNF03 | A interface deve atender às diretrizes WCAG 2.1 nível AA. | Alta |
-| RNF04 | O sistema deve realizar backup diário automatizado dos dados, com retenção mínima de 30 dias. | Alta |
-| RNF05 | O sistema deve obter consentimento LGPD explícito do cidadão no momento do cadastro. | Alta |
-| RNF06 | O sistema deve processar solicitações de exclusão de dados pessoais em até 15 dias úteis, em conformidade com a LGPD. | Alta |
-| RNF07 | O sistema deve validar formato e dígitos verificadores do CPF no momento da submissão do cadastro. | Alta |
-| RNF08 | O sistema deve controlar o acesso a funcionalidades e rotas por perfil de usuário, bloqueando requisições incompatíveis. | Alta |
-| RNF09 | O sistema deve apresentar todos os conteúdos voltados ao cidadão em linguagem simples, traduzindo termos jurídicos e administrativos para expressões acessíveis a pessoas com baixo letramento digital. | Alta |
-| RNF10 | O sistema deve exigir senhas com no mínimo 8 caracteres e bloquear temporariamente o identificador após três tentativas consecutivas de autenticação falhas, por um período de 15 minutos. | Alta |
-| RNF11 | O sistema deve localizar unidades de atendimento em raio inicial de 5 km e ampliar progressivamente em incrementos de 5 km até 25 km quando nenhuma unidade for encontrada. | Média |
-| RNF12 | O aplicativo deve adaptar seu layout às resoluções de tela de smartphones de 360×640 px (mínimo), 375×667 px (referência iPhone padrão) e 414×896 px (referência large), preservando legibilidade e usabilidade em todas as faixas. | Média |
+| RNF04 | O sistema deve obter consentimento LGPD explícito do cidadão no momento do cadastro. | Alta |
+| RNF05 | O sistema deve processar solicitações de exclusão de dados pessoais em até 15 dias úteis, em conformidade com a LGPD. | Alta |
+| RNF06 | O sistema deve validar formato e dígitos verificadores do CPF no momento da submissão do cadastro. | Alta |
+| RNF07 | O sistema deve controlar o acesso a funcionalidades e rotas por perfil de usuário, bloqueando requisições incompatíveis. | Alta |
+| RNF08 | O sistema deve apresentar todos os conteúdos voltados ao cidadão em linguagem simples, traduzindo termos jurídicos e administrativos para expressões acessíveis a pessoas com baixo letramento digital. | Alta |
+| RNF09 | O sistema deve exigir senhas com no mínimo 8 caracteres e bloquear temporariamente o identificador após três tentativas consecutivas de autenticação falhas, por um período de 15 minutos. | Alta |
+| RNF10 | O sistema deve localizar unidades de atendimento em raio inicial de 5 km e ampliar progressivamente em incrementos de 5 km até 25 km quando nenhuma unidade for encontrada. | Média |
+| RNF11 | O aplicativo deve adaptar seu layout às resoluções de tela de smartphones de 360×640 px (mínimo), 375×667 px (referência iPhone padrão) e 414×896 px (referência large), preservando legibilidade e usabilidade em todas as faixas. | Média |
 
 ### 3.4.3 Usuários
 
