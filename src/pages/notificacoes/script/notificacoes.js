@@ -1,200 +1,254 @@
 /**
- * GuiaCidadão – Notificações
- * Arquivo: notificacoes.js
- *
- * Responsabilidades:
- *   1. Filtros por categoria (pílulas)
- *   2. Marcar notificação individual como lida (clique no card)
- *   3. Marcar todas como lidas
- *   4. Atualizar contador de não lidas e badge da bottom nav
- *   5. Exibir estado vazio quando não há resultados no filtro
- *   6. Menu lateral (hambúrguer)
- *   7. Toast de feedback
+ * GuiaCidadão – Tela de Notificações
  */
-
 (function () {
   'use strict';
 
-  /* ── Referências DOM ──────────────────────────────────── */
-  const filterPills       = document.querySelectorAll('.filter-pill');
-  const notificationList  = document.getElementById('notificationList');
-  const allCards          = notificationList ? [...notificationList.querySelectorAll('.notification-card')] : [];
-  const markAllBtn        = document.getElementById('markAllBtn');
-  const unreadCountEl     = document.getElementById('unreadCount');
-  const unreadNumberEl    = document.getElementById('unreadNumber');
-  const emptyState        = document.getElementById('emptyState');
-  const bottomBadge       = document.querySelector('.bottom-nav__badge');
-  const menuBtn           = document.querySelector('.header__menu-btn');
-  const menuOverlay       = document.querySelector('.menu-overlay');
-  const menuClose         = document.querySelector('.side-menu__close');
+  const store = window.NotificationsStore;
+  if (!store) return;
 
-  /* ── Estado ───────────────────────────────────────────── */
+  const ICONS = {
+    agendamentos: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>`,
+    beneficios: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.8 10.9C9.53 10.31 8.8 9.7 8.8 8.75c0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3H10v2.16C8.06 5.58 6.5 6.84 6.5 8.77c0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-3-2.1H6.3c.14 2.19 1.78 3.42 3.7 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>`,
+    avisos: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>`,
+  };
+
+  const CATEGORY_LABELS = {
+    agendamentos: 'Agendamento',
+    beneficios: 'Benefício',
+    avisos: 'Aviso',
+  };
+
+  let notifications = [];
   let currentFilter = 'all';
+  let pollTimer = null;
+  let loadFailed = false;
 
-  /* ── 1. FILTROS ───────────────────────────────────────── */
-  filterPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      // Atualiza estado visual dos botões
-      filterPills.forEach(p => {
-        p.classList.remove('filter-pill--active');
-        p.setAttribute('aria-pressed', 'false');
-      });
-      pill.classList.add('filter-pill--active');
-      pill.setAttribute('aria-pressed', 'true');
+  const els = {
+    list: document.getElementById('notifList'),
+    loading: document.getElementById('notifLoading'),
+    error: document.getElementById('notifError'),
+    empty: document.getElementById('emptyState'),
+    unreadLabel: document.getElementById('unreadLabel'),
+    unreadNum: document.getElementById('unreadNum'),
+    markAllBtn: document.getElementById('markAllBtn'),
+    retryBtn: document.getElementById('retryBtn'),
+    filterPills: document.querySelectorAll('.filter-pill'),
+    toast: document.getElementById('toast'),
+    modal: document.getElementById('notifModal'),
+    modalBackdrop: document.getElementById('notifModalBackdrop'),
+    modalClose: document.getElementById('notifModalClose'),
+    modalCategory: document.getElementById('notifModalCategory'),
+    modalTitle: document.getElementById('notifModalTitle'),
+    modalDesc: document.getElementById('notifModalDesc'),
+    modalTime: document.getElementById('notifModalTime'),
+    modalAction: document.getElementById('notifModalAction'),
+  };
 
-      currentFilter = pill.dataset.filter;
-      applyFilter(currentFilter);
-    });
-  });
+  function showToast(message, duration = 2500) {
+    if (!els.toast) return;
+    els.toast.textContent = message;
+    els.toast.classList.add('show');
+    setTimeout(() => els.toast.classList.remove('show'), duration);
+  }
 
-  function applyFilter(filter) {
-    let anyVisible = false;
-
-    allCards.forEach(card => {
-      const match = filter === 'all' || card.dataset.category === filter;
-      card.classList.toggle('is-hidden', !match);
-      if (match) anyVisible = true;
-    });
-
-    // Alterna estado vazio
-    if (emptyState) {
-      emptyState.classList.toggle('is-visible', !anyVisible);
+  function setLoading(isLoading) {
+    els.loading?.classList.toggle('is-visible', isLoading);
+    if (isLoading) {
+      els.list.hidden = true;
+      els.error.hidden = true;
+      els.empty.classList.remove('visible');
     }
-    if (notificationList) {
-      notificationList.classList.toggle('is-hidden', !anyVisible);
+  }
+
+  function setError(hasError) {
+    loadFailed = hasError;
+    els.error.hidden = !hasError;
+    if (hasError) {
+      els.list.hidden = true;
+      els.empty.classList.remove('visible');
     }
   }
 
-  /* ── 2. MARCAR CARD INDIVIDUAL COMO LIDO ─────────────── */
-  if (notificationList) {
-    notificationList.addEventListener('click', (e) => {
-      const btn = e.target.closest('.notification-card__inner');
-      if (!btn) return;
+  function loadNotifications() {
+    setLoading(true);
+    setError(false);
 
-      const card = btn.closest('.notification-card');
-      if (card && card.classList.contains('notification-card--unread')) {
-        markCardAsRead(card);
-        updateUnreadUI();
-      }
+    return new Promise((resolve) => {
+      window.setTimeout(() => {
+        try {
+          notifications = store.getAll();
+          setLoading(false);
+          resolve(notifications);
+        } catch (_) {
+          setLoading(false);
+          setError(true);
+          resolve([]);
+        }
+      }, 350);
     });
   }
 
-  function markCardAsRead(card) {
-    card.classList.remove('notification-card--unread');
-    const dot = card.querySelector('.notification-card__unread-dot');
-    if (dot) dot.remove();
-  }
-
-  /* ── 3. MARCAR TODAS COMO LIDAS ──────────────────────── */
-  if (markAllBtn) {
-    markAllBtn.addEventListener('click', () => {
-      const unreadCards = notificationList.querySelectorAll('.notification-card--unread');
-      if (unreadCards.length === 0) return;
-
-      unreadCards.forEach(card => markCardAsRead(card));
-      updateUnreadUI();
-      showToast('Todas as notificações foram marcadas como lidas.');
-    });
-  }
-
-  /* ── 4. ATUALIZAR CONTADOR E BADGE ───────────────────── */
-  function countUnread() {
-    return notificationList
-      ? notificationList.querySelectorAll('.notification-card--unread').length
-      : 0;
+  function getFilteredNotifications() {
+    if (currentFilter === 'all') return notifications;
+    return notifications.filter((item) => item.category === currentFilter);
   }
 
   function updateUnreadUI() {
-    const count = countUnread();
+    const unread = notifications.filter((n) => !n.read).length;
+    if (els.unreadNum) els.unreadNum.textContent = String(unread);
+    if (els.unreadLabel) els.unreadLabel.style.display = unread > 0 ? 'block' : 'none';
+    if (els.markAllBtn) els.markAllBtn.disabled = unread === 0;
+  }
 
-    // Contador textual
-    if (unreadNumberEl) unreadNumberEl.textContent = count;
-    if (unreadCountEl) unreadCountEl.classList.toggle('is-zero', count === 0);
+  function updateEmptyState(visibleCount) {
+    const showEmpty = !loadFailed && visibleCount === 0;
+    els.empty.classList.toggle('visible', showEmpty);
+    els.list.hidden = showEmpty || loadFailed;
+  }
 
-    // Badge da bottom nav
-    if (bottomBadge) {
-      if (count > 0) {
-        bottomBadge.textContent = count;
-        bottomBadge.style.display = '';
-        bottomBadge.setAttribute('aria-label', `${count} notificações não lidas`);
-      } else {
-        bottomBadge.style.display = 'none';
-        bottomBadge.removeAttribute('aria-label');
-      }
+  function renderList() {
+    const filtered = getFilteredNotifications();
+    els.list.innerHTML = '';
+
+    filtered.forEach((item) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = `notif-card${item.read ? '' : ' unread'}`;
+      card.dataset.id = item.id;
+      card.dataset.category = item.category;
+      card.setAttribute('aria-label', `${item.read ? '' : 'Não lida: '}${item.title}`);
+
+      card.innerHTML = `
+        <div class="notif-inner">
+          <div class="notif-icon ${item.category === 'beneficios' ? 'benefit' : item.category === 'avisos' ? 'alert' : 'schedule'}">
+            ${ICONS[item.category] || ICONS.avisos}
+          </div>
+          <div class="notif-body">
+            <div class="notif-row">
+              <span class="notif-title">${escapeHtml(item.title)}</span>
+              ${item.read ? '' : '<span class="notif-dot" aria-hidden="true"></span>'}
+            </div>
+            <p class="notif-desc">${escapeHtml(item.description)}</p>
+            <span class="notif-time">${escapeHtml(item.timeLabel)}</span>
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => handleNotificationClick(item.id));
+      els.list.appendChild(card);
+    });
+
+    updateUnreadUI();
+    updateEmptyState(filtered.length);
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function handleNotificationClick(id) {
+    const item = notifications.find((n) => n.id === id);
+    if (!item) return;
+
+    if (!item.read) {
+      store.markAsRead(id);
+      item.read = true;
+      renderList();
     }
 
-    // Desabilita botão "Marcar todas" se não houver não lidas
-    if (markAllBtn) {
-      markAllBtn.disabled = count === 0;
+    if (item.destination) {
+      window.location.href = item.destination;
+      return;
     }
+
+    openModal(item);
   }
 
-  // Inicializar contagem
-  updateUnreadUI();
+  function openModal(item) {
+    els.modalCategory.textContent = CATEGORY_LABELS[item.category] || 'Notificação';
+    els.modalTitle.textContent = item.title;
+    els.modalDesc.textContent = item.description;
+    els.modalTime.textContent = item.timeLabel;
 
-  /* ── 5. MENU LATERAL ──────────────────────────────────── */
-  function openMenu() {
-    if (!menuOverlay) return;
-    menuOverlay.classList.add('is-open');
-    menuOverlay.removeAttribute('aria-hidden');
-    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+    if (item.destination) {
+      els.modalAction.hidden = false;
+      els.modalAction.onclick = () => {
+        window.location.href = item.destination;
+      };
+    } else {
+      els.modalAction.hidden = true;
+      els.modalAction.onclick = null;
+    }
+
+    els.modal.hidden = false;
+    els.modal.setAttribute('aria-hidden', 'false');
   }
 
-  function closeMenu() {
-    if (!menuOverlay) return;
-    menuOverlay.classList.remove('is-open');
-    menuOverlay.setAttribute('aria-hidden', 'true');
-    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+  function closeModal() {
+    els.modal.hidden = true;
+    els.modal.setAttribute('aria-hidden', 'true');
   }
 
-  if (menuBtn) menuBtn.addEventListener('click', openMenu);
-  if (menuClose) menuClose.addEventListener('click', closeMenu);
+  function applyFilter(filter) {
+    currentFilter = filter;
+    els.filterPills.forEach((pill) => {
+      const isActive = pill.dataset.filter === filter;
+      pill.classList.toggle('active', isActive);
+      pill.setAttribute('aria-pressed', String(isActive));
+    });
+    renderList();
+  }
 
-  if (menuOverlay) {
-    menuOverlay.addEventListener('click', (e) => {
-      // Fechar ao clicar fora do painel
-      if (e.target === menuOverlay) closeMenu();
+  function markAllAsRead() {
+    const unread = notifications.filter((n) => !n.read).length;
+    if (unread === 0) return;
+    store.markAllAsRead();
+    notifications = store.getAll();
+    renderList();
+    showToast('Todas as notificações foram marcadas como lidas.');
+  }
+
+  function refreshFromStore() {
+    notifications = store.getAll();
+    renderList();
+  }
+
+  function startPolling() {
+    store.subscribe(refreshFromStore);
+    pollTimer = window.setInterval(refreshFromStore, 15000);
+  }
+
+  function bindEvents() {
+    els.filterPills.forEach((pill) => {
+      pill.addEventListener('click', () => applyFilter(pill.dataset.filter || 'all'));
+    });
+
+    els.markAllBtn?.addEventListener('click', markAllAsRead);
+    els.retryBtn?.addEventListener('click', () => {
+      loadNotifications().then(renderList);
+    });
+
+    els.modalClose?.addEventListener('click', closeModal);
+    els.modalBackdrop?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !els.modal.hidden) closeModal();
     });
   }
 
-  // Fechar com Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menuOverlay && menuOverlay.classList.contains('is-open')) {
-      closeMenu();
-    }
-  });
-
-  /* ── 6. TOAST DE FEEDBACK ─────────────────────────────── */
-  let toastEl = null;
-  let toastTimer = null;
-
-  function showToast(message, duration = 2800) {
-    // Cria elemento somente uma vez
-    if (!toastEl) {
-      toastEl = document.createElement('div');
-      toastEl.className = 'toast';
-      toastEl.setAttribute('role', 'status');
-      toastEl.setAttribute('aria-live', 'polite');
-      document.body.appendChild(toastEl);
-    }
-
-    toastEl.textContent = message;
-    toastEl.classList.add('is-visible');
-
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toastEl.classList.remove('is-visible');
-    }, duration);
+  async function init() {
+    bindEvents();
+    await loadNotifications();
+    renderList();
+    startPolling();
   }
 
-  /* ── 7. ESTADO VAZIO – função auxiliar pública ────────── */
-  // Utilize window.GuiaCidadao.showEmpty(true/false) para alternar via console/teste
-  window.GuiaCidadao = window.GuiaCidadao || {};
-  window.GuiaCidadao.showEmpty = function (show) {
-    if (emptyState) emptyState.classList.toggle('is-visible', show);
-    if (notificationList) notificationList.classList.toggle('is-hidden', show);
-  };
-
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

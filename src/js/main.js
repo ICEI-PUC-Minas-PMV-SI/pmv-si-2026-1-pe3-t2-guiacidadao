@@ -262,6 +262,9 @@ function handleConfirmarAgendamento() {
     timestamp: new Date().toISOString()
   };
   localStorage.setItem('gc_last_agendamento', JSON.stringify(confirmData));
+  if (window.NotificationsStore) {
+    window.NotificationsStore.addFromAgendamento(confirmData);
+  }
   navigate('sucesso-agendamento');
 }
 
