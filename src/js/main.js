@@ -142,6 +142,11 @@ let selectedDate = null;
 let selectedTime = null;
 let calYear  = new Date().getFullYear();
 let calMonth = new Date().getMonth();
+let cancelModalTarget = null;
+let cancelInFlight = false;
+let rescheduleModalTarget = null;
+let rescheduleInFlight = false;
+let confirmInFlight = false;
 
 const MONTH_NAMES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const DAY_NAMES   = ['Do','Se','Te','Qu','Qu','Se','Sá','Do'];
@@ -305,8 +310,30 @@ function formatDateBR(dateStr) {
   return `${days[date.getDay()]}, ${d} de ${months[date.getMonth()]} de ${y}`;
 }
 
+function toDateInputValue(dateBr) {
+  if (!dateBr) return '';
+  const [d, m, y] = String(dateBr).split('/');
+  return `${y}-${m}-${d}`;
+}
+
+function toDateBrFromInput(dateIso) {
+  if (!dateIso) return '';
+  const [y, m, d] = dateIso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function handleConfirmarAgendamento() {
   const btnConfirmar = document.getElementById('btn-confirmar-ag');
+  if (confirmInFlight) return;
   if (!window.AgendamentoService) {
     showToast('Serviço de agendamento indisponível');
     return;
@@ -317,12 +344,18 @@ function handleConfirmarAgendamento() {
     window.location.href = '/src/pages/agendamento/agendamento.html';
     return;
   }
+  if (!draft.unidadeId || !draft.dataBr || !draft.horario) {
+    showToast('Dados incompletos. Preencha o agendamento novamente.');
+    window.location.href = '/src/pages/agendamento/agendamento.html';
+    return;
+  }
   if (!window.AgendamentoService.isSlotAvailable({ unidade: draft.unidadeId, dataBr: draft.dataBr, horario: draft.horario })) {
     showToast('Horário indisponível. Selecione outro horário.');
     window.location.href = '/src/pages/agendamento/agendamento.html';
     return;
   }
 
+  confirmInFlight = true;
   if (btnConfirmar) {
     btnConfirmar.disabled = true;
     btnConfirmar.textContent = 'Confirmando...';
@@ -342,10 +375,13 @@ function handleConfirmarAgendamento() {
     .catch((err) => {
       const msg = err?.code === 'SLOT_UNAVAILABLE'
         ? 'Horário indisponível. Escolha outro horário.'
-        : 'Não foi possível confirmar o agendamento.';
+        : err?.code === 'INVALID_PAYLOAD'
+          ? 'Dados incompletos. Preencha o agendamento novamente.'
+          : (err?.message || 'Não foi possível confirmar o agendamento.');
       showToast(msg);
     })
     .finally(() => {
+      confirmInFlight = false;
       if (btnConfirmar) {
         btnConfirmar.disabled = false;
         btnConfirmar.textContent = 'Confirmar Agendamento';
@@ -375,34 +411,291 @@ function renderMeusAgendamentos() {
     return;
   }
 
-  emptyEl.classList.remove('show');
-  cardsHost.innerHTML = all.map((a) => {
+  const toTimestamp = (item) => {
+    const [d, m, y] = (item.dataBr || '').split('/');
+    const [hh, mm] = (item.horario || '00:00').split(':');
+    const ts = new Date(Number(y), Number(m) - 1, Number(d), Number(hh), Number(mm)).getTime();
+    return Number.isNaN(ts) ? null : ts;
+  };
+
+  const now = new Date();
+  now.setSeconds(0, 0);
+  const nowTs = now.getTime();
+
+  const sorted = [...all].sort((a, b) => {
+    const ta = toTimestamp(a);
+    const tb = toTimestamp(b);
+    if (ta === null && tb === null) return 0;
+    if (ta === null) return 1;
+    if (tb === null) return -1;
+    return ta - tb;
+  });
+
+  const proximos = sorted.filter((item) => {
+    if (item.status !== 'confirmado') return false;
+    const ts = toTimestamp(item);
+    return ts === null || ts >= nowTs;
+  });
+  const historico = sorted.filter((item) => !proximos.includes(item));
+
+  const renderCard = (a) => {
     const statusLabel = a.status === 'confirmado' ? 'Confirmado' : a.status === 'cancelado' ? 'Cancelado' : 'Concluído';
     const statusClass = a.status === 'confirmado' ? 'badge-success' : a.status === 'cancelado' ? 'badge-warning' : 'badge-done';
+    const identifier = a.id || a.protocolo;
+    const cancelValidation = window.AgendamentoService.getCancelValidation(a);
+    const canCancel = cancelValidation.allowed;
+    const cancelBtnText = canCancel ? 'Cancelar' : 'Não disponível';
+    const rescheduleValidation = window.AgendamentoService.getRescheduleValidation(a);
+    const canReschedule = rescheduleValidation.allowed;
+    const rescheduleBtnText = canReschedule ? 'Reagendar' : 'Não disponível';
     return `
-      <div class="appt-card">
-        <div class="appt-card-top">
-          <span class="appt-service">${a.servico}</span>
-          <span class="badge ${statusClass}">${statusLabel}</span>
-        </div>
-        <div class="appt-card-body">
-          <div class="appt-row">
-            <div class="appt-row-text">
-              <div class="appt-row-label">Data e horário</div>
-              <div class="appt-row-value">${a.data} às ${a.horario}</div>
-            </div>
-          </div>
-          <div class="appt-row">
-            <div class="appt-row-text">
-              <div class="appt-row-label">Local / Unidade</div>
-              <div class="appt-row-value">${a.unidade}</div>
-            </div>
-          </div>
-        </div>
-        <div class="appt-proto">Protocolo: <span>${a.protocolo}</span></div>
+    <div class="appt-card">
+      <div class="appt-card-top">
+        <span class="appt-service">${escapeHtml(a.servico)}</span>
+        <span class="badge ${statusClass}">${statusLabel}</span>
       </div>
-    `;
+      <div class="appt-card-body">
+        <div class="appt-row">
+          <div class="appt-row-text">
+            <div class="appt-row-label">Data e horário</div>
+            <div class="appt-row-value">${escapeHtml(a.data)} às ${escapeHtml(a.horario)}</div>
+          </div>
+        </div>
+        <div class="appt-row">
+          <div class="appt-row-text">
+            <div class="appt-row-label">Local / Unidade</div>
+            <div class="appt-row-value">${escapeHtml(a.unidade)}</div>
+          </div>
+        </div>
+        ${a.profissional ? `
+        <div class="appt-row">
+          <div class="appt-row-text">
+            <div class="appt-row-label">Profissional</div>
+            <div class="appt-row-value">${escapeHtml(a.profissional)}</div>
+          </div>
+        </div>` : ''}
+      </div>
+      <div class="appt-proto">Protocolo: <span>${escapeHtml(a.protocolo)}</span></div>
+      <div class="appt-actions">
+        <button
+          class="appt-btn appt-btn-cancel"
+          data-action="cancel-agendamento"
+          data-agendamento-id="${escapeHtml(identifier)}"
+          ${canCancel ? '' : 'disabled'}
+          title="${canCancel ? 'Cancelar agendamento' : escapeHtml(cancelValidation.message)}"
+        >
+          ${cancelBtnText}
+        </button>
+        <button
+          class="appt-btn appt-btn-reschedule"
+          data-action="reschedule-agendamento"
+          data-agendamento-id="${escapeHtml(identifier)}"
+          ${canReschedule ? '' : 'disabled'}
+          title="${canReschedule ? 'Reagendar atendimento' : escapeHtml(rescheduleValidation.message)}"
+        >
+          ${rescheduleBtnText}
+        </button>
+      </div>
+    </div>
+  `;
+  };
+
+  emptyEl.classList.remove('show');
+  cardsHost.innerHTML = `
+    ${proximos.length ? '<p class="agend-section-label">Próximos</p>' : ''}
+    ${proximos.map(renderCard).join('')}
+    ${historico.length ? '<p class="agend-section-label" style="padding-top:4px">Histórico</p>' : ''}
+    ${historico.map(renderCard).join('')}
+  `;
+
+  cardsHost.querySelectorAll('[data-action="cancel-agendamento"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-agendamento-id');
+      openCancelModal(id);
+    });
+  });
+  cardsHost.querySelectorAll('[data-action="reschedule-agendamento"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-agendamento-id');
+      openRescheduleModal(id);
+    });
+  });
+}
+
+function openCancelModal(identifier) {
+  if (!window.AgendamentoService || cancelInFlight) return;
+  const all = window.AgendamentoService.getAll();
+  const target = all.find((item) => item.id === identifier || item.protocolo === identifier);
+  if (!target) {
+    showToast('Agendamento não encontrado');
+    return;
+  }
+
+  const validation = window.AgendamentoService.getCancelValidation(target);
+  if (!validation.allowed) {
+    showToast(validation.message);
+    return;
+  }
+
+  cancelModalTarget = target;
+  const modal = document.getElementById('cancel-modal');
+  const details = document.getElementById('cancel-modal-details');
+  if (!modal || !details) return;
+  details.textContent = `${target.servico} | ${target.data} às ${target.horario}`;
+  modal.classList.add('show');
+}
+
+function closeCancelModal(force = false) {
+  if (cancelInFlight && !force) return;
+  cancelModalTarget = null;
+  document.getElementById('cancel-modal')?.classList.remove('show');
+}
+
+function setCancelModalLoading(isLoading) {
+  const confirmBtn = document.getElementById('btn-cancel-modal-confirm');
+  const closeBtn = document.getElementById('btn-cancel-modal-close');
+  if (confirmBtn) {
+    confirmBtn.disabled = isLoading;
+    confirmBtn.textContent = isLoading ? 'Cancelando...' : 'Confirmar cancelamento';
+  }
+  if (closeBtn) {
+    closeBtn.disabled = isLoading;
+  }
+}
+
+function confirmCancelAgendamento() {
+  if (!cancelModalTarget || !window.AgendamentoService || cancelInFlight) return;
+
+  const validation = window.AgendamentoService.getCancelValidation(cancelModalTarget);
+  if (!validation.allowed) {
+    showToast(validation.message);
+    closeCancelModal();
+    return;
+  }
+
+  cancelInFlight = true;
+  setCancelModalLoading(true);
+  window.AgendamentoService.cancel(cancelModalTarget.id || cancelModalTarget.protocolo)
+    .then(() => {
+      showToast('Agendamento cancelado com sucesso');
+      closeCancelModal(true);
+      renderMeusAgendamentos();
+    })
+    .catch((err) => {
+      const message = err?.message || 'Não foi possível cancelar o agendamento.';
+      showToast(message);
+    })
+    .finally(() => {
+      cancelInFlight = false;
+      setCancelModalLoading(false);
+    });
+}
+
+function openRescheduleModal(identifier) {
+  if (!window.AgendamentoService || rescheduleInFlight) return;
+  const target = window.AgendamentoService.getById(identifier);
+  if (!target) {
+    showToast('Agendamento não encontrado');
+    return;
+  }
+  const validation = window.AgendamentoService.getRescheduleValidation(target);
+  if (!validation.allowed) {
+    showToast(validation.message);
+    return;
+  }
+
+  const modal = document.getElementById('reschedule-modal');
+  const serviceEl = document.getElementById('reschedule-service');
+  const unidadeEl = document.getElementById('reschedule-unidade');
+  const profissionalEl = document.getElementById('reschedule-profissional');
+  const dataEl = document.getElementById('reschedule-data');
+  const horarioEl = document.getElementById('reschedule-horario');
+  if (!modal || !serviceEl || !unidadeEl || !profissionalEl || !dataEl || !horarioEl) return;
+
+  rescheduleModalTarget = target;
+  serviceEl.textContent = target.servico || '-';
+  unidadeEl.innerHTML = '<option value="">Selecionar unidade</option>' + UNIDADES.map((u) => {
+    const selected = u.id === target.unidadeId ? 'selected' : '';
+    return `<option value="${escapeHtml(u.id)}" ${selected}>${escapeHtml(u.nome)}</option>`;
   }).join('');
+  profissionalEl.value = target.profissional || '';
+  dataEl.value = toDateInputValue(target.dataBr);
+  horarioEl.value = target.horario || '';
+  modal.classList.add('show');
+}
+
+function closeRescheduleModal(force = false) {
+  if (rescheduleInFlight && !force) return;
+  rescheduleModalTarget = null;
+  document.getElementById('reschedule-modal')?.classList.remove('show');
+}
+
+function setRescheduleLoading(isLoading) {
+  const confirmBtn = document.getElementById('btn-reschedule-confirm');
+  const closeBtn = document.getElementById('btn-reschedule-close');
+  if (confirmBtn) {
+    confirmBtn.disabled = isLoading;
+    confirmBtn.textContent = isLoading ? 'Salvando...' : 'Salvar reagendamento';
+  }
+  if (closeBtn) closeBtn.disabled = isLoading;
+}
+
+function confirmReschedule() {
+  if (!window.AgendamentoService || !rescheduleModalTarget || rescheduleInFlight) return;
+
+  const unidadeId = document.getElementById('reschedule-unidade')?.value || '';
+  const profissional = document.getElementById('reschedule-profissional')?.value?.trim?.() || '';
+  const dataIso = document.getElementById('reschedule-data')?.value || '';
+  const horario = document.getElementById('reschedule-horario')?.value || '';
+  const dataBr = toDateBrFromInput(dataIso);
+
+  if (!unidadeId || !dataBr || !horario || !profissional) {
+    showToast('Preencha unidade, profissional, data e horário');
+    return;
+  }
+
+  const unidadeNome = UNIDADES.find((u) => u.id === unidadeId)?.nome || unidadeId;
+  if (!window.AgendamentoService.isSlotAvailable({
+    unidade: unidadeId,
+    dataBr,
+    horario,
+    ignoreProtocol: rescheduleModalTarget.protocolo,
+  })) {
+    showToast('Horário indisponível para a unidade selecionada');
+    return;
+  }
+
+  rescheduleInFlight = true;
+  setRescheduleLoading(true);
+  window.AgendamentoService.reschedule(rescheduleModalTarget.id || rescheduleModalTarget.protocolo, {
+    unidadeId,
+    unidade: unidadeNome,
+    profissional,
+    dataBr,
+    data: formatDateBR(dataBr),
+    horario,
+  })
+    .then((updated) => {
+      if (window.NotificationsStore) {
+        window.NotificationsStore.add({
+          category: 'agendamentos',
+          title: 'Agendamento Reagendado',
+          description: `Seu atendimento de ${updated.servico} foi reagendado para ${updated.data} às ${updated.horario} em ${updated.unidade}.`,
+          destination: '/src/pages/agendamento/meus_agendamentos.html',
+          appointmentId: updated.id || updated.protocolo,
+        });
+      }
+      showToast('Reagendamento realizado com sucesso');
+      closeRescheduleModal(true);
+      renderMeusAgendamentos();
+    })
+    .catch((err) => {
+      showToast(err?.message || 'Não foi possível reagendar');
+    })
+    .finally(() => {
+      rescheduleInFlight = false;
+      setRescheduleLoading(false);
+    });
 }
 
 function initAgendamentoStandalone() {
@@ -444,6 +737,32 @@ function initAgendamentoStandalone() {
   if (isMeusAgendamentosPage) {
     renderMeusAgendamentos();
     window.addEventListener(window.AgendamentoService?.CHANGE_EVENT || 'gc-agendamentos-changed', renderMeusAgendamentos);
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.key.startsWith('gc_agendamentos_')) {
+        renderMeusAgendamentos();
+      }
+    });
+
+    document.getElementById('btn-cancel-modal-close')?.addEventListener('click', closeCancelModal);
+    document.getElementById('btn-cancel-modal-dismiss')?.addEventListener('click', closeCancelModal);
+    document.getElementById('btn-cancel-modal-confirm')?.addEventListener('click', confirmCancelAgendamento);
+    document.getElementById('cancel-modal')?.addEventListener('click', (event) => {
+      if (event.target.id === 'cancel-modal') closeCancelModal();
+    });
+    document.getElementById('btn-reschedule-close')?.addEventListener('click', () => closeRescheduleModal());
+    document.getElementById('btn-reschedule-dismiss')?.addEventListener('click', () => closeRescheduleModal());
+    document.getElementById('btn-reschedule-confirm')?.addEventListener('click', confirmReschedule);
+    document.getElementById('reschedule-modal')?.addEventListener('click', (event) => {
+      if (event.target.id === 'reschedule-modal') closeRescheduleModal();
+    });
+
+    const url = new URL(window.location.href);
+    const targetId = url.searchParams.get('reagendar');
+    if (targetId) {
+      openRescheduleModal(targetId);
+      url.searchParams.delete('reagendar');
+      window.history.replaceState({}, '', url.toString());
+    }
   }
 }
 

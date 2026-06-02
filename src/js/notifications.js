@@ -165,6 +165,8 @@
           notification.destination !== undefined
             ? notification.destination
             : DEFAULT_DESTINATIONS[notification.category] ?? null,
+        appointmentId: notification.appointmentId || null,
+        appointmentProtocol: notification.appointmentProtocol || null,
       };
       items.unshift(entry);
       writeAll(items);
@@ -201,6 +203,8 @@
         title: 'Agendamento Confirmado',
         description: `Seu atendimento de ${agendamento.servico} foi confirmado para ${agendamento.data} às ${agendamento.horario} em ${agendamento.unidade}. Protocolo: ${agendamento.protocolo}.`,
         destination: '/src/pages/agendamento/meus_agendamentos.html',
+        appointmentId: agendamento.id || agendamento.protocolo,
+        appointmentProtocol: agendamento.protocolo || null,
       });
     },
   };

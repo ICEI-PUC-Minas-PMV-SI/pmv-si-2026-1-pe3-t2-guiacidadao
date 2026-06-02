@@ -159,6 +159,11 @@
       renderList();
     }
 
+    if (item.category === 'agendamentos') {
+      openModal(item);
+      return;
+    }
+
     if (item.destination) {
       window.location.href = item.destination;
       return;
@@ -173,13 +178,20 @@
     els.modalDesc.textContent = item.description;
     els.modalTime.textContent = item.timeLabel;
 
-    if (item.destination) {
+    if (item.category === 'agendamentos') {
+      els.modalAction.hidden = true;
+      els.modalAction.disabled = true;
+      els.modalAction.onclick = null;
+    } else if (item.destination) {
       els.modalAction.hidden = false;
+      els.modalAction.disabled = false;
+      els.modalAction.textContent = 'Ir para a tela';
       els.modalAction.onclick = () => {
         window.location.href = item.destination;
       };
     } else {
       els.modalAction.hidden = true;
+      els.modalAction.disabled = true;
       els.modalAction.onclick = null;
     }
 

@@ -76,6 +76,53 @@
 </div>
 
 </div><!-- /#meus-agendamentos -->
+
+<div id="cancel-modal" class="ag-modal-overlay" aria-hidden="true">
+  <div class="ag-modal-card" role="dialog" aria-modal="true" aria-labelledby="cancel-modal-title">
+    <h2 id="cancel-modal-title" class="page-title" style="font-size:18px;margin-bottom:8px;">Cancelar agendamento</h2>
+    <p class="page-subtitle" style="margin-bottom:8px;">Tem certeza que deseja cancelar este agendamento?</p>
+    <p id="cancel-modal-details" class="appt-row-value" style="margin-bottom:16px;"></p>
+    <div class="appt-actions" style="padding:0;">
+      <button id="btn-cancel-modal-close" class="appt-btn appt-btn-reschedule">Voltar</button>
+      <button id="btn-cancel-modal-confirm" class="appt-btn appt-btn-cancel">Confirmar cancelamento</button>
+    </div>
+    <button id="btn-cancel-modal-dismiss" class="btn-link" style="margin-top:12px;">Fechar</button>
+  </div>
+</div>
+
+<div id="reschedule-modal" class="ag-modal-overlay" aria-hidden="true">
+  <div class="ag-modal-card" role="dialog" aria-modal="true" aria-labelledby="reschedule-modal-title">
+    <h2 id="reschedule-modal-title" class="page-title" style="font-size:18px;margin-bottom:8px;">Reagendar atendimento</h2>
+    <p class="page-subtitle" style="margin-bottom:12px;">Atualize os dados do agendamento.</p>
+
+    <div class="form-group" style="margin-bottom:10px;">
+      <label class="form-label">Serviço</label>
+      <div id="reschedule-service" class="form-input" style="display:flex;align-items:center;">-</div>
+    </div>
+    <div class="form-group" style="margin-bottom:10px;">
+      <label class="form-label" for="reschedule-unidade">Unidade</label>
+      <select id="reschedule-unidade" class="form-input"></select>
+    </div>
+    <div class="form-group" style="margin-bottom:10px;">
+      <label class="form-label" for="reschedule-profissional">Profissional</label>
+      <input id="reschedule-profissional" class="form-input" type="text" placeholder="Nome do profissional">
+    </div>
+    <div class="form-group" style="margin-bottom:10px;">
+      <label class="form-label" for="reschedule-data">Data</label>
+      <input id="reschedule-data" class="form-input" type="date">
+    </div>
+    <div class="form-group" style="margin-bottom:14px;">
+      <label class="form-label" for="reschedule-horario">Horário</label>
+      <input id="reschedule-horario" class="form-input" type="time">
+    </div>
+
+    <div class="appt-actions" style="padding:0;">
+      <button id="btn-reschedule-close" class="appt-btn appt-btn-cancel">Voltar</button>
+      <button id="btn-reschedule-confirm" class="appt-btn appt-btn-reschedule">Salvar reagendamento</button>
+    </div>
+    <button id="btn-reschedule-dismiss" class="btn-link" style="margin-top:12px;">Fechar</button>
+  </div>
+</div>
 <script src="/src/js/agendamento-service.js"></script>
 <script src="/src/js/main.js"></script>
 </html>

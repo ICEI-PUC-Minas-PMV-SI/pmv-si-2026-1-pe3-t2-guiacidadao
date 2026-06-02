@@ -62,6 +62,66 @@
     return date.getTime();
   }
 
+  function getAppointmentDateTime(item) {
+    const [d, m, y] = String(item?.dataBr || '').split('/');
+    const [hh, mm] = String(item?.horario || '00:00').split(':');
+    const date = new Date(Number(y), Number(m) - 1, Number(d), Number(hh), Number(mm), 0, 0);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+
+  function findByIdentifier(items, identifier) {
+    return items.findIndex((item) => {
+      return item.protocolo === identifier || item.id === identifier;
+    });
+  }
+
+  function getByIdentifier(items, identifier) {
+    return items.find((item) => item.protocolo === identifier || item.id === identifier) || null;
+  }
+
+  function syncUserContextFromAgendamento(agendamento) {
+    if (!agendamento?.cpf) return;
+    localStorage.setItem(
+      'gc_user',
+      JSON.stringify({
+        nome: agendamento.nome || '',
+        cpf: agendamento.cpf,
+      })
+    );
+    migrateGuestAppointmentsIfNeeded();
+  }
+
+  function migrateGuestAppointmentsIfNeeded() {
+    const userKey = getUserStorageKey();
+    const guestKey = `${STORAGE_PREFIX}guest`;
+    if (userKey === guestKey) return;
+
+    const guestRaw = localStorage.getItem(guestKey);
+    if (!guestRaw) return;
+
+    try {
+      const guestItems = JSON.parse(guestRaw);
+      if (!Array.isArray(guestItems) || guestItems.length === 0) return;
+
+      const userRaw = localStorage.getItem(userKey);
+      let userItems = [];
+      if (userRaw) {
+        const parsed = JSON.parse(userRaw);
+        userItems = Array.isArray(parsed) ? parsed : [];
+      }
+
+      const byProtocol = new Map();
+      [...guestItems, ...userItems].forEach((item) => {
+        if (item?.protocolo) byProtocol.set(item.protocolo, item);
+      });
+
+      localStorage.setItem(userKey, JSON.stringify(Array.from(byProtocol.values())));
+      localStorage.removeItem(guestKey);
+    } catch (_) {
+      /* ignore invalid JSON */
+    }
+  }
+
   const AgendamentoService = {
     CHANGE_EVENT,
     DRAFT_KEY,
@@ -85,6 +145,7 @@
     },
 
     saveDraft(draft) {
+      syncUserContextFromAgendamento(draft);
       localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
     },
 
@@ -104,14 +165,25 @@
 
     isSlotAvailable({ unidade, dataBr, horario, ignoreProtocol }) {
       return !readAll().some((item) => {
-        if (ignoreProtocol && item.protocolo === ignoreProtocol) return false;
+        if (ignoreProtocol && (item.protocolo === ignoreProtocol || item.id === ignoreProtocol)) {
+          return false;
+        }
         return item.status !== 'cancelado' && item.unidadeId === unidade && item.dataBr === dataBr && item.horario === horario;
       });
     },
 
     async create(agendamentoInput) {
+      if (!agendamentoInput?.unidadeId || !agendamentoInput?.dataBr || !agendamentoInput?.horario) {
+        const err = new Error('Dados do agendamento incompletos.');
+        err.code = 'INVALID_PAYLOAD';
+        throw err;
+      }
+
+      syncUserContextFromAgendamento(agendamentoInput);
+
       const next = {
         ...agendamentoInput,
+        id: agendamentoInput.id || agendamentoInput.protocolo || generateProtocol(),
         protocolo: agendamentoInput.protocolo || generateProtocol(),
         status: 'confirmado',
         criadoEm: new Date().toISOString(),
@@ -130,10 +202,142 @@
       return next;
     },
 
-    async cancel(protocolo) {
+    getById(identifier) {
       const items = readAll();
-      const idx = items.findIndex((item) => item.protocolo === protocolo);
-      if (idx === -1) return null;
+      return getByIdentifier(items, identifier);
+    },
+
+    getCancelValidation(agendamento) {
+      if (!agendamento) {
+        return { allowed: false, code: 'NOT_FOUND', message: 'Agendamento não encontrado.' };
+      }
+
+      if (agendamento.status !== 'confirmado') {
+        return {
+          allowed: false,
+          code: 'INVALID_STATUS',
+          message: 'Somente agendamentos confirmados podem ser cancelados.',
+        };
+      }
+
+      const minMinutes = Number(agendamento.prazoMinimoCancelamentoMinutos || 0);
+      if (minMinutes > 0) {
+        const scheduleDate = getAppointmentDateTime(agendamento);
+        if (scheduleDate) {
+          const now = Date.now();
+          const diffMinutes = Math.floor((scheduleDate.getTime() - now) / (1000 * 60));
+          if (diffMinutes < minMinutes) {
+            return {
+              allowed: false,
+              code: 'CANCELLATION_DEADLINE',
+              message: `Cancelamento permitido somente com ${minMinutes} minutos de antecedência.`,
+            };
+          }
+        }
+      }
+
+      return { allowed: true, code: null, message: '' };
+    },
+
+    getRescheduleValidation(agendamento) {
+      if (!agendamento) {
+        return { allowed: false, code: 'NOT_FOUND', message: 'Agendamento não encontrado.' };
+      }
+
+      if (agendamento.status !== 'confirmado') {
+        return {
+          allowed: false,
+          code: 'INVALID_STATUS',
+          message: 'Somente agendamentos confirmados podem ser reagendados.',
+        };
+      }
+
+      const scheduleDate = getAppointmentDateTime(agendamento);
+      if (scheduleDate && scheduleDate.getTime() <= Date.now()) {
+        return {
+          allowed: false,
+          code: 'PAST_APPOINTMENT',
+          message: 'Não é possível reagendar um atendimento já iniciado ou concluído.',
+        };
+      }
+
+      const minMinutes = Number(agendamento.prazoMinimoReagendamentoMinutos || 0);
+      if (minMinutes > 0 && scheduleDate) {
+        const diffMinutes = Math.floor((scheduleDate.getTime() - Date.now()) / (1000 * 60));
+        if (diffMinutes < minMinutes) {
+          return {
+            allowed: false,
+            code: 'RESCHEDULE_DEADLINE',
+            message: `Reagendamento permitido somente com ${minMinutes} minutos de antecedência.`,
+          };
+        }
+      }
+
+      return { allowed: true, code: null, message: '' };
+    },
+
+    async reschedule(identifier, updates) {
+      const items = readAll();
+      const idx = findByIdentifier(items, identifier);
+      if (idx === -1) {
+        const err = new Error('Agendamento não encontrado.');
+        err.code = 'NOT_FOUND';
+        throw err;
+      }
+
+      const current = items[idx];
+      const validation = AgendamentoService.getRescheduleValidation(current);
+      if (!validation.allowed) {
+        const err = new Error(validation.message);
+        err.code = validation.code;
+        throw err;
+      }
+
+      const next = {
+        ...current,
+        ...updates,
+        dataBr: updates.dataBr || current.dataBr,
+        data: updates.data || current.data,
+        horario: updates.horario || current.horario,
+        unidadeId: updates.unidadeId || current.unidadeId,
+        unidade: updates.unidade || current.unidade,
+        profissional: updates.profissional || current.profissional || '',
+        atualizadoEm: new Date().toISOString(),
+      };
+
+      if (!AgendamentoService.isSlotAvailable({
+        unidade: next.unidadeId,
+        dataBr: next.dataBr,
+        horario: next.horario,
+        ignoreProtocol: current.protocolo,
+      })) {
+        const err = new Error('Horário indisponível para a unidade selecionada.');
+        err.code = 'SLOT_UNAVAILABLE';
+        throw err;
+      }
+
+      items[idx] = next;
+      writeAll(items);
+      localStorage.setItem(LAST_CONFIRMED_KEY, JSON.stringify(next));
+      return next;
+    },
+
+    async cancel(identifier) {
+      const items = readAll();
+      const idx = findByIdentifier(items, identifier);
+      if (idx === -1) {
+        const err = new Error('Agendamento não encontrado.');
+        err.code = 'NOT_FOUND';
+        throw err;
+      }
+
+      const validation = AgendamentoService.getCancelValidation(items[idx]);
+      if (!validation.allowed) {
+        const err = new Error(validation.message);
+        err.code = validation.code;
+        throw err;
+      }
+
       items[idx] = { ...items[idx], status: 'cancelado' };
       writeAll(items);
       return items[idx];

@@ -525,6 +525,10 @@
 .appt-btn-cancel:hover { background: #FED7D7; }
 .appt-btn-reschedule    { background: var(--primary-bg); color: var(--primary); }
 .appt-btn-reschedule:hover { background: #D6E4F4; }
+.appt-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
 
 /* Empty state */
 .empty-state {
@@ -546,4 +550,31 @@
   border-top: 1.5px solid var(--border-light);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+}
+
+.ag-modal-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 32, 44, 0.45);
+  z-index: 20;
+  padding: 20px;
+}
+
+.ag-modal-overlay.show {
+  display: flex;
+}
+
+.ag-modal-card {
+  width: 100%;
+  max-width: 340px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  padding: 18px 16px 14px;
 }
