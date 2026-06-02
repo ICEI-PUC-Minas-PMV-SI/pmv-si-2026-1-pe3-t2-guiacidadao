@@ -55,6 +55,7 @@ function navigate(screenId, direction = 'right') {
 // ---- Toast ----
 function showToast(msg, duration = 2500) {
   const t = document.getElementById('toast');
+  if (!t) return;
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), duration);
@@ -62,14 +63,14 @@ function showToast(msg, duration = 2500) {
 
 // ---- Sidebar ----
 function openSidebar() {
-  document.getElementById('sidebar').classList.add('open');
-  document.getElementById('overlay').classList.add('active');
+  document.getElementById('sidebar')?.classList.add('open');
+  document.getElementById('overlay')?.classList.add('active');
   state.sidebarOpen = true;
 }
 
 function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('sidebar')?.classList.remove('open');
+  document.getElementById('overlay')?.classList.remove('active');
   state.sidebarOpen = false;
 }
 
@@ -119,13 +120,22 @@ function handleRecuperar() {
 // ---- Agendamento ----
 function loadAgendamentoScreen() {
   // Pre-fill user data
-  if (state.user) {
-    const nomeEl = document.getElementById('ag-nome');
-    const cpfEl  = document.getElementById('ag-cpf');
-    if (nomeEl) nomeEl.value = state.user.nome;
-    if (cpfEl)  cpfEl.value  = state.user.cpf || '';
-  }
+  const draft = window.AgendamentoService?.getDraft?.() || {};
+  const nomeEl = document.getElementById('ag-nome');
+  const cpfEl = document.getElementById('ag-cpf');
+  const servicoEl = document.getElementById('ag-servico');
+  const unidadeEl = document.getElementById('ag-unidade');
+
+  if (nomeEl) nomeEl.value = draft.nome || state.user?.nome || '';
+  if (cpfEl) cpfEl.value = draft.cpf || state.user?.cpf || '';
+  if (servicoEl) servicoEl.value = draft.servicoId || '';
+  if (unidadeEl) unidadeEl.value = draft.unidadeId || '';
+
+  selectedDate = draft.dataBr || null;
+  selectedTime = draft.horario || null;
+
   renderCalendar();
+  applySelectedTimeFromState();
 }
 
 let selectedDate = null;
@@ -186,6 +196,7 @@ function renderCalendar() {
       el.addEventListener('click', () => {
         selectedDate = dateStr;
         renderCalendar();
+        persistAgendamentoDraft();
       });
     }
 
@@ -206,9 +217,40 @@ function nextMonth() {
 }
 
 function selectTime(el) {
+  if (el.classList.contains('unavailable')) return;
   document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
   el.classList.add('selected');
   selectedTime = el.dataset.time;
+  persistAgendamentoDraft();
+}
+
+function applySelectedTimeFromState() {
+  if (!selectedTime) return;
+  document.querySelectorAll('.time-slot').forEach((slot) => {
+    slot.classList.toggle('selected', slot.dataset.time === selectedTime);
+  });
+}
+
+function persistAgendamentoDraft() {
+  if (!window.AgendamentoService) return;
+  const nome = document.getElementById('ag-nome')?.value?.trim?.() || '';
+  const cpf = document.getElementById('ag-cpf')?.value?.trim?.() || '';
+  const servicoId = document.getElementById('ag-servico')?.value || '';
+  const unidadeId = document.getElementById('ag-unidade')?.value || '';
+  const servicoNome = BENEFICIOS.find(b => b.id === servicoId)?.nome || '';
+  const unidadeNome = UNIDADES.find(u => u.id === unidadeId)?.nome || '';
+
+  window.AgendamentoService.saveDraft({
+    nome,
+    cpf,
+    servicoId,
+    servico: servicoNome,
+    unidadeId,
+    unidade: unidadeNome,
+    dataBr: selectedDate || '',
+    data: formatDateBR(selectedDate),
+    horario: selectedTime || ''
+  });
 }
 
 function handleAgendarSubmit() {
@@ -223,26 +265,35 @@ function handleAgendarSubmit() {
   if (!selectedDate)     { showToast('Selecione uma data'); return; }
   if (!selectedTime)     { showToast('Selecione um horário'); return; }
 
+  const dataBr = selectedDate;
+  if (window.AgendamentoService && !window.AgendamentoService.isSlotAvailable({ unidade, dataBr, horario: selectedTime })) {
+    showToast('Este horário não está mais disponível para a unidade escolhida');
+    return;
+  }
+
   const unidadeNome = UNIDADES.find(u => u.id === unidade)?.nome || unidade;
   const servicoNome = BENEFICIOS.find(b => b.id === servico)?.nome || servico;
 
   state.agendamento = {
     nome, cpf,
+    servicoId: servico,
     servico: servicoNome,
+    unidadeId: unidade,
     unidade: unidadeNome,
-    data: formatDateBR(selectedDate),
+    dataBr,
+    data: formatDateBR(dataBr),
     horario: selectedTime
   };
 
-  // Fill confirm screen
-  document.getElementById('conf-nome').textContent    = nome;
-  document.getElementById('conf-cpf').textContent     = cpf;
-  document.getElementById('conf-servico').textContent = servicoNome;
-  document.getElementById('conf-unidade').textContent = unidadeNome;
-  document.getElementById('conf-data').textContent    = formatDateBR(selectedDate);
-  document.getElementById('conf-horario').textContent = selectedTime;
+  persistAgendamentoDraft();
 
-  navigate('confirmar-agendamento');
+  if (document.getElementById('confirmar-agendamento')) {
+    fillConfirmScreen(state.agendamento);
+    navigate('confirmar-agendamento');
+    return;
+  }
+
+  window.location.href = '/src/pages/agendamento/confirm_agend.html';
 }
 
 function formatDateBR(dateStr) {
@@ -255,17 +306,145 @@ function formatDateBR(dateStr) {
 }
 
 function handleConfirmarAgendamento() {
-  const ag = state.agendamento;
-  const confirmData = {
-    ...ag,
-    protocolo: 'GC-' + Math.floor(Math.random() * 900000 + 100000),
-    timestamp: new Date().toISOString()
-  };
-  localStorage.setItem('gc_last_agendamento', JSON.stringify(confirmData));
-  if (window.NotificationsStore) {
-    window.NotificationsStore.addFromAgendamento(confirmData);
+  const btnConfirmar = document.getElementById('btn-confirmar-ag');
+  if (!window.AgendamentoService) {
+    showToast('Serviço de agendamento indisponível');
+    return;
   }
-  navigate('sucesso-agendamento');
+  const draft = window.AgendamentoService.getDraft();
+  if (!draft) {
+    showToast('Nenhum agendamento pendente para confirmar');
+    window.location.href = '/src/pages/agendamento/agendamento.html';
+    return;
+  }
+  if (!window.AgendamentoService.isSlotAvailable({ unidade: draft.unidadeId, dataBr: draft.dataBr, horario: draft.horario })) {
+    showToast('Horário indisponível. Selecione outro horário.');
+    window.location.href = '/src/pages/agendamento/agendamento.html';
+    return;
+  }
+
+  if (btnConfirmar) {
+    btnConfirmar.disabled = true;
+    btnConfirmar.textContent = 'Confirmando...';
+  }
+
+  window.AgendamentoService.create(draft)
+    .then((created) => {
+      window.AgendamentoService.clearDraft();
+      if (window.NotificationsStore) {
+        window.NotificationsStore.addFromAgendamento(created);
+      }
+      showToast('Agendamento confirmado com sucesso');
+      setTimeout(() => {
+        window.location.href = '/src/pages/agendamento/sucess_agend.html';
+      }, 250);
+    })
+    .catch((err) => {
+      const msg = err?.code === 'SLOT_UNAVAILABLE'
+        ? 'Horário indisponível. Escolha outro horário.'
+        : 'Não foi possível confirmar o agendamento.';
+      showToast(msg);
+    })
+    .finally(() => {
+      if (btnConfirmar) {
+        btnConfirmar.disabled = false;
+        btnConfirmar.textContent = 'Confirmar Agendamento';
+      }
+    });
+}
+
+function fillConfirmScreen(agendamento) {
+  document.getElementById('conf-nome')?.replaceChildren(document.createTextNode(agendamento.nome || '-'));
+  document.getElementById('conf-cpf')?.replaceChildren(document.createTextNode(agendamento.cpf || '-'));
+  document.getElementById('conf-servico')?.replaceChildren(document.createTextNode(agendamento.servico || '-'));
+  document.getElementById('conf-unidade')?.replaceChildren(document.createTextNode(agendamento.unidade || '-'));
+  document.getElementById('conf-data')?.replaceChildren(document.createTextNode(agendamento.data || '-'));
+  document.getElementById('conf-horario')?.replaceChildren(document.createTextNode(agendamento.horario || '-'));
+}
+
+function renderMeusAgendamentos() {
+  if (!window.AgendamentoService) return;
+  const cardsHost = document.getElementById('meus-agendamentos-cards');
+  const emptyEl = document.getElementById('emptyStateAgendamentos');
+  if (!cardsHost || !emptyEl) return;
+
+  const all = window.AgendamentoService.getAll();
+  if (!all.length) {
+    cardsHost.innerHTML = '';
+    emptyEl.classList.add('show');
+    return;
+  }
+
+  emptyEl.classList.remove('show');
+  cardsHost.innerHTML = all.map((a) => {
+    const statusLabel = a.status === 'confirmado' ? 'Confirmado' : a.status === 'cancelado' ? 'Cancelado' : 'Concluído';
+    const statusClass = a.status === 'confirmado' ? 'badge-success' : a.status === 'cancelado' ? 'badge-warning' : 'badge-done';
+    return `
+      <div class="appt-card">
+        <div class="appt-card-top">
+          <span class="appt-service">${a.servico}</span>
+          <span class="badge ${statusClass}">${statusLabel}</span>
+        </div>
+        <div class="appt-card-body">
+          <div class="appt-row">
+            <div class="appt-row-text">
+              <div class="appt-row-label">Data e horário</div>
+              <div class="appt-row-value">${a.data} às ${a.horario}</div>
+            </div>
+          </div>
+          <div class="appt-row">
+            <div class="appt-row-text">
+              <div class="appt-row-label">Local / Unidade</div>
+              <div class="appt-row-value">${a.unidade}</div>
+            </div>
+          </div>
+        </div>
+        <div class="appt-proto">Protocolo: <span>${a.protocolo}</span></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function initAgendamentoStandalone() {
+  const isAgendamentoPage = !!document.getElementById('btn-agendar-submit');
+  const isConfirmPage = !!document.getElementById('btn-confirmar-ag');
+  const isSucessoPage = !!document.getElementById('protocolo-num');
+  const isMeusAgendamentosPage = !!document.getElementById('meus-agendamentos');
+
+  if (isAgendamentoPage) {
+    loadAgendamentoScreen();
+    ['ag-nome', 'ag-cpf', 'ag-servico', 'ag-unidade'].forEach((id) => {
+      document.getElementById(id)?.addEventListener('input', persistAgendamentoDraft);
+      document.getElementById(id)?.addEventListener('change', persistAgendamentoDraft);
+    });
+  }
+
+  if (isConfirmPage) {
+    const draft = window.AgendamentoService?.getDraft?.();
+    if (draft) {
+      fillConfirmScreen(draft);
+    } else {
+      showToast('Preencha os dados do agendamento antes de confirmar');
+      setTimeout(() => {
+        window.location.href = '/src/pages/agendamento/agendamento.html';
+      }, 300);
+    }
+    document.querySelector('[data-back="agendamento"]')?.addEventListener('click', () => {
+      window.location.href = '/src/pages/agendamento/agendamento.html';
+    });
+  }
+
+  if (isSucessoPage) {
+    const last = window.AgendamentoService?.getLastConfirmed?.();
+    if (last?.protocolo) {
+      document.getElementById('protocolo-num').textContent = last.protocolo;
+    }
+  }
+
+  if (isMeusAgendamentosPage) {
+    renderMeusAgendamentos();
+    window.addEventListener(window.AgendamentoService?.CHANGE_EVENT || 'gc-agendamentos-changed', renderMeusAgendamentos);
+  }
 }
 
 // ---- Unidades ----
@@ -324,9 +503,10 @@ function renderBenefits() {
 document.addEventListener('DOMContentLoaded', () => {
   renderBenefits();
   renderUnidades();
+  initAgendamentoStandalone();
 
   // Overlay click closes sidebar
-  document.getElementById('overlay').addEventListener('click', closeSidebar);
+  document.getElementById('overlay')?.addEventListener('click', closeSidebar);
 
   // Login form
   document.getElementById('btn-login')?.addEventListener('click', handleLogin);
@@ -386,7 +566,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Sucesso voltar
-  document.getElementById('btn-sucesso-home')?.addEventListener('click', () => navigate('home', 'left'));
+  document.getElementById('btn-sucesso-home')?.addEventListener('click', () => {
+    if (document.getElementById('home')) navigate('home', 'left');
+  });
 
   // Profile icon in home
   document.getElementById('btn-profile')?.addEventListener('click', openSidebar);

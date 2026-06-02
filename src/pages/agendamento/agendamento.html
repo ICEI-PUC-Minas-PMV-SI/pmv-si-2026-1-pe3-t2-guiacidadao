@@ -111,11 +111,9 @@
           </div>
         </div>
 
-        <a href="/src/pages/agendamento/confirm_agend.html">
         <button class="btn btn-primary" id="btn-agendar-submit" style="margin-top:8px;">
           Continuar
         </button>
-        </a>
       </div>
     </div>
   </div>
@@ -123,28 +121,6 @@
 </div>
   </div>
 </body>
+<script src="/src/js/agendamento-service.js"></script>
 <script src="/src/js/main.js"></script>
-<script>
-  // Setup protocol number on success
-  document.addEventListener('DOMContentLoaded', () => {
-    // Override confirm to also set protocol
-    const origConfirm = window.handleConfirmarAgendamento;
-    const btnConf = document.getElementById('btn-confirmar-ag');
-    if (btnConf) {
-      btnConf.addEventListener('click', () => {
-        const proto = 'GC-' + Math.floor(Math.random() * 900000 + 100000);
-        const el = document.getElementById('protocolo-num');
-        if (el) el.textContent = proto;
-      }, true);
-    }
-
-    // CRAS Mais próximo navigation from sidebar
-    document.querySelectorAll('[data-nav="unidades"]').forEach(el => {
-      el.addEventListener('click', () => {
-        renderUnidades();
-        navigate('unidades');
-      });
-    });
-  });
-</script>
 </html>
