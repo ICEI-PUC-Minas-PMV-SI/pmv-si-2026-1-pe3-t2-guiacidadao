@@ -1,9 +1,19 @@
-const STATS = [
-  { value: 17, label: 'Benefícios', hint: '12 ativos', href: '/src/pages/colaborador/beneficios/lista.html' },
-  { value: 8, label: 'Documentos', hint: 'na biblioteca', href: '/src/pages/colaborador/documentos/lista.html' },
-  { value: 12, label: 'Requisitos', hint: 'cadastrados', href: '/src/pages/colaborador/requisitos/lista.html' },
-  { value: 6, label: 'Unidades', hint: '5 ativas', href: '/src/pages/colaborador/unidades/lista.html' }
-];
+const contar = (colecao, status) => listarColecao(colecao).filter((item) => !status || item.status === status).length;
+
+const calcularStats = () => {
+  const benTotal = contar(STORAGE_COLECOES.beneficios);
+  const benAtivos = contar(STORAGE_COLECOES.beneficios, 'ativo');
+  const docTotal = contar(STORAGE_COLECOES.documentos);
+  const reqTotal = contar(STORAGE_COLECOES.requisitos);
+  const uniTotal = contar(STORAGE_COLECOES.unidades);
+  const uniAtivas = contar(STORAGE_COLECOES.unidades, 'ativo');
+  return [
+    { value: benTotal, label: 'Benefícios', hint: `${benAtivos} ativos`, href: '/src/pages/colaborador/beneficios/lista.html' },
+    { value: docTotal, label: 'Documentos', hint: 'na biblioteca', href: '/src/pages/colaborador/documentos/lista.html' },
+    { value: reqTotal, label: 'Requisitos', hint: 'cadastrados', href: '/src/pages/colaborador/requisitos/lista.html' },
+    { value: uniTotal, label: 'Unidades', hint: `${uniAtivas} ativas`, href: '/src/pages/colaborador/unidades/lista.html' }
+  ];
+};
 
 const MENU_ITEMS = [
   { icon: 'beneficio', title: 'Catálogo de Benefícios', subtitle: 'Gerenciar benefícios sociais', href: '/src/pages/colaborador/beneficios/lista.html' },
@@ -35,7 +45,8 @@ const init = () => {
     </section>
   `;
 
-  const statsHtml = STATS.map((stat) => renderStatCard(stat)).join('');
+  const stats = calcularStats();
+  const statsHtml = stats.map((stat) => renderStatCard(stat)).join('');
   const statsGrid = `<div class="painel-stats-grid">${statsHtml}</div>`;
 
   const menuTitle = `<div class="painel-section-title">${renderSectionTitle({ children: 'Acesso rapido' })}</div>`;
