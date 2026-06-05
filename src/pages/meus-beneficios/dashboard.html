@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Meus Benefícios - GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<body>
+  <div id="app">
+    <div id="dashboard-screen" class="screen active">
+      <div class="app-header">
+        <a href="/src/pages/home/home.html">
+          <button class="back-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+        </a>
+        <a class="header-logo">
+          <img src="/src/assets/icons/Logo.png" alt="Logo">
+          GuiaCidadão
+        </a>
+        <div style="width:36px"></div>
+      </div>
+
+      <div class="scroll-content">
+        <div style="padding: 0 20px 24px;">
+          <div class="auth-title-block" style="margin-bottom: 16px;">
+            <h1 class="page-title">Meus Benefícios</h1>
+            <p class="page-subtitle">Acompanhe a sua elegibilidade e o progresso do seu dossiê.</p>
+          </div>
+
+          <div id="dashboard-resumo"></div>
+          <div id="dashboard-cta" style="margin-top: 16px;"></div>
+          <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">Elegíveis</h2>
+          <div id="dashboard-elegiveis"></div>
+          <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">A verificar</h2>
+          <div id="dashboard-indeterminados"></div>
+          <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">Pendências consolidadas</h2>
+          <div id="dashboard-pendencias"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/src/js/shared/storage-api.js"></script>
+  <script src="/src/js/shared/elegibilidade.js"></script>
+  <script src="/src/js/colaborador/mocks/beneficios.js"></script>
+  <script src="/src/js/colaborador/mocks/documentos.js"></script>
+  <script src="/src/js/colaborador/mocks/requisitos.js"></script>
+  <script src="/src/pages/meus-beneficios/dashboard.js"></script>
+</body>
+</html>
