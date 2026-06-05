@@ -4,7 +4,7 @@ const init = () => {
     backHref: '/src/pages/colaborador/unidades/lista.html'
   });
 
-  const hint = '<p class="form-hint-right">* Campos obrigatorios</p>';
+  const hint = '<p class="form-hint-right">* Campos obrigatórios</p>';
 
   const camposTopo = [
     renderInput({ label: 'Nome da unidade', required: true, placeholder: 'Ex: CRAS Centro', id: 'novo-nome' }),
@@ -34,11 +34,11 @@ const init = () => {
 
   const beneficiosBlock = `
     <section class="benefits-block">
-      <span class="benefits-title">Beneficios atendidos</span>
+      <span class="benefits-title">Benefícios atendidos</span>
       <span class="benefits-hint">Selecione os beneficios que esta unidade atende.</span>
       ${renderChipList({
         items: [
-          { id: 'tmp-bf', label: 'Bolsa Familia' },
+          { id: 'tmp-bf', label: 'Bolsa Família' },
           { id: 'tmp-bpc', label: 'BPC, LOAS' }
         ],
         emptyLabel: 'Nenhum beneficio vinculado.',
@@ -68,7 +68,7 @@ const init = () => {
   `;
 
   document.getElementById('btn-cancelar').addEventListener('click', () => {
-    if (confirm('Descartar alteracoes?')) {
+    if (confirm('Descartar alterações?')) {
       window.location.href = '/src/pages/colaborador/unidades/lista.html';
     }
   });

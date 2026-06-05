@@ -28,7 +28,7 @@ const init = () => {
       title: 'Editar',
       backHref: '/src/pages/colaborador/documentos/lista.html'
     });
-    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Documento nao encontrado.</p>';
+    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Documento não encontrado.</p>';
     return;
   }
 
@@ -38,7 +38,7 @@ const init = () => {
     backHref: '/src/pages/colaborador/documentos/lista.html'
   });
 
-  const hint = '<p class="form-hint-right">* Campos obrigatorios</p>';
+  const hint = '<p class="form-hint-right">* Campos obrigatórios</p>';
 
   const campos = [
     renderInput({ label: 'Nome do documento', required: true, value: documento.name, id: 'editar-nome' }),
@@ -58,8 +58,8 @@ const init = () => {
   ].join('');
 
   const toggleRow = renderToggleRow(
-    'Pode ser marcado como "nao aplicavel"?',
-    'O cidadao pode indicar que o item nao se aplica ao seu caso.',
+    'Pode ser marcado como "não aplicável"?',
+    'O cidadao pode indicar que o item não se aplica ao seu caso.',
     'editar-optional',
     documento.optional
   );
@@ -67,7 +67,7 @@ const init = () => {
   const acoes = `
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}
-      ${renderButton({ children: 'Salvar alteracoes', id: 'btn-salvar' })}
+      ${renderButton({ children: 'Salvar alterações', id: 'btn-salvar' })}
     </div>
     <button class="btn btn-outline btn-danger-outline" id="btn-desativar">Desativar documento</button>
   `;
@@ -83,7 +83,7 @@ const init = () => {
   `;
 
   document.getElementById('btn-cancelar').addEventListener('click', () => {
-    if (confirm('Descartar alteracoes?')) window.history.back();
+    if (confirm('Descartar alterações?')) window.history.back();
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {

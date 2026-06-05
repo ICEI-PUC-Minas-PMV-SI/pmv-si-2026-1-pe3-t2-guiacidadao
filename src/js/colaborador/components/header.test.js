@@ -21,7 +21,7 @@ describe('renderHeader modo padrao', () => {
     const html = renderHeader({ title: 'X', backHref: '/x' });
     expect(html).toContain('class="header-logo-img"');
     expect(html).toContain('src="/src/assets/icons/Logo.png"');
-    expect(html).toContain('alt="GuiaCidadao"');
+    expect(html).toContain('alt="GuiaCidadão"');
   });
 
   it('renderiza subtitle quando fornecido', () => {
@@ -54,7 +54,7 @@ describe('renderHeader modo hero', () => {
     const html = renderHeader({ hero: true });
     expect(html).toContain('class="header-logo-img"');
     expect(html).toContain('src="/src/assets/icons/Logo.png"');
-    expect(html).toContain('alt="GuiaCidadao"');
+    expect(html).toContain('alt="GuiaCidadão"');
   });
 
   it('renderiza initials quando fornecido', () => {

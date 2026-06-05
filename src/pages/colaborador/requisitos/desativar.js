@@ -17,11 +17,11 @@ const init = () => {
         title: 'O que muda',
         items: [
           'Nao sera mais usado em avaliacoes de elegibilidade',
-          `${requisito.benefitsLinked} beneficios serao reavaliados automaticamente`,
-          'Usuarios afetados serao notificados'
+          `${requisito.benefitsLinked} benefícios serão reavaliados automaticamente`,
+          'Usuários afetados serão notificados'
         ]
       })}
-      <p class="desativar-note">Voce podera reativar a qualquer momento pelo Painel.</p>
+      <p class="desativar-note">Você poderá reativar a qualquer momento pelo Painel.</p>
     </section>
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}

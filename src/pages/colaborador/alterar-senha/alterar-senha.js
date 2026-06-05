@@ -37,7 +37,7 @@ const init = () => {
       return;
     }
     if (nova !== confirma) {
-      alert('A nova senha e a confirmacao nao coincidem.');
+      alert('A nova senha e a confirmação não coincidem.');
       return;
     }
     alert('Senha alterada com sucesso (mock).');

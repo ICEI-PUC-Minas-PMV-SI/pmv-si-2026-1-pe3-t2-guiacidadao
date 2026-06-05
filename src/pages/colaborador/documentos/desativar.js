@@ -17,11 +17,11 @@ const init = () => {
         title: 'O que muda',
         items: [
           'O documento saira das listas de cadastros novos',
-          'Cidadaos com checklist em andamento serao notificados',
-          'Beneficios que dependem dele serao sinalizados'
+          'Cidadãos com checklist em andamento serão notificados',
+          'Benefícios que dependem dele serão sinalizados'
         ]
       })}
-      <p class="desativar-note">Voce podera reativar a qualquer momento pelo Painel.</p>
+      <p class="desativar-note">Você poderá reativar a qualquer momento pelo Painel.</p>
     </section>
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}

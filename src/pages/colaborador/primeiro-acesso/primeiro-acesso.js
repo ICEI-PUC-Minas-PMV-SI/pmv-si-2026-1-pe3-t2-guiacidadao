@@ -33,7 +33,7 @@ const init = () => {
       return;
     }
     if (nova !== confirma) {
-      alert('As senhas nao coincidem.');
+      alert('As senhas não coincidem.');
       return;
     }
     alert('Senha definida com sucesso (mock).');

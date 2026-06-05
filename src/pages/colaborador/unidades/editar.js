@@ -9,7 +9,7 @@ const init = () => {
       title: 'Editar',
       backHref: '/src/pages/colaborador/unidades/lista.html'
     });
-    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Unidade nao encontrada.</p>';
+    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Unidade não encontrada.</p>';
     return;
   }
 
@@ -19,7 +19,7 @@ const init = () => {
     backHref: '/src/pages/colaborador/unidades/lista.html'
   });
 
-  const hint = '<p class="form-hint-right">* Campos obrigatorios</p>';
+  const hint = '<p class="form-hint-right">* Campos obrigatórios</p>';
 
   const camposTopo = [
     renderInput({ label: 'Nome da unidade', required: true, value: unidade.name, id: 'editar-nome' }),
@@ -50,7 +50,7 @@ const init = () => {
   const acoes = `
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}
-      ${renderButton({ children: 'Salvar alteracoes', id: 'btn-salvar' })}
+      ${renderButton({ children: 'Salvar alterações', id: 'btn-salvar' })}
     </div>
     <button class="btn btn-outline btn-danger-outline" id="btn-desativar">Desativar unidade</button>
   `;
@@ -66,7 +66,7 @@ const init = () => {
   `;
 
   document.getElementById('btn-cancelar').addEventListener('click', () => {
-    if (confirm('Descartar alteracoes?')) window.history.back();
+    if (confirm('Descartar alterações?')) window.history.back();
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {

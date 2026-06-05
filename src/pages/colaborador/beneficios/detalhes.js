@@ -32,10 +32,10 @@ const init = () => {
 
   if (!beneficio) {
     document.getElementById('header-slot').innerHTML = renderHeader({
-      title: 'Beneficio',
+      title: 'Benefício',
       backHref: '/src/pages/colaborador/beneficios/lista.html'
     });
-    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Beneficio nao encontrado.</p>';
+    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Benefício não encontrado.</p>';
     document.getElementById('bottom-slot').innerHTML = renderBottomNav('beneficios');
     return;
   }
@@ -66,7 +66,7 @@ const init = () => {
   const cadastro = `
     <section class="detalhes-secao">
       <span class="detalhes-label">Cadastro</span>
-      <span class="detalhes-valor">${beneficio.eligibleCount.toLocaleString('pt-BR')} cidadaos elegiveis</span>
+      <span class="detalhes-valor">${beneficio.eligibleCount.toLocaleString('pt-BR')} cidadãos elegíveis</span>
       <span class="detalhes-meta">Ultima atualizacao: ${escapeHtml(beneficio.updatedAt)}</span>
     </section>
   `;
@@ -74,9 +74,9 @@ const init = () => {
   document.getElementById('main-slot').innerHTML = `
     <div class="detalhes-shell">
       ${topRow}
-      ${renderSecao('Orgao responsavel', beneficio.agency)}
+      ${renderSecao('Órgão responsável', beneficio.agency)}
       ${renderDivider()}
-      ${renderSecao('Descricao', beneficio.description)}
+      ${renderSecao('Descrição', beneficio.description)}
       ${renderDivider()}
       ${renderListaSecao('Requisitos de elegibilidade', reqs, '✓')}
       ${renderDivider()}

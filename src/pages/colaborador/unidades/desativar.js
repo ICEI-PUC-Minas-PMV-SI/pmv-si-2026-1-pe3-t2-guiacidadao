@@ -16,12 +16,12 @@ const init = () => {
       ${renderImpactBox({
         title: 'O que muda',
         items: [
-          'Nao aparecera mais nas buscas de localizacao',
-          'Atendimentos em andamento serao sinalizados',
-          'Cidadaos proximos serao notificados'
+          'Não aparecerá mais nas buscas de localização',
+          'Atendimentos em andamento serão sinalizados',
+          'Cidadãos próximos serão notificados'
         ]
       })}
-      <p class="desativar-note">Voce podera reativar a qualquer momento pelo Painel.</p>
+      <p class="desativar-note">Você poderá reativar a qualquer momento pelo Painel.</p>
     </section>
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}

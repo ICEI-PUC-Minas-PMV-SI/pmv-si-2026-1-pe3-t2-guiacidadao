@@ -14,22 +14,22 @@ const init = () => {
       title: 'Editar',
       backHref: '/src/pages/colaborador/beneficios/lista.html'
     });
-    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Beneficio nao encontrado.</p>';
+    document.getElementById('main-slot').innerHTML = '<p class="lista-empty">Benefício não encontrado.</p>';
     return;
   }
 
   document.getElementById('header-slot').innerHTML = renderHeader({
-    title: 'Editar beneficio',
+    title: 'Editar benefício',
     subtitle: `Editando: ${beneficio.name}`,
     backHref: `/src/pages/colaborador/beneficios/detalhes.html?id=${encodeURIComponent(beneficio.id)}`
   });
 
-  const hint = '<p class="form-hint-right">* Campos obrigatorios</p>';
+  const hint = '<p class="form-hint-right">* Campos obrigatórios</p>';
 
   const campos = [
-    renderInput({ label: 'Nome do beneficio', required: true, value: beneficio.name, id: 'editar-nome' }),
-    renderInput({ label: 'Orgao responsavel', required: true, value: beneficio.agency, id: 'editar-orgao' }),
-    renderTextArea({ label: 'Descricao resumida', required: true, value: beneficio.description, id: 'editar-descricao' })
+    renderInput({ label: 'Nome do benefício', required: true, value: beneficio.name, id: 'editar-nome' }),
+    renderInput({ label: 'Órgão responsável', required: true, value: beneficio.agency, id: 'editar-orgao' }),
+    renderTextArea({ label: 'Descrição resumida', required: true, value: beneficio.description, id: 'editar-descricao' })
   ].join('');
 
   const requisitos = renderChipList({
@@ -56,7 +56,7 @@ const init = () => {
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}
       ${renderButton({ children: 'Salvar', id: 'btn-salvar' })}
     </div>
-    <button class="btn btn-outline btn-danger-outline" id="btn-desativar">Desativar beneficio</button>
+    <button class="btn btn-outline btn-danger-outline" id="btn-desativar">Desativar benefício</button>
   `;
 
   document.getElementById('main-slot').innerHTML = `
@@ -74,7 +74,7 @@ const init = () => {
   `;
 
   document.getElementById('btn-cancelar').addEventListener('click', () => {
-    if (confirm('Descartar alteracoes?')) window.history.back();
+    if (confirm('Descartar alterações?')) window.history.back();
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {

@@ -4,7 +4,7 @@ const init = () => {
     backHref: '/src/pages/colaborador/requisitos/lista.html'
   });
 
-  const hint = '<p class="form-hint-right">* Campos obrigatorios</p>';
+  const hint = '<p class="form-hint-right">* Campos obrigatórios</p>';
 
   const campos = [
     renderInput({ label: 'Nome do requisito', required: true, placeholder: 'Ex: Renda per capita <= R$ 218', id: 'novo-nome' }),
@@ -16,9 +16,9 @@ const init = () => {
       id: 'novo-categoria'
     }),
     renderTextArea({
-      label: 'Descricao em linguagem simples',
+      label: 'Descrição em linguagem simples',
       required: true,
-      placeholder: 'Explique este requisito em palavras claras para o cidadao.',
+      placeholder: 'Explique este requisito em palavras claras para o cidadão.',
       id: 'novo-descricao'
     })
   ].join('');
@@ -52,7 +52,7 @@ const init = () => {
   `;
 
   document.getElementById('btn-cancelar').addEventListener('click', () => {
-    if (confirm('Descartar alteracoes?')) {
+    if (confirm('Descartar alterações?')) {
       window.location.href = '/src/pages/colaborador/requisitos/lista.html';
     }
   });

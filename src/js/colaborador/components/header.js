@@ -1,4 +1,4 @@
-const HEADER_LOGO_HTML = `<img src="/src/assets/icons/Logo.png" alt="GuiaCidadao" class="header-logo-img">`;
+const HEADER_LOGO_HTML = `<img src="/src/assets/icons/Logo.png" alt="GuiaCidadão" class="header-logo-img">`;
 const HEADER_SPACER_HTML = '<div class="header-spacer"></div>';
 const HEADER_BACK_SVG = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>`;
 

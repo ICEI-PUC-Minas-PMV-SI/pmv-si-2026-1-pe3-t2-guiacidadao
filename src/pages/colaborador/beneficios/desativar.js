@@ -5,7 +5,7 @@ const init = () => {
   const beneficio = findById(MOCK_BENEFICIOS, id) ?? { id: '', name: 'beneficio', eligibleCount: 0 };
 
   document.getElementById('header-slot').innerHTML = renderHeader({
-    title: 'Desativar beneficio',
+    title: 'Desativar benefício',
     backHref: `/src/pages/colaborador/beneficios/editar.html?id=${encodeURIComponent(beneficio.id)}`
   });
 
@@ -16,12 +16,12 @@ const init = () => {
       ${renderImpactBox({
         title: 'O que muda',
         items: [
-          'Nao aparecera mais nas buscas dos cidadaos',
-          `${beneficio.eligibleCount.toLocaleString('pt-BR')} cidadaos elegiveis serao notificados`,
-          'Atendimentos em andamento serao sinalizados'
+          'Não aparecerá mais nas buscas dos cidadãos',
+          `${beneficio.eligibleCount.toLocaleString('pt-BR')} cidadãos elegíveis serão notificados`,
+          'Atendimentos em andamento serão sinalizados'
         ]
       })}
-      <p class="desativar-note">Voce podera reativar a qualquer momento pelo Painel.</p>
+      <p class="desativar-note">Você poderá reativar a qualquer momento pelo Painel.</p>
     </section>
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}
@@ -36,7 +36,7 @@ const init = () => {
   });
 
   document.getElementById('btn-confirmar').addEventListener('click', () => {
-    alert('Beneficio desativado (mock).');
+    alert('Benefício desativado (mock).');
     window.location.href = '/src/pages/colaborador/beneficios/lista.html';
   });
 };

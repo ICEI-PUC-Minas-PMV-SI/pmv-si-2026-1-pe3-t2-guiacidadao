@@ -15,10 +15,10 @@ const init = () => {
         title: 'O que muda',
         items: [
           'Voltara a aparecer nas buscas',
-          'Cidadaos elegiveis serao notificados'
+          'Cidadãos elegíveis serão notificados'
         ]
       })}
-      <p class="desativar-note">Voce podera desativar novamente a qualquer momento.</p>
+      <p class="desativar-note">Você poderá desativar novamente a qualquer momento.</p>
     </section>
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}

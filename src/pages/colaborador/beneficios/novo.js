@@ -1,16 +1,16 @@
 const init = () => {
   document.getElementById('header-slot').innerHTML = renderHeader({
-    title: 'Adicionar beneficio',
+    title: 'Adicionar benefício',
     subtitle: 'Novo cadastro',
     backHref: '/src/pages/colaborador/beneficios/lista.html'
   });
 
-  const hint = '<p class="form-hint-right">* Campos obrigatorios</p>';
+  const hint = '<p class="form-hint-right">* Campos obrigatórios</p>';
 
   const campos = [
-    renderInput({ label: 'Nome do beneficio', required: true, placeholder: 'Ex: Bolsa Familia', id: 'novo-nome' }),
-    renderInput({ label: 'Orgao responsavel', required: true, placeholder: 'Ex: Governo Federal / MDS', id: 'novo-orgao' }),
-    renderTextArea({ label: 'Descricao resumida', required: true, placeholder: 'Em linguagem acessivel, explique para quem serve este beneficio.', id: 'novo-descricao' })
+    renderInput({ label: 'Nome do benefício', required: true, placeholder: 'Ex: Bolsa Família', id: 'novo-nome' }),
+    renderInput({ label: 'Órgão responsável', required: true, placeholder: 'Ex: Governo Federal / MDS', id: 'novo-orgao' }),
+    renderTextArea({ label: 'Descrição resumida', required: true, placeholder: 'Em linguagem acessível, explique para quem serve este benefício.', id: 'novo-descricao' })
   ].join('');
 
   const requisitos = renderChipList({
@@ -39,7 +39,7 @@ const init = () => {
     <div class="form-status-row">
       <div class="form-status-text">
         <span class="form-status-label">Status inicial</span>
-        <span class="form-status-hint">Quando ativado, o beneficio fica visivel para os cidadaos.</span>
+        <span class="form-status-hint">Quando ativado, o beneficio fica visivel para os cidadãos.</span>
       </div>
       <button type="button" role="switch" aria-checked="true" class="toggle toggle--active" id="novo-status"><span class="toggle-thumb"></span></button>
     </div>
@@ -68,7 +68,7 @@ const init = () => {
   `;
 
   document.getElementById('btn-cancelar').addEventListener('click', () => {
-    if (confirm('Descartar alteracoes?')) {
+    if (confirm('Descartar alterações?')) {
       window.location.href = '/src/pages/colaborador/beneficios/lista.html';
     }
   });
@@ -76,10 +76,10 @@ const init = () => {
   document.getElementById('btn-publicar').addEventListener('click', () => {
     const nome = document.getElementById('novo-nome').value.trim();
     if (!nome) {
-      alert('Preencha o nome do beneficio.');
+      alert('Preencha o nome do benefício.');
       return;
     }
-    alert('Beneficio publicado (mock).');
+    alert('Benefício publicado (mock).');
     window.location.href = '/src/pages/colaborador/beneficios/lista.html';
   });
 

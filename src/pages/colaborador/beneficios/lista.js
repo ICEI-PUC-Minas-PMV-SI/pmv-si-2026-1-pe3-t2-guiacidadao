@@ -39,7 +39,7 @@ const atualizarLista = () => {
 const renderToolbar = () => `
   <div class="beneficios-toolbar">
     ${renderSearchBar({ placeholder: 'Buscar beneficio...', id: 'beneficios-busca' })}
-    ${renderIconButton({ children: '+', ariaLabel: 'Adicionar beneficio', id: 'btn-add-beneficio' })}
+    ${renderIconButton({ children: '+', ariaLabel: 'Adicionar benefício', id: 'btn-add-beneficio' })}
   </div>
 `;
 
@@ -93,7 +93,7 @@ const wireBtnAdd = () => {
 
 const init = () => {
   document.getElementById('header-slot').innerHTML = renderHeader({
-    title: 'Catalogo de Beneficios',
+    title: 'Catálogo de Benefícios',
     backHref: '/src/pages/colaborador/painel/painel.html'
   });
 

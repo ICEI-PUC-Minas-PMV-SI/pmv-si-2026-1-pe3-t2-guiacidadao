@@ -1,6 +1,6 @@
 const init = () => {
   document.getElementById('header-slot').innerHTML = renderHeader({
-    title: 'Descartar alteracoes',
+    title: 'Descartar alterações',
     backHref: '/src/pages/colaborador/painel/painel.html'
   });
 
@@ -8,7 +8,7 @@ const init = () => {
     <section class="desativar-body">
       ${renderStatusCircle({ variant: 'warning' })}
       <h1 class="desativar-title">Tem certeza?</h1>
-      <p class="desativar-note">Voce tem alteracoes nao salvas.</p>
+      <p class="desativar-note">Você tem alterações não salvas.</p>
       ${renderImpactBox({
         title: 'O que sera perdido',
         items: [
@@ -16,7 +16,7 @@ const init = () => {
           'Requisitos e documentos selecionados'
         ]
       })}
-      <p class="desativar-note">Se sair agora, suas alteracoes serao perdidas.</p>
+      <p class="desativar-note">Se sair agora, suas alteracoes serão perdidas.</p>
     </section>
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}

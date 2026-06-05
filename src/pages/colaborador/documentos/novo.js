@@ -23,7 +23,7 @@ const init = () => {
     backHref: '/src/pages/colaborador/documentos/lista.html'
   });
 
-  const hint = '<p class="form-hint-right">* Campos obrigatorios</p>';
+  const hint = '<p class="form-hint-right">* Campos obrigatórios</p>';
 
   const campos = [
     renderInput({ label: 'Nome do documento', required: true, placeholder: 'Ex: RG', id: 'novo-nome' }),
@@ -37,14 +37,14 @@ const init = () => {
     renderTextArea({
       label: 'Orientacao de obtencao',
       required: true,
-      placeholder: 'Explique em linguagem simples como o cidadao consegue este documento.',
+      placeholder: 'Explique em linguagem simples como o cidadão consegue este documento.',
       id: 'novo-orientacao'
     })
   ].join('');
 
   const toggleRow = renderToggleRow(
-    'Pode ser marcado como "nao aplicavel"?',
-    'O cidadao pode indicar que o item nao se aplica ao seu caso.',
+    'Pode ser marcado como "não aplicável"?',
+    'O cidadao pode indicar que o item não se aplica ao seu caso.',
     'novo-optional',
     false
   );
@@ -67,7 +67,7 @@ const init = () => {
   `;
 
   document.getElementById('btn-cancelar').addEventListener('click', () => {
-    if (confirm('Descartar alteracoes?')) {
+    if (confirm('Descartar alterações?')) {
       window.location.href = '/src/pages/colaborador/documentos/lista.html';
     }
   });

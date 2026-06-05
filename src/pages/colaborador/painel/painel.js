@@ -1,13 +1,13 @@
 const STATS = [
-  { value: 17, label: 'Beneficios', hint: '12 ativos', href: '/src/pages/colaborador/beneficios/lista.html' },
+  { value: 17, label: 'Benefícios', hint: '12 ativos', href: '/src/pages/colaborador/beneficios/lista.html' },
   { value: 8, label: 'Documentos', hint: 'na biblioteca', href: '/src/pages/colaborador/documentos/lista.html' },
   { value: 12, label: 'Requisitos', hint: 'cadastrados', href: '/src/pages/colaborador/requisitos/lista.html' },
   { value: 6, label: 'Unidades', hint: '5 ativas', href: '/src/pages/colaborador/unidades/lista.html' }
 ];
 
 const MENU_ITEMS = [
-  { icon: 'beneficio', title: 'Catalogo de Beneficios', subtitle: 'Gerenciar beneficios sociais', href: '/src/pages/colaborador/beneficios/lista.html' },
-  { icon: 'documento', title: 'Biblioteca de Documentos', subtitle: 'Documentos reutilizaveis', href: '/src/pages/colaborador/documentos/lista.html' },
+  { icon: 'beneficio', title: 'Catálogo de Benefícios', subtitle: 'Gerenciar benefícios sociais', href: '/src/pages/colaborador/beneficios/lista.html' },
+  { icon: 'documento', title: 'Biblioteca de Documentos', subtitle: 'Documentos reutilizáveis', href: '/src/pages/colaborador/documentos/lista.html' },
   { icon: 'requisito', title: 'Biblioteca de Requisitos', subtitle: 'Requisitos de elegibilidade', href: '/src/pages/colaborador/requisitos/lista.html' },
   { icon: 'unidade', title: 'Unidades de Atendimento', subtitle: 'CRAS, INSS, Defensoria, etc.', href: '/src/pages/colaborador/unidades/lista.html' }
 ];
