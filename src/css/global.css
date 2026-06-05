@@ -538,6 +538,32 @@ body {
   text-align: left;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+}
+
+.beneficio img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 6px;
+}
+
+.beneficio h2{
+  font-family: var(--font-main, 'Segoe UI', Tahoma, sans-serif);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 4px 0;
+}
+
+.beneficio p{
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 4px 0;
 }
 .beneficiocard{
   background-color: #E8E8E8;
