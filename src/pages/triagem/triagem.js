@@ -62,7 +62,7 @@ const renderResultado = (avaliacoes) => {
     <div class="benefit-card card-blue" style="margin-top: 20px; background: #f8f9fa;">
       <h3>Quer acompanhamento completo?</h3>
       <p style="font-size: 13px;">Crie uma conta para salvar seu progresso, marcar documentos e simular mudanças na renda.</p>
-      <a href="/src/pages/register/register.html" class="btn btn-primary" style="display: inline-block; margin-top: 12px;">Criar conta</a>
+      <a href="/src/pages/register/register.html" class="btn btn-primary" style="display: block; width: fit-content; margin: 12px auto 0;">Criar conta</a>
     </div>
   `;
   return html;
