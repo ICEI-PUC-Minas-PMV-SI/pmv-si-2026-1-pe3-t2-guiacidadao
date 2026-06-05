@@ -589,6 +589,73 @@
   color: var(--text-dark);
 }
 
+.triagem-cta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary-bg) 0%, #ffffff 90%);
+  border: 1.5px solid var(--primary-light);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.triagem-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.triagem-cta:active {
+  transform: translateY(0);
+}
+
+.triagem-cta:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.triagem-cta__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.triagem-cta__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.triagem-cta__title {
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.triagem-cta__sub {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--text-medium);
+}
+
+.triagem-cta__arrow {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--primary);
+}
+
 .auth-intro {
   display: flex;
   flex-direction: column;

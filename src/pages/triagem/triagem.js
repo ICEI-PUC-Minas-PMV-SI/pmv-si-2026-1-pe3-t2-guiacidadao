@@ -44,12 +44,10 @@ const renderResultado = (avaliacoes) => {
 
   const card = (item) => {
     const cor = item.beneficio.cor || '#D9EEFF';
-    const href = `/src/pages/benefits/beneficio.html?id=${encodeURIComponent(item.beneficio.id)}`;
     return `
-      <div class="benefit-card card-blue" style="margin-bottom: 12px; border-left: 6px solid ${escapeHtmlText(cor)};">
+      <div class="benefit-card card-blue" style="margin-bottom: 12px; border-left: 6px solid ${escapeHtmlText(cor)}; cursor: default;">
         <h3>${escapeHtmlText(item.beneficio.name)}</h3>
-        <p style="font-size: 13px;">${escapeHtmlText(item.beneficio.description)}</p>
-        <a href="${href}" style="color: var(--primary); text-decoration: none; font-weight: 600;">Saiba mais &rsaquo;</a>
+        <p style="font-size: 13px; margin-bottom: 0;">${escapeHtmlText(item.beneficio.description)}</p>
       </div>
     `;
   };
