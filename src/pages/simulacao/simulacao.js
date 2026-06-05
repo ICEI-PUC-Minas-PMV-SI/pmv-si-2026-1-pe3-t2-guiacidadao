@@ -10,7 +10,7 @@ const formatarMoeda = (valor) => new Intl.NumberFormat('pt-BR', { style: 'curren
 const labelStatus = (status) => {
   if (status === 'elegivel') return { texto: 'Elegível', cor: '#2e7d32' };
   if (status === 'nao-elegivel') return { texto: 'Não elegível', cor: '#c62828' };
-  return { texto: 'A verificar', cor: '#ed6c02' };
+  return { texto: 'A verificar', cor: '#b45309' };
 };
 
 const familiaComRendaTotal = (familia, rendaTotal) => {

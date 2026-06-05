@@ -144,13 +144,15 @@
 
 /* Card color themes */
 .card-blue   { background: #E8F0FC; }
-.card-blue   h3 { color: #2B4D8A; }
-.card-blue   p  { color: #4A6FA5; }
-.card-blue   .saiba-mais { color: #2B4D8A; }
+.card-blue   h3 { color: #1d3a6e; }
+.card-blue   p  { color: #1d3a6e; }
+.card-blue   strong { color: #1d3a6e; }
+.card-blue   span { color: #1d3a6e; }
+.card-blue   .saiba-mais { color: #1d3a6e; }
 
 .card-orange { background: #FFF0E0; }
-.card-orange h3 { color: #C05A00; }
-.card-orange p  { color: #E07A1A; }
+.card-orange h3 { color: #8a3a00; }
+.card-orange p  { color: #8a3a00; }
 .card-orange .saiba-mais { color: #C05A00; }
 
 .card-green  { background: #E6FAF0; }

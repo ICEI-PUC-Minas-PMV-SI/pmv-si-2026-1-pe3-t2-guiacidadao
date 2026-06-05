@@ -12,7 +12,7 @@ const badgeElegibilidade = (status) => {
   if (status === 'nao-elegivel') {
     return '<span style="display: inline-block; background: #c62828; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;">Não elegível</span>';
   }
-  return '<span style="display: inline-block; background: #ed6c02; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;">Verificar</span>';
+  return '<span style="display: inline-block; background: #b45309; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;">Verificar</span>';
 };
 
 const renderCard = (beneficio, statusElegibilidade) => {
@@ -30,7 +30,7 @@ const renderCard = (beneficio, statusElegibilidade) => {
       <br>
       <p style="font-size: 13px;">${escapeHtmlText(descricao)}</p>
       <br>
-      <a href="${href}" style="color: var(--primary); text-decoration: none;">Saiba mais &rsaquo;</a>
+      <a href="${href}" style="color: #1d3a6e; text-decoration: underline; font-weight: 600;">Saiba mais &rsaquo;</a>
     </div>
   `;
 };
