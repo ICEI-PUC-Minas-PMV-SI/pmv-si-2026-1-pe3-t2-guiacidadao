@@ -21,6 +21,77 @@ const renderDocumentacao = (docs) => {
   }).join('\n            ');
 };
 
+const STATUS_LABEL = {
+  obtido: 'Obtido',
+  pendente: 'Pendente',
+  'nao-aplicavel': 'Não aplicável'
+};
+
+const STATUS_COR = {
+  obtido: '#2e7d32',
+  pendente: '#ed6c02',
+  'nao-aplicavel': '#757575'
+};
+
+const renderBotaoStatus = (docId, status, atual) => {
+  const ativo = status === atual;
+  const cor = ativo ? STATUS_COR[status] : '#e0e0e0';
+  const corTexto = ativo ? '#fff' : '#555';
+  return `<button type="button" class="checklist-btn" data-doc="${escapeHtmlText(docId)}" data-status="${status}" style="background: ${cor}; color: ${corTexto}; border: none; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; margin-right: 4px;">${STATUS_LABEL[status]}</button>`;
+};
+
+const renderChecklist = (beneficio, corStyle) => {
+  const ids = beneficio.documents ?? [];
+  if (ids.length === 0) return '';
+
+  const userId = obterUsuarioLogadoId();
+  if (!userId) {
+    return `
+      <div class="beneficiocard" style="margin-top: 20px; ${corStyle}">
+        <h2>Seu progresso</h2>
+        <p style="font-size: 13px;">Faça <a href="/src/pages/login/login.html">login</a> para marcar os documentos que você já reuniu.</p>
+      </div>
+    `;
+  }
+
+  const docs = ids.map((id) => obterColecao(STORAGE_COLECOES.documentos, id)).filter(Boolean);
+  if (docs.length === 0) return '';
+
+  const checklist = obterChecklistUsuario(userId);
+  const beneficioChecklist = checklist[beneficio.id] ?? {};
+
+  const linhas = docs.map((doc) => {
+    const atual = beneficioChecklist[doc.id] ?? 'pendente';
+    return `
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.08); gap: 12px; flex-wrap: wrap;">
+        <strong style="flex: 1; min-width: 120px;">${escapeHtmlText(doc.name)}</strong>
+        <div>
+          ${renderBotaoStatus(doc.id, 'pendente', atual)}
+          ${renderBotaoStatus(doc.id, 'obtido', atual)}
+          ${renderBotaoStatus(doc.id, 'nao-aplicavel', atual)}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const total = docs.length;
+  const obtidos = docs.filter((d) => beneficioChecklist[d.id] === 'obtido').length;
+  const naoAplicavel = docs.filter((d) => beneficioChecklist[d.id] === 'nao-aplicavel').length;
+  const aplicaveis = total - naoAplicavel;
+  const pct = aplicaveis === 0 ? 100 : Math.round((obtidos / aplicaveis) * 100);
+
+  return `
+    <div class="beneficiocard" style="margin-top: 20px; ${corStyle}" id="checklist-card">
+      <h2>Seu progresso</h2>
+      <p style="font-size: 13px; margin-bottom: 8px;">${obtidos} de ${aplicaveis} documentos aplicáveis obtidos (${pct}%).</p>
+      <div style="width: 100%; height: 8px; background: #eee; border-radius: 999px; overflow: hidden; margin-bottom: 16px;">
+        <div style="width: ${pct}%; height: 100%; background: #2e7d32; transition: width 0.3s;"></div>
+      </div>
+      ${linhas}
+    </div>
+  `;
+};
+
 const renderBeneficio = (beneficio) => {
   const cor = beneficio.cor || '#D9EEFF';
   const corStyle = `border-color: ${escapeHtmlText(cor)};`;
@@ -54,10 +125,27 @@ const renderBeneficio = (beneficio) => {
             ${renderDocumentacao(beneficio.documentacao)}
         </div>
 
+        ${renderChecklist(beneficio, corStyle)}
+
         ${beneficio.officialLink ? `<p style="margin-top: 20px;"><a href="${escapeHtmlText(beneficio.officialLink)}" target="_blank" rel="noopener">Link oficial</a></p>` : ''}
       </div>
     </div>
   `;
+};
+
+const wireChecklist = (beneficio) => {
+  const card = document.getElementById('checklist-card');
+  if (!card) return;
+  card.addEventListener('click', (event) => {
+    const btn = event.target.closest('.checklist-btn');
+    if (!btn) return;
+    const docId = btn.dataset.doc;
+    const status = btn.dataset.status;
+    marcarDocumentoChecklist(beneficio.id, docId, status);
+    const corStyle = `border-color: ${beneficio.cor || '#D9EEFF'};`;
+    card.outerHTML = renderChecklist(beneficio, corStyle);
+    wireChecklist(beneficio);
+  });
 };
 
 const init = () => {
@@ -82,6 +170,7 @@ const init = () => {
 
   document.title = `${beneficio.name} - GuiaCidadão`;
   conteudo.innerHTML = renderBeneficio(beneficio);
+  wireChecklist(beneficio);
 };
 
 document.addEventListener('DOMContentLoaded', init);
