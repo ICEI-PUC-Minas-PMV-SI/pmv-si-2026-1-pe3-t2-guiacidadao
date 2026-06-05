@@ -50,8 +50,16 @@ const renderBottomNavCidadao = (activeKey) => {
 
 const montarBottomNavCidadao = () => {
   const slot = document.getElementById('bottom-nav-slot');
+  const app = document.getElementById('app');
+  const html = renderBottomNavCidadao();
+
+  if (app) {
+    if (slot) slot.remove();
+    app.insertAdjacentHTML('beforeend', html);
+    return;
+  }
   if (slot) {
-    slot.outerHTML = renderBottomNavCidadao();
+    slot.outerHTML = html;
   }
 };
 
