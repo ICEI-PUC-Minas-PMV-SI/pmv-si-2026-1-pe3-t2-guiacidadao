@@ -5,7 +5,17 @@ const escapeHtmlText = (texto) => String(texto ?? '')
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#39;');
 
-const renderCard = (beneficio) => {
+const badgeElegibilidade = (status) => {
+  if (status === 'elegivel') {
+    return '<span style="display: inline-block; background: #2e7d32; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;">Elegível</span>';
+  }
+  if (status === 'nao-elegivel') {
+    return '<span style="display: inline-block; background: #c62828; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;">Não elegível</span>';
+  }
+  return '<span style="display: inline-block; background: #ed6c02; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;">Verificar</span>';
+};
+
+const renderCard = (beneficio, statusElegibilidade) => {
   const cor = beneficio.cor || '#D9EEFF';
   const icone = beneficio.icon ? `<img src="${escapeHtmlText(beneficio.icon)}" alt="${escapeHtmlText(beneficio.name)}" style="max-block-size: 80px;" />` : '';
   const descricao = beneficio.description || '';
@@ -15,6 +25,7 @@ const renderCard = (beneficio) => {
     <div class="beneficio" style="background-color: ${escapeHtmlText(cor)};">
       ${icone}
       <br>
+      ${badgeElegibilidade(statusElegibilidade)}
       <h2>${escapeHtmlText(beneficio.name)}</h2>
       <br>
       <p style="font-size: 13px;">${escapeHtmlText(descricao)}</p>
@@ -35,7 +46,16 @@ const renderBeneficios = () => {
     return;
   }
 
-  container.innerHTML = ativos.map(renderCard).join('');
+  const requisitos = listarColecao(STORAGE_COLECOES.requisitos);
+  const familia = obterFamiliaUsuario();
+  const quiz = obterQuizUsuario();
+
+  const cards = ativos.map((b) => {
+    const aval = avaliarBeneficio(b, familia, quiz, requisitos);
+    return renderCard(b, aval.status);
+  });
+
+  container.innerHTML = cards.join('');
 };
 
 document.addEventListener('DOMContentLoaded', renderBeneficios);

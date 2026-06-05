@@ -98,6 +98,75 @@ const limparTudo = () => {
   });
 };
 
+const obterUsuarioLogadoId = () => {
+  try {
+    const raw = localStorage.getItem('usuarioLogado');
+    if (!raw) return null;
+    const u = JSON.parse(raw);
+    return u.id ?? u.cpf ?? u.email ?? null;
+  } catch {
+    return null;
+  }
+};
+
+const chaveQuiz = (userId) => `${STORAGE_PREFIX}:quiz:${userId}`;
+const chaveChecklist = (userId) => `${STORAGE_PREFIX}:checklist:${userId}`;
+const chaveFamilia = (userId) => `familia_${userId}`;
+
+const obterFamiliaUsuario = (userId) => {
+  const id = userId ?? obterUsuarioLogadoId();
+  if (!id) return { membros: [] };
+  try {
+    const raw = localStorage.getItem(chaveFamilia(id));
+    return raw ? JSON.parse(raw) : { membros: [] };
+  } catch {
+    return { membros: [] };
+  }
+};
+
+const obterQuizUsuario = (userId) => {
+  const id = userId ?? obterUsuarioLogadoId();
+  if (!id) return {};
+  try {
+    const raw = localStorage.getItem(chaveQuiz(id));
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+};
+
+const salvarQuizUsuario = (respostas, userId) => {
+  const id = userId ?? obterUsuarioLogadoId();
+  if (!id) return null;
+  localStorage.setItem(chaveQuiz(id), JSON.stringify(respostas));
+  return respostas;
+};
+
+const obterChecklistUsuario = (userId) => {
+  const id = userId ?? obterUsuarioLogadoId();
+  if (!id) return {};
+  try {
+    const raw = localStorage.getItem(chaveChecklist(id));
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+};
+
+const marcarDocumentoChecklist = (beneficioId, docId, status, userId) => {
+  const id = userId ?? obterUsuarioLogadoId();
+  if (!id) return null;
+  const checklist = obterChecklistUsuario(id);
+  checklist[beneficioId] = checklist[beneficioId] ?? {};
+  if (status === null) {
+    delete checklist[beneficioId][docId];
+  } else {
+    checklist[beneficioId][docId] = status;
+  }
+  localStorage.setItem(chaveChecklist(id), JSON.stringify(checklist));
+  return checklist[beneficioId];
+};
+
 globalThis.STORAGE_COLECOES = COLECOES;
 globalThis.registrarSeed = registrarSeed;
 globalThis.listarColecao = listar;
@@ -109,3 +178,9 @@ globalThis.proximoIdColecao = proximoId;
 globalThis.obterObjetoColecao = obterObjeto;
 globalThis.salvarObjetoColecao = salvarObjeto;
 globalThis.limparStorageGuiaCidadao = limparTudo;
+globalThis.obterUsuarioLogadoId = obterUsuarioLogadoId;
+globalThis.obterFamiliaUsuario = obterFamiliaUsuario;
+globalThis.obterQuizUsuario = obterQuizUsuario;
+globalThis.salvarQuizUsuario = salvarQuizUsuario;
+globalThis.obterChecklistUsuario = obterChecklistUsuario;
+globalThis.marcarDocumentoChecklist = marcarDocumentoChecklist;
