@@ -874,8 +874,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-sair')?.addEventListener('click', () => {
     closeSidebar();
     state.user = null;
-    navigate('login', 'left');
-    showToast('Sessão encerrada');
+    localStorage.removeItem('usuarioLogado');
+    localStorage.removeItem('gc_user');
+    window.location.href = '/src/pages/login/login.html';
   });
 
   // Home agendamento shortcut
