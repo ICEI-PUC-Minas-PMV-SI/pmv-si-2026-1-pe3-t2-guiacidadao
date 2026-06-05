@@ -5,6 +5,18 @@ const toChips = (ids, source) => ids
   .filter(Boolean)
   .map((item) => ({ id: item.id, label: item.name }));
 
+const parseLista = (texto) => texto.split('\n').map((l) => l.trim()).filter(Boolean);
+
+const parseDocumentacao = (texto) => parseLista(texto).map((linha) => {
+  const idx = linha.indexOf(':');
+  if (idx === -1) return { label: linha, descricao: '' };
+  return { label: linha.slice(0, idx).trim(), descricao: linha.slice(idx + 1).trim() };
+});
+
+const serializarDocumentacao = (arr) => (arr ?? [])
+  .map((d) => d.descricao ? `${d.label}: ${d.descricao}` : d.label)
+  .join('\n');
+
 const init = () => {
   const id = getQueryParam('id');
   const beneficio = obterColecao(STORAGE_COLECOES.beneficios, id);
@@ -29,7 +41,13 @@ const init = () => {
   const campos = [
     renderInput({ label: 'Nome do benefício', required: true, value: beneficio.name, id: 'editar-nome' }),
     renderInput({ label: 'Órgão responsável', required: true, value: beneficio.agency, id: 'editar-orgao' }),
-    renderTextArea({ label: 'Descrição resumida', required: true, value: beneficio.description, id: 'editar-descricao' })
+    renderTextArea({ label: 'Descrição resumida', required: true, value: beneficio.description, id: 'editar-descricao' }),
+    renderTextArea({ label: 'Descrição detalhada (vista pelo cidadão)', value: beneficio.descricaoLonga ?? '', id: 'editar-descricao-longa' }),
+    renderTextArea({ label: 'Quem tem direito (um item por linha)', value: (beneficio.quemTemDireito ?? []).join('\n'), id: 'editar-quem-tem-direito' }),
+    renderTextArea({ label: 'Requisitos de renda', value: beneficio.requisitosRenda ?? '', id: 'editar-requisitos-renda' }),
+    renderTextArea({ label: 'Documentação necessária (um por linha, formato "Nome: descrição")', value: serializarDocumentacao(beneficio.documentacao), id: 'editar-documentacao' }),
+    renderInput({ label: 'Caminho do ícone', value: beneficio.icon ?? '', id: 'editar-icone' }),
+    renderInput({ label: 'Cor de destaque (hex)', value: beneficio.cor ?? '', id: 'editar-cor' })
   ].join('');
 
   const requisitos = renderChipList({
@@ -83,6 +101,12 @@ const init = () => {
       name: document.getElementById('editar-nome').value.trim(),
       agency: document.getElementById('editar-orgao').value.trim(),
       description: document.getElementById('editar-descricao').value.trim(),
+      descricaoLonga: document.getElementById('editar-descricao-longa').value.trim(),
+      quemTemDireito: parseLista(document.getElementById('editar-quem-tem-direito').value),
+      requisitosRenda: document.getElementById('editar-requisitos-renda').value.trim(),
+      documentacao: parseDocumentacao(document.getElementById('editar-documentacao').value),
+      icon: document.getElementById('editar-icone').value.trim(),
+      cor: document.getElementById('editar-cor').value.trim() || beneficio.cor || '#E0E0E0',
       officialLink: document.getElementById('editar-link').value.trim(),
       updatedAt: 'agora'
     };

@@ -1,3 +1,11 @@
+const parseLista = (texto) => texto.split('\n').map((l) => l.trim()).filter(Boolean);
+
+const parseDocumentacao = (texto) => parseLista(texto).map((linha) => {
+  const idx = linha.indexOf(':');
+  if (idx === -1) return { label: linha, descricao: '' };
+  return { label: linha.slice(0, idx).trim(), descricao: linha.slice(idx + 1).trim() };
+});
+
 const init = () => {
   document.getElementById('header-slot').innerHTML = renderHeader({
     title: 'Adicionar benefício',
@@ -10,7 +18,13 @@ const init = () => {
   const campos = [
     renderInput({ label: 'Nome do benefício', required: true, placeholder: 'Ex: Bolsa Família', id: 'novo-nome' }),
     renderInput({ label: 'Órgão responsável', required: true, placeholder: 'Ex: Governo Federal / MDS', id: 'novo-orgao' }),
-    renderTextArea({ label: 'Descrição resumida', required: true, placeholder: 'Em linguagem acessível, explique para quem serve este benefício.', id: 'novo-descricao' })
+    renderTextArea({ label: 'Descrição resumida', required: true, placeholder: 'Em linguagem acessível, explique para quem serve este benefício.', id: 'novo-descricao' }),
+    renderTextArea({ label: 'Descrição detalhada (vista pelo cidadão)', placeholder: 'Texto longo que aparece na tela de detalhe do benefício no app do cidadão.', id: 'novo-descricao-longa' }),
+    renderTextArea({ label: 'Quem tem direito (um item por linha)', placeholder: 'Pessoas baixa renda com 65+ anos\nPessoas com deficiência de qualquer idade', id: 'novo-quem-tem-direito' }),
+    renderTextArea({ label: 'Requisitos de renda', placeholder: 'Ex: Possuir renda familiar per capita igual ou inferior a R$ 218,00.', id: 'novo-requisitos-renda' }),
+    renderTextArea({ label: 'Documentação necessária (um por linha, formato "Nome: descrição")', placeholder: 'CPF: De todos os membros familiares\nRG: Documento de identificação com foto', id: 'novo-documentacao' }),
+    renderInput({ label: 'Caminho do ícone', placeholder: '/src/assets/icons/bpc.png', id: 'novo-icone' }),
+    renderInput({ label: 'Cor de destaque (hex)', placeholder: '#D9EEFF', id: 'novo-cor' })
   ].join('');
 
   const requisitos = renderChipList({
@@ -86,12 +100,12 @@ const init = () => {
       name: nome,
       agency: document.getElementById('novo-orgao').value.trim(),
       description: document.getElementById('novo-descricao').value.trim(),
-      descricaoLonga: '',
-      quemTemDireito: [],
-      requisitosRenda: '',
-      documentacao: [],
-      icon: '',
-      cor: '#E0E0E0',
+      descricaoLonga: document.getElementById('novo-descricao-longa').value.trim(),
+      quemTemDireito: parseLista(document.getElementById('novo-quem-tem-direito').value),
+      requisitosRenda: document.getElementById('novo-requisitos-renda').value.trim(),
+      documentacao: parseDocumentacao(document.getElementById('novo-documentacao').value),
+      icon: document.getElementById('novo-icone').value.trim(),
+      cor: document.getElementById('novo-cor').value.trim() || '#E0E0E0',
       requirements: [],
       documents: [],
       officialLink: document.getElementById('novo-link').value.trim(),
