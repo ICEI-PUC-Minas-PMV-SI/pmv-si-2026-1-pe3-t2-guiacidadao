@@ -17,3 +17,7 @@ const MOCK_UNIDADES = [
 
 globalThis.MOCK_UNIDADES = MOCK_UNIDADES;
 globalThis.MOCK_UNIDADE_TYPES = MOCK_UNIDADE_TYPES;
+
+if (typeof registrarSeed === 'function') {
+  registrarSeed('unidades', MOCK_UNIDADES);
+}

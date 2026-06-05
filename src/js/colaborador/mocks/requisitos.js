@@ -25,3 +25,7 @@ const MOCK_OPERADORES = [
 globalThis.MOCK_REQUISITOS = MOCK_REQUISITOS;
 globalThis.MOCK_REQUISITO_CATEGORIES = MOCK_REQUISITO_CATEGORIES;
 globalThis.MOCK_OPERADORES = MOCK_OPERADORES;
+
+if (typeof registrarSeed === 'function') {
+  registrarSeed('requisitos', MOCK_REQUISITOS);
+}

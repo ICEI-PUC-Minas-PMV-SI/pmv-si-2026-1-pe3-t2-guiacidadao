@@ -9,7 +9,7 @@ const labelDaCategoria = (value) => {
 
 const filtrarItens = () => {
   const termo = estado.busca.trim().toLowerCase();
-  return MOCK_DOCUMENTOS.filter((doc) => {
+  return listarColecao(STORAGE_COLECOES.documentos).filter((doc) => {
     const matchBusca = !termo || doc.name.toLowerCase().includes(termo);
     const matchFiltro = estado.filtro === 'todos' || doc.category === estado.filtro;
     return matchBusca && matchFiltro;

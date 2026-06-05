@@ -2,7 +2,7 @@ const findById = (collection, id) => collection.find((item) => item.id === id);
 
 const init = () => {
   const id = getQueryParam('id');
-  const documento = findById(MOCK_DOCUMENTOS, id) ?? { id: '', name: 'documento' };
+  const documento = obterColecao(STORAGE_COLECOES.documentos, id) ?? { id: '', name: 'documento' };
 
   document.getElementById('header-slot').innerHTML = renderHeader({
     title: 'Desativar documento',

@@ -4,7 +4,7 @@ const FILTROS = [{ value: 'todos', label: 'Todos' }, ...MOCK_REQUISITO_CATEGORIE
 
 const filtrarItens = () => {
   const termo = estado.busca.trim().toLowerCase();
-  return MOCK_REQUISITOS.filter((req) => {
+  return listarColecao(STORAGE_COLECOES.requisitos).filter((req) => {
     const matchBusca = !termo || req.name.toLowerCase().includes(termo);
     const matchFiltro = estado.filtro === 'todos' || req.category === estado.filtro;
     return matchBusca && matchFiltro;

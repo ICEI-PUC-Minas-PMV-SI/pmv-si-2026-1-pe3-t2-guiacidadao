@@ -28,7 +28,7 @@ const renderListaSecao = (label, itens, prefixo) => {
 
 const init = () => {
   const id = getQueryParam('id');
-  const beneficio = findById(MOCK_BENEFICIOS, id);
+  const beneficio = obterColecao(STORAGE_COLECOES.beneficios, id);
 
   if (!beneficio) {
     document.getElementById('header-slot').innerHTML = renderHeader({
@@ -46,8 +46,8 @@ const init = () => {
   });
 
   const badge = BADGE_VARIANT[beneficio.status] ?? BADGE_VARIANT.ativo;
-  const reqs = beneficio.requirements.map((reqId) => findById(MOCK_REQUISITOS, reqId)).filter(Boolean);
-  const docs = beneficio.documents.map((docId) => findById(MOCK_DOCUMENTOS, docId)).filter(Boolean);
+  const reqs = beneficio.requirements.map((reqId) => obterColecao(STORAGE_COLECOES.requisitos, reqId)).filter(Boolean);
+  const docs = beneficio.documents.map((docId) => obterColecao(STORAGE_COLECOES.documentos, docId)).filter(Boolean);
 
   const topRow = `
     <div class="detalhes-top-row">

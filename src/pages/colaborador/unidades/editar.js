@@ -2,7 +2,7 @@ const findById = (collection, id) => collection.find((item) => item.id === id);
 
 const init = () => {
   const id = getQueryParam('id');
-  const unidade = findById(MOCK_UNIDADES, id);
+  const unidade = obterColecao(STORAGE_COLECOES.unidades, id);
 
   if (!unidade) {
     document.getElementById('header-slot').innerHTML = renderHeader({

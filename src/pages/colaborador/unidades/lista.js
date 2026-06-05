@@ -9,7 +9,7 @@ const labelDoTipo = (value) => {
 
 const filtrarItens = () => {
   const termo = estado.busca.trim().toLowerCase();
-  return MOCK_UNIDADES.filter((unidade) => {
+  return listarColecao(STORAGE_COLECOES.unidades).filter((unidade) => {
     const matchBusca = !termo || unidade.name.toLowerCase().includes(termo) || unidade.address.toLowerCase().includes(termo);
     const matchFiltro = estado.filtro === 'todos' || unidade.type === estado.filtro;
     return matchBusca && matchFiltro;

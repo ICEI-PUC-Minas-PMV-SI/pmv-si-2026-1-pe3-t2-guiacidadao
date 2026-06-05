@@ -2,7 +2,7 @@ const findById = (collection, id) => collection.find((item) => item.id === id);
 
 const init = () => {
   const id = getQueryParam('id');
-  const requisito = findById(MOCK_REQUISITOS, id);
+  const requisito = obterColecao(STORAGE_COLECOES.requisitos, id);
 
   if (!requisito) {
     document.getElementById('header-slot').innerHTML = renderHeader({

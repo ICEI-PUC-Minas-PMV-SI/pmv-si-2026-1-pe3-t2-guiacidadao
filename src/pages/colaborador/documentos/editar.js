@@ -21,7 +21,7 @@ const wireToggle = (id) => {
 
 const init = () => {
   const id = getQueryParam('id');
-  const documento = findById(MOCK_DOCUMENTOS, id);
+  const documento = obterColecao(STORAGE_COLECOES.documentos, id);
 
   if (!documento) {
     document.getElementById('header-slot').innerHTML = renderHeader({

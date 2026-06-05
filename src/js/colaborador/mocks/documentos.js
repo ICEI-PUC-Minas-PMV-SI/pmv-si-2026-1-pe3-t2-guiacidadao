@@ -16,3 +16,7 @@ const MOCK_DOCUMENTO_CATEGORIES = [
 
 globalThis.MOCK_DOCUMENTOS = MOCK_DOCUMENTOS;
 globalThis.MOCK_DOCUMENTO_CATEGORIES = MOCK_DOCUMENTO_CATEGORIES;
+
+if (typeof registrarSeed === 'function') {
+  registrarSeed('documentos', MOCK_DOCUMENTOS);
+}

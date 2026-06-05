@@ -1,4 +1,4 @@
-const ITEMS = MOCK_REQUISITOS;
+const ITEMS = listarColecao(STORAGE_COLECOES.requisitos);
 const NOVO_HREF = '/src/pages/colaborador/requisitos/novo.html';
 const PLACEHOLDER = 'Buscar requisito...';
 

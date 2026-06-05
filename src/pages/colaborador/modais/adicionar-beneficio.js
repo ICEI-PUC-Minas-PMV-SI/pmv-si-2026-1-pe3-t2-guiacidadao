@@ -1,4 +1,4 @@
-const ITEMS = MOCK_BENEFICIOS;
+const ITEMS = listarColecao(STORAGE_COLECOES.beneficios);
 const NOVO_HREF = '/src/pages/colaborador/beneficios/novo.html';
 const PLACEHOLDER = 'Buscar beneficio...';
 

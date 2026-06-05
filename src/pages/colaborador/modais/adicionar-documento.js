@@ -1,4 +1,4 @@
-const ITEMS = MOCK_DOCUMENTOS;
+const ITEMS = listarColecao(STORAGE_COLECOES.documentos);
 const NOVO_HREF = '/src/pages/colaborador/documentos/novo.html';
 const PLACEHOLDER = 'Buscar documento...';
 

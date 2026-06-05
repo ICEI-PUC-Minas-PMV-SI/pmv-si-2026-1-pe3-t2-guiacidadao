@@ -2,7 +2,7 @@ const findById = (collection, id) => collection.find((item) => item.id === id);
 
 const init = () => {
   const id = getQueryParam('id');
-  const beneficio = findById(MOCK_BENEFICIOS, id) ?? { id: '', name: 'beneficio', eligibleCount: 0 };
+  const beneficio = obterColecao(STORAGE_COLECOES.beneficios, id) ?? { id: '', name: 'beneficio', eligibleCount: 0 };
 
   document.getElementById('header-slot').innerHTML = renderHeader({
     title: 'Desativar benefício',

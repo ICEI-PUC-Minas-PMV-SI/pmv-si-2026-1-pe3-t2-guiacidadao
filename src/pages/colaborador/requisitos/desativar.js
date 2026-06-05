@@ -2,7 +2,7 @@ const findById = (collection, id) => collection.find((item) => item.id === id);
 
 const init = () => {
   const id = getQueryParam('id');
-  const requisito = findById(MOCK_REQUISITOS, id) ?? { id: '', name: 'requisito', benefitsLinked: 0 };
+  const requisito = obterColecao(STORAGE_COLECOES.requisitos, id) ?? { id: '', name: 'requisito', benefitsLinked: 0 };
 
   document.getElementById('header-slot').innerHTML = renderHeader({
     title: 'Desativar requisito',

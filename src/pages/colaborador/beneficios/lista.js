@@ -8,7 +8,7 @@ let estado = { busca: '', filtro: 'todos' };
 
 const filtrarItens = () => {
   const termo = estado.busca.trim().toLowerCase();
-  return MOCK_BENEFICIOS.filter((item) => {
+  return listarColecao(STORAGE_COLECOES.beneficios).filter((item) => {
     const matchBusca = !termo || item.name.toLowerCase().includes(termo) || item.agency.toLowerCase().includes(termo);
     const matchFiltro = estado.filtro === 'todos' || item.status === estado.filtro;
     return matchBusca && matchFiltro;

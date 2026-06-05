@@ -7,7 +7,7 @@ const toChips = (ids, source) => ids
 
 const init = () => {
   const id = getQueryParam('id');
-  const beneficio = findById(MOCK_BENEFICIOS, id);
+  const beneficio = obterColecao(STORAGE_COLECOES.beneficios, id);
 
   if (!beneficio) {
     document.getElementById('header-slot').innerHTML = renderHeader({
@@ -35,7 +35,7 @@ const init = () => {
   const requisitos = renderChipList({
     label: 'Requisitos de elegibilidade',
     required: true,
-    items: toChips(beneficio.requirements, MOCK_REQUISITOS),
+    items: toChips(beneficio.requirements, listarColecao(STORAGE_COLECOES.requisitos)),
     emptyLabel: 'Nenhum requisito vinculado.',
     addLabel: '+ Adicionar',
     addId: 'btn-add-requisito'
@@ -43,7 +43,7 @@ const init = () => {
 
   const documentos = renderChipList({
     label: 'Documentos necessarios',
-    items: toChips(beneficio.documents, MOCK_DOCUMENTOS),
+    items: toChips(beneficio.documents, listarColecao(STORAGE_COLECOES.documentos)),
     emptyLabel: 'Nenhum documento vinculado.',
     addLabel: '+ Adicionar',
     addId: 'btn-add-documento'
