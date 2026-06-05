@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Simulação de Elegibilidade - GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<body>
+  <div id="app">
+    <div id="simulacao-screen" class="screen active">
+      <div class="app-header">
+        <a href="/src/pages/meus-beneficios/dashboard.html">
+          <button class="back-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+        </a>
+        <a class="header-logo">
+          <img src="/src/assets/icons/Logo.png" alt="Logo">
+          GuiaCidadão
+        </a>
+        <div style="width:36px"></div>
+      </div>
+
+      <div class="scroll-content">
+        <div style="padding: 0 20px 24px;">
+          <div class="auth-title-block" style="margin-bottom: 16px;">
+            <h1 class="page-title">Simulação</h1>
+            <p class="page-subtitle">Veja como uma mudança na renda familiar afeta sua elegibilidade.</p>
+          </div>
+
+          <div id="simulacao-base"></div>
+
+          <div class="benefit-card card-blue" style="margin-top: 16px;">
+            <h3>Ajuste a renda total da família</h3>
+            <p style="font-size: 13px; color: var(--text-muted);">Os benefícios serão recalculados em tempo real.</p>
+            <label for="simul-renda" style="display: block; margin-top: 12px; font-weight: 600;">Renda mensal total (R$)</label>
+            <input id="simul-renda" type="number" min="0" step="50" class="form-input" style="margin-top: 6px;">
+            <p id="simul-per-capita" style="margin-top: 8px; font-size: 14px; font-weight: 600;"></p>
+          </div>
+
+          <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">Resultado simulado</h2>
+          <div id="simul-resultado"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/src/js/shared/storage-api.js"></script>
+  <script src="/src/js/shared/elegibilidade.js"></script>
+  <script src="/src/js/colaborador/mocks/beneficios.js"></script>
+  <script src="/src/js/colaborador/mocks/requisitos.js"></script>
+  <script src="/src/pages/simulacao/simulacao.js"></script>
+</body>
+</html>

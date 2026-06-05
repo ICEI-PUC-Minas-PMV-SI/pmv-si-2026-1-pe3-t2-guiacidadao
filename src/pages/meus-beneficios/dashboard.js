@@ -84,13 +84,12 @@ const init = () => {
     </div>
   `;
 
+  const acoes = [];
   if (naoRenda.length > 0 && quizRespondidos < naoRenda.length) {
-    cta.innerHTML = `
-      <a href="/src/pages/quiz/quiz.html" class="btn btn-primary" style="display: inline-block;">Responder quiz de elegibilidade</a>
-    `;
-  } else {
-    cta.innerHTML = '';
+    acoes.push('<a href="/src/pages/quiz/quiz.html" class="btn btn-primary" style="display: inline-block;">Responder quiz de elegibilidade</a>');
   }
+  acoes.push('<a href="/src/pages/simulacao/simulacao.html" class="btn btn-outline" style="display: inline-block; margin-left: 8px;">Simular mudanças na renda</a>');
+  cta.innerHTML = acoes.join('');
 
   const avaliacoes = beneficios.map((b) => ({ beneficio: b, aval: avaliarBeneficio(b, familia, quiz, requisitos) }));
   const elegiveis = avaliacoes.filter((x) => x.aval.status === 'elegivel');
