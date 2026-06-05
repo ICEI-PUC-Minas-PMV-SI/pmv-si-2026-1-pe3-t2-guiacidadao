@@ -10,7 +10,7 @@ const formularPergunta = (descricao, nome) => descricao && descricao.length > 0 
 const renderForm = (requisitosNaoRenda) => {
   const blocoRenda = `
     <div class="benefit-card card-blue" style="margin-bottom: 12px;">
-      <h3>Sua renda</h3>
+      <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800;">Sua renda</h2>
       <label for="triagem-renda" style="display: block; margin-top: 8px; font-weight: 600;">Renda total mensal da família (R$)</label>
       <input id="triagem-renda" type="number" min="0" step="50" class="form-input" placeholder="0,00" style="margin-top: 6px;">
       <label for="triagem-membros" style="display: block; margin-top: 12px; font-weight: 600;">Número de pessoas na família</label>
@@ -20,7 +20,7 @@ const renderForm = (requisitosNaoRenda) => {
 
   const blocosQuiz = requisitosNaoRenda.map((r) => `
     <div class="benefit-card card-blue" style="margin-bottom: 12px;">
-      <h3>${escapeHtmlText(r.name)}</h3>
+      <h2 style="font-family: var(--font-main); font-size: 15px; font-weight: 700;">${escapeHtmlText(r.name)}</h2>
       <p style="font-size: 13px; color: var(--text-muted);">${escapeHtmlText(formularPergunta(r.description, r.name))}</p>
       <div style="display: flex; gap: 16px; margin-top: 12px;">
         <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">

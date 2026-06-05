@@ -55,7 +55,7 @@ const init = () => {
   if (!userId) {
     conteudo.innerHTML = `
       <div class="benefit-card card-blue">
-        <h3>Faça login para acompanhar</h3>
+        <h2>Faça login para acompanhar</h2>
         <p>Você precisa estar logado para ver sua elegibilidade e progresso.</p>
         <a href="/src/pages/login/login.html" class="btn btn-primary" style="margin-top: 12px; display: inline-block;">Fazer login</a>
       </div>
@@ -77,7 +77,7 @@ const init = () => {
   const rendaPerCapita = calcularRendaPerCapita(familia);
   conteudo.innerHTML = `
     <div class="benefit-card card-blue">
-      <h3>Resumo</h3>
+      <h2>Resumo</h2>
       <p><strong>Membros da família:</strong> ${familia.membros?.length ?? 0}</p>
       <p><strong>Renda per capita:</strong> ${rendaPerCapita !== null ? formatarMoeda(rendaPerCapita) : 'Cadastre membros'}</p>
       <p><strong>Quiz respondido:</strong> ${quizRespondidos} de ${naoRenda.length} perguntas</p>
