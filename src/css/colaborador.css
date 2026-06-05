@@ -280,6 +280,8 @@
 }
 
 .filter-pill {
+  flex: 0 0 auto;
+  white-space: nowrap;
   padding: 6px 14px;
   border-radius: var(--radius-full);
   background: var(--bg-card);
