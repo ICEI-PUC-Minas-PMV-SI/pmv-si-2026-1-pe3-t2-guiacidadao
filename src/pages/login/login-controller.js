@@ -8,16 +8,37 @@ const detectarPapelAtivo = (tabContainer) => {
   return ativa?.dataset.tab ?? 'cidadao';
 };
 
-const validarCidadao = ({ ident, senha }) => {
+const validarCidadao = async ({ ident, senha }) => {
   if (!ident || !senha) {
     return { valido: false, mensagem: 'Preencha CPF/email e senha.' };
   }
   const lista = JSON.parse(localStorage.getItem('userlist') ?? '[]');
-  const usuario = lista.find((u) => (u.cpf === ident || u.email === ident) && u.pass === senha);
-  if (!usuario) {
-    return { valido: false, mensagem: 'Credenciais invalidas.' };
+  const identNorm = ident.trim().toLowerCase();
+  const cpfNorm = typeof limparCpf === 'function' ? limparCpf(ident) : ident;
+
+  const candidato = lista.find((u) => {
+    const cpfStored = typeof limparCpf === 'function' ? limparCpf(u.cpf) : u.cpf;
+    const emailStored = (u.email ?? '').toLowerCase();
+    return cpfStored === cpfNorm || emailStored === identNorm;
+  });
+
+  if (!candidato) {
+    return { valido: false, mensagem: 'Credenciais inválidas.' };
   }
-  return { valido: true, usuario };
+
+  const senhaOk = await compararSenha(senha, candidato.pass);
+  if (!senhaOk) {
+    return { valido: false, mensagem: 'Credenciais inválidas.' };
+  }
+
+  if (!senhaEhHash(candidato.pass)) {
+    candidato.pass = await hashSenha(senha);
+    const indice = lista.findIndex((u) => u === candidato);
+    lista[indice] = candidato;
+    localStorage.setItem('userlist', JSON.stringify(lista));
+  }
+
+  return { valido: true, usuario: candidato };
 };
 
 const validarColaborador = ({ ident, senha }) => {
@@ -27,7 +48,7 @@ const validarColaborador = ({ ident, senha }) => {
   return { valido: true, usuario: MOCK_PROFILE };
 };
 
-const validarCredencial = (papel, credencial) => {
+const validarCredencial = async (papel, credencial) => {
   if (papel === 'colaborador') return validarColaborador(credencial);
   return validarCidadao(credencial);
 };

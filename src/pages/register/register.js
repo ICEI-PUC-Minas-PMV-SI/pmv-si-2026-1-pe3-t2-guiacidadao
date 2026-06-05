@@ -1,6 +1,6 @@
 const validarEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-function registrar() {
+async function registrar() {
     const nome = document.getElementById('cad-nome').value.trim();
     const cpfDigitado = document.getElementById('cad-cpf').value;
     const data = document.getElementById('cad-dob').value;
@@ -47,13 +47,14 @@ function registrar() {
         return;
     }
 
+    const senhaHash = await hashSenha(pass);
     const novoUsuario = {
         id: `usr-${Date.now()}`,
         nome,
         cpf,
         email,
         data,
-        pass
+        pass: senhaHash
     };
 
     usuarios.push(novoUsuario);

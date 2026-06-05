@@ -43,11 +43,11 @@ const trocarTab = (papel) => {
   });
 };
 
-const submeterCidadao = (event) => {
+const submeterCidadao = async (event) => {
   event.preventDefault();
   const ident = document.getElementById('cidadao-ident').value.trim();
   const senha = document.getElementById('cidadao-senha').value;
-  const result = validarCredencial('cidadao', { ident, senha });
+  const result = await validarCredencial('cidadao', { ident, senha });
   if (!result.valido) {
     alert(result.mensagem);
     return;
@@ -56,11 +56,11 @@ const submeterCidadao = (event) => {
   window.location.href = obterDestinoRedirect('cidadao');
 };
 
-const submeterColaborador = (event) => {
+const submeterColaborador = async (event) => {
   event.preventDefault();
   const ident = document.getElementById('colab-ident').value.trim();
   const senha = document.getElementById('colab-senha').value;
-  const result = validarCredencial('colaborador', { ident, senha });
+  const result = await validarCredencial('colaborador', { ident, senha });
   if (!result.valido) {
     alert(result.mensagem);
     return;
