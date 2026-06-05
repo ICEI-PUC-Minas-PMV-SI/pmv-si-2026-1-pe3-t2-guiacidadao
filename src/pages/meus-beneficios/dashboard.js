@@ -119,6 +119,62 @@ const init = () => {
   document.getElementById('dashboard-pendencias').innerHTML = pendencias.length === 0
     ? renderEstadoVazio('Sem pendências de documentos para os benefícios elegíveis.')
     : pendencias.map((p) => `<p style="font-size: 13px; margin: 4px 0;">- ${escapeHtmlText(p.doc)} <span style="color: var(--text-muted);">(${escapeHtmlText(p.beneficio)})</span></p>`).join('');
+
+  renderBotoesCompartilhar({ elegiveis, indeterminados, pendencias, rendaPerCapita, familia });
+};
+
+const gerarResumoTexto = ({ elegiveis, indeterminados, pendencias, rendaPerCapita, familia }) => {
+  const linhas = ['Meus Benefícios - GuiaCidadão', ''];
+  linhas.push(`Renda per capita: ${rendaPerCapita !== null ? formatarMoeda(rendaPerCapita) : 'sem cálculo'}`);
+  linhas.push(`Membros da família: ${familia.membros?.length ?? 0}`);
+  linhas.push('');
+  linhas.push(`Elegíveis (${elegiveis.length}):`);
+  elegiveis.forEach(({ beneficio }) => linhas.push(`- ${beneficio.name}`));
+  if (indeterminados.length > 0) {
+    linhas.push('');
+    linhas.push(`A verificar (${indeterminados.length}):`);
+    indeterminados.forEach(({ beneficio }) => linhas.push(`- ${beneficio.name}`));
+  }
+  if (pendencias.length > 0) {
+    linhas.push('');
+    linhas.push(`Documentos pendentes (${pendencias.length}):`);
+    pendencias.forEach((p) => linhas.push(`- ${p.doc} (${p.beneficio})`));
+  }
+  return linhas.join('\n');
+};
+
+const renderBotoesCompartilhar = (resumo) => {
+  const container = document.getElementById('dashboard-compartilhar');
+  if (!container) return;
+  container.innerHTML = `
+    <button id="btn-print" class="btn btn-outline">Imprimir</button>
+    <button id="btn-pdf" class="btn btn-outline">Baixar PDF</button>
+    <button id="btn-whatsapp" class="btn btn-primary">Compartilhar no WhatsApp</button>
+  `;
+
+  document.getElementById('btn-print').addEventListener('click', () => window.print());
+
+  document.getElementById('btn-whatsapp').addEventListener('click', () => {
+    const texto = gerarResumoTexto(resumo);
+    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank', 'noopener');
+  });
+
+  document.getElementById('btn-pdf').addEventListener('click', async () => {
+    const alvo = document.getElementById('dashboard-printable');
+    if (!alvo || typeof html2canvas !== 'function' || !window.jspdf) {
+      alert('Não foi possível gerar o PDF. Tente imprimir como PDF pelo navegador.');
+      return;
+    }
+    const canvas = await html2canvas(alvo, { scale: 2 });
+    const imgData = canvas.toDataURL('image/png');
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const larguraPdf = 210;
+    const alturaPdf = (canvas.height * larguraPdf) / canvas.width;
+    pdf.addImage(imgData, 'PNG', 0, 0, larguraPdf, alturaPdf);
+    pdf.save('meus-beneficios.pdf');
+  });
 };
 
 document.addEventListener('DOMContentLoaded', init);

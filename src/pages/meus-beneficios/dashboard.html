@@ -35,19 +35,30 @@
             <p class="page-subtitle">Acompanhe a sua elegibilidade e o progresso do seu dossiê.</p>
           </div>
 
-          <div id="dashboard-resumo"></div>
-          <div id="dashboard-cta" style="margin-top: 16px;"></div>
-          <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">Elegíveis</h2>
-          <div id="dashboard-elegiveis"></div>
-          <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">A verificar</h2>
-          <div id="dashboard-indeterminados"></div>
-          <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">Pendências consolidadas</h2>
-          <div id="dashboard-pendencias"></div>
+          <div id="dashboard-printable">
+            <div id="dashboard-resumo"></div>
+            <div id="dashboard-cta" style="margin-top: 16px;" data-no-print></div>
+            <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">Elegíveis</h2>
+            <div id="dashboard-elegiveis"></div>
+            <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">A verificar</h2>
+            <div id="dashboard-indeterminados"></div>
+            <h2 style="font-family: var(--font-main); font-size: 16px; font-weight: 800; margin: 24px 0 12px;">Pendências consolidadas</h2>
+            <div id="dashboard-pendencias"></div>
+          </div>
+          <div id="dashboard-compartilhar" style="margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap;" data-no-print></div>
         </div>
       </div>
     </div>
   </div>
 
+  <style>
+    @media print {
+      .app-header, #dashboard-cta, #dashboard-compartilhar, [data-no-print] { display: none !important; }
+      body { background: #fff; }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="/src/js/shared/storage-api.js"></script>
   <script src="/src/js/shared/elegibilidade.js"></script>
   <script src="/src/js/colaborador/mocks/beneficios.js"></script>
