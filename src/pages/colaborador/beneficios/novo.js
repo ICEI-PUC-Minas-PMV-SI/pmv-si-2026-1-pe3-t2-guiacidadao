@@ -79,7 +79,27 @@ const init = () => {
       alert('Preencha o nome do benefício.');
       return;
     }
-    alert('Benefício publicado (mock).');
+    const statusBtn = document.getElementById('novo-status');
+    const ativo = statusBtn.getAttribute('aria-checked') === 'true';
+    const novo = {
+      id: proximoIdColecao(STORAGE_COLECOES.beneficios, 'ben'),
+      name: nome,
+      agency: document.getElementById('novo-orgao').value.trim(),
+      description: document.getElementById('novo-descricao').value.trim(),
+      descricaoLonga: '',
+      quemTemDireito: [],
+      requisitosRenda: '',
+      documentacao: [],
+      icon: '',
+      cor: '#E0E0E0',
+      requirements: [],
+      documents: [],
+      officialLink: document.getElementById('novo-link').value.trim(),
+      status: ativo ? 'ativo' : 'inativo',
+      eligibleCount: 0,
+      updatedAt: 'agora'
+    };
+    salvarColecao(STORAGE_COLECOES.beneficios, novo);
     window.location.href = '/src/pages/colaborador/beneficios/lista.html';
   });
 

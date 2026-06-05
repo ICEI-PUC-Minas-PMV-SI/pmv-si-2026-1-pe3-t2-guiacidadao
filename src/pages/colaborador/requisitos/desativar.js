@@ -36,7 +36,7 @@ const init = () => {
   });
 
   document.getElementById('btn-confirmar').addEventListener('click', () => {
-    alert('Requisito desativado (mock).');
+    definirStatusColecao(STORAGE_COLECOES.requisitos, requisito.id, 'inativo');
     window.location.href = '/src/pages/colaborador/requisitos/lista.html';
   });
 };

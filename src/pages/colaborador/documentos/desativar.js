@@ -36,7 +36,7 @@ const init = () => {
   });
 
   document.getElementById('btn-confirmar').addEventListener('click', () => {
-    alert('Documento desativado (mock).');
+    definirStatusColecao(STORAGE_COLECOES.documentos, documento.id, 'inativo');
     window.location.href = '/src/pages/colaborador/documentos/lista.html';
   });
 };

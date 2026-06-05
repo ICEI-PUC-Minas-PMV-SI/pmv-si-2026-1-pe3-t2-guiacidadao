@@ -78,7 +78,16 @@ const init = () => {
       alert('Preencha o nome do documento.');
       return;
     }
-    alert('Documento salvo (mock).');
+    const optional = document.getElementById('novo-optional').getAttribute('aria-checked') === 'true';
+    const novo = {
+      id: proximoIdColecao(STORAGE_COLECOES.documentos, 'doc'),
+      name: nome,
+      category: document.getElementById('novo-categoria').value,
+      guidance: document.getElementById('novo-orientacao').value.trim(),
+      optional,
+      status: 'ativo'
+    };
+    salvarColecao(STORAGE_COLECOES.documentos, novo);
     window.location.href = '/src/pages/colaborador/documentos/lista.html';
   });
 

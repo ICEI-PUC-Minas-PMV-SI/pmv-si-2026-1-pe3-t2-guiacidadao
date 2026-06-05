@@ -71,7 +71,15 @@ const init = () => {
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {
-    alert('Alteracoes salvas (mock).');
+    const atualizado = {
+      ...requisito,
+      name: document.getElementById('editar-nome').value.trim(),
+      category: document.getElementById('editar-categoria').value,
+      description: document.getElementById('editar-descricao').value.trim(),
+      operator: document.getElementById('editar-operador').value,
+      value: document.getElementById('editar-valor').value.trim()
+    };
+    salvarColecao(STORAGE_COLECOES.requisitos, atualizado);
     window.location.href = '/src/pages/colaborador/requisitos/lista.html';
   });
 

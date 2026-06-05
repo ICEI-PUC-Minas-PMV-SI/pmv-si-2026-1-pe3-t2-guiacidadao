@@ -70,7 +70,16 @@ const init = () => {
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {
-    alert('Alteracoes salvas (mock).');
+    const atualizado = {
+      ...unidade,
+      name: document.getElementById('editar-nome').value.trim(),
+      type: document.getElementById('editar-tipo').value,
+      address: document.getElementById('editar-endereco').value.trim(),
+      cep: document.getElementById('editar-cep').value.trim(),
+      phone: document.getElementById('editar-telefone').value.trim(),
+      schedule: document.getElementById('editar-horario').value.trim()
+    };
+    salvarColecao(STORAGE_COLECOES.unidades, atualizado);
     window.location.href = '/src/pages/colaborador/unidades/lista.html';
   });
 

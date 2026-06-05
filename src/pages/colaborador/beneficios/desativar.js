@@ -36,7 +36,7 @@ const init = () => {
   });
 
   document.getElementById('btn-confirmar').addEventListener('click', () => {
-    alert('Benefício desativado (mock).');
+    definirStatusColecao(STORAGE_COLECOES.beneficios, beneficio.id, 'inativo');
     window.location.href = '/src/pages/colaborador/beneficios/lista.html';
   });
 };

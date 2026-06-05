@@ -1,5 +1,7 @@
 const init = () => {
-  const itemName = getQueryParam('nome') ?? 'Vale-Gas Nacional';
+  const colecao = getQueryParam('colecao');
+  const itemId = getQueryParam('id');
+  const itemName = getQueryParam('nome') ?? 'Item';
   const returnTo = getQueryParam('returnTo') ?? '/src/pages/colaborador/painel/painel.html';
 
   document.getElementById('header-slot').innerHTML = renderHeader({
@@ -33,7 +35,9 @@ const init = () => {
   });
 
   document.getElementById('btn-confirmar').addEventListener('click', () => {
-    alert('Item reativado (mock).');
+    if (colecao && itemId) {
+      definirStatusColecao(colecao, itemId, 'ativo');
+    }
     window.location.href = returnTo;
   });
 };

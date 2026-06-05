@@ -36,7 +36,7 @@ const init = () => {
   });
 
   document.getElementById('btn-confirmar').addEventListener('click', () => {
-    alert('Unidade desativada (mock).');
+    definirStatusColecao(STORAGE_COLECOES.unidades, unidade.id, 'inativo');
     window.location.href = '/src/pages/colaborador/unidades/lista.html';
   });
 };

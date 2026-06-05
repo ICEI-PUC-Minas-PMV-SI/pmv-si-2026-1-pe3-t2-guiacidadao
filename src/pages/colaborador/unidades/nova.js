@@ -79,7 +79,18 @@ const init = () => {
       alert('Preencha o nome da unidade.');
       return;
     }
-    alert('Unidade salva (mock).');
+    const nova = {
+      id: proximoIdColecao(STORAGE_COLECOES.unidades, 'uni'),
+      name: nome,
+      type: document.getElementById('novo-tipo').value,
+      address: document.getElementById('novo-endereco').value.trim(),
+      cep: document.getElementById('novo-cep').value.trim(),
+      phone: document.getElementById('novo-telefone').value.trim(),
+      schedule: document.getElementById('novo-horario').value.trim(),
+      benefits: [],
+      status: 'ativo'
+    };
+    salvarColecao(STORAGE_COLECOES.unidades, nova);
     window.location.href = '/src/pages/colaborador/unidades/lista.html';
   });
 

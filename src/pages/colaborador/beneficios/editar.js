@@ -78,7 +78,15 @@ const init = () => {
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {
-    alert('Alteracoes salvas (mock).');
+    const atualizado = {
+      ...beneficio,
+      name: document.getElementById('editar-nome').value.trim(),
+      agency: document.getElementById('editar-orgao').value.trim(),
+      description: document.getElementById('editar-descricao').value.trim(),
+      officialLink: document.getElementById('editar-link').value.trim(),
+      updatedAt: 'agora'
+    };
+    salvarColecao(STORAGE_COLECOES.beneficios, atualizado);
     window.location.href = `/src/pages/colaborador/beneficios/detalhes.html?id=${encodeURIComponent(beneficio.id)}`;
   });
 

@@ -63,7 +63,17 @@ const init = () => {
       alert('Preencha o nome do requisito.');
       return;
     }
-    alert('Requisito salvo (mock).');
+    const novo = {
+      id: proximoIdColecao(STORAGE_COLECOES.requisitos, 'req'),
+      name: nome,
+      category: document.getElementById('novo-categoria').value,
+      description: document.getElementById('novo-descricao').value.trim(),
+      operator: document.getElementById('novo-operador').value,
+      value: document.getElementById('novo-valor').value.trim(),
+      status: 'ativo',
+      benefitsLinked: 0
+    };
+    salvarColecao(STORAGE_COLECOES.requisitos, novo);
     window.location.href = '/src/pages/colaborador/requisitos/lista.html';
   });
 };

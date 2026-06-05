@@ -87,7 +87,14 @@ const init = () => {
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {
-    alert('Alteracoes salvas (mock).');
+    const atualizado = {
+      ...documento,
+      name: document.getElementById('editar-nome').value.trim(),
+      category: document.getElementById('editar-categoria').value,
+      guidance: document.getElementById('editar-orientacao').value.trim(),
+      optional: document.getElementById('editar-optional').getAttribute('aria-checked') === 'true'
+    };
+    salvarColecao(STORAGE_COLECOES.documentos, atualizado);
     window.location.href = '/src/pages/colaborador/documentos/lista.html';
   });
 
