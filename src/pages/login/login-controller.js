@@ -54,7 +54,9 @@ const validarCredencial = async (papel, credencial) => {
 };
 
 const salvarSessao = (usuario, papel) => {
-  localStorage.setItem('usuarioLogado', JSON.stringify({ ...usuario, role: papel }));
+  // Não persistir o hash da senha na sessão (minimização de dados, LGPD).
+  const { pass, ...dadosSessao } = usuario;
+  localStorage.setItem('usuarioLogado', JSON.stringify({ ...dadosSessao, role: papel }));
 };
 
 const obterDestinoRedirect = (papel) => DESTINOS[papel] ?? DESTINOS.cidadao;

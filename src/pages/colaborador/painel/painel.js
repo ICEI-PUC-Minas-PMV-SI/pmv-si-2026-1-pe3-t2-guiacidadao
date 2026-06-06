@@ -40,7 +40,7 @@ const init = () => {
 
   const greeting = `
     <section class="painel-greeting">
-      <h1 class="painel-greeting-title">Ola, ${escapeHtml(obterPrimeiroNome(usuario))}!</h1>
+      <h1 class="painel-greeting-title">Olá, ${escapeHtml(obterPrimeiroNome(usuario))}!</h1>
       <p class="painel-greeting-sub">Veja um resumo da plataforma</p>
     </section>
   `;
@@ -49,7 +49,7 @@ const init = () => {
   const statsHtml = stats.map((stat) => renderStatCard(stat)).join('');
   const statsGrid = `<div class="painel-stats-grid">${statsHtml}</div>`;
 
-  const menuTitle = `<div class="painel-section-title">${renderSectionTitle({ children: 'Acesso rapido' })}</div>`;
+  const menuTitle = `<div class="painel-section-title">${renderSectionTitle({ children: 'Acesso rápido' })}</div>`;
   const menuList = `<div class="painel-menu-list">${MENU_ITEMS.map((item) => renderMenuItem({
     iconHtml: renderIcon(item.icon, 18),
     title: item.title,
