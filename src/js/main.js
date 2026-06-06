@@ -893,3 +893,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Profile icon in home
   document.getElementById('btn-profile')?.addEventListener('click', openSidebar);
 });
+
+ //Buscar
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector(".search-input");
+
+  input.addEventListener("input", () => {
+    const termo = input.value.toLowerCase().trim();
+
+    const itens = document.querySelectorAll("#beneficios-list .beneficio, .beneficio");
+
+    itens.forEach(item => {
+      const texto = item.textContent.toLowerCase();
+      item.style.display = texto.includes(termo) ? "" : "none";
+    });
+  });
+});
