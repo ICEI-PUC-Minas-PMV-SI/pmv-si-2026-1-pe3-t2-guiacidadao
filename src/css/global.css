@@ -576,6 +576,17 @@ body {
   padding: 8px;
   border-left: 6px solid #D9EEFF;
 }
+.beneficiocard2{
+  background-color: #E8E8E8;
+  text-align: center;
+  margin: 0px 95px 0px;
+  font-size: 13px;
+  border-radius: 7px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  padding: 8px;
+  border-left: 6px solid #D9EEFF;
+}
 
 .imgbenefi{
   display: block;

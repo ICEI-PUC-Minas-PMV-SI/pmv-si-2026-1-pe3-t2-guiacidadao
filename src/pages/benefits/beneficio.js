@@ -98,7 +98,7 @@ const renderBeneficio = (beneficio) => {
   const headerStyle = `background-color: ${escapeHtmlText(cor)}; align-self: center; height: 100px; width: 200px; ${corStyle}`;
 
   return `
-    <div class="beneficiocard" style="${headerStyle}">
+    <div class="beneficiocard2" style="${headerStyle}">
       ${beneficio.icon ? `<img src="${escapeHtmlText(beneficio.icon)}" alt="${escapeHtmlText(beneficio.name)}" style="max-block-size: 80px;" class="imgbenefi"/>` : ''}
     </div>
     <br>
