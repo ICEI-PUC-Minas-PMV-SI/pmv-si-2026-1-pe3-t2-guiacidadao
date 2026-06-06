@@ -545,8 +545,10 @@
 
 /* Barra de ação inferior */
 .agend-bottom-bar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
+  flex-shrink: 0;
+
+  position: relative; /* 👈 TROCA AQUI (remove fixed) */
+
   padding: 14px 18px;
   background: rgba(240, 244, 250, 0.95);
   border-top: 1.5px solid var(--border-light);
