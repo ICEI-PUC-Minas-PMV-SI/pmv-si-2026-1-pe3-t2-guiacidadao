@@ -67,8 +67,18 @@ const init = () => {
     addId: 'btn-add-documento'
   });
 
-  const linkInput = renderInput({ label: 'Link oficial (gov.br)', value: beneficio.officialLink, id: 'editar-link' });
+ const linkInput = renderInput({ label: 'Link oficial (gov.br)', placeholder: 'https://www.gov.br/...', id: 'novo-link' });
 
+ const statusRow = `
+    <div class="form-status-row">
+      <div class="form-status-text">
+        <span class="form-status-label">Status inicial</span>
+        <span class="form-status-hint">Quando ativado, o beneficio fica visivel para os cidadãos.</span>
+      </div>
+      <button type="button" role="switch" aria-checked="true" class="toggle toggle--active" id="novo-status"><span class="toggle-thumb"></span></button>
+    </div>
+ `;
+  
   const acoes = `
     <div class="form-actions">
       ${renderButton({ children: 'Cancelar', variant: 'outline', id: 'btn-cancelar' })}
@@ -87,6 +97,7 @@ const init = () => {
       ${documentos}
       ${renderDivider()}
       ${linkInput}
+      ${statusRow}
       ${acoes}
     </div>
   `;
@@ -96,6 +107,8 @@ const init = () => {
   });
 
   document.getElementById('btn-salvar').addEventListener('click', () => {
+    const statusBtn = document.getElementById('novo-status');
+    const ativo = statusBtn.getAttribute('aria-checked') === 'true';
     const atualizado = {
       ...beneficio,
       name: document.getElementById('editar-nome').value.trim(),
@@ -107,7 +120,8 @@ const init = () => {
       documentacao: parseDocumentacao(document.getElementById('editar-documentacao').value),
       icon: document.getElementById('editar-icone').value.trim(),
       cor: document.getElementById('editar-cor').value.trim() || beneficio.cor || '#E0E0E0',
-      officialLink: document.getElementById('editar-link').value.trim(),
+      officialLink: document.getElementById('novo-link').value.trim(),
+      status: ativo ? 'ativo' : 'inativo',
       updatedAt: 'agora'
     };
     salvarColecao(STORAGE_COLECOES.beneficios, atualizado);
@@ -125,6 +139,14 @@ const init = () => {
   document.getElementById('btn-add-documento').addEventListener('click', () => {
     window.location.href = '/src/pages/colaborador/modais/adicionar-documento.html';
   });
+
+  document.getElementById('novo-status').addEventListener('click', (event) => {
+    const btn = event.currentTarget;
+    const active = btn.getAttribute('aria-checked') === 'true';
+    btn.setAttribute('aria-checked', String(!active));
+    btn.classList.toggle('toggle--active', !active);
+  });
+
 };
 
 document.addEventListener('DOMContentLoaded', init);
