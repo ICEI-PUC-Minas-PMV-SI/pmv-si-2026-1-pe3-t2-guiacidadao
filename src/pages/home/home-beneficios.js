@@ -22,17 +22,20 @@ const renderCard = (beneficio, statusElegibilidade) => {
   const href = `/src/pages/benefits/beneficio.html?id=${encodeURIComponent(beneficio.id)}`;
 
   return `
-    <div class="beneficio" style="background-color: ${escapeHtmlText(cor)};">
-      ${icone}
-      <br>
-      ${badgeElegibilidade(statusElegibilidade)}
-      <h2>${escapeHtmlText(beneficio.name)}</h2>
-      <br>
-      <p style="font-size: 13px;">${escapeHtmlText(descricao)}</p>
-      <br>
-      <a href="${href}" style="color: #1d3a6e; text-decoration: underline; font-weight: 600;">Saiba mais &rsaquo;</a>
-    </div>
-  `;
+  <div class="beneficio" style="background-color: ${escapeHtmlText(cor)};">
+    ${icone}
+
+    ${badgeElegibilidade(statusElegibilidade)}
+
+    <h2>${escapeHtmlText(beneficio.name)}</h2>
+
+    <p>${escapeHtmlText(descricao)}</p>
+
+    <a href="${href}" class="saiba-mais">
+      Saiba mais &rsaquo;
+    </a>
+  </div>
+`;
 };
 
 const renderBeneficios = () => {

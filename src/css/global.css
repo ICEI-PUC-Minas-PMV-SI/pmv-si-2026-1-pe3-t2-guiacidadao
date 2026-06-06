@@ -83,6 +83,8 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--bg-main);
+
+  /* pode manter, mas não é obrigatório */
   overflow: hidden;
 }
 
@@ -305,6 +307,13 @@ body {
 }
 .btn-link:hover { color: var(--primary-dark); }
 
+.btn-small {
+  width: fit-content;
+  min-width: 180px;
+  margin: 12px auto 0;
+  padding: 0 24px;
+}
+
 /* Cards */
 .card {
   background: var(--bg-card);
@@ -522,6 +531,13 @@ body {
 .badge-info    { background: var(--primary-bg); color: var(--primary-dark); }
 
 /* home */
+
+.saiba-mais {
+  margin-top: auto;
+  color: #1d3a6e;
+  text-decoration: underline;
+  font-weight: 600;
+}
 
 .beneficios{
   display: grid;
