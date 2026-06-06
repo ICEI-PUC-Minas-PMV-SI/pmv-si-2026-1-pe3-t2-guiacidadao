@@ -530,6 +530,13 @@ body {
 
 /* home */
 
+.saiba-mais {
+  margin-top: auto;
+  color: #1d3a6e;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 .beneficios{
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
