@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benefício - GuiaCidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/global.css">
+  <link rel="stylesheet" href="/src/css/screens.css">
+</head>
+<body>
+  <div id="app">
+    <div id="beneficio-screen" class="screen active">
+      <div class="app-header">
+        <a class="back-btn" href="/src/pages/home/home.html" aria-label="Voltar para a home">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </a>
+        <a class="header-logo">
+          <img src="/src/assets/icons/Logo.png" alt="GuiaCidadão">
+          GuiaCidadão
+        </a>
+        <div style="width:36px"></div>
+      </div>
+      </head>
+      <body>
+      <div class="scroll-content">
+     <h1 class="page-title">Lista de Documentos</h1>
+    <h2 class="page-subtitle">Precisando de ajuda para organizar os documentos? Utilize a lista abaixo!</h2>
+<div class="beneficio">
+    <div>
+        <div class="benefit-card">
+        <h2>Progresso</h2>
+                <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <small id="progressText">0% concluído</small>
+        </div>
+    </div>
+<br>
+    <div class="form-group">
+        <input type="text" class="form-input" id="docInput" placeholder="Nome do documento"></div>
+        <button onclick="addDocumento()" class="btn btn-primary">Adicionar</button>
+    </div>
+<br>
+    <div class="lista-unidades">
+        <div id="lista" >
+        </div>
+    </div>
+
+</div>
+</div>
+    </div>
+  </div>
+  <script src="/src/pages/documents/documents.js"></script>
+  <div id="bottom-nav-slot"></div>
+  <script src="/src/js/shared/bottom-nav-cidadao.js"></script>
+</body>
+</html>

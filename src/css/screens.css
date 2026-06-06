@@ -580,3 +580,17 @@
   box-shadow: var(--shadow-md);
   padding: 18px 16px 14px;
 }
+.mini-btn{
+  width: 18%;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: inset;
+}
