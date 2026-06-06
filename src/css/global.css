@@ -305,6 +305,13 @@ body {
 }
 .btn-link:hover { color: var(--primary-dark); }
 
+.btn-small {
+  width: fit-content;
+  min-width: 180px;
+  margin: 12px auto 0;
+  padding: 0 24px;
+}
+
 /* Cards */
 .card {
   background: var(--bg-card);
